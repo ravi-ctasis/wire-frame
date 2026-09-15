@@ -16573,7 +16573,7 @@ function openNewAlertRule() {
 
 function renderSOWDocView() {
   return `
-    <div class="page-header"><div class="page-title-wrap"><h1>📖 Full SOW Document & Traceability Explorer</h1><p>INFO SERVICES LLP — Scope of Work & Deliverable Verification Matrix (1,645 Engineering Hours).</p></div></div>
+    <div class="page-header"><div class="page-title-wrap"><h1>📖 Full SOW Document & Traceability Explorer</h1><p>Rugs — Scope of Work & Deliverable Verification Matrix (1,645 Engineering Hours).</p></div></div>
     <div class="card">
       <div class="card-header"><h3>SOW Enterprise Architecture Breakdown</h3></div>
       <div class="card-body">
@@ -16749,13 +16749,13 @@ function renderUserProfilePage() {
       <!-- Profile Hero Banner -->
       <div class="profile-hero-card">
         <div style="display: flex; align-items: center; gap: 20px;">
-          <div class="profile-avatar-large">CT</div>
+          <div class="profile-avatar-large">SA</div>
           <div class="profile-identity-info">
             <h2>${adminUser.name}</h2>
             <div class="profile-identity-meta">
               <span>📧 <strong>${adminUser.email}</strong></span>
               <span>•</span>
-              <span>🏢 <strong>INFO SERVICES LLP (Operations)</strong></span>
+              <span>🏢 <strong>RUGS GLOBAL (Operations)</strong></span>
               <span>•</span>
               <span>🌐 <strong>Asia/Kolkata (IST +05:30)</strong></span>
             </div>
@@ -18097,7 +18097,7 @@ function openDocPaperPreviewModal(docType, id) {
         <div style="font-size: 13px; line-height: 1.8;">
           <p>We hereby certify that the following foreign inward remittance has been received and credited to the exporter's account:</p>
           <table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 12px;">
-            <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0; width: 40%;"><strong>1. Beneficiary Exporter:</strong></td><td>INFO SERVICES LLP (RugOS Export Hub), Bhadohi (UP)</td></tr>
+            <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0; width: 40%;"><strong>1. Beneficiary Exporter:</strong></td><td>RUGS GLOBAL (RugOS Export Hub), Bhadohi (UP)</td></tr>
             <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>2. Importer / Remitter:</strong></td><td>${r.client}</td></tr>
             <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>3. SWIFT MT103 Wire Ref:</strong></td><td><code>SWIFT/DANSKE/9901428</code></td></tr>
             <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>4. Commercial Invoice Ref:</strong></td><td><strong>${r.invoiceNo}</strong></td></tr>
@@ -18188,7 +18188,7 @@ function openDocPaperPreviewModal(docType, id) {
           </div>
           <p>Photographic proof captured at our high-resolution calibrated packing bench station is attached herewith, proving roll dimensions. We demand an immediate Credit Note in the sum of <strong>$${a.varianceUSD.toFixed(2)} USD</strong> prior to release of invoice settlement.</p>
           <div style="margin-top: 40px;">
-            <strong>INFO SERVICES LLP (RugOS Legal SCM Unit)</strong><br>
+            <strong>RUGS GLOBAL (RugOS Legal SCM Unit)</strong><br>
             Station Road, Bhadohi Carpet Industrial Hub, India
           </div>
         </div>
@@ -18213,7 +18213,7 @@ function openDocPaperPreviewModal(docType, id) {
       AMOUNT: $${r.amountUSD.toLocaleString()}
 :50K: ORDERING CUSTOMER: ${r.client}
 :57A: BENEFICIARY INSTITUTION: HDFC BANK LTD, BHADOHI (HDFCINBB051)
-:59:  BENEFICIARY CUSTOMER: INFO SERVICES LLP (RUGOS EXPORT HUB)
+:59:  BENEFICIARY CUSTOMER: RUGS GLOBAL (RUGOS EXPORT HUB)
       A/C NO: 50200089124401
 :70:  REMITTANCE INFORMATION: INVOICE ${r.invoiceNo} / SB ${r.shippingBillNo}
 :71A: DETAILS OF CHARGES: OUR
