@@ -2299,7 +2299,7 @@ const INITIAL_SYSTEM_LOGS = [
     level: "SECURITY",
     module: "SECURITY",
     moduleIcon: "🛡️",
-    actor: "Ctas Admin (Super Admin)",
+    actor: "Admin (Super Admin)",
     ip: "10.14.2.88",
     action: "Super Admin Session Authenticated",
     details: "Admin user session opened with MFA hardware token verification. Role verified with full master permissions across Indian ICD and US 3PL nodes.",
@@ -2397,7 +2397,7 @@ const INITIAL_SYSTEM_LOGS = [
     level: "SECURITY",
     module: "SECURITY",
     moduleIcon: "🛡️",
-    actor: "Ctas Admin (Super Admin)",
+    actor: "Admin (Super Admin)",
     ip: "10.14.2.88",
     action: "RBAC Warehouse Scope Updated",
     details: "Granted USA 3PL Warehouse Operations access scope to user Samantha Miller (s.miller@amazon-fba.com) for regional FBA consolidation.",
@@ -2449,7 +2449,7 @@ const INITIAL_SYSTEM_LOGS = [
 ];
 
 const INITIAL_USERS = [
-  { name: "Ctas Admin", email: "admin@ctasinfo.com", role: "Super Admin / Management", status: "Active", whAccess: "All Warehouses", perm: "Full Read/Write/Approve" },
+  { name: "Admin", email: "admin@info.com", role: "Super Admin / Management", status: "Active", whAccess: "All Warehouses", perm: "Full Read/Write/Approve" },
   { name: "Vikram Singh", email: "vikram@rugos.in", role: "India Warehouse Manager", status: "Active", whAccess: "India Central Manufacturing & Export WH", perm: "MTO, Pack, Dispatch, Transfers" },
   { name: "John Gallagher", email: "j.gallagher@3pl-edison.com", role: "USA 3PL Warehouse Lead", status: "Active", whAccess: "USA 3PL Distribution Center (Edison, NJ)", perm: "Inbound Receive, Put-Away, Pick/Pack" },
   { name: "Deepak Sharma", email: "deepak.logistics@rugos.in", role: "Logistics & Export Lead", status: "Active", whAccess: "All Warehouses", perm: "FedEx Booking, Shipping Bills, Manifests" },
@@ -3709,7 +3709,7 @@ function renderCurrentView() {
 
     case "profile":
       crumbMod.textContent = "User Governance";
-      crumbView.textContent = "Ctas Admin — Enterprise Profile, Permissions & Security Command Center";
+      crumbView.textContent = "Admin — Enterprise Profile, Permissions & Security Command Center";
       quickActions.innerHTML = `
         <button class="btn btn-sm btn-secondary" onclick="generateNewApiKey()">🔑 Generate New API Key</button>
         <button class="btn btn-sm btn-primary" onclick="showToast('Profile security settings updated.', 'success')">💾 Save Preferences</button>
@@ -3748,7 +3748,7 @@ function renderCurrentView() {
 
     case "mod8-sow":
       crumbMod.textContent = "SOW Document & Traceability Matrix";
-      crumbView.textContent = "Ctas Info Services LLP — Original Scope & Timeline";
+      crumbView.textContent = "Rugs Original Scope & Timeline";
       quickActions.innerHTML = `
         <button class="btn btn-sm btn-primary" onclick="switchView('mod8')">← Back to Dashboard</button>
       `;
@@ -5902,7 +5902,7 @@ function saveNewOrder() {
     qty: -qty,
     source: wh,
     dest: `Order ${orderId} (${channelNames[channel]})`,
-    user: "Ctas Admin / Management",
+    user: "Admin / Management",
     ref: `ORD-ALLOC: ${orderId}`
   });
 
@@ -8770,7 +8770,7 @@ function renderExportDocSuitePage(invoiceNo) {
           <div class="doc-sheet-header">
             <div>
               <div class="doc-company-title">COMMERCIAL INVOICE FOR EXPORT</div>
-              <div style="font-size: 11px; color: #64748b;">Ctas Rugs Global LLP • IEC: 0516908124 • GSTIN: 09AAAFC1249P1Z8</div>
+              <div style="font-size: 11px; color: #64748b;">Rugs Global LLP • IEC: 0516908124 • GSTIN: 09AAAFC1249P1Z8</div>
               <div style="font-size: 11px; color: #059669; font-weight: 700;">SUPPLY MEANT FOR EXPORT UNDER LETTER OF UNDERTAKING (LUT) WITHOUT PAYMENT OF INTEGRATED TAX</div>
             </div>
             <div class="doc-meta-block">
@@ -8816,7 +8816,7 @@ function renderExportDocSuitePage(invoiceNo) {
           <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: flex-end;">
             <div style="font-size: 11px; color: #64748b;">Generated via RugOS ExportOS Automation Engine • DGFT & ICEGATE Rule 8 Certified</div>
             <div style="text-align: right; border-top: 1px solid #94a3b8; padding-top: 6px; width: 220px;">
-              <strong>For Ctas Rugs Global LLP</strong><br>
+              <strong>For Rugs Global LLP</strong><br>
               <span style="font-size: 11px; color: #059669;">[Digitally Signed by Authorized Signatory]</span>
             </div>
           </div>
@@ -8829,7 +8829,7 @@ function renderExportDocSuitePage(invoiceNo) {
           <div class="doc-sheet-header">
             <div>
               <div class="doc-company-title">EXPORT PACKING LIST & WEIGHT CERTIFICATE</div>
-              <div style="font-size: 11px; color: #64748b;">Package Marks: CTAS/${doc.invoiceNo}/1-${rollCount}</div>
+              <div style="font-size: 11px; color: #64748b;">Package Marks: RUGS/${doc.invoiceNo}/1-${rollCount}</div>
             </div>
             <div class="doc-meta-block">
               <div><strong>Packing List #:</strong> PL-${doc.invoiceNo}</div>
@@ -13763,7 +13763,7 @@ function changeReceivableStatus(invoiceNo, newStatus) {
 function downloadFiraPDF(invoiceNo) {
   const rec = (AppState.receivables || []).find(r => r.invoiceNo === invoiceNo) || AppState.receivables[0];
   const filename = `BANK_FIRA_ADVICE_${rec.invoiceNo}.pdf`;
-  const content = `%PDF-1.4\n% Foreign Inward Remittance Advice (FIRA) / IRM\nAuthorised Dealer Bank: ${rec.bankRef || 'HDFC Bank Ltd, Bhadohi'}\nAD Code: 0510024\nInvoice Ref: ${rec.invoiceNo}\nBeneficiary: CTAS RUGS GLOBAL LLP (IEC: 0516908124)\nRemitter: ${rec.client}\nInward Foreign Currency: $${rec.amountUSD.toFixed(2)} USD\nRealized Exchange Rate: ₹${rec.exchangeRateINR || 83.92} INR\nNet Realized INR: ₹${(rec.realizedINR || Math.round(rec.amountUSD * 83.92)).toLocaleString()} INR\nFEMA Purpose Code: ${rec.femaPurpose || 'P0102 (Export of Handcrafted Floor Coverings)'}\nEDPMS Status: Settled via RBI Gateway.`;
+  const content = `%PDF-1.4\n% Foreign Inward Remittance Advice (FIRA) / IRM\nAuthorised Dealer Bank: ${rec.bankRef || 'HDFC Bank Ltd, Bhadohi'}\nAD Code: 0510024\nInvoice Ref: ${rec.invoiceNo}\nBeneficiary: RUGS GLOBAL LLP (IEC: 0516908124)\nRemitter: ${rec.client}\nInward Foreign Currency: $${rec.amountUSD.toFixed(2)} USD\nRealized Exchange Rate: ₹${rec.exchangeRateINR || 83.92} INR\nNet Realized INR: ₹${(rec.realizedINR || Math.round(rec.amountUSD * 83.92)).toLocaleString()} INR\nFEMA Purpose Code: ${rec.femaPurpose || 'P0102 (Export of Handcrafted Floor Coverings)'}\nEDPMS Status: Settled via RBI Gateway.`;
   triggerDownload(filename, content, "application/pdf");
   showToast(`Downloaded ${filename} successfully!`, "success");
 }
@@ -13771,7 +13771,7 @@ function downloadFiraPDF(invoiceNo) {
 function downloadEbrcPDF(invoiceNo) {
   const rec = (AppState.receivables || []).find(r => r.invoiceNo === invoiceNo) || AppState.receivables[0];
   const filename = `DGFT_EBRC_CERTIFICATE_${rec.invoiceNo}.pdf`;
-  const content = `%PDF-1.4\n% Directorate General of Foreign Trade (DGFT) Electronic Bank Realisation Certificate (e-BRC)\ne-BRC No: ${rec.ebrcNo && !rec.ebrcNo.includes('Pending') ? rec.ebrcNo : 'EBRC-HDFC-2026-098122'}\nExporter IEC: 0516908124\nExporter Name: CTAS RUGS GLOBAL LLP\nShipping Bill Ref: ${rec.shippingBillNo}\nPort of Export: INVTZ1 (ICD Babatpur)\nInvoice No & Date: ${rec.invoiceNo} / ${rec.invoiceDate}\nRealized FOB Foreign Currency: $${rec.amountUSD.toFixed(2)} USD\nBank AD Code: 0510024\nFEMA Declaration: Realization verified under Foreign Exchange Management Act 1999 for GST LUT & RoDTEP Claim.`;
+  const content = `%PDF-1.4\n% Directorate General of Foreign Trade (DGFT) Electronic Bank Realisation Certificate (e-BRC)\ne-BRC No: ${rec.ebrcNo && !rec.ebrcNo.includes('Pending') ? rec.ebrcNo : 'EBRC-HDFC-2026-098122'}\nExporter IEC: 0516908124\nExporter Name: RUGS GLOBAL LLP\nShipping Bill Ref: ${rec.shippingBillNo}\nPort of Export: INVTZ1 (ICD Babatpur)\nInvoice No & Date: ${rec.invoiceNo} / ${rec.invoiceDate}\nRealized FOB Foreign Currency: $${rec.amountUSD.toFixed(2)} USD\nBank AD Code: 0510024\nFEMA Declaration: Realization verified under Foreign Exchange Management Act 1999 for GST LUT & RoDTEP Claim.`;
   triggerDownload(filename, content, "application/pdf");
   showToast(`Downloaded ${filename} successfully!`, "success");
 }
@@ -15287,7 +15287,7 @@ function exportActiveReportPDF(key) {
 % RugOS Financial & Operational Reporting Engine
 % Report: ${reportTitles[key] || key.toUpperCase()}
 Generated on: ${new Date().toISOString()}
-Organization: CTAS RUGS GLOBAL LLP (IEC: 0516908124)
+Organization: RUGS GLOBAL LLP (IEC: 0516908124)
 Audit Period: Q3 / FY 2026-27
 Compliance Standard: DGFT, FEMA 1999, RBI EDPMS, ICEGATE Rule 8
 Status: 100% Verified and Certified by RugOS Financial Intelligence Engine.`;
@@ -16573,7 +16573,7 @@ function openNewAlertRule() {
 
 function renderSOWDocView() {
   return `
-    <div class="page-header"><div class="page-title-wrap"><h1>📖 Full SOW Document & Traceability Explorer</h1><p>Ctas Info Services LLP — Scope of Work & Deliverable Verification Matrix (1,645 Engineering Hours).</p></div></div>
+    <div class="page-header"><div class="page-title-wrap"><h1>📖 Full SOW Document & Traceability Explorer</h1><p>INFO SERVICES LLP — Scope of Work & Deliverable Verification Matrix (1,645 Engineering Hours).</p></div></div>
     <div class="card">
       <div class="card-header"><h3>SOW Enterprise Architecture Breakdown</h3></div>
       <div class="card-body">
@@ -16728,7 +16728,7 @@ function renderInventoryDetailPage(skuCode) {
 // ============================================================================
 
 function renderUserProfilePage() {
-  const adminUser = AppState.users.find(u => u.email === "admin@ctasinfo.com") || AppState.users[0];
+  const adminUser = AppState.users.find(u => u.email === "admin@info.com") || AppState.users[0];
 
   return `
     <div class="full-detail-page">
@@ -16755,7 +16755,7 @@ function renderUserProfilePage() {
             <div class="profile-identity-meta">
               <span>📧 <strong>${adminUser.email}</strong></span>
               <span>•</span>
-              <span>🏢 <strong>Ctas Info Services LLP (Operations)</strong></span>
+              <span>🏢 <strong>INFO SERVICES LLP (Operations)</strong></span>
               <span>•</span>
               <span>🌐 <strong>Asia/Kolkata (IST +05:30)</strong></span>
             </div>
@@ -16895,11 +16895,11 @@ function renderUserProfilePage() {
             <div class="form-grid-2">
               <div class="form-group">
                 <label>First & Last Name:</label>
-                <input type="text" class="form-control" value="Ctas Admin">
+                <input type="text" class="form-control" value="Admin">
               </div>
               <div class="form-group">
                 <label>Work Email Address:</label>
-                <input type="email" class="form-control" value="admin@ctasinfo.com" readonly>
+                <input type="email" class="form-control" value="admin@info.com" readonly>
               </div>
             </div>
             <div class="form-grid-2">
@@ -18097,7 +18097,7 @@ function openDocPaperPreviewModal(docType, id) {
         <div style="font-size: 13px; line-height: 1.8;">
           <p>We hereby certify that the following foreign inward remittance has been received and credited to the exporter's account:</p>
           <table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 12px;">
-            <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0; width: 40%;"><strong>1. Beneficiary Exporter:</strong></td><td>Ctas Info Services LLP (RugOS Export Hub), Bhadohi (UP)</td></tr>
+            <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0; width: 40%;"><strong>1. Beneficiary Exporter:</strong></td><td>INFO SERVICES LLP (RugOS Export Hub), Bhadohi (UP)</td></tr>
             <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>2. Importer / Remitter:</strong></td><td>${r.client}</td></tr>
             <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>3. SWIFT MT103 Wire Ref:</strong></td><td><code>SWIFT/DANSKE/9901428</code></td></tr>
             <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>4. Commercial Invoice Ref:</strong></td><td><strong>${r.invoiceNo}</strong></td></tr>
@@ -18140,7 +18140,7 @@ function openDocPaperPreviewModal(docType, id) {
         <div style="font-size: 13px; line-height: 1.8;">
           <table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 12px;">
             <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0; width: 40%;"><strong>e-BRC Identification Number:</strong></td><td><strong style="color: #059669 !important;">${r.ebrcNo}</strong></td></tr>
-            <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>Exporter IEC Number:</strong></td><td><strong>0519082144 (Ctas Info Services LLP)</strong></td></tr>
+            <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>Exporter IEC Number:</strong></td><td><strong>0519082144 </strong></td></tr>
             <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>Shipping Bill No & Date:</strong></td><td>${r.shippingBillNo}</td></tr>
             <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>Port of Export (Customs):</strong></td><td>INVTZ1 (ICD Babatpur Varanasi)</td></tr>
             <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>Commercial Invoice No:</strong></td><td>${r.invoiceNo}</td></tr>
@@ -18188,7 +18188,7 @@ function openDocPaperPreviewModal(docType, id) {
           </div>
           <p>Photographic proof captured at our high-resolution calibrated packing bench station is attached herewith, proving roll dimensions. We demand an immediate Credit Note in the sum of <strong>$${a.varianceUSD.toFixed(2)} USD</strong> prior to release of invoice settlement.</p>
           <div style="margin-top: 40px;">
-            <strong>Ctas Info Services LLP (RugOS Legal SCM Unit)</strong><br>
+            <strong>INFO SERVICES LLP (RugOS Legal SCM Unit)</strong><br>
             Station Road, Bhadohi Carpet Industrial Hub, India
           </div>
         </div>
@@ -18213,7 +18213,7 @@ function openDocPaperPreviewModal(docType, id) {
       AMOUNT: $${r.amountUSD.toLocaleString()}
 :50K: ORDERING CUSTOMER: ${r.client}
 :57A: BENEFICIARY INSTITUTION: HDFC BANK LTD, BHADOHI (HDFCINBB051)
-:59:  BENEFICIARY CUSTOMER: CTAS INFO SERVICES LLP
+:59:  BENEFICIARY CUSTOMER: INFO SERVICES LLP (RUGOS EXPORT HUB)
       A/C NO: 50200089124401
 :70:  REMITTANCE INFORMATION: INVOICE ${r.invoiceNo} / SB ${r.shippingBillNo}
 :71A: DETAILS OF CHARGES: OUR
@@ -18660,7 +18660,7 @@ function saveNewInventory() {
     qty: qty,
     source: sourceType,
     dest: `${whObj.name} (${binCode})`,
-    user: "Ctas Admin / Management",
+    user: "Admin / Management",
     ref: `${poRef} [${lotRef}]`
   });
 
@@ -18769,7 +18769,7 @@ function executeStockTransfer() {
       qty: -qty,
       source: srcWh ? srcWh.name : srcId,
       dest: `${destWh ? destWh.name : destId} [In-Transit]`,
-      user: "Ctas Admin / Management",
+      user: "Admin / Management",
       ref: manifest
     });
 
@@ -18867,7 +18867,7 @@ function executeStockAdjustment() {
       qty: delta,
       source: wh.name,
       dest: isAdd ? "Stock Ledger Active" : "Audit Adjustment / Write-off",
-      user: "Ctas Admin / Management",
+      user: "Admin / Management",
       ref: `AUDIT-ADJ: ${reason}`
     });
 
@@ -19051,7 +19051,7 @@ function executeReceiveInTransit() {
     qty: qty,
     source: `Ocean In-Transit (${blRef})`,
     dest: `${whObj.name} [${binLocation}]`,
-    user: "Ctas Admin / Edison Receiving Dock",
+    user: "Admin / Edison Receiving Dock",
     ref: `GRN: ${cbpRef}`
   });
 
