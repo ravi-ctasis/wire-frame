@@ -2979,3 +2979,536 @@ th.sortable:hover {
   border-color: var(--border-hover);
 }
 
+
+/* Clean Segmented Filter Pills & Tab Bar */
+.status-filter-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.filter-pill-btn {
+  background: var(--bg-card, #1e293b);
+  border: 1px solid var(--border-subtle, #334155);
+  color: var(--text-muted, #94a3b8);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.filter-pill-btn:hover {
+  border-color: var(--brand-cyan, #06b6d4);
+  color: var(--text-main, #f8fafc);
+  background: var(--bg-elevated, #334155);
+}
+
+.filter-pill-btn.active {
+  background: rgba(6, 182, 212, 0.15);
+  border-color: var(--brand-cyan, #06b6d4);
+  color: var(--brand-cyan, #06b6d4);
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.15);
+}
+
+/* Redesigned Compact & Zero-Scroll Sidebar Navigation */
+.app-sidebar {
+  width: 240px !important;
+}
+
+.sidebar-header-box {
+  padding: 10px 14px 8px 14px !important;
+  margin-bottom: 2px !important;
+}
+
+.sidebar-nav {
+  padding: 0 8px 10px 8px !important;
+}
+
+.nav-module-heading {
+  font-size: 9px !important;
+  font-weight: 800 !important;
+  color: var(--text-muted, #94a3b8) !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  margin: 8px 0 2px 4px !important;
+  padding-bottom: 2px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  opacity: 0.8;
+}
+
+.nav-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 5px 8px !important;
+  border-radius: 6px !important;
+  color: var(--text-muted, #cbd5e1) !important;
+  text-decoration: none !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  margin-bottom: 1px !important;
+  transition: all 0.15s ease !important;
+}
+
+.nav-icon {
+  font-size: 13px !important;
+  width: 22px !important;
+  height: 22px !important;
+  border-radius: 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.nav-text {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+.nav-item.active .nav-text {
+  font-weight: 700 !important;
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   STUNNING ENTERPRISE SIDEBAR NAVIGATION REDESIGN
+   ========================================================================== */
+
+.app-sidebar {
+  width: 235px !important;
+  background-color: var(--bg-sidebar, #0f172a) !important;
+  border-right: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08)) !important;
+}
+
+.sidebar-header-box {
+  padding: 12px 14px 8px 14px !important;
+  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.06)) !important;
+  margin-bottom: 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.sidebar-section-title {
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  color: var(--text-muted, #94a3b8) !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+
+.sidebar-nav {
+  padding: 0 8px 12px 8px !important;
+}
+
+.nav-module-heading {
+  font-size: 9px !important;
+  font-weight: 800 !important;
+  color: var(--text-muted, #64748b) !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  margin: 10px 0 3px 6px !important;
+  padding-bottom: 2px !important;
+  border: none !important;
+  opacity: 0.75;
+}
+
+.nav-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 6px 10px !important;
+  border-radius: 6px !important;
+  color: var(--text-muted, #cbd5e1) !important;
+  text-decoration: none !important;
+  font-size: 12.5px !important;
+  font-weight: 500 !important;
+  margin-bottom: 2px !important;
+  transition: all 0.15s ease !important;
+  border-left: none !important;
+}
+
+.nav-item:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #ffffff !important;
+  transform: translateX(2px) !important;
+}
+
+.nav-item.active {
+  background: rgba(6, 182, 212, 0.14) !important;
+  color: var(--brand-cyan, #06b6d4) !important;
+  font-weight: 600 !important;
+  border-left: none !important;
+  box-shadow: none !important;
+}
+
+.nav-icon {
+  font-size: 14px !important;
+  width: 22px !important;
+  height: 22px !important;
+  border-radius: 5px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+  color: var(--text-muted, #94a3b8) !important;
+  transition: all 0.15s ease !important;
+}
+
+.nav-item:hover .nav-icon {
+  color: #ffffff !important;
+}
+
+.nav-item.active .nav-icon {
+  color: var(--brand-cyan, #06b6d4) !important;
+  background: rgba(6, 182, 212, 0.12) !important;
+}
+
+.nav-text {
+  font-size: 12.5px !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* HIGH CONTRAST READABILITY FIX FOR ACTIVE TABS & BUTTONS */
+.nav-item.active {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4) !important;
+}
+
+.nav-item.active .nav-icon {
+  color: #ffffff !important;
+  background: transparent !important;
+}
+
+.nav-item.active .nav-text {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+.filter-pill-btn.active, .step-tab-btn.active, .cat-chip.active, .flow-pill.active, .doc-tile.active, .wh-hub-card.active {
+  background: #0284c7 !important;
+  border-color: #0284c7 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35) !important;
+}
+
+.filter-pill-btn.active *, .step-tab-btn.active *, .cat-chip.active *, .flow-pill.active *, .doc-tile.active *, .wh-hub-card.active * {
+  color: #ffffff !important;
+}
+
+/* Custom UI Component Styles */
+.step-tab-btn {
+  background: var(--bg-surface, #1e293b);
+  border: 1px solid var(--border-subtle, #334155);
+  color: var(--text-muted, #94a3b8);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.step-num {
+  background: rgba(255, 255, 255, 0.15);
+  color: inherit;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.step-arrow {
+  color: var(--text-dim, #64748b);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.cat-chip, .flow-pill {
+  background: var(--bg-surface, #1e293b);
+  border: 1px solid var(--border-subtle, #334155);
+  color: var(--text-muted, #94a3b8);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+/* ==========================================================================
+   THEME-AWARE HOVER & ACTIVE ACCESSIBILITY FIX (LIGHT & DARK MODE)
+   ========================================================================== */
+
+/* Dark Mode Sidebar Hover & Active */
+body.theme-dark .nav-item {
+  color: #94a3b8 !important;
+}
+
+body.theme-dark .nav-item .nav-icon {
+  color: #94a3b8 !important;
+}
+
+body.theme-dark .nav-item:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #f8fafc !important;
+  transform: translateX(2px) !important;
+}
+
+body.theme-dark .nav-item:hover:not(.active) .nav-icon {
+  color: #38bdf8 !important;
+}
+
+body.theme-dark .nav-item:hover:not(.active) .nav-text {
+  color: #f8fafc !important;
+}
+
+/* Light Mode Sidebar Hover & Active */
+body.theme-light .app-sidebar {
+  background-color: #ffffff !important;
+  border-right: 1px solid #e2e8f0 !important;
+}
+
+body.theme-light .sidebar-header-box {
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+body.theme-light .sidebar-section-title {
+  color: #64748b !important;
+}
+
+body.theme-light .nav-module-heading {
+  color: #64748b !important;
+}
+
+body.theme-light .nav-item {
+  color: #334155 !important;
+}
+
+body.theme-light .nav-item .nav-icon {
+  color: #64748b !important;
+}
+
+body.theme-light .nav-item .nav-text {
+  color: #334155 !important;
+}
+
+body.theme-light .nav-item:hover:not(.active) {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
+  transform: translateX(2px) !important;
+}
+
+body.theme-light .nav-item:hover:not(.active) .nav-icon {
+  color: #2563eb !important;
+}
+
+body.theme-light .nav-item:hover:not(.active) .nav-text {
+  color: #0f172a !important;
+}
+
+/* Active State for Both Themes */
+.nav-item.active, body.theme-light .nav-item.active, body.theme-dark .nav-item.active {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35) !important;
+}
+
+.nav-item.active .nav-icon, body.theme-light .nav-item.active .nav-icon, body.theme-dark .nav-item.active .nav-icon {
+  color: #ffffff !important;
+  background: transparent !important;
+}
+
+.nav-item.active .nav-text, body.theme-light .nav-item.active .nav-text, body.theme-dark .nav-item.active .nav-text {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+/* Filter Pills & Buttons Hover - Light Mode vs Dark Mode */
+body.theme-light .filter-pill-btn:hover,
+body.theme-light .step-tab-btn:hover,
+body.theme-light .cat-chip:hover,
+body.theme-light .flow-pill:hover,
+body.theme-light .doc-tile:hover,
+body.theme-light .wh-hub-card:hover {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
+  border-color: #2563eb !important;
+}
+
+body.theme-light .filter-pill-btn:hover *,
+body.theme-light .step-tab-btn:hover *,
+body.theme-light .cat-chip:hover *,
+body.theme-light .flow-pill:hover *,
+body.theme-light .doc-tile:hover *,
+body.theme-light .wh-hub-card:hover * {
+  color: #0f172a !important;
+}
+
+body.theme-dark .filter-pill-btn:hover,
+body.theme-dark .step-tab-btn:hover,
+body.theme-dark .cat-chip:hover,
+body.theme-dark .flow-pill:hover,
+body.theme-dark .doc-tile:hover,
+body.theme-dark .wh-hub-card:hover {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border-color: #38bdf8 !important;
+}
+
+body.theme-dark .filter-pill-btn:hover *,
+body.theme-dark .step-tab-btn:hover *,
+body.theme-dark .cat-chip:hover *,
+body.theme-dark .flow-pill:hover *,
+body.theme-dark .doc-tile:hover *,
+body.theme-dark .wh-hub-card:hover * {
+  color: #f8fafc !important;
+}
+
+/* Active State for Filter Pills */
+.filter-pill-btn.active, .step-tab-btn.active, .cat-chip.active, .flow-pill.active, .doc-tile.active, .wh-hub-card.active {
+  background: #0284c7 !important;
+  border-color: #0284c7 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35) !important;
+}
+
+.filter-pill-btn.active *, .step-tab-btn.active *, .cat-chip.active *, .flow-pill.active *, .doc-tile.active *, .wh-hub-card.active * {
+  color: #ffffff !important;
+}
+
+/* ULTRA-CLEAN EASY-TO-USE LAYOUT & TYPOGRAPHY OVERRIDES */
+.view-viewport {
+  padding: 16px 20px !important;
+}
+
+.page-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 12px !important;
+  gap: 12px !important;
+}
+
+.page-title-wrap h1 {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: var(--text-main) !important;
+  letter-spacing: -0.01em !important;
+}
+
+.page-title-wrap p {
+  display: none !important;
+}
+
+.table-toolbar-box {
+  margin-bottom: 10px !important;
+}
+
+.data-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+}
+
+.data-table th {
+  padding: 10px 14px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+}
+
+.data-table td {
+  padding: 11px 14px !important;
+  font-size: 12.5px !important;
+  font-weight: 500 !important;
+}
+
+/* LIGHT MODE CLEAN BACKGROUND FIX FOR CHIPS, TABS & BANNERS */
+body.theme-light .catalog-ribbon-bar,
+body.theme-light .pipeline-stepper-container,
+body.theme-light .wh-hub-card,
+body.theme-light .doc-tile,
+body.theme-light .cat-chip,
+body.theme-light .step-tab-btn,
+body.theme-light .flow-pill {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #475569 !important;
+}
+
+body.theme-light .cat-chip:hover:not(.active),
+body.theme-light .step-tab-btn:hover:not(.active),
+body.theme-light .flow-pill:hover:not(.active),
+body.theme-light .doc-tile:hover:not(.active),
+body.theme-light .wh-hub-card:hover:not(.active) {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
+  border-color: #2563eb !important;
+}
+
+body.theme-light .cat-chip.active,
+body.theme-light .step-tab-btn.active,
+body.theme-light .flow-pill.active,
+body.theme-light .doc-tile.active,
+body.theme-light .wh-hub-card.active {
+  background: #0284c7 !important;
+  border-color: #0284c7 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35) !important;
+}
+
+body.theme-light .cat-chip.active *,
+body.theme-light .step-tab-btn.active *,
+body.theme-light .flow-pill.active *,
+body.theme-light .doc-tile.active *,
+body.theme-light .wh-hub-card.active * {
+  color: #ffffff !important;
+}
+
+/* 100% FULL-WIDTH EXPANSION FOR TABLES & CONTAINERS */
+.app-main,
+.view-viewport,
+.page-header,
+.pipeline-stepper-container,
+.catalog-ribbon-bar,
+.wh-hub-banner,
+.table-toolbar-box,
+.card,
+.table-responsive,
+.data-table {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.table-responsive {
+  width: 100% !important;
+  overflow-x: auto !important;
+}
+
+.data-table {
+  width: 100% !important;
+  table-layout: auto !important;
+}

@@ -4,7 +4,6 @@
  * Advanced Search, Multi-Column Sorting, Pagination, Full CRUD, Import & Export
  */
 
-
 // ============================================================================
 // 1. DATA MODELS & SOW SPECIFICATIONS
 // ============================================================================
@@ -1911,50 +1910,86 @@ const INITIAL_RAW_MATERIALS = [
 const INITIAL_ALERTS = [
   {
     id: "ALT-STK-001",
-    domain: "Inventory",
+    domain: "Operational Alerts",
     type: "Low Stock Velocity",
     severity: "CRITICAL",
-    title: "Imminent Stockout Risk at USA 3PL (Edison, NJ)",
-    detail: "SKU-RUG-DHU-0507-BLU has only 8 rolls available (burn rate 1.4 rolls/day). Stockout projected in 5.7 days.",
-    actionLabel: "🚀 Create Ocean Transfer",
-    actionFn: "switchView('mod4-transfer')",
+    icon: "🚨",
+    title: "Low Stock Alert — SKU-HER-9X12-01 at USA 3PL Edison NJ",
+    detail: "Heritage Kashan 9x12 ft stock dropped to 8 days supply (12 rolls remaining). Daily velocity: 1.8 pcs/day. Threshold: < 15 days supply. Immediate 40ft ocean container replenishment required.",
+    actionLabel: "📦 Initiate Replenishment PO",
+    actionFn: "if(window.openCreatePoModal)openCreatePoModal('SKU-HER-9X12-01');else showToast('Opening PO Draft for SKU-HER-9X12-01','info');",
     timestamp: "10 mins ago",
+    ruleId: "rule-01",
     resolved: false
   },
   {
-    id: "ALT-AUD-002",
-    domain: "Logistics Audit",
+    id: "ALT-ORD-002",
+    domain: "Operational Alerts",
+    type: "Order Aging SLA Warning",
+    severity: "HIGH",
+    icon: "⏱️",
+    title: "Unfulfilled Order SLA Breached — ORD-AMZ-99214 Pending > 24 Hours",
+    detail: "Customer order ORD-AMZ-99214 (Amazon US) ingested 26.4 hours ago. Inventory locked but packing scan not completed at Bhadohi packing deck. Operational SLA threshold: 24 hours.",
+    actionLabel: "🔍 Inspect in Order Queue",
+    actionFn: "switchView('mod3');",
+    timestamp: "28 mins ago",
+    ruleId: "rule-02",
+    resolved: false
+  },
+  {
+    id: "ALT-AUD-003",
+    domain: "Logistics & Courier",
     type: "Weight Discrepancy Hold",
     severity: "HIGH",
-    title: "FedEx Overcharge Detected (+$18.50 USD)",
-    detail: "AWB #7894-3321-901 invoiced at 19.5 kg vs certified Weigh-Tronix scale dead weight of 14.5 kg. Invoice held.",
-    actionLabel: "⚖️ Inspect Dispute Dossier",
-    actionFn: "openCourierAuditDetail('7894-3321-901')",
-    timestamp: "32 mins ago",
+    icon: "🚚",
+    title: "FedEx AWB #7894-3321-992 — Volumetric Weight Discrepancy (₹2,096 Overcharge)",
+    detail: "Invoiced volumetric weight 19.5 kg vs calibrated Mettler digital scale weight 14.5 kg. Variance: +5.0 kg (+$25.70 USD / ₹2,096). Automated Clause 6.2 dispute manifest drafted.",
+    actionLabel: "📑 Review & File Dispute",
+    actionFn: "switchView('mod6-audit');",
+    timestamp: "45 mins ago",
+    ruleId: "rule-03",
     resolved: false
   },
   {
-    id: "ALT-FEMA-003",
-    domain: "Finance & DGFT",
+    id: "ALT-FEMA-004",
+    domain: "Financial & Export",
     type: "FEMA 210-Day Realization Deadline",
-    severity: "CRITICAL",
-    title: "DGFT e-BRC Realization Approaching Statutory Limit",
-    detail: "Invoice EXP-INV-2026-094 ($14,200 USD) realization pending at 178 days elapsed (statutory ceiling: 210 days).",
-    actionLabel: "🏦 View Bank Realization",
-    actionFn: "openReceivableDetail('EXP-INV-2026-094')",
+    severity: "HIGH",
+    icon: "🏦",
+    title: "FEMA 210-Day Realization Sentinel — SB-6789124 ($4,250 USD, 28 Days Left)",
+    detail: "Export Shipping Bill SB-6789124 (Invoice EXP-INV-2026-121) unrealized after 182 days. Compulsory RBI FEMA export realization deadline (210 days) expiring soon. e-BRC risk logged.",
+    actionLabel: "🏦 Send SWIFT Wire Tracer",
+    actionFn: "if(window.openReceivableDetailPage)openReceivableDetailPage('EXP-INV-2026-121');else switchView('mod6-audit');",
     timestamp: "1 hour ago",
+    ruleId: "rule-04",
     resolved: false
   },
   {
-    id: "ALT-ORD-004",
-    domain: "Fulfillment SLA",
-    type: "Packing SLA Warning",
-    severity: "WARNING",
-    title: "Wayfair Order Pending Packing Bench Allocation",
-    detail: "Order ORD-WAY-55102 has been in 'Allocated' state for 19.2 hours (exceeding 18-hour standard fulfillment SLA).",
-    actionLabel: "👁️ Inspect Order",
-    actionFn: "openOrderDetail('ORD-WAY-55102')",
+    id: "ALT-DLV-005",
+    domain: "Logistics & Courier",
+    type: "Delivery Exception Hold",
+    severity: "MEDIUM",
+    icon: "📦",
+    title: "FedEx Delivery Exception — AWB #8812-4412-990 (Customer Address Incomplete)",
+    detail: "Delivery attempt failed in Edison NJ: 'Apartment/Suite number missing'. Buyer notified via automated SMS. Awaiting updated shipping address.",
+    actionLabel: "📍 Update Delivery Address",
+    actionFn: "showToast('Customer delivery address verified with Amazon buyer messages!','success');",
     timestamp: "2 hours ago",
+    ruleId: "rule-05",
+    resolved: false
+  },
+  {
+    id: "ALT-RMA-006",
+    domain: "Financial & Export",
+    type: "Customer Return Restocked",
+    severity: "INFO",
+    icon: "🔄",
+    title: "Customer Return Received — RMA-2026-041 (Graded Resalable)",
+    detail: "Customer return roll received at Edison 3PL. QC physical inspection completed: minor polywrap tear repaired, carpet pristine. Restocked to USA Available inventory.",
+    actionLabel: "🔍 View RMA Ledger",
+    actionFn: "switchView('mod4-returns');",
+    timestamp: "1 day ago",
+    ruleId: "rule-06",
     resolved: false
   }
 ];
@@ -2159,48 +2194,129 @@ const INITIAL_YEARLY_FINANCIALS = [
 const INITIAL_AUTOMATIONS = [
   {
     id: "rule-01",
-    name: "Low Stock Safety Replenishment Alert",
-    trigger: "When SKU Free Stock (India + USA 3PL) falls below 18 units",
-    action: "Automatically generate Draft Replenishment Container & notify SCM Lead",
+    name: "Low Stock Safety Replenishment Sentinel",
+    domain: "Operational Alerts",
+    severity: "CRITICAL",
+    trigger: "When any SKU Free Stock at USA 3PL Edison NJ falls below 15 days supply (< 18 units)",
+    condition: "Free Stock < 18 units (Days Supply < 15d)",
+    action: "Auto-generate Draft Ocean Replenishment PO & send SMTP email alert to SCM Lead",
     active: true,
-    lastFired: "Today at 08:30 AM",
-    executionCount: 14
+    lastFired: "Today at 09:15 AM",
+    executionCount: 16,
+    nextCheck: "In 3 mins",
+    schedule: "*/5 * * * *"
   },
   {
     id: "rule-02",
-    name: "Volumetric Weight Discrepancy Auto-Dispute",
-    trigger: "When FedEx / DHL billed weight exceeds system calibrated weight by > 1.5 Kg",
-    action: "Flag AWB for payment block, generate Clause 6.2 Legal Dispute Letter & attach scale photos",
+    name: "Unfulfilled Order Aging (> 24 Hours) Intercept",
+    domain: "Operational Alerts",
+    severity: "HIGH",
+    trigger: "When any marketplace order remains in 'Allocated' status without packing scan for > 24 continuous hours",
+    condition: "Order Status = 'Allocated' & Age > 24h",
+    action: "Escalate to Warehouse QC Lead & re-route to high-priority packing station deck",
     active: true,
-    lastFired: "Yesterday at 06:15 PM",
-    executionCount: 22
+    lastFired: "Today at 08:30 AM",
+    executionCount: 28,
+    nextCheck: "In 8 mins",
+    schedule: "*/15 * * * *"
   },
   {
     id: "rule-03",
-    name: "DGFT Foreign Remittance 60-Day Overdue Warning",
-    trigger: "When export commercial invoice remains unrealized after 60 days of Shipping Bill filing",
-    action: "Send automated SWIFT wire tracer to foreign buyer & notify Exporter AD Bank",
+    name: "Carrier Volumetric Weight Discrepancy Auto-Dispute",
+    domain: "Logistics & Courier",
+    severity: "HIGH",
+    trigger: "When FedEx / DHL billed volumetric weight exceeds Mettler calibrated scale weight by > 1.5 Kg",
+    condition: "Billed Weight > Scale Weight + 1.5 Kg",
+    action: "Hold courier invoice payout, auto-generate Clause 6.2 Dispute Letter PDF & attach scale photo",
     active: true,
-    lastFired: "Sep 12, 2026",
-    executionCount: 5
+    lastFired: "Today at 07:45 AM",
+    executionCount: 22,
+    nextCheck: "On New Invoice",
+    schedule: "On Event (Invoice Sync)"
   },
   {
     id: "rule-04",
-    name: "Artisan Loom Idle Notification",
-    trigger: "When an active artisan loom station remains without an assigned MTO job for > 3 days",
-    action: "Suggest loom assignment based on lowest-stock catalog SKUs with ready raw materials",
+    name: "FEMA 210-Day e-BRC Realization Deadline Sentinel",
+    domain: "Financial & Export",
+    severity: "HIGH",
+    trigger: "When export invoice remains unrealized in DGFT EDPMS portal after 150 days from Shipping Bill date",
+    condition: "Invoice Age > 150 days & Status = 'Unrealized'",
+    action: "Dispatch SWIFT wire tracer to foreign buyer bank & notify AD Bank (HDFC Bhadohi)",
     active: true,
-    lastFired: "Sep 13, 2026",
-    executionCount: 9
+    lastFired: "Yesterday at 04:20 PM",
+    executionCount: 7,
+    nextCheck: "Daily 09:00 AM",
+    schedule: "0 9 * * *"
   },
   {
     id: "rule-05",
-    name: "RBI USD/INR Exchange Rate Fluctuation Alert",
-    trigger: "When live RBI reference rate deviates > 1.5% from forward contract hedged rate",
-    action: "Recommend forward hedge roll-over / booking with HDFC Bank Bhadohi AD 0510024",
-    active: false,
-    lastFired: "Sep 05, 2026",
-    executionCount: 3
+    name: "Courier In-Transit SLA Delay Alert",
+    domain: "Logistics & Courier",
+    severity: "MEDIUM",
+    trigger: "When FedEx Home Delivery tracking shows no checkpoint movement for > 48 hours in transit",
+    condition: "In-Transit Inactivity > 48h",
+    action: "Create courier trace ticket with FedEx carrier rep & notify recipient customer via SMS",
+    active: true,
+    lastFired: "Yesterday at 02:15 PM",
+    executionCount: 11,
+    nextCheck: "Every 4 Hours",
+    schedule: "0 */4 * * *"
+  },
+  {
+    id: "rule-06",
+    name: "Customer Return RMA Receipt & Restock Trigger",
+    domain: "Financial & Export",
+    severity: "INFO",
+    trigger: "When warehouse operator completes physical barcode scan on returned polywrap rug parcel",
+    condition: "RMA Scan Completed & Grade = 'Resalable'",
+    action: "Instantly unlock USA 3PL Available stock & credit customer marketplace order ledger",
+    active: true,
+    lastFired: "2 days ago",
+    executionCount: 19,
+    nextCheck: "On RMA Scan",
+    schedule: "On Event (Barcode Scan)"
+  },
+  {
+    id: "rule-07",
+    name: "Overdue B2B Wholesale Receivables (> 30 Days) Notice",
+    domain: "Financial & Export",
+    severity: "MEDIUM",
+    trigger: "When trade buyer invoice payment is past due date by > 30 calendar days",
+    condition: "Invoice Status = 'Unpaid' & Overdue Days > 30",
+    action: "Send automated statement of account PDF to buyer accounts department & place credit hold",
+    active: true,
+    lastFired: "3 days ago",
+    executionCount: 8,
+    nextCheck: "Daily 10:00 AM",
+    schedule: "0 10 * * *"
+  },
+  {
+    id: "rule-08",
+    name: "Dynamic Net Profit Recalculation Engine",
+    domain: "Recalculation & Sync",
+    severity: "INFO",
+    trigger: "When actual courier audited billings or customs duties replace estimated freight/tax figures",
+    condition: "Courier Audit Status = 'Audited' OR CSB-V Duty Finalized",
+    action: "Recalculate order true gross margin & realized net profit across Module 7 financial ledgers",
+    active: true,
+    lastFired: "Today at 06:00 AM",
+    executionCount: 142,
+    nextCheck: "Hourly",
+    schedule: "0 * * * *"
+  },
+  {
+    id: "rule-09",
+    name: "Nightly Multi-Warehouse Concurrency Ledger Reconciler",
+    domain: "Recalculation & Sync",
+    severity: "INFO",
+    trigger: "Scheduled daily midnight batch reconciliation between Bhadohi Mill, Ocean Transit, and Edison 3PL",
+    condition: "Cron 00:00 UTC Trigger",
+    action: "Reconcile hard inventory reservations vs marketplace stock allocations & log audit diff",
+    active: true,
+    lastFired: "Today at 00:00 UTC",
+    executionCount: 84,
+    nextCheck: "Tonight 00:00 UTC",
+    schedule: "0 0 * * *"
   }
 ];
 
@@ -3537,8 +3653,14 @@ function renderCurrentView() {
       break;
 
     case "mod3-inv":
-      switchView("mod2-prod");
-      return;
+      crumbMod.textContent = "Module 3: Order Pipeline & Inventory";
+      crumbView.textContent = "Global Inventory Hub & Multi-Warehouse Stock Ledger";
+      quickActions.innerHTML = `
+        <button class="btn btn-sm btn-secondary" onclick="openReceiveInTransitModal()">🚢 Dock GRN Scan</button>
+        <button class="btn btn-sm btn-primary" onclick="openAddInventoryModal()">+ Inward Inventory</button>
+      `;
+      viewport.innerHTML = renderInventoryView();
+      break;
 
     case "mod4-po":
       crumbMod.textContent = "Module 4: Fulfilment & Procurement";
@@ -3748,7 +3870,7 @@ function renderCurrentView() {
 
     case "mod8-sow":
       crumbMod.textContent = "SOW Document & Traceability Matrix";
-      crumbView.textContent = "Rugs Original Scope & Timeline";
+      crumbView.textContent = "Rugs — Original Scope & Timeline";
       quickActions.innerHTML = `
         <button class="btn btn-sm btn-primary" onclick="switchView('mod8')">← Back to Dashboard</button>
       `;
@@ -3766,111 +3888,43 @@ function renderCurrentView() {
 
 // --- MODULE 3: UNIFIED ORDERS LIST ---
 function renderOrdersView() {
-  const f = AppState.tableFilters.orders;
+  const f = AppState.tableFilters.orders || (AppState.tableFilters.orders = { search: "", channel: "all", status: "all", sortBy: "orderDate", sortOrder: "desc", page: 1, pageSize: 10 });
 
-  // Filter
-  let filtered = AppState.orders.filter(order => {
+  let filtered = (AppState.orders || []).filter(ord => {
     const matchesSearch = !f.search ||
-      order.orderId.toLowerCase().includes(f.search) ||
-      order.buyerName.toLowerCase().includes(f.search) ||
-      order.sku.toLowerCase().includes(f.search) ||
-      order.marketplaceOrderId.toLowerCase().includes(f.search);
-    const matchesChannel = f.channel === "all" || order.channelIcon === f.channel;
-    
-    let matchesStatus = true;
-    if (f.status === "locked" || f.status === "allocated") {
-      matchesStatus = (order.stockAllocation || "").toLowerCase().includes("locked") || (order.stockAllocation || "").toLowerCase().includes("reserved");
-    } else if (f.status !== "all") {
-      matchesStatus = order.status.toLowerCase().includes(f.status.toLowerCase());
-    }
-
-    let matchesWarehouse = true;
-    if (AppState.activeWarehouseFilter === "india") {
-      matchesWarehouse = (order.fulfillmentWh || "").toLowerCase().includes("india") || (order.fulfillmentWh || "").toLowerCase().includes("bhadohi");
-    } else if (AppState.activeWarehouseFilter === "usa") {
-      matchesWarehouse = (order.fulfillmentWh || "").toLowerCase().includes("usa") || (order.fulfillmentWh || "").toLowerCase().includes("edison") || (order.fulfillmentWh || "").toLowerCase().includes("fba");
-    }
-    return matchesSearch && matchesChannel && matchesStatus && matchesWarehouse;
+      ord.orderId.toLowerCase().includes(f.search.toLowerCase()) ||
+      ord.marketplaceOrderId.toLowerCase().includes(f.search.toLowerCase()) ||
+      ord.customer.name.toLowerCase().includes(f.search.toLowerCase()) ||
+      ord.customer.city.toLowerCase().includes(f.search.toLowerCase()) ||
+      (ord.items && ord.items.some(it => it.sku.toLowerCase().includes(f.search.toLowerCase())));
+    const matchesChannel = !f.channel || f.channel === "all" || ord.channel.toLowerCase().includes(f.channel.toLowerCase());
+    const matchesStatus = !f.status || f.status === "all" || ord.status.toLowerCase() === f.status.toLowerCase();
+    return matchesSearch && matchesChannel && matchesStatus;
   });
 
-  // Sort
-  filtered.sort((a, b) => {
-    let valA = a[f.sortBy] ?? "";
-    let valB = b[f.sortBy] ?? "";
-    if (typeof valA === "string") valA = valA.toLowerCase();
-    if (typeof valB === "string") valB = valB.toLowerCase();
-    if (valA < valB) return f.sortOrder === "asc" ? -1 : 1;
-    if (valA > valB) return f.sortOrder === "asc" ? 1 : -1;
-    return 0;
-  });
-
-  // Paginate
   const pagination = paginateArray(filtered, f.page, f.pageSize);
 
   return `
-    <div class="page-header">
+    <div class="page-header" style="margin-bottom: 16px;">
       <div class="page-title-wrap">
-        <h1>🛍️ Unified Multi-Channel Order Pipeline</h1>
-        <p>Direct marketplace order fulfillment across Amazon, Etsy, Walmart & B2B with atomic warehouse stock allocation.</p>
+        <h1 style="margin: 0; font-size: 20px;">🛍️ Order Pipeline</h1>
       </div>
-      <div class="page-actions">
-        <button class="btn btn-sm btn-secondary" onclick="openImportModal('orders')">📁 Import CSV</button>
-        <button class="btn btn-sm btn-secondary" onclick="openExportModal('orders')">📥 Export Orders</button>
+      <div class="page-actions" style="display: flex; gap: 8px;">
+        <button class="btn btn-sm btn-secondary" onclick="bulkAllocatePendingOrders()">⚡ Bulk Allocate</button>
         <button class="btn btn-sm btn-primary" onclick="openCreateOrderModal()">+ New Order</button>
       </div>
     </div>
 
-    <!-- Technical Domain Clarity Banner: Stock Orders vs MTO -->
-    <div class="card" style="background: rgba(6, 182, 212, 0.05); border-left: 4px solid var(--brand-cyan); margin-bottom: 20px; padding: 14px 18px;">
-      <div style="display: flex; gap: 12px; align-items: flex-start;">
-        <span style="font-size: 20px;">🛍️</span>
-        <div style="font-size: 12px; line-height: 1.5;">
-          <strong style="color: var(--brand-cyan); font-size: 13px;">Unified Multi-Channel Orders (Ready-Stock Allocation)</strong><br>
-          Orders ingested from Amazon, Etsy, Wayfair, or B2B map directly to Master Catalog SKUs and execute an <strong>atomic Concurrency Lock</strong> against physical inventory in India or USA 3PL (Edison, NJ).
-        </div>
-      </div>
+    <!-- Segmented Status Filter Tabs -->
+    <div class="status-filter-pills">
+      <button class="filter-pill-btn ${f.status === 'all' ? 'active' : ''}" onclick="setTableFilter('orders', 'status', 'all')">All Orders (${AppState.orders ? AppState.orders.length : 0})</button>
+      <button class="filter-pill-btn ${f.status === 'Pending Allocation' ? 'active' : ''}" onclick="setTableFilter('orders', 'status', 'Pending Allocation')">⏳ Pending Allocation</button>
+      <button class="filter-pill-btn ${f.status === 'Packed & Handover' ? 'active' : ''}" onclick="setTableFilter('orders', 'status', 'Packed & Handover')">📦 Packed & Handover</button>
+      <button class="filter-pill-btn ${f.status === 'In Transit' ? 'active' : ''}" onclick="setTableFilter('orders', 'status', 'In Transit')">🚚 In Transit</button>
+      <button class="filter-pill-btn ${f.status === 'Delivered' ? 'active' : ''}" onclick="setTableFilter('orders', 'status', 'Delivered')">✅ Delivered</button>
     </div>
 
-    <!-- 4 Bento Orders KPI Cards with OVERALL NET PROFIT -->
-    <div class="bento-metrics-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 20px; gap: 16px;">
-      <div class="metric-card" style="border: 2px solid rgba(16, 185, 129, 0.4); background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, var(--bg-card) 100%);">
-        <div class="metric-header">
-          <span class="metric-label" style="color: var(--success); font-weight: 700;">💰 Overall Net Profit</span>
-          <span class="badge badge-success">26.8% Net</span>
-        </div>
-        <div class="metric-value" style="color: var(--success); font-size: 24px; font-family: var(--font-mono);">+$129,420 USD</div>
-        <div class="metric-sub" style="font-weight: 600;">₹1,08,58,338 INR Portfolio Profit</div>
-      </div>
-
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Total Ingested Orders</span><span>📦</span></div>
-        <div class="metric-value">${AppState.orders.length} Active</div>
-        <div class="metric-sub">Across 6 Sales Channels</div>
-      </div>
-
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Stock Concurrency</span><span>🔒</span></div>
-        <div class="metric-value" style="color: var(--brand-cyan);">100% Reserved</div>
-        <div class="metric-sub">Zero Overselling Safeguard</div>
-      </div>
-
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Gross Merchandise Value</span><span>💵</span></div>
-        <div class="metric-value" style="font-family: var(--font-mono);">$482,900 USD</div>
-        <div class="metric-sub">₹4,05,15,310 INR Realized</div>
-      </div>
-    </div>
-
-    ${AppState.activeWarehouseFilter !== "all" ? `
-      <div style="background: rgba(6, 182, 212, 0.08); border: 1px solid var(--brand-cyan); border-radius: var(--radius-md); padding: 10px 16px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center;">
-        <div style="font-size: 12px; color: var(--brand-cyan);">
-          <strong>Active Facility Filter:</strong> ${AppState.activeWarehouseFilter === 'india' ? '🇮🇳 India Origin (Bhadohi/ICD)' : '🇺🇸 USA 3PL (Edison/FBA)'} — Displaying orders allocated to this facility only.
-        </div>
-        <button class="btn btn-xs btn-secondary" onclick="changeWarehouseFilter('all')">Clear Scope (Show All)</button>
-      </div>
-    ` : ''}
-
-    <!-- Table Controls Toolbar -->
+    <div class="table-toolbar-box">
     <div class="table-toolbar-box">
       <div class="table-toolbar-left">
         <div class="table-search-input-wrap">
@@ -3997,21 +4051,20 @@ function renderOrdersView() {
 // ============================================================================
 
 function renderWarehouseMasterView() {
-  const f = AppState.tableFilters.warehouses;
+  const f = AppState.tableFilters.warehouses || (AppState.tableFilters.warehouses = { search: "", country: "all", sortBy: "id", sortOrder: "asc", page: 1, pageSize: 10 });
+  const warehouses = AppState.warehouses || [];
 
-  // Filter
-  let filtered = AppState.warehouses.filter(wh => {
+  let filtered = warehouses.filter(wh => {
     const matchesSearch = !f.search ||
-      wh.id.toLowerCase().includes(f.search) ||
-      (wh.name && wh.name.toLowerCase().includes(f.search)) ||
-      wh.city.toLowerCase().includes(f.search) ||
-      wh.country.toLowerCase().includes(f.search) ||
-      (wh.address && wh.address.toLowerCase().includes(f.search));
+      wh.id.toLowerCase().includes(f.search.toLowerCase()) ||
+      wh.name.toLowerCase().includes(f.search.toLowerCase()) ||
+      wh.city.toLowerCase().includes(f.search.toLowerCase()) ||
+      wh.country.toLowerCase().includes(f.search.toLowerCase()) ||
+      (wh.address && wh.address.toLowerCase().includes(f.search.toLowerCase()));
     const matchesCountry = !f.country || f.country === "all" || wh.country.toLowerCase().includes(f.country.toLowerCase());
     return matchesSearch && matchesCountry;
   });
 
-  // Sort
   filtered.sort((a, b) => {
     let valA = a[f.sortBy] ?? "";
     let valB = b[f.sortBy] ?? "";
@@ -4022,53 +4075,35 @@ function renderWarehouseMasterView() {
     return 0;
   });
 
-  // Paginate
   const pagination = paginateArray(filtered, f.page, f.pageSize);
 
   return `
-    <div class="page-header">
+    <!-- Page Header -->
+    <div class="page-header" style="margin-bottom: 16px;">
       <div class="page-title-wrap">
-        <h1>🏭 Warehouse Master & Global Logistics Hubs</h1>
-        <p>Enterprise multi-facility configuration: Bhadohi Origin Mill, Delhi ICD, USA 3PL (Edison, NJ), Amazon FBA & Europe Hubs.</p>
+        <h1 style="margin: 0; font-size: 20px;">🏭 Multi-Facility Warehouse & Storage Hub Master</h1>
+        <p style="margin: 4px 0 0 0; font-size: 12px; color: var(--text-muted);">Origin manufacturing mills, ICD dry ports, bonded CFS, ocean transit containers & overseas 3PL fulfillment hubs.</p>
       </div>
-      <div class="page-actions">
-        <button class="btn btn-secondary" onclick="openExportModal('warehouses')">📥 Export Facility Catalog</button>
-        <button class="btn btn-primary" onclick="openAddWarehouseModal()">+ Add New Warehouse</button>
-      </div>
-    </div>
-
-    ${renderBlueprintSpec("Module 2 & 3 — Multi-Warehouse Master & Global Network", "Governs warehouse facility locations, physical addresses, regional nodes, and hard concurrency-safe order stock allocation.")}
-
-    <!-- Bento Metrics -->
-    <div class="bento-metrics-grid" style="grid-template-columns: repeat(4, 1fr);">
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Active Facilities</span><span>🏢</span></div>
-        <div class="metric-value">${AppState.warehouses.length} Hubs</div>
-        <div class="metric-sub">India (2) • USA (2) • Europe (1)</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Operational Scope</span><span>🌐</span></div>
-        <div class="metric-value">Multi-Region</div>
-        <div class="metric-sub">Global Logistics Network Hubs</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Network Coverage</span><span>🚛</span></div>
-        <div class="metric-value" style="color: var(--brand-cyan);">Connected</div>
-        <div class="metric-sub">Integrated Domestic & Export Routes</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Operational Status</span><span>🛡️</span></div>
-        <div class="metric-value" style="color: var(--success);">100% Active</div>
-        <div class="metric-sub">All Warehouse Facilities Live</div>
+      <div class="page-actions" style="display: flex; gap: 8px;">
+        <button class="btn btn-sm btn-secondary" onclick="showToast('Exporting facility manifest...', 'info')">📥 Export Hubs</button>
+        <button class="btn btn-sm btn-primary" onclick="openAddWarehouseModal()">+ Add New Facility</button>
       </div>
     </div>
 
-    <!-- Table Toolbar -->
-    <div class="table-toolbar-box">
-      <div class="table-toolbar-left">
-        <div class="table-search-input-wrap" style="width: 320px;">
+    <!-- Facility Scope Filter Tabs -->
+    <div class="status-filter-pills" style="margin-bottom: 14px;">
+      <button class="filter-pill-btn ${f.country === 'all' ? 'active' : ''}" onclick="setTableFilter('warehouses', 'country', 'all')">All Facilities (${warehouses.length} Hubs)</button>
+      <button class="filter-pill-btn ${f.country === 'india' ? 'active' : ''}" onclick="setTableFilter('warehouses', 'country', 'india')">🇮🇳 India</button>
+      <button class="filter-pill-btn ${f.country === 'united states' ? 'active' : ''}" onclick="setTableFilter('warehouses', 'country', 'united states')">🇺🇸 United States</button>
+      <button class="filter-pill-btn ${f.country === 'germany' ? 'active' : ''}" onclick="setTableFilter('warehouses', 'country', 'germany')">🇪🇺 Europe</button>
+    </div>
+
+    <!-- Search & Country Dropdown Toolbar -->
+    <div class="table-toolbar-box" style="margin-bottom: 14px;">
+      <div class="table-toolbar-left" style="flex-wrap: wrap; gap: 10px;">
+        <div class="table-search-input-wrap" style="min-width: 320px;">
           <span class="table-search-icon">🔍</span>
-          <input type="text" placeholder="Search warehouses by ID, city, country, address..." value="${f.search}" oninput="setTableSearch('warehouses', this.value)">
+          <input type="text" placeholder="Search facilities by Code, Name, City, Country, or Address..." value="${f.search}" oninput="setTableSearch('warehouses', this.value)">
         </div>
         <select class="table-filter-select" onchange="setTableFilter('warehouses', 'country', this.value)">
           <option value="all" ${!f.country || f.country === 'all' ? 'selected' : ''}>All Countries</option>
@@ -4076,71 +4111,92 @@ function renderWarehouseMasterView() {
           <option value="United States" ${f.country === 'United States' ? 'selected' : ''}>United States</option>
           <option value="Germany" ${f.country === 'Germany' ? 'selected' : ''}>Germany</option>
           <option value="United Kingdom" ${f.country === 'United Kingdom' ? 'selected' : ''}>United Kingdom</option>
-          <option value="United Arab Emirates" ${f.country === 'United Arab Emirates' ? 'selected' : ''}>United Arab Emirates</option>
         </select>
       </div>
-      <div class="table-toolbar-right">
-        <button class="btn btn-sm btn-secondary" onclick="openAddWarehouseModal()">+ Quick Add</button>
+      <div class="table-toolbar-right" style="display: flex; gap: 8px; align-items: center;">
+        <span style="font-size: 11px; color: var(--text-dim);">${filtered.length} matching facilities</span>
+        <button class="btn btn-xs btn-primary" onclick="openAddWarehouseModal()">+ Quick Add</button>
       </div>
     </div>
 
-    <!-- Table Card -->
-    <div class="card">
+    <!-- Facilities Data Table -->
+    <div class="card" style="padding: 0; overflow: hidden;">
       <div class="table-responsive">
-        <table class="data-table">
+        <table class="data-table" style="width: 100%;">
           <thead>
             <tr>
-              <th class="sortable" onclick="setTableSort('warehouses', 'id')">WH Code ${f.sortBy === 'id' ? (f.sortOrder === 'asc' ? '▲' : '▼') : ''}</th>
-              <th class="sortable" onclick="setTableSort('warehouses', 'city')">City / Region ${f.sortBy === 'city' ? (f.sortOrder === 'asc' ? '▲' : '▼') : ''}</th>
-              <th class="sortable" onclick="setTableSort('warehouses', 'country')">Country ${f.sortBy === 'country' ? (f.sortOrder === 'asc' ? '▲' : '▼') : ''}</th>
+              <th class="sortable" onclick="setTableSort('warehouses', 'id')">
+                Facility Code & Name ${f.sortBy === 'id' ? `<span class="sort-icon">${f.sortOrder === 'asc' ? '▲' : '▼'}</span>` : ''}
+              </th>
+              <th class="sortable" onclick="setTableSort('warehouses', 'city')">
+                City / Region ${f.sortBy === 'city' ? `<span class="sort-icon">${f.sortOrder === 'asc' ? '▲' : '▼'}</span>` : ''}
+              </th>
+              <th class="sortable" onclick="setTableSort('warehouses', 'country')">
+                Country ${f.sortBy === 'country' ? `<span class="sort-icon">${f.sortOrder === 'asc' ? '▲' : '▼'}</span>` : ''}
+              </th>
               <th>Physical Address</th>
-              <th class="sortable" onclick="setTableSort('warehouses', 'status')">Status ${f.sortBy === 'status' ? (f.sortOrder === 'asc' ? '▲' : '▼') : ''}</th>
-              <th style="text-align: right;">Actions</th>
+              <th class="sortable" onclick="setTableSort('warehouses', 'status')">
+                Status ${f.sortBy === 'status' ? `<span class="sort-icon">${f.sortOrder === 'asc' ? '▲' : '▼'}</span>` : ''}
+              </th>
+              <th style="text-align: right; min-width: 150px;">Actions</th>
             </tr>
           </thead>
           <tbody>
             ${pagination.items.length === 0 ? `
-              <tr><td colspan="6" style="text-align: center; padding: 30px; color: var(--text-dim);">No warehouses found matching criteria.</td></tr>
+              <tr><td colspan="6" style="text-align: center; padding: 36px; color: var(--text-dim);">No warehouse facilities found matching current criteria.</td></tr>
             ` : pagination.items.map(wh => {
-    const statusClass = wh.status === 'Active' ? 'badge-success' : wh.status === 'Maintenance' ? 'badge-warning' : 'badge-danger';
-    return `
+              const statusClass = wh.status === 'Active' ? 'badge-success' : wh.status === 'Maintenance' ? 'badge-warning' : 'badge-danger';
+              const isIndia = (wh.country || "").toLowerCase().includes("india");
+              const isUSA = (wh.country || "").toLowerCase().includes("united states") || (wh.country || "").toLowerCase().includes("usa");
+
+              return `
                 <tr class="clickable-row" onclick="openWarehouseDetail('${wh.id}')">
                   <td>
-                    <strong style="font-family: var(--font-mono); color: var(--brand-cyan); font-size: 13px;">${wh.id}</strong>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span style="font-size: 16px;">${isIndia ? '🏭' : isUSA ? '🏬' : '🏢'}</span>
+                      <div>
+                        <strong style="font-family: var(--font-mono); color: var(--brand-cyan); font-size: 12.5px;">${wh.id}</strong>
+                        <div style="font-size: 12px; font-weight: 700; color: var(--text-heading); margin-top: 1px;">${wh.name}</div>
+                      </div>
+                    </div>
                   </td>
                   <td>
-                    <strong style="color: var(--text-main); font-size: 13px;">${wh.city}</strong>
+                    <strong style="color: var(--text-main); font-size: 12px;">${wh.city}</strong>
                   </td>
                   <td>
-                    <span style="font-weight: 600; color: var(--text-muted);">${wh.country}</span>
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                      <span>${isIndia ? '🇮🇳' : isUSA ? '🇺🇸' : '🇪🇺'}</span>
+                      <strong style="font-size: 11.5px; color: var(--text-muted);">${wh.country}</strong>
+                    </div>
                   </td>
                   <td>
-                    <span style="color: var(--text-dim); font-size: 12px;">${wh.address}</span>
+                    <div style="font-size: 11.5px; color: var(--text-muted); max-width: 320px; line-height: 1.4;">${wh.address || '—'}</div>
                   </td>
                   <td>
                     <span class="badge ${statusClass}">${wh.status || 'Active'}</span>
                   </td>
                   <td onclick="event.stopPropagation()" style="text-align: right;">
-                    <div class="row-actions-group" style="justify-content: flex-end;">
-                      <button class="btn-icon-action" title="View Details" onclick="openWarehouseDetail('${wh.id}')">👁️</button>
-                      <button class="btn-icon-action" title="Edit Warehouse" onclick="openEditWarehouseModal('${wh.id}')">✏️</button>
-                      <button class="btn-icon-action delete" title="Decommission / Delete" onclick="confirmDeleteWarehouse('${wh.id}')">🗑️</button>
+                    <div style="display: inline-flex; gap: 5px; justify-content: flex-end;">
+                      <button class="btn btn-xs btn-secondary" title="Inspect Warehouse Bins & Stock" onclick="openWarehouseDetail('${wh.id}')">👁️ Bins</button>
+                      <button class="btn btn-xs btn-secondary" title="Edit Warehouse Details" onclick="openEditWarehouseModal('${wh.id}')">✏️ Edit</button>
+                      <button class="btn btn-xs btn-secondary" title="Transfer Stock To/From" onclick="openStockTransferModal()">⇆ Move</button>
+                      <button class="btn btn-xs btn-danger" title="Decommission Warehouse" onclick="confirmDeleteWarehouse('${wh.id}')">🗑️</button>
                     </div>
                   </td>
                 </tr>
               `;
-  }).join('')}
+            }).join('')}
           </tbody>
         </table>
       </div>
 
       <!-- Pagination -->
-      <div class="table-pagination-footer">
-        <div class="pagination-info">
-          Showing <strong>${pagination.items.length ? pagination.start : 0}</strong> to <strong>${pagination.end}</strong> of <strong>${pagination.total}</strong> warehouses
+      <div class="table-pagination-footer" style="padding: 10px 16px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center;">
+        <div class="pagination-info" style="font-size: 12px; color: var(--text-muted);">
+          Showing <strong>${pagination.items.length ? pagination.start : 0}</strong> to <strong>${pagination.end}</strong> of <strong>${pagination.total}</strong> warehouse facilities
         </div>
-        <div class="pagination-controls">
-          <select class="rows-per-page-select" onchange="setTablePageSize('warehouses', this.value)">
+        <div class="pagination-controls" style="display: flex; gap: 4px; align-items: center;">
+          <select class="rows-per-page-select" onchange="setTablePageSize('warehouses', this.value)" style="margin-right: 8px;">
             <option value="5" ${f.pageSize === 5 ? 'selected' : ''}>5 per page</option>
             <option value="10" ${f.pageSize === 10 ? 'selected' : ''}>10 per page</option>
             <option value="25" ${f.pageSize === 25 ? 'selected' : ''}>25 per page</option>
@@ -4155,6 +4211,7 @@ function renderWarehouseMasterView() {
     </div>
   `;
 }
+window.renderWarehouseMasterView = renderWarehouseMasterView;
 
 // --- WAREHOUSE CRUD & OPERATIONAL METHODS ---
 function openAddWarehouseModal() {
@@ -4329,21 +4386,59 @@ function exportWarehouseManifest(whId) {
 
 // --- MODULE 2 & 3 UNIFIED: PRODUCTS & GLOBAL INVENTORY HUB (OPTION 2) ---
 function renderProductsView() {
-  const f = AppState.tableFilters.skus;
+  const f = AppState.tableFilters.skus || (AppState.tableFilters.skus = { search: "", collection: "all", stockFilter: "all", sortBy: "sku", sortOrder: "asc", page: 1, pageSize: 10 });
+  const skus = AppState.skus || [];
 
-  // Filter
-  let filtered = AppState.skus.filter(sku => {
-    const matchesSearch = !f.search ||
-      sku.sku.toLowerCase().includes(f.search) ||
-      sku.title.toLowerCase().includes(f.search) ||
-      sku.collection.toLowerCase().includes(f.search) ||
-      sku.material.toLowerCase().includes(f.search) ||
-      (sku.barcode && sku.barcode.includes(f.search));
-    const matchesCollection = f.collection === "all" || sku.collection.toLowerCase().includes(f.collection.toLowerCase());
-    return matchesSearch && matchesCollection;
+  // Compute global inventory rollup statistics
+  let totalIndiaStock = 0;
+  let totalInTransit = 0;
+  let totalUsaStock = 0;
+  let totalReserved = 0;
+  let criticalSkusCount = 0;
+
+  skus.forEach(s => {
+    const ind = (s.stock && s.stock.indiaAvailable) || 0;
+    const trans = (s.stock && s.stock.inTransit) || 0;
+    const usa = (s.stock && s.stock.usaAvailable) || 0;
+    const res = (s.stock && s.stock.usaReserved) || 0;
+    totalIndiaStock += ind;
+    totalInTransit += trans;
+    totalUsaStock += usa;
+    totalReserved += res;
+    const vel = s.sku.includes('HT-0810') ? 1.8 : s.sku.includes('HK-0912') ? 1.1 : s.sku.includes('DHU') ? 1.4 : 0.8;
+    const days = vel > 0 ? (usa / vel) : 99;
+    if (days < 15) criticalSkusCount++;
   });
 
-  // Sort
+  let filtered = skus.filter(sku => {
+    const searchLower = (f.search || "").toLowerCase();
+    const matchesSearch = !f.search ||
+      sku.sku.toLowerCase().includes(searchLower) ||
+      sku.title.toLowerCase().includes(searchLower) ||
+      (sku.collection && sku.collection.toLowerCase().includes(searchLower)) ||
+      (sku.material && sku.material.toLowerCase().includes(searchLower)) ||
+      (sku.construction && sku.construction.toLowerCase().includes(searchLower)) ||
+      (sku.barcode && sku.barcode.includes(searchLower));
+
+    const matchesCollection = !f.collection || f.collection === "all" ||
+      (sku.collection && sku.collection.toLowerCase().includes(f.collection.toLowerCase()));
+
+    let matchesStock = true;
+    if (f.stockFilter === "lowStock") {
+      const vel = sku.sku.includes('HT-0810') ? 1.8 : sku.sku.includes('HK-0912') ? 1.1 : sku.sku.includes('DHU') ? 1.4 : 0.8;
+      const days = vel > 0 ? (((sku.stock && sku.stock.usaAvailable) || 0) / vel) : 99;
+      matchesStock = days < 15;
+    } else if (f.stockFilter === "inStockIndia") {
+      matchesStock = ((sku.stock && sku.stock.indiaAvailable) || 0) > 0;
+    } else if (f.stockFilter === "inStockUSA") {
+      matchesStock = ((sku.stock && sku.stock.usaAvailable) || 0) > 0;
+    } else if (f.stockFilter === "inTransit") {
+      matchesStock = ((sku.stock && sku.stock.inTransit) || 0) > 0;
+    }
+
+    return matchesSearch && matchesCollection && matchesStock;
+  });
+
   filtered.sort((a, b) => {
     let valA = a[f.sortBy] ?? "";
     let valB = b[f.sortBy] ?? "";
@@ -4354,81 +4449,35 @@ function renderProductsView() {
     return 0;
   });
 
-  // Totals for Bento Metrics
-  const totalIndia = AppState.skus.reduce((a, s) => a + (s.stock.indiaAvailable || 0), 0);
-  const totalPacked = AppState.skus.reduce((a, s) => a + (s.stock.indiaPacked || 0), 0);
-  const totalTransit = AppState.skus.reduce((a, s) => a + (s.stock.inTransit || 0), 0);
-  const totalUSA = AppState.skus.reduce((a, s) => a + (s.stock.usaAvailable || 0), 0);
-  const totalReserved = AppState.skus.reduce((a, s) => a + (s.stock.usaReserved || 0), 0);
-  const totalFBA = AppState.skus.reduce((a, s) => a + (s.stock.fba || 0), 0);
-  const totalUnits = totalIndia + totalPacked + totalTransit + totalUSA + totalFBA;
-  const totalValueUSD = AppState.skus.reduce((a, s) => a + (((s.stock.indiaAvailable || 0) + (s.stock.usaAvailable || 0) + (s.stock.inTransit || 0) + (s.stock.fba || 0)) * s.sellingPriceUSD), 0);
-
-  // Paginate
   const pagination = paginateArray(filtered, f.page, f.pageSize);
 
   return `
-    <div class="page-header">
+    <!-- Page Header -->
+    <div class="page-header" style="margin-bottom: 16px;">
       <div class="page-title-wrap">
-        <h1>📦 Products & Global Inventory Hub</h1>
-        <p>Unified command center: SKU specifications, weave/material attributes, pricing, live multi-warehouse stock balances, and concurrency reservations.</p>
+        <h1 style="margin: 0; font-size: 20px;">📦 Products & Global Multi-Warehouse Inventory Hub</h1>
+        <p style="margin: 4px 0 0 0; font-size: 12px; color: var(--text-muted);">Real-time stock positions across Bhadohi Main Mill, Sea FCL In-Transit, USA 3PL (Edison NJ), and Amazon FBA.</p>
       </div>
-      <div class="page-actions" style="display: flex; gap: 8px; flex-wrap: wrap;">
+      <div class="page-actions" style="display: flex; gap: 8px;">
         <button class="btn btn-sm btn-secondary" onclick="openImportModal('skus')">📁 Bulk CSV Import</button>
         <button class="btn btn-sm btn-secondary" onclick="openExportModal('skus')">📥 Export Catalog</button>
-        <button class="btn btn-sm btn-secondary" onclick="openReceiveInTransitModal()">🚢 USA 3PL Dock GRN Scan</button>
-        <button class="btn btn-sm btn-secondary" onclick="openStockTransferModal('SKU-RUG-HT-0810-IVR')">⇆ Inter-WH Transfer</button>
-        <button class="btn btn-sm btn-secondary" onclick="openAddInventoryModal()">+ Inward Stock</button>
         <button class="btn btn-sm btn-primary" onclick="openCreateSkuModal()">+ Add New Rug SKU</button>
       </div>
     </div>
 
-    <!-- Bento KPI Metrics: Master Catalog + Physical Stock -->
-    <div class="bento-metrics-grid" style="grid-template-columns: repeat(5, 1fr); margin-bottom: 20px;">
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Master Catalog SKUs</span><span>🏷️</span></div>
-        <div class="metric-value">${AppState.skus.length} Active SKUs</div>
-        <div class="metric-sub">Active Hand-Crafted Collections</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Global Stock Valuation</span><span>💰</span></div>
-        <div class="metric-value">$${(totalValueUSD / 1000).toFixed(1)}k</div>
-        <div class="metric-sub">${totalUnits} Total Carpet Rolls</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">🇮🇳 India Origin In-Stock</span><span>🏭</span></div>
-        <div class="metric-value">${totalIndia} Rolls</div>
-        <div class="metric-sub">Bhadohi & Mirzapur Facilities</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">🚢 Ocean In-Transit</span><span>🌊</span></div>
-        <div class="metric-value" style="color: var(--warning);">${totalTransit} Rolls</div>
-        <div class="metric-sub">Locked until USA 3PL Port Scan</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">🇺🇸 USA 3PL Available</span><span>🗽</span></div>
-        <div class="metric-value" style="color: var(--success);">${totalUSA} Rolls</div>
-        <div class="metric-sub">Edison NJ (Same-Day Ready)</div>
-      </div>
+    <!-- Smart Filter Ribbon -->
+    <div class="status-filter-pills" style="margin-bottom: 14px;">
+      <button class="filter-pill-btn ${f.stockFilter === 'all' && f.collection === 'all' ? 'active' : ''}" onclick="AppState.tableFilters.skus.stockFilter='all'; AppState.tableFilters.skus.collection='all'; renderCurrentView();">All Rug SKUs (${skus.length})</button>
+      <button class="filter-pill-btn ${f.stockFilter === 'lowStock' ? 'active' : ''}" onclick="AppState.tableFilters.skus.stockFilter='lowStock'; renderCurrentView();">🚨 Low Stock Risk (< 15 Days)</button>
+      <button class="filter-pill-btn ${f.stockFilter === 'inStockIndia' ? 'active' : ''}" onclick="AppState.tableFilters.skus.stockFilter='inStockIndia'; renderCurrentView();">🇮🇳 In Stock (India WH)</button>
+      <button class="filter-pill-btn ${f.stockFilter === 'inStockUSA' ? 'active' : ''}" onclick="AppState.tableFilters.skus.stockFilter='inStockUSA'; renderCurrentView();">🇺🇸 In Stock (USA 3PL)</button>
+      <button class="filter-pill-btn ${f.stockFilter === 'inTransit' ? 'active' : ''}" onclick="AppState.tableFilters.skus.stockFilter='inTransit'; renderCurrentView();">🚢 In-Transit Cargo (${totalInTransit})</button>
+      <button class="filter-pill-btn ${f.collection === 'Heritage' ? 'active' : ''}" onclick="AppState.tableFilters.skus.collection='Heritage'; AppState.tableFilters.skus.stockFilter='all'; renderCurrentView();">🎨 Heritage Collection</button>
+      <button class="filter-pill-btn ${f.collection === 'Modern' ? 'active' : ''}" onclick="AppState.tableFilters.skus.collection='Modern'; AppState.tableFilters.skus.stockFilter='all'; renderCurrentView();">🌿 Modern / Jute</button>
     </div>
 
-    <!-- Global Inventory Lifecycle State Progression Pipeline -->
-    <div class="inv-state-pipeline" title="Global Rug Lifecycle: India Mill to USA Customer Handover" style="margin-bottom: 20px;">
-      <div class="inv-state-node"><span class="badge badge-primary">1</span> 🇮🇳 India Available: <strong style="color: var(--brand-cyan); margin-left: 4px;">${totalIndia} Rolls</strong></div>
-      <div class="inv-state-arrow">➔</div>
-      <div class="inv-state-node"><span class="badge badge-warning">2</span> 📦 Packed & Staged: <strong style="color: var(--warning); margin-left: 4px;">${totalPacked} Rolls</strong></div>
-      <div class="inv-state-arrow">➔</div>
-      <div class="inv-state-node"><span class="badge badge-secondary">3</span> 🌊 In-Transit (Ocean): <strong style="color: var(--brand-purple); margin-left: 4px;">${totalTransit} Rolls</strong></div>
-      <div class="inv-state-arrow">➔</div>
-      <div class="inv-state-node"><span class="badge badge-success">4</span> 🇺🇸 USA 3PL (Edison): <strong style="color: var(--success); margin-left: 4px;">${totalUSA} Rolls</strong></div>
-      <div class="inv-state-arrow">➔</div>
-      <div class="inv-state-node"><span class="badge badge-primary">5</span> ⚡ Amazon FBA: <strong style="color: var(--brand-cyan); margin-left: 4px;">${totalFBA} Rolls</strong></div>
-      <div class="inv-state-arrow">➔</div>
-      <div class="inv-state-node"><span class="badge badge-danger">6</span> 🔒 Concurrency Locked: <strong style="color: var(--danger); margin-left: 4px;">${totalReserved} Rolls</strong></div>
-    </div>
-
-    <!-- Toolbar -->
-    <div class="table-toolbar-box">
+    <!-- Search & Toolbar Box -->
+    <div class="table-toolbar-box" style="margin-bottom: 14px;">
       <div class="table-toolbar-left" style="flex-wrap: wrap; gap: 10px;">
         <div class="table-search-input-wrap" style="min-width: 320px;">
           <span class="table-search-icon">🔍</span>
@@ -4437,23 +4486,31 @@ function renderProductsView() {
 
         <select class="table-filter-select" onchange="setTableFilter('skus', 'collection', this.value)">
           <option value="all" ${f.collection === 'all' ? 'selected' : ''}>All Collections</option>
-          <option value="heritage" ${f.collection === 'heritage' ? 'selected' : ''}>Royal Heritage</option>
-          <option value="antique" ${f.collection === 'antique' ? 'selected' : ''}>Caucasian Antique</option>
-          <option value="boho" ${f.collection === 'boho' ? 'selected' : ''}>Boho Earth (Jute)</option>
-          <option value="classic" ${f.collection === 'classic' ? 'selected' : ''}>Anatolian Classic</option>
-          <option value="custom" ${f.collection === 'custom' ? 'selected' : ''}>Beni Ourain Custom</option>
+          <option value="Heritage" ${f.collection === 'Heritage' ? 'selected' : ''}>Royal Heritage</option>
+          <option value="Modern" ${f.collection === 'Modern' ? 'selected' : ''}>Modern Geometric</option>
+          <option value="Boho" ${f.collection === 'Boho' ? 'selected' : ''}>Boho Earth (Jute)</option>
+          <option value="Vintage" ${f.collection === 'Vintage' ? 'selected' : ''}>Vintage Distressed</option>
+        </select>
+
+        <select class="table-filter-select" onchange="AppState.tableFilters.skus.stockFilter=this.value; renderCurrentView();">
+          <option value="all" ${f.stockFilter === 'all' ? 'selected' : ''}>All Stock Statuses</option>
+          <option value="lowStock" ${f.stockFilter === 'lowStock' ? 'selected' : ''}>🚨 Low Stock Alert (< 15 Days)</option>
+          <option value="inStockUSA" ${f.stockFilter === 'inStockUSA' ? 'selected' : ''}>🇺🇸 Available at USA 3PL</option>
+          <option value="inStockIndia" ${f.stockFilter === 'inStockIndia' ? 'selected' : ''}>🇮🇳 Available in India WH</option>
+          <option value="inTransit" ${f.stockFilter === 'inTransit' ? 'selected' : ''}>🚢 Currently In-Transit</option>
         </select>
       </div>
 
-      <div class="table-toolbar-right">
-        <span style="font-size: 11px; color: var(--text-dim);">${filtered.length} SKUs in unified hub</span>
+      <div class="table-toolbar-right" style="display: flex; gap: 8px; align-items: center;">
+        <span style="font-size: 11px; color: var(--text-dim);">${filtered.length} matching SKUs</span>
+        <button class="btn btn-xs btn-primary" onclick="openCreateSkuModal()">+ New SKU</button>
       </div>
     </div>
 
-    <!-- Unified Master & Stock Table -->
-    <div class="card">
+    <!-- Inventory & SKU Master Table -->
+    <div class="card" style="padding: 0; overflow: hidden;">
       <div class="table-responsive">
-        <table class="data-table">
+        <table class="data-table" style="width: 100%;">
           <thead>
             <tr>
               <th class="sortable" onclick="setTableSort('skus', 'sku')">
@@ -4462,83 +4519,92 @@ function renderProductsView() {
               <th class="sortable" onclick="setTableSort('skus', 'title')">
                 Rug Title & Collection ${f.sortBy === 'title' ? `<span class="sort-icon">${f.sortOrder === 'asc' ? '▲' : '▼'}</span>` : ''}
               </th>
-              <th>Construction & Material</th>
-              <th>Dimensions</th>
+              <th>Construction & Specs</th>
               <th class="sortable" onclick="setTableSort('skus', 'sellingPriceUSD')">
                 Selling Price ${f.sortBy === 'sellingPriceUSD' ? `<span class="sort-icon">${f.sortOrder === 'asc' ? '▲' : '▼'}</span>` : ''}
               </th>
-              <th>🇮🇳 India WH</th>
-              <th>🚢 In-Transit</th>
-              <th>🇺🇸 USA 3PL</th>
-              <th>🔒 Reserved</th>
-              <th>Total Rolls</th>
-              <th>Actions (Specs & Stock)</th>
+              <th style="text-align: center;">🇮🇳 India WH</th>
+              <th style="text-align: center;">🚢 In-Transit</th>
+              <th style="text-align: center;">🇺🇸 USA 3PL</th>
+              <th style="text-align: center;">🔒 Reserved</th>
+              <th style="text-align: center;">Total Global</th>
+              <th style="text-align: right; min-width: 200px;">Actions</th>
             </tr>
           </thead>
           <tbody>
             ${pagination.items.length === 0 ? `
-              <tr><td colspan="11" style="text-align: center; padding: 36px; color: var(--text-dim);">No rug SKUs found matching current search criteria.</td></tr>
+              <tr><td colspan="10" style="text-align: center; padding: 36px; color: var(--text-dim);">No rug SKUs found matching current search criteria.</td></tr>
             ` : pagination.items.map(sku => {
-              const totalSkuStock = (sku.stock.indiaAvailable || 0) + (sku.stock.inTransit || 0) + (sku.stock.usaAvailable || 0) + (sku.stock.fba || 0);
+              const indAvail = (sku.stock && sku.stock.indiaAvailable) || 0;
+              const inTrans = (sku.stock && sku.stock.inTransit) || 0;
+              const usaAvail = (sku.stock && sku.stock.usaAvailable) || 0;
+              const usaRes = (sku.stock && sku.stock.usaReserved) || 0;
+              const totalSkuStock = indAvail + inTrans + usaAvail + ((sku.stock && sku.stock.fba) || 0);
+
+              const vel = sku.sku.includes('HT-0810') ? 1.8 : sku.sku.includes('HK-0912') ? 1.1 : sku.sku.includes('DHU') ? 1.4 : 0.8;
+              const daysSupply = vel > 0 ? Math.round(usaAvail / vel) : 99;
+              const isRisk = daysSupply < 15;
+
               return `
-                <tr style="cursor: pointer;" onclick="openSkuDetail('${sku.sku}')">
+                <tr class="clickable-row" onclick="openSkuDetail('${sku.sku}')" style="${isRisk ? 'background: rgba(239,68,68,0.02);' : ''}">
                   <td>
                     <div style="display: flex; align-items: center; gap: 10px;">
-                      <img src="${sku.imageUrl}" style="width: 44px; height: 44px; border-radius: var(--radius-sm); object-fit: cover; border: 1px solid var(--border-main); flex-shrink: 0;">
+                      <img src="${sku.imageUrl || ''}" style="width: 46px; height: 46px; border-radius: 6px; object-fit: cover; border: 1px solid var(--border-main); flex-shrink: 0;" onerror="this.src='https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=120&q=80'">
                       <div>
-                        <strong style="font-family: var(--font-mono); color: var(--brand-cyan);">${sku.sku}</strong>
-                        <div style="font-size: 10px; color: var(--text-dim); font-family: var(--font-mono); margin-top: 2px;">${sku.barcode}</div>
+                        <strong style="font-family: var(--font-mono); color: var(--brand-cyan); font-size: 12.5px;">${sku.sku}</strong>
+                        <div style="font-size: 10px; color: var(--text-dim); font-family: var(--font-mono); margin-top: 2px;">${sku.barcode || '890432109812'}</div>
                       </div>
                     </div>
                   </td>
                   <td>
-                    <strong>${sku.title}</strong>
-                    <div style="font-size: 11px; color: var(--text-muted);">${sku.collection}</div>
+                    <strong style="color: var(--text-heading); font-size: 12.5px;">${sku.title}</strong>
+                    <div style="font-size: 11px; color: var(--text-muted); margin-top: 1px;">
+                      <span class="badge badge-secondary" style="font-size: 9.5px; padding: 1px 6px;">${sku.collection || 'General'}</span>
+                      <span style="color: var(--text-dim); margin-left: 4px;">${sku.construction || ''}</span>
+                    </div>
                   </td>
                   <td>
-                    <span style="font-weight: 600; font-size: 11px; color: var(--text-main);">${sku.construction}</span>
-                    <div style="font-size: 10px; color: var(--text-dim);">${sku.material}</div>
+                    <div><strong>${sku.size || '8x10 ft'}</strong></div>
+                    <div style="font-size: 10.5px; color: var(--text-dim);">${sku.weightKg || 28} Kg · ${sku.material || 'Wool'}</div>
                   </td>
                   <td>
-                    <div><strong>${sku.size}</strong></div>
-                    <div style="font-size: 10px; color: var(--text-dim);">${sku.weightKg} Kg (${sku.gsm} GSM)</div>
+                    <strong style="color: var(--success); font-family: var(--font-mono); font-size: 13px;">$${(sku.sellingPriceUSD || 540).toFixed(2)}</strong>
+                    <div style="font-size: 10px; color: var(--text-dim);">Cost: ₹${((sku.mfgCostINR) || 18500).toLocaleString()}</div>
                   </td>
-                  <td>
-                    <strong style="color: var(--success); font-family: var(--font-mono); font-size: 13px;">$${sku.sellingPriceUSD.toFixed(2)}</strong>
-                    <div style="font-size: 10px; color: var(--text-dim);">₹${sku.mfgCostINR.toLocaleString()}</div>
-                  </td>
-                  <td>
-                    <span class="badge ${sku.stock.indiaAvailable > 0 ? 'badge-primary' : 'badge-danger'}">
-                      ${sku.stock.indiaAvailable || 0}
+                  <td style="text-align: center;">
+                    <span class="badge ${indAvail > 0 ? 'badge-primary' : 'badge-danger'}" style="font-size: 11px;">
+                      ${indAvail}
                     </span>
                   </td>
-                  <td>
-                    ${sku.stock.inTransit > 0 ? `
-                      <span class="badge badge-warning">${sku.stock.inTransit}</span>
+                  <td style="text-align: center;">
+                    ${inTrans > 0 ? `
+                      <span class="badge badge-warning" style="font-size: 11px;">${inTrans}</span>
                       <div style="margin-top: 3px;">
-                        <button class="btn btn-xs btn-warning" onclick="event.stopPropagation(); openReceiveInTransitModal('${sku.sku}')" style="padding: 1px 5px; font-size: 9px; font-weight: 700;" title="Confirm dock receipt at USA 3PL">📥 GRN</button>
+                        <button class="btn btn-xs btn-warning" onclick="event.stopPropagation(); openReceiveInTransitModal('${sku.sku}')" style="padding: 1px 6px; font-size: 9.5px; font-weight: 700;" title="Confirm dock receipt at USA 3PL">📥 GRN</button>
                       </div>
-                    ` : `<span class="badge" style="background: var(--bg-surface); color: var(--text-dim);">0</span>`}
+                    ` : `<span style="color: var(--text-dim); font-size: 11px;">0</span>`}
                   </td>
-                  <td>
-                    <strong style="color: var(--success); font-family: var(--font-mono); font-size: 13px;">
-                      ${sku.stock.usaAvailable || 0}
+                  <td style="text-align: center;">
+                    <strong style="color: ${isRisk ? '#ef4444' : 'var(--success)'}; font-family: var(--font-mono); font-size: 14px;">
+                      ${usaAvail}
                     </strong>
+                    <div style="font-size: 9.5px; color: ${isRisk ? '#ef4444' : 'var(--text-dim)'};">${daysSupply}d supply</div>
                   </td>
-                  <td>
-                    <span class="badge" style="background: rgba(245,158,11,0.15); color: var(--warning);">
-                      ${sku.stock.usaReserved || 0}
+                  <td style="text-align: center;">
+                    <span class="badge" style="background: rgba(168,85,247,0.15); color: var(--brand-purple); font-size: 11px;">
+                      ${usaRes}
                     </span>
                   </td>
-                  <td>
-                    <strong style="font-size: 13px; font-family: var(--font-mono);">${totalSkuStock}</strong>
+                  <td style="text-align: center;">
+                    <strong style="font-size: 14px; font-family: var(--font-mono); color: var(--brand-cyan);">${totalSkuStock}</strong>
+                    <div style="font-size: 9.5px; color: var(--text-dim);">rolls global</div>
                   </td>
-                  <td onclick="event.stopPropagation()">
-                    <div style="display: flex; gap: 4px; flex-wrap: wrap;">
-                      <button class="btn btn-xs btn-secondary" title="Edit SKU Specs" onclick="openEditSkuModal('${sku.sku}')">✏️ Specs</button>
-                      <button class="btn btn-xs btn-primary" title="Inward stock rolls" onclick="openAddInventoryModal('${sku.sku}')">+ Stock</button>
-                      <button class="btn btn-xs btn-secondary" title="Transfer stock between facilities" onclick="openStockTransferModal('${sku.sku}')">⇆ Move</button>
-                      <button class="btn btn-xs btn-secondary" title="View Full Page Command Center" onclick="openSkuDetail('${sku.sku}')">👁️</button>
+                  <td onclick="event.stopPropagation()" style="text-align: right;">
+                    <div style="display: inline-flex; gap: 5px; justify-content: flex-end; flex-wrap: wrap;">
+                      <button class="btn btn-xs btn-secondary" title="View Full SKU Studio & Analytics" onclick="openSkuStudioModal('${sku.sku}')">👁️ Studio</button>
+                      <button class="btn btn-xs btn-primary" title="Inward Stock Rolls" onclick="openAddInventoryModal('${sku.sku}')" style="font-weight: 600;">+ Stock</button>
+                      <button class="btn btn-xs btn-secondary" title="Transfer Stock Between Facilities" onclick="openStockTransferModal('${sku.sku}')">⇆ Move</button>
+                      <button class="btn btn-xs btn-secondary" title="Edit Specs" onclick="openEditSkuModal('${sku.sku}')">✏️</button>
                       <button class="btn btn-xs btn-danger" title="Delete SKU" onclick="confirmDeleteSku('${sku.sku}')">🗑️</button>
                     </div>
                   </td>
@@ -4549,13 +4615,13 @@ function renderProductsView() {
         </table>
       </div>
 
-      <!-- Pagination -->
-      <div class="table-pagination-footer">
-        <div class="pagination-info">
+      <!-- Pagination Footer -->
+      <div class="table-pagination-footer" style="padding: 10px 16px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center;">
+        <div class="pagination-info" style="font-size: 12px; color: var(--text-muted);">
           Showing <strong>${pagination.items.length ? pagination.start : 0}</strong> to <strong>${pagination.end}</strong> of <strong>${pagination.total}</strong> unified SKUs
         </div>
-        <div class="pagination-controls">
-          <select class="rows-per-page-select" onchange="setTablePageSize('skus', this.value)">
+        <div class="pagination-controls" style="display: flex; gap: 4px; align-items: center;">
+          <select class="rows-per-page-select" onchange="setTablePageSize('skus', this.value)" style="margin-right: 8px;">
             <option value="5" ${f.pageSize === 5 ? 'selected' : ''}>5 per page</option>
             <option value="10" ${f.pageSize === 10 ? 'selected' : ''}>10 per page</option>
             <option value="25" ${f.pageSize === 25 ? 'selected' : ''}>25 per page</option>
@@ -4570,6 +4636,7 @@ function renderProductsView() {
     </div>
   `;
 }
+window.renderProductsView = renderProductsView;
 
 // --- MODULE 2: USERS & SECTION-WISE ROLE RBAC MATRIX ---
 function switchRbacSubtab(subtab) {
@@ -6962,13 +7029,12 @@ function renderWarehouseDetailPage(whId) {
           <div>
             <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap;">
               <h1 style="font-size: 24px; font-weight: 800; margin: 0; color: var(--text-main); font-family: var(--font-heading);">${wh.name}</h1>
-              <span class="badge ${wh.type.includes('3PL') ? 'badge-primary' : 'badge-success'}">${wh.type}</span>
               <span class="badge badge-success"><span class="wh-pulse-dot" style="margin-right: 6px;"></span>${wh.status}</span>
             </div>
             <p style="color: var(--text-muted); font-size: 13px; margin: 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
               <span>Facility Code: <code style="color: var(--brand-cyan); font-weight: 700;">${wh.id}</code></span>
               <span style="color: var(--text-dim);">&bull;</span>
-              <span>Port of Entry / Lading: <strong style="font-family: var(--font-mono); color: var(--text-main);">${wh.portCode}</strong></span>
+              <span>Country: <strong style="color: var(--text-main);">${wh.country}</strong></span>
               <span style="color: var(--text-dim);">&bull;</span>
               <span>${wh.address}</span>
             </p>
@@ -10458,78 +10524,53 @@ function renderPurchaseOrdersView() {
   const f = AppState.tableFilters.purchaseOrders || (AppState.tableFilters.purchaseOrders = { search: "", status: "all", destWh: "all", sortBy: "poNumber", sortOrder: "desc", page: 1, pageSize: 5 });
 
   let filtered = (AppState.purchaseOrders || []).filter(po => {
-    const searchLower = (f.search || "").toLowerCase();
-    const matchesSearch = !searchLower ||
-      po.poNumber.toLowerCase().includes(searchLower) ||
-      po.vendor.toLowerCase().includes(searchLower) ||
-      po.destWhName.toLowerCase().includes(searchLower) ||
-      po.items.some(i => i.sku.toLowerCase().includes(searchLower) || i.title.toLowerCase().includes(searchLower));
-    const matchesStatus = f.status === "all" || po.status.toLowerCase() === f.status.toLowerCase();
-    const matchesWh = f.destWh === "all" || po.destWhId === f.destWh;
-    return matchesSearch && matchesStatus && matchesWh;
+    const vendorStr = po.vendor || po.vendorName || "";
+    const matchesSearch = !f.search || 
+      po.poNumber.toLowerCase().includes(f.search.toLowerCase()) || 
+      vendorStr.toLowerCase().includes(f.search.toLowerCase()) || 
+      (po.items && po.items.some(i => i.sku.toLowerCase().includes(f.search.toLowerCase())));
+
+    let matchesStatus = true;
+    if (f.status && f.status !== "all") {
+      const st = (po.status || "").toLowerCase();
+      const target = f.status.toLowerCase();
+      if (target === "in production" || target === "loom weaving") {
+        matchesStatus = st.includes("prod") || st.includes("loom");
+      } else if (target === "completed" || target === "received") {
+        matchesStatus = st.includes("comp") || st.includes("receiv");
+      } else if (target === "qc & packing") {
+        matchesStatus = st.includes("qc") || st.includes("pack");
+      } else {
+        matchesStatus = st.includes(target);
+      }
+    }
+    return matchesSearch && matchesStatus;
   });
 
-  // Sorting
-  filtered.sort((a, b) => {
-    let valA = a[f.sortBy] ?? "";
-    let valB = b[f.sortBy] ?? "";
-    if (typeof valA === "string") valA = valA.toLowerCase();
-    if (typeof valB === "string") valB = valB.toLowerCase();
-    if (valA < valB) return f.sortOrder === "asc" ? -1 : 1;
-    if (valA > valB) return f.sortOrder === "asc" ? 1 : -1;
-    return 0;
-  });
-
-  const totalPos = (AppState.purchaseOrders || []).length;
-  const activePos = (AppState.purchaseOrders || []).filter(p => p.status !== "Completed").length;
-  const totalOrderedRolls = (AppState.purchaseOrders || []).reduce((sum, p) => sum + (p.totalQty || 0), 0);
-  const totalReceivedRolls = (AppState.purchaseOrders || []).reduce((sum, p) => sum + (p.receivedQty || 0), 0);
-  const pendingRolls = totalOrderedRolls - totalReceivedRolls;
-
-  const totalInrVal = (AppState.purchaseOrders || []).filter(p => p.currency === "INR").reduce((sum, p) => sum + (p.totalAmount || 0), 0);
-  const totalUsdVal = (AppState.purchaseOrders || []).filter(p => p.currency === "USD").reduce((sum, p) => sum + (p.totalAmount || 0), 0);
-
-  const pagination = paginateArray(filtered, f.page || 1, f.pageSize || 5);
+  const pagination = paginateArray(filtered, f.page, f.pageSize);
 
   return `
-    <div class="page-header">
+    <div class="page-header" style="margin-bottom: 16px;">
       <div class="page-title-wrap">
-        <h1>📋 Purchase Orders (PO) & Procurement Management</h1>
-        <p>Unified end-to-end procurement: Loom MTO production tracking, digital scale QC & photo proof capture, and inward stock receiving.</p>
+        <h1 style="margin: 0; font-size: 20px;">📋 Purchase Orders & Loom Manufacturing (PO)</h1>
+        <p style="margin: 4px 0 0 0; font-size: 12px; color: var(--text-muted);">Manage artisan loom work orders, raw wool procurement, QC inspection, and mill goods receiving.</p>
       </div>
-      <div class="page-actions">
-        <button class="btn btn-secondary" onclick="exportPurchaseOrdersCSV()">📥 Export POs CSV</button>
-        <button class="btn btn-primary" onclick="openCreatePoModal()">+ Create Purchase Order</button>
-      </div>
-    </div>
-
-    <!-- 4 Bento KPI Metrics -->
-    <div class="bento-metrics-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 20px;">
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Active Purchase Orders</span><span>📋</span></div>
-        <div class="metric-value">${activePos} POs Active</div>
-        <div class="metric-sub">${totalPos} Total POs in Ledger</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Total Ordered Rugs</span><span>🧵</span></div>
-        <div class="metric-value">${totalOrderedRolls} Rolls</div>
-        <div class="metric-sub">${totalReceivedRolls} Rolls Inwarded (${Math.round((totalReceivedRolls / (totalOrderedRolls || 1)) * 100)}% Fulfilled)</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Pending Inward Stock</span><span>📦</span></div>
-        <div class="metric-value" style="color: ${pendingRolls > 0 ? 'var(--warning)' : 'var(--success)'};">${pendingRolls} Rolls</div>
-        <div class="metric-sub">Awaiting Loom QC & Delivery</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Procurement Valuation</span><span>💰</span></div>
-        <div class="metric-value" style="font-size: 20px; color: var(--brand-cyan); font-family: var(--font-mono);">
-          ₹${totalInrVal.toLocaleString()} <span style="font-size: 13px; color: var(--text-muted); font-weight: 500;">+ $${totalUsdVal.toLocaleString()}</span>
-        </div>
-        <div class="metric-sub">Loom Production & Raw Materials</div>
+      <div class="page-actions" style="display: flex; gap: 8px;">
+        <button class="btn btn-sm btn-secondary" onclick="exportPurchaseOrdersCSV()">📥 Export POs</button>
+        <button class="btn btn-sm btn-primary" onclick="openCreatePoModal()">+ Create Purchase Order</button>
       </div>
     </div>
 
-    <!-- Table Toolbar -->
+    <!-- PO Lifecycle Filter Tabs -->
+    <div class="status-filter-pills" style="margin-bottom: 14px;">
+      <button class="filter-pill-btn ${f.status === 'all' ? 'active' : ''}" onclick="setTableFilter('purchaseOrders', 'status', 'all')">All POs (${AppState.purchaseOrders ? AppState.purchaseOrders.length : 0})</button>
+      <button class="filter-pill-btn ${f.status === 'Draft' ? 'active' : ''}" onclick="setTableFilter('purchaseOrders', 'status', 'Draft')">📝 Draft</button>
+      <button class="filter-pill-btn ${f.status === 'Issued' ? 'active' : ''}" onclick="setTableFilter('purchaseOrders', 'status', 'Issued')">📨 Issued</button>
+      <button class="filter-pill-btn ${f.status === 'In Production' ? 'active' : ''}" onclick="setTableFilter('purchaseOrders', 'status', 'In Production')">🪡 In Production (Loom)</button>
+      <button class="filter-pill-btn ${f.status === 'QC & Packing' ? 'active' : ''}" onclick="setTableFilter('purchaseOrders', 'status', 'QC & Packing')">📸 QC & Packing</button>
+      <button class="filter-pill-btn ${f.status === 'Completed' ? 'active' : ''}" onclick="setTableFilter('purchaseOrders', 'status', 'Completed')">✅ Completed / Received</button>
+    </div>
+
     <div class="table-toolbar-box">
       <div class="table-toolbar-left">
         <div class="table-search-input-wrap">
@@ -11382,61 +11423,30 @@ function renderWarehouseTransfersView() {
   const f = AppState.tableFilters.replenishment || (AppState.tableFilters.replenishment = { search: "", status: "all", originWh: "all", destWh: "all", mode: "all", page: 1, pageSize: 5 });
 
   let filtered = (AppState.replenishment || []).filter(r => {
-    const searchLower = (f.search || "").toLowerCase();
-    const matchesSearch = !searchLower ||
-      r.shipmentId.toLowerCase().includes(searchLower) ||
-      (r.containerNo && r.containerNo.toLowerCase().includes(searchLower)) ||
-      (r.carrier && r.carrier.toLowerCase().includes(searchLower)) ||
-      r.originWh.toLowerCase().includes(searchLower) ||
-      r.destWh.toLowerCase().includes(searchLower);
+    const matchesSearch = !f.search || r.id.toLowerCase().includes(f.search.toLowerCase()) || r.carrier.toLowerCase().includes(f.search.toLowerCase());
     const matchesStatus = f.status === "all" || r.status.toLowerCase().includes(f.status.toLowerCase());
     return matchesSearch && matchesStatus;
   });
 
-  const totalTransfers = (AppState.replenishment || []).length;
-  const inTransitCount = (AppState.replenishment || []).filter(r => r.status.includes("Transit")).length;
-  const totalRugs = (AppState.replenishment || []).reduce((sum, r) => sum + (r.totalRugs || 0), 0);
-  const totalFreight = (AppState.replenishment || []).reduce((sum, r) => sum + (r.totalLandedCostUSD || r.freightCostUSD || 0), 0);
-
-  const pagination = paginateArray(filtered, f.page || 1, f.pageSize || 5);
+  const pagination = paginateArray(filtered, f.page, f.pageSize);
 
   return `
-    <div class="page-header">
+    <div class="page-header" style="margin-bottom: 16px;">
       <div class="page-title-wrap">
-        <h1>⇆ Warehouse Stock Transfers</h1>
-        <p>Inter-warehouse replenishment and stock distribution across all global facilities (India Factory, USA 3PL Edison, Amazon FBA, European DC) with in-transit tracking and multi-modal freight allocation.</p>
+        <h1 style="margin: 0; font-size: 20px;">⇆ Warehouse Stock Transfers</h1>
       </div>
-      <div class="page-actions">
-        <button class="btn btn-secondary" onclick="exportTransfersCSV()">📥 Export Transfers CSV</button>
-        <button class="btn btn-primary" onclick="openCreateTransferModal()">⇆ New Stock Transfer</button>
+      <div class="page-actions" style="display: flex; gap: 8px;">
+        <button class="btn btn-sm btn-primary" onclick="openNewTransferModal()">+ Initiate Stock Transfer</button>
       </div>
     </div>
 
-    <!-- Bento KPI Metrics -->
-    <div class="bento-metrics-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 20px;">
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Active Transfers</span><span>⇆</span></div>
-        <div class="metric-value">${totalTransfers} Shipments</div>
-        <div class="metric-sub">${inTransitCount} In-Transit Across Network</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Carpet Rolls in Movement</span><span>📦</span></div>
-        <div class="metric-value">${totalRugs} Rolls</div>
-        <div class="metric-sub">Multi-Facility Allocation</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Multi-Modal Logistics</span><span>🚢 ✈️ 🚛</span></div>
-        <div class="metric-value" style="font-size: 18px;">Ocean • Air • Road</div>
-        <div class="metric-sub">Global & Inter-State Transit</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Total Freight & Duty</span><span>💰</span></div>
-        <div class="metric-value" style="color: var(--success); font-family: var(--font-mono);">$${totalFreight.toLocaleString()} USD</div>
-        <div class="metric-sub">Allocated Landed Cost</div>
-      </div>
+    <!-- Transfer Route Filter Tabs -->
+    <div class="status-filter-pills">
+      <button class="filter-pill-btn ${f.status === 'all' ? 'active' : ''}" onclick="setTableFilter('replenishment', 'status', 'all')">All Transfers (${AppState.replenishment ? AppState.replenishment.length : 0})</button>
+      <button class="filter-pill-btn ${f.status === 'In Transit' ? 'active' : ''}" onclick="setTableFilter('replenishment', 'status', 'In Transit')">🚢 In Transit (Ocean/Air)</button>
+      <button class="filter-pill-btn ${f.status === 'Completed' ? 'active' : ''}" onclick="setTableFilter('replenishment', 'status', 'Completed')">✅ Completed & Received</button>
     </div>
 
-    <!-- Table Toolbar -->
     <div class="table-toolbar-box">
       <div class="table-toolbar-left">
         <div class="table-search-input-wrap">
@@ -11799,59 +11809,60 @@ function exportTransfersCSV() {
 
 
 function renderLoadingPlansView() {
-  const f = AppState.tableFilters.loadingPlans || { search: "", status: "all", page: 1, pageSize: 5 };
+  const f = AppState.tableFilters.loadingPlans || (AppState.tableFilters.loadingPlans = { search: "", status: "all", page: 1, pageSize: 5 });
   let filtered = (AppState.loadingPlans || []).filter(p => {
-    const matchesSearch = !f.search || p.planId.toLowerCase().includes(f.search.toLowerCase()) || 
-                          p.carrier.toLowerCase().includes(f.search.toLowerCase()) || 
-                          p.awb.toLowerCase().includes(f.search.toLowerCase()) || 
-                          p.destination.toLowerCase().includes(f.search.toLowerCase()) ||
-                          p.consignee.toLowerCase().includes(f.search.toLowerCase());
-    const matchesStatus = f.status === "all" || p.status.toLowerCase().includes(f.status.toLowerCase());
+    const s = f.search ? f.search.toLowerCase() : "";
+    const matchesSearch = !s || 
+      p.planId.toLowerCase().includes(s) || 
+      (p.destination && p.destination.toLowerCase().includes(s)) ||
+      (p.consignee && p.consignee.toLowerCase().includes(s)) ||
+      (p.carrier && p.carrier.toLowerCase().includes(s)) ||
+      (p.awb && p.awb.toLowerCase().includes(s));
+
+    let matchesStatus = true;
+    if (f.status && f.status !== "all") {
+      const st = (p.status || "").toLowerCase();
+      const target = f.status.toLowerCase();
+      if (target === "planning & staging" || target === "planning" || target === "draft") {
+        matchesStatus = st.includes("planning") || st.includes("staging");
+      } else if (target === "loaded & labeled" || target === "loaded") {
+        matchesStatus = st.includes("loaded") || st.includes("labeled");
+      } else if (target === "exported & dispatched" || target === "dispatched" || target === "exported") {
+        matchesStatus = st.includes("exported") || st.includes("dispatched");
+      } else if (target === "delivered") {
+        matchesStatus = st.includes("delivered") || st.includes("verified");
+      } else if (target === "customs" || target === "customs cleared") {
+        matchesStatus = p.isExported === true;
+      } else {
+        matchesStatus = st.includes(target);
+      }
+    }
     return matchesSearch && matchesStatus;
   });
 
-  const totalPlans = (AppState.loadingPlans || []).length;
-  const stagingCount = (AppState.loadingPlans || []).filter(p => p.status.includes("Planning") || p.status.includes("Staging")).length;
-  const exportedCount = (AppState.loadingPlans || []).filter(p => p.isExported).length;
-  const pagination = paginateArray(filtered, f.page || 1, f.pageSize || 5);
+  const pagination = paginateArray(filtered, f.page, f.pageSize);
 
   return `
-    <div class="page-header">
+    <div class="page-header" style="margin-bottom: 16px;">
       <div class="page-title-wrap">
-        <h1>📋 Consignment Loading Plans, Staging & Courier Dispatch</h1>
-        <p>Container & vehicle stuffing plans, digital scale catch-weight, 4x6 thermal barcode labels, live tracking, and one-click export to customs documentation.</p>
+        <h1 style="margin: 0; font-size: 20px;">🚚 Loading Plans & Shipping</h1>
+        <p style="margin: 4px 0 0 0; font-size: 12px; color: var(--text-muted);">Manage consignment loading plans, ICD staging, AWB telemetry, and vehicle stuffing.</p>
       </div>
-      <div class="page-actions">
-        <button class="btn btn-secondary" onclick="exportLoadingPlansCSV()">📥 Export Registry CSV</button>
-        <button class="btn btn-primary" onclick="openCreateLoadingPlanModal()">+ New Loading Plan</button>
-      </div>
-    </div>
-
-    <!-- 4 Clean Bento KPI Metrics -->
-    <div class="bento-metrics-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 20px; gap: 16px;">
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Active Loading Plans</span><span>📋</span></div>
-        <div class="metric-value">${totalPlans} Consignments</div>
-        <div class="metric-sub">Container & Air Cargo Plans</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Staging & Labeling</span><span>🏷️</span></div>
-        <div class="metric-value" style="color: var(--brand-cyan);">${stagingCount} Plans Active</div>
-        <div class="metric-sub">Thermal Labels & Scale Weighing</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Exported to Customs</span><span>🚀</span></div>
-        <div class="metric-value" style="color: var(--success);">${exportedCount} Plans Exported</div>
-        <div class="metric-sub">Invoices & Shipping Bills Synced</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Carrier SLA & Telemetry</span><span>🎯</span></div>
-        <div class="metric-value" style="color: var(--brand-purple);">98.6% On-Time</div>
-        <div class="metric-sub">FedEx, DHL & Ocean Carriers</div>
+      <div class="page-actions" style="display: flex; gap: 8px;">
+        <button class="btn btn-sm btn-secondary" onclick="exportLoadingPlansCSV()">📥 Export Registry CSV</button>
+        <button class="btn btn-sm btn-primary" onclick="openCreateLoadingPlanModal()">+ Create Loading Plan</button>
       </div>
     </div>
 
-    <!-- Table Toolbar -->
+    <!-- Container Pipeline Stage Tabs -->
+    <div class="status-filter-pills" style="margin-bottom: 14px;">
+      <button class="filter-pill-btn ${f.status === 'all' ? 'active' : ''}" onclick="setTableFilter('loadingPlans', 'status', 'all')">All Container Shipments (${AppState.loadingPlans ? AppState.loadingPlans.length : 0})</button>
+      <button class="filter-pill-btn ${f.status === 'Planning & Staging' ? 'active' : ''}" onclick="setTableFilter('loadingPlans', 'status', 'Planning & Staging')">📦 Planning & Staging</button>
+      <button class="filter-pill-btn ${f.status === 'Loaded & Labeled' ? 'active' : ''}" onclick="setTableFilter('loadingPlans', 'status', 'Loaded & Labeled')">🏷️ Loaded & Labeled</button>
+      <button class="filter-pill-btn ${f.status === 'Exported & Dispatched' ? 'active' : ''}" onclick="setTableFilter('loadingPlans', 'status', 'Exported & Dispatched')">🚢 Exported & Dispatched</button>
+      <button class="filter-pill-btn ${f.status === 'Customs Cleared' ? 'active' : ''}" onclick="setTableFilter('loadingPlans', 'status', 'Customs Cleared')">⚓ Customs Exported</button>
+    </div>
+
     <div class="table-toolbar-box">
       <div class="table-toolbar-left">
         <div class="table-search-input-wrap">
@@ -11860,8 +11871,9 @@ function renderLoadingPlansView() {
         </div>
         <select class="table-filter-select" onchange="setTableFilter('loadingPlans', 'status', this.value)">
           <option value="all">All Plan Statuses</option>
-          <option value="Planning" ${f.status === 'Planning' ? 'selected' : ''}>Planning & Staging</option>
-          <option value="Exported" ${f.status === 'Exported' ? 'selected' : ''}>Exported & Dispatched</option>
+          <option value="Planning & Staging" ${f.status === 'Planning & Staging' ? 'selected' : ''}>Planning & Staging</option>
+          <option value="Loaded & Labeled" ${f.status === 'Loaded & Labeled' ? 'selected' : ''}>Loaded & Labeled</option>
+          <option value="Exported & Dispatched" ${f.status === 'Exported & Dispatched' ? 'selected' : ''}>Exported & Dispatched</option>
           <option value="Delivered" ${f.status === 'Delivered' ? 'selected' : ''}>Delivered & Verified</option>
         </select>
       </div>
@@ -11901,9 +11913,11 @@ function renderLoadingPlansView() {
                     <strong style="color: var(--text-main);">${p.destination}</strong>
                     <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">${p.consignee}</div>
                   </td>
-                  <td>
+                  <td onclick="event.stopPropagation()">
                     <div style="font-weight: 600; color: var(--text-main); font-size: 12px;">${p.carrier}</div>
-                    <code style="color: var(--brand-cyan); font-size: 11px;">${p.awb}</code>
+                    <a href="javascript:void(0)" onclick="openLiveTrackingModal('${p.awb}', '${p.carrier}', '${p.planId}')" style="color: var(--brand-cyan); font-size: 11px; font-family: var(--font-mono); text-decoration: underline; font-weight: 600;" title="Click for live carrier tracking telemetry">
+                      📡 ${p.awb}
+                    </a>
                   </td>
                   <td>
                     <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
@@ -12654,6 +12668,74 @@ function renderShipmentDetailPage(awb) {
   `;
 }
 
+// Live Carrier Telemetry & Checkpoint Modal (SOW Module 5.1)
+function openLiveTrackingModal(awb, carrier, planId) {
+  const p = (AppState.loadingPlans || []).find(item => item.awb === awb || item.planId === planId) || (AppState.loadingPlans && AppState.loadingPlans[0]);
+  const carrierName = carrier || (p ? p.carrier : "FedEx International Priority");
+  const awbCode = awb || (p ? p.awb : "7894-1102-8821");
+
+  const modal = document.getElementById("crudModal");
+  const title = document.getElementById("crudModalTitle");
+  const badge = document.getElementById("crudBadge");
+  const body = document.getElementById("crudModalBody");
+  const footer = document.getElementById("crudModalFooter");
+
+  badge.textContent = "Live Carrier Telemetry";
+  title.textContent = `Live Tracking: ${carrierName} (AWB ${awbCode})`;
+
+  const milestones = (p && p.milestones && p.milestones.length) ? p.milestones : [
+    { time: "2026-09-14 18:30", event: "Consignment Dispatched from India Central WH (Bhadohi)", location: "Bhadohi Origin Hub" },
+    { time: "2026-09-15 08:15", event: "Customs Inspection Cleared & LEO Granted (ICEGATE Port INVTZ1)", location: "ICD Babatpur / Varanasi" },
+    { time: "2026-09-15 22:40", event: "Air Cargo Pallet Loaded on Flight FX-5219 Departure", location: "Delhi IGI Cargo Air Terminal" },
+    { time: "2026-09-16 09:30", event: "Inbound Customs Clearance Verified at Stansted/Newark Hub", location: "Destination International Hub" }
+  ];
+
+  body.innerHTML = `
+    <!-- Top Summary Banner -->
+    <div style="background: var(--bg-elevated); padding: 14px; border-radius: var(--radius-md); margin-bottom: 16px; border: 1px solid var(--border-main); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+      <div>
+        <div style="font-size: 11px; color: var(--text-dim); text-transform: uppercase; font-weight: 700;">Carrier & Tracking Code</div>
+        <div style="font-size: 16px; font-weight: 800; color: var(--brand-cyan); font-family: var(--font-mono); margin-top: 2px;">
+          ${carrierName} &bull; ${awbCode}
+        </div>
+        <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">
+          Origin: <strong>${p ? p.originWh : 'India Central WH'}</strong> ➔ Destination: <strong>${p ? p.destination : 'USA 3PL Center'}</strong>
+        </div>
+      </div>
+      <div style="text-align: right;">
+        <span class="badge badge-success" style="font-size: 12px; font-weight: 700;">✓ In-Transit Telemetry Live</span>
+        <div style="font-size: 11px; color: var(--text-dim); margin-top: 4px;">Scale Weight: <strong>${p ? p.actualWeightKg : 1140} Kg</strong> &bull; Total Rolls: <strong>${p ? p.totalRolls : 40}</strong></div>
+      </div>
+    </div>
+
+    <!-- Live Milestone Timeline -->
+    <div style="margin-bottom: 16px;">
+      <h4 style="font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">
+        <span>📡 Telemetry Checkpoints & Customs Scans</span>
+      </h4>
+      <div style="display: flex; flex-direction: column; gap: 12px; padding-left: 8px; border-left: 2px solid var(--brand-cyan); margin-left: 12px;">
+        ${milestones.map((m, idx) => `
+          <div style="position: relative; padding-left: 16px;">
+            <div style="position: absolute; left: -21px; top: 2px; width: 10px; height: 10px; border-radius: 50%; background: ${idx === milestones.length - 1 ? 'var(--brand-cyan)' : 'var(--success)'}; border: 2px solid var(--bg-card); box-shadow: 0 0 6px rgba(0,210,255,0.4);"></div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px;">
+              <strong style="font-size: 13px; color: var(--text-main);">${m.event}</strong>
+              <span style="font-size: 11px; font-family: var(--font-mono); color: var(--brand-cyan);">${m.time}</span>
+            </div>
+            <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">📍 ${m.location || 'Checkpoint Facility'}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+
+  footer.innerHTML = `
+    <button class="btn btn-secondary" onclick="closeModal('crudModal')">Close</button>
+    <button class="btn btn-primary" onclick="printShippingLabel('${awbCode}')">🏷️ Print Thermal Label</button>
+  `;
+
+  modal.style.display = "flex";
+}
+
 function printShippingLabel(awb) {
   showToast(`Printing 4x6 Thermal Barcode Label for AWB ${awb} on Zebra ZT411...`, "info");
 }
@@ -12686,58 +12768,58 @@ function downloadDocumentPDF(invoiceNo, docType) {
 }
 
 function renderExportDocsView() {
-  const f = AppState.tableFilters.exportDocs || { search: "", status: "all", page: 1, pageSize: 5 };
+  const f = AppState.tableFilters.exportDocs || (AppState.tableFilters.exportDocs = { search: "", status: "all", page: 1, pageSize: 5 });
   let filtered = (AppState.exportDocs || []).filter(doc => {
-    const matchesSearch = !f.search || doc.invoiceNo.toLowerCase().includes(f.search.toLowerCase()) || 
-                          doc.orderId.toLowerCase().includes(f.search.toLowerCase()) || 
-                          doc.consignee.toLowerCase().includes(f.search.toLowerCase()) ||
-                          doc.destination.toLowerCase().includes(f.search.toLowerCase()) ||
-                          (doc.loadingPlanId && doc.loadingPlanId.toLowerCase().includes(f.search.toLowerCase()));
-    const matchesStatus = f.status === "all" || doc.status.toLowerCase().includes(f.status.toLowerCase());
+    const s = f.search ? f.search.toLowerCase() : "";
+    const matchesSearch = !s || 
+      doc.invoiceNo.toLowerCase().includes(s) || 
+      (doc.consignee && doc.consignee.toLowerCase().includes(s)) ||
+      (doc.destination && doc.destination.toLowerCase().includes(s)) ||
+      (doc.orderId && doc.orderId.toLowerCase().includes(s)) ||
+      (doc.shippingBill && doc.shippingBill.toLowerCase().includes(s));
+
+    let matchesStatus = true;
+    if (f.status && f.status !== "all") {
+      const target = f.status.toLowerCase();
+      const docSt = (doc.status || "").toLowerCase();
+      const lutSt = (doc.lutStatus || "").toLowerCase();
+      if (target === "customs passed" || target === "customs") {
+        matchesStatus = docSt.includes("passed") || docSt.includes("cleared");
+      } else if (target === "cleared" || target === "icegate") {
+        matchesStatus = docSt.includes("cleared") || (doc.shippingBill && doc.shippingBill.length > 0);
+      } else if (target === "under assessment" || target === "assessment") {
+        matchesStatus = docSt.includes("assess") || docSt.includes("pending");
+      } else if (target === "lut compliant" || target === "lut") {
+        matchesStatus = lutSt.includes("compliant") || lutSt.includes("lut");
+      } else {
+        matchesStatus = docSt.includes(target) || lutSt.includes(target);
+      }
+    }
     return matchesSearch && matchesStatus;
   });
 
-  const totalInvoices = (AppState.exportDocs || []).length;
-  const totalValUSD = (AppState.exportDocs || []).reduce((acc, d) => acc + (d.valueUSD || 0), 0);
-  const totalValINR = (AppState.exportDocs || []).reduce((acc, d) => acc + (d.valueINR || 0), 0);
-  const pagination = paginateArray(filtered, f.page || 1, f.pageSize || 5);
+  const pagination = paginateArray(filtered, f.page, f.pageSize);
 
   return `
-    <div class="page-header">
+    <div class="page-header" style="margin-bottom: 16px;">
       <div class="page-title-wrap">
-        <h1>📜 Indian Customs ICEGATE & Export Document Suite</h1>
-        <p>Commercial invoices, export packing lists, certificates of origin, and shipping bills with direct one-click PDF downloads.</p>
+        <h1 style="margin: 0; font-size: 20px;">📜 Export Document Suite</h1>
+        <p style="margin: 4px 0 0 0; font-size: 12px; color: var(--text-muted);">Official Indian Customs ICEGATE Invoices, Packing Lists, LUT and CEPC Certificates.</p>
       </div>
-      <div class="page-actions">
-        <button class="btn btn-secondary" onclick="showToast('Exporting All Invoices to CSV...', 'info')">📥 Export Registry CSV</button>
-      </div>
-    </div>
-
-    <!-- 4 Bento KPI Metrics -->
-    <div class="bento-metrics-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 20px; gap: 16px;">
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Total Export Invoices</span><span>📑</span></div>
-        <div class="metric-value">${totalInvoices} Active Invoices</div>
-        <div class="metric-sub">Commercial & Proforma Invoices</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Export Realization</span><span>💵</span></div>
-        <div class="metric-value" style="color: var(--success); font-family: var(--font-mono);">$${totalValUSD.toLocaleString(undefined, { minimumFractionDigits: 2 })} USD</div>
-        <div class="metric-sub">₹${totalValINR.toLocaleString()} INR via EEFC</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Shipping Bills on ICEGATE</span><span>🏛️</span></div>
-        <div class="metric-value" style="color: var(--brand-purple);">${totalInvoices} Filed & Cleared</div>
-        <div class="metric-sub">ICD Babatpur & JNPT Port</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">GST LUT Tax Exemption</span><span>🇮🇳</span></div>
-        <div class="metric-value" style="color: var(--brand-cyan);">100% Tax-Free</div>
-        <div class="metric-sub">ARN: LUT/2026/08912</div>
+      <div class="page-actions" style="display: flex; gap: 8px;">
+        <button class="btn btn-sm btn-secondary" onclick="showToast('Refreshing ICEGATE Shipping Bill statuses...', 'info')">🔄 Sync ICEGATE API</button>
       </div>
     </div>
 
-    <!-- Table Toolbar with Search and Filter -->
+    <!-- Document Compliance & Status Tabs -->
+    <div class="status-filter-pills" style="margin-bottom: 14px;">
+      <button class="filter-pill-btn ${f.status === 'all' ? 'active' : ''}" onclick="setTableFilter('exportDocs', 'status', 'all')">All Export Invoices (${AppState.exportDocs ? AppState.exportDocs.length : 0})</button>
+      <button class="filter-pill-btn ${f.status === 'Customs Passed' ? 'active' : ''}" onclick="setTableFilter('exportDocs', 'status', 'Customs Passed')">✅ Customs Passed</button>
+      <button class="filter-pill-btn ${f.status === 'Cleared' ? 'active' : ''}" onclick="setTableFilter('exportDocs', 'status', 'Cleared')">🏛️ ICEGATE Cleared</button>
+      <button class="filter-pill-btn ${f.status === 'Under Assessment' ? 'active' : ''}" onclick="setTableFilter('exportDocs', 'status', 'Under Assessment')">⏳ Under Assessment</button>
+      <button class="filter-pill-btn ${f.status === 'LUT Compliant' ? 'active' : ''}" onclick="setTableFilter('exportDocs', 'status', 'LUT Compliant')">📜 LUT Compliant</button>
+    </div>
+
     <div class="table-toolbar-box">
       <div class="table-toolbar-left">
         <div class="table-search-input-wrap">
@@ -12749,10 +12831,10 @@ function renderExportDocsView() {
           <option value="Customs Passed" ${f.status === 'Customs Passed' ? 'selected' : ''}>Customs Passed</option>
           <option value="Cleared" ${f.status === 'Cleared' ? 'selected' : ''}>ICEGATE Cleared</option>
           <option value="Under Assessment" ${f.status === 'Under Assessment' ? 'selected' : ''}>Under Assessment</option>
+          <option value="LUT Compliant" ${f.status === 'LUT Compliant' ? 'selected' : ''}>LUT Compliant</option>
         </select>
       </div>
       <div class="table-toolbar-right">
-        <button class="btn btn-sm btn-secondary" onclick="showToast('Refreshing ICEGATE Shipping Bill statuses...', 'info')">🔄 Sync ICEGATE API</button>
       </div>
     </div>
 
@@ -12858,59 +12940,30 @@ function renderExportDocsView() {
 function renderReturnsView() {
   const f = AppState.tableFilters.returns || { search: "", grade: "all", page: 1, pageSize: 5 };
   let filtered = (AppState.returns || []).filter(r => {
-    const matchesSearch = !f.search || r.rmaNo.toLowerCase().includes(f.search.toLowerCase()) || 
-                          r.orderId.toLowerCase().includes(f.search.toLowerCase()) || 
-                          r.customer.toLowerCase().includes(f.search.toLowerCase()) ||
-                          r.sku.toLowerCase().includes(f.search.toLowerCase());
-    const matchesGrade = f.grade === "all" || r.grade.toLowerCase().includes(f.grade.toLowerCase());
-    return matchesSearch && matchesGrade;
+    const matchesSearch = !f.search || r.rmaNo.toLowerCase().includes(f.search.toLowerCase()) || r.customerName.toLowerCase().includes(f.search.toLowerCase());
+    return matchesSearch;
   });
 
-  const totalRMAs = (AppState.returns || []).length;
-  const totalReturnedValUSD = (AppState.returns || []).reduce((sum, r) => sum + (r.refundAmountUSD || 0), 0);
-  const totalClaimsWonUSD = (AppState.returns || []).reduce((sum, r) => sum + (r.carrierClaimUSD || 0), 0);
-  const gradeACount = (AppState.returns || []).filter(r => r.grade.includes("Grade A")).length;
-  const restockRate = totalRMAs ? Math.round((gradeACount / totalRMAs) * 100) : 80;
-
-  const pagination = paginateArray(filtered, f.page || 1, f.pageSize || 5);
+  const pagination = paginateArray(filtered, f.page, f.pageSize);
 
   return `
-    <div class="page-header">
+    <div class="page-header" style="margin-bottom: 16px;">
       <div class="page-title-wrap">
-        <h1>🔄 Reverse Logistics, Returns & Carrier Claims (RMA)</h1>
-        <p>Return Merchandise Authorization (RMA), carpet condition grading (Grade A/B/C), restocking to Edison NJ 3PL, and carrier damage claims.</p>
+        <h1 style="margin: 0; font-size: 20px;">🔄 Returns & Damage Claims</h1>
       </div>
-      <div class="page-actions">
-        <button class="btn btn-secondary" onclick="exportReturnsCSV()">📥 Export Returns CSV</button>
-        <button class="btn btn-primary" onclick="openNewReturnModal()">+ Register Return RMA</button>
+      <div class="page-actions" style="display: flex; gap: 8px;">
+        <button class="btn btn-sm btn-primary" onclick="openCreateReturnModal()">+ Log New Return</button>
       </div>
     </div>
 
-    <!-- 4 Clean Bento KPI Metrics -->
-    <div class="bento-metrics-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 20px; gap: 16px;">
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Total RMAs Logged</span><span>🔄</span></div>
-        <div class="metric-value">${totalRMAs} Returns</div>
-        <div class="metric-sub">Across US & EU E-Commerce</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Customer Refund Value</span><span>💳</span></div>
-        <div class="metric-value" style="color: var(--warning); font-family: var(--font-mono);">$${totalReturnedValUSD.toLocaleString(undefined, { minimumFractionDigits: 2 })} USD</div>
-        <div class="metric-sub">Processed via Marketplace API</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Carrier Damage Claims</span><span>💵</span></div>
-        <div class="metric-value" style="color: var(--success); font-family: var(--font-mono);">$${totalClaimsWonUSD.toLocaleString(undefined, { minimumFractionDigits: 2 })} USD</div>
-        <div class="metric-sub">FedEx & DHL In-Transit Recovery</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Grade A Restock Rate</span><span>♻️</span></div>
-        <div class="metric-value" style="color: var(--brand-cyan);">${restockRate}% Resalable</div>
-        <div class="metric-sub">Restocked directly at Edison NJ 3PL</div>
-      </div>
+    <!-- Return Claim Filter Tabs -->
+    <div class="status-filter-pills">
+      <button class="filter-pill-btn ${f.grade === 'all' ? 'active' : ''}" onclick="setTableFilter('returns', 'grade', 'all')">All Return Claims (${AppState.returns ? AppState.returns.length : 0})</button>
+      <button class="filter-pill-btn ${f.grade === 'Inspection Pending' ? 'active' : ''}" onclick="setTableFilter('returns', 'grade', 'Inspection Pending')">⚠️ Inspection Pending</button>
+      <button class="filter-pill-btn ${f.grade === 'Restocked' ? 'active' : ''}" onclick="setTableFilter('returns', 'grade', 'Restocked')">🔄 Restocked to USA 3PL</button>
+      <button class="filter-pill-btn ${f.grade === 'Refunded' ? 'active' : ''}" onclick="setTableFilter('returns', 'grade', 'Refunded')">💸 Refunded</button>
     </div>
 
-    <!-- Table Toolbar -->
     <div class="table-toolbar-box">
       <div class="table-toolbar-left">
         <div class="table-search-input-wrap">
@@ -13403,58 +13456,30 @@ function renderReturnDetailPage(rmaNo) {
 function renderCourierAuditView() {
   const f = AppState.tableFilters.courierAudit || { search: "", status: "all", page: 1, pageSize: 5 };
   let filtered = (AppState.courierAudit || []).filter(a => {
-    const matchesSearch = !f.search || a.awb.toLowerCase().includes(f.search.toLowerCase()) || 
-                          a.orderRef.toLowerCase().includes(f.search.toLowerCase()) || 
-                          a.carrier.toLowerCase().includes(f.search.toLowerCase()) ||
-                          a.sku.toLowerCase().includes(f.search.toLowerCase());
+    const matchesSearch = !f.search || a.awb.toLowerCase().includes(f.search.toLowerCase()) || a.orderId.toLowerCase().includes(f.search.toLowerCase());
     const matchesStatus = f.status === "all" || a.status.toLowerCase().includes(f.status.toLowerCase());
     return matchesSearch && matchesStatus;
   });
 
-  const totalAudits = (AppState.courierAudit || []).length;
-  const totalVariance = (AppState.courierAudit || []).reduce((sum, a) => sum + (a.varianceUSD || 0), 0);
-  const disputedCount = (AppState.courierAudit || []).filter(a => a.varianceUSD > 0).length;
-  const approvedCount = (AppState.courierAudit || []).filter(a => a.status.includes("Approved")).length;
-
-  const pagination = paginateArray(filtered, f.page || 1, f.pageSize || 5);
+  const pagination = paginateArray(filtered, f.page, f.pageSize);
 
   return `
-    <div class="page-header">
+    <div class="page-header" style="margin-bottom: 16px;">
       <div class="page-title-wrap">
-        <h1>⚖️ Courier Invoice 3-Way Audit & Dispute Engine</h1>
-        <p>Automated volumetric catch-weight reconciliation against calibrated physical packing bench weights and contractual tariff rate cards.</p>
+        <h1 style="margin: 0; font-size: 20px;">⚖️ Courier Invoice 3-Way Audit</h1>
       </div>
-      <div class="page-actions">
-        <button class="btn btn-secondary" onclick="exportAuditLedgerCSV()">📥 Export Disputes CSV</button>
-        <button class="btn btn-primary" onclick="exportBatchCourierAuditPDF()">📑 Batch Audit Report (PDF)</button>
+      <div class="page-actions" style="display: flex; gap: 8px;">
+        <button class="btn btn-sm btn-primary" onclick="openUploadCourierInvoiceModal()">+ Upload Courier CSV</button>
       </div>
     </div>
 
-    <!-- 4 Clean Bento KPI Metrics -->
-    <div class="bento-metrics-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 20px; gap: 16px;">
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Total Overcharge Detected</span><span>🚨</span></div>
-        <div class="metric-value" style="color: var(--danger); font-family: var(--font-mono);">+$${totalVariance.toFixed(2)} USD</div>
-        <div class="metric-sub">${disputedCount} Disputed Consignments</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Carrier Invoices Audited</span><span>📦</span></div>
-        <div class="metric-value">${totalAudits} AWBs Audited</div>
-        <div class="metric-sub">FedEx Express & DHL Global</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Recovered Credit Notes</span><span>💵</span></div>
-        <div class="metric-value" style="color: var(--success); font-family: var(--font-mono);">$35.70 USD</div>
-        <div class="metric-sub">${approvedCount} Claims Successfully Won</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Audit Accuracy SLA</span><span>🎯</span></div>
-        <div class="metric-value" style="color: var(--brand-cyan);">99.4% Match</div>
-        <div class="metric-sub">Calibrated Weight Log Proofs</div>
-      </div>
+    <!-- Courier Audit Filter Tabs -->
+    <div class="status-filter-pills">
+      <button class="filter-pill-btn ${f.status === 'all' ? 'active' : ''}" onclick="setTableFilter('courierAudit', 'status', 'all')">All Invoices (${AppState.courierAudit ? AppState.courierAudit.length : 0})</button>
+      <button class="filter-pill-btn ${f.status === 'Matched' ? 'active' : ''}" onclick="setTableFilter('courierAudit', 'status', 'Matched')">✅ Matched (Zero Variance)</button>
+      <button class="filter-pill-btn ${f.status === 'Disputed' ? 'active' : ''}" onclick="setTableFilter('courierAudit', 'status', 'Disputed')">⚠️ Weight Discrepancy / Overcharge</button>
     </div>
 
-    <!-- Table Toolbar -->
     <div class="table-toolbar-box">
       <div class="table-toolbar-left">
         <div class="table-search-input-wrap">
@@ -13598,58 +13623,31 @@ function downloadAuditDisputePDF(awb) {
 function renderReceivablesView() {
   const f = AppState.tableFilters.receivables || { search: "", status: "all", page: 1, pageSize: 5 };
   let filtered = (AppState.receivables || []).filter(r => {
-    const matchesSearch = !f.search || r.invoiceNo.toLowerCase().includes(f.search.toLowerCase()) || 
-                          r.client.toLowerCase().includes(f.search.toLowerCase()) || 
-                          r.shippingBillNo.toLowerCase().includes(f.search.toLowerCase()) ||
-                          r.orderId.toLowerCase().includes(f.search.toLowerCase());
+    const matchesSearch = !f.search || r.invoiceNo.toLowerCase().includes(f.search.toLowerCase()) || r.clientName.toLowerCase().includes(f.search.toLowerCase());
     const matchesStatus = f.status === "all" || r.status.toLowerCase().includes(f.status.toLowerCase());
     return matchesSearch && matchesStatus;
   });
 
-  const totalInvoices = (AppState.receivables || []).length;
-  const totalUSD = (AppState.receivables || []).reduce((sum, r) => sum + (r.amountUSD || 0), 0);
-  const realizedINR = (AppState.receivables || []).reduce((sum, r) => sum + (r.realizedINR || 0), 0);
-  const openBalanceUSD = (AppState.receivables || []).reduce((sum, r) => sum + (r.balanceUSD || 0), 0);
-
-  const pagination = paginateArray(filtered, f.page || 1, f.pageSize || 5);
+  const pagination = paginateArray(filtered, f.page, f.pageSize);
 
   return `
-    <div class="page-header">
+    <div class="page-header" style="margin-bottom: 16px;">
       <div class="page-title-wrap">
-        <h1>🏦 B2B Export Receivables, DGFT e-BRC & Bank FIRA</h1>
-        <p>Foreign Inward Remittance Advice (FIRA) reconciliation, EDPMS settlement, and DGFT electronic Bank Realisation Certificates.</p>
+        <h1 style="margin: 0; font-size: 20px;">🏦 B2B Receivables & e-BRC</h1>
       </div>
-      <div class="page-actions">
-        <button class="btn btn-secondary" onclick="exportReceivablesLedgerCSV()">📥 Export Receivables CSV</button>
-        <button class="btn btn-primary" onclick="exportDgftComplianceReportPDF()">📑 DGFT Compliance Report (PDF)</button>
+      <div class="page-actions" style="display: flex; gap: 8px;">
+        <button class="btn btn-sm btn-primary" onclick="openRecordPaymentModal()">+ Record B2B Payment</button>
       </div>
     </div>
 
-    <!-- 4 Clean Bento KPI Metrics -->
-    <div class="bento-metrics-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 20px; gap: 16px;">
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Total Export Invoiced</span><span>🌐</span></div>
-        <div class="metric-value" style="font-family: var(--font-mono);">$${totalUSD.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
-        <div class="metric-sub">${totalInvoices} Export Invoices Tracked</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Realized In Bank (INR)</span><span>🏦</span></div>
-        <div class="metric-value" style="color: var(--success); font-family: var(--font-mono);">₹${(realizedINR / 100000).toFixed(2)} Lakhs</div>
-        <div class="metric-sub">HDFC Bank & SBI Varanasi AD Code</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Outstanding Balance</span><span>⏳</span></div>
-        <div class="metric-value" style="color: ${openBalanceUSD > 0 ? 'var(--warning)' : 'var(--text-main)'}; font-family: var(--font-mono);">$${openBalanceUSD.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
-        <div class="metric-sub">30-Day Commercial Payment Terms</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">DGFT EDPMS Status</span><span>📜</span></div>
-        <div class="metric-value" style="color: var(--brand-cyan);">100% Compliant</div>
-        <div class="metric-sub">FEMA Purpose Code P0102</div>
-      </div>
+    <!-- B2B Receivables Filter Tabs -->
+    <div class="status-filter-pills">
+      <button class="filter-pill-btn ${f.status === 'all' ? 'active' : ''}" onclick="setTableFilter('receivables', 'status', 'all')">All Invoices (${AppState.receivables ? AppState.receivables.length : 0})</button>
+      <button class="filter-pill-btn ${f.status === 'Payment Pending' ? 'active' : ''}" onclick="setTableFilter('receivables', 'status', 'Payment Pending')">⏳ Payment Pending</button>
+      <button class="filter-pill-btn ${f.status === 'Realized' ? 'active' : ''}" onclick="setTableFilter('receivables', 'status', 'Realized')">✅ Bank Realized</button>
+      <button class="filter-pill-btn ${f.status === 'e-BRC Issued' ? 'active' : ''}" onclick="setTableFilter('receivables', 'status', 'e-BRC Issued')">📜 e-BRC Issued</button>
     </div>
 
-    <!-- Table Toolbar -->
     <div class="table-toolbar-box">
       <div class="table-toolbar-left">
         <div class="table-search-input-wrap">
@@ -15306,108 +15304,34 @@ function exportFullSkuHistoryCSV() {
 
 function renderSkuHistoryView() {
   const f = AppState.tableFilters.skuHistory || (AppState.tableFilters.skuHistory = { search: "", sku: "all", type: "all", sortBy: "timestamp", sortOrder: "desc", page: 1, pageSize: 10 });
+  const allMovementTypes = Array.from(new Set((AppState.skuHistory || []).map(i => i.changeType || i.type || "Movement")));
 
-  // Distinct SKUs list for dropdown
-  const allKnownSkus = Array.from(new Set([
-    ...AppState.skus.map(s => s.sku),
-    ...(AppState.skuHistory || []).map(h => h.sku)
-  ])).filter(Boolean).sort();
-
-  // All 10 SOW Movement Types
-  const allMovementTypes = [
-    "Inward Stock Creation",
-    "Proof of Packing Sealed",
-    "Order Allocation & Lock",
-    "Inter-Warehouse Transfer",
-    "Ocean Replenishment Inbound",
-    "Courier Outbound Dispatch",
-    "Physical Cycle Count Adjustment",
-    "Customer Return Restock (RMA)",
-    "Damaged / QC Scrap Write-Off",
-    "MTO Production Finish"
-  ];
-
-  // Filter
-  let filtered = (AppState.skuHistory || []).filter(h => {
-    const matchesSearch = !f.search ||
-      (h.sku && h.sku.toLowerCase().includes(f.search.toLowerCase())) ||
-      (h.type && h.type.toLowerCase().includes(f.search.toLowerCase())) ||
-      (h.source && h.source.toLowerCase().includes(f.search.toLowerCase())) ||
-      (h.dest && h.dest.toLowerCase().includes(f.search.toLowerCase())) ||
-      (h.ref && h.ref.toLowerCase().includes(f.search.toLowerCase())) ||
-      (h.notes && h.notes.toLowerCase().includes(f.search.toLowerCase())) ||
-      (h.user && h.user.toLowerCase().includes(f.search.toLowerCase()));
-    const matchesSku = !f.sku || f.sku === "all" || (h.sku && h.sku.toLowerCase() === f.sku.toLowerCase());
-    const matchesType = !f.type || f.type === "all" || (h.type && h.type.toLowerCase() === f.type.toLowerCase());
-    return matchesSearch && matchesSku && matchesType;
+  let filtered = (AppState.skuHistory || []).filter(item => {
+    const matchesSearch = !f.search || item.sku.toLowerCase().includes(f.search) || item.refNo.toLowerCase().includes(f.search);
+    const matchesType = f.type === "all" || item.changeType.toLowerCase() === f.type.toLowerCase();
+    return matchesSearch && matchesType;
   });
 
-  // Sort
-  filtered.sort((a, b) => {
-    let valA = a[f.sortBy] ?? "";
-    let valB = b[f.sortBy] ?? "";
-    if (typeof valA === "string") valA = valA.toLowerCase();
-    if (typeof valB === "string") valB = valB.toLowerCase();
-    if (valA < valB) return f.sortOrder === "asc" ? -1 : 1;
-    if (valA > valB) return f.sortOrder === "asc" ? 1 : -1;
-    return 0;
-  });
-
-  // Paginate
   const pagination = paginateArray(filtered, f.page, f.pageSize);
 
-  // Metrics
-  const totalEntries = (AppState.skuHistory || []).length;
-  const inwardCount = (AppState.skuHistory || []).filter(h => (h.type || '').includes('Inward') || (h.type || '').includes('Receipt') || (h.type || '').includes('Finish')).length;
-  const packingProofCount = (AppState.skuHistory || []).filter(h => (h.type || '').includes('Proof of Packing')).length;
-  const orderCount = (AppState.skuHistory || []).filter(h => (h.type || '').includes('Order') || (h.type || '').includes('Allocation') || (h.type || '').includes('Dispatch')).length;
-
   return `
-    <div class="page-header">
+    <div class="page-header" style="margin-bottom: 16px;">
       <div class="page-title-wrap">
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <h1 style="margin: 0;">⏱️ Complete SKU History Ledger</h1>
-          <span class="badge badge-primary" style="font-size: 11px;">Audit Trail & Action Hub</span>
-        </div>
-        <p style="margin-top: 4px;">
-          Immutable chronological audit ledger of all rug stock movements, packing camera snapshots, concurrency reservations, transfers, and dispatches.
-        </p>
+        <h1 style="margin: 0; font-size: 20px;">⏱️ Inventory Transaction History</h1>
       </div>
-      <div class="page-actions" style="display: flex; gap: 8px; flex-wrap: wrap;">
-        <button class="btn btn-sm btn-secondary" onclick="exportFullSkuHistoryCSV()">📥 Export Ledger CSV</button>
-        <button class="btn btn-sm btn-secondary" onclick="openChangeMovementTypeModal()" style="color: var(--brand-cyan); font-weight: 700; border-color: rgba(6, 182, 212, 0.4);">🏷️ Change Movement Type</button>
-        <button class="btn btn-sm btn-secondary" onclick="openPackingCameraSnapshotModal('PACK-89015', 'HDDN-TIG-39')" style="background: rgba(6, 182, 212, 0.1); color: var(--brand-cyan); font-weight: 700;">📸 Packing Camera Snapshot</button>
-        <button class="btn btn-sm btn-secondary" onclick="openStockTransferModal()">⇆ Stock Transfer</button>
-        <button class="btn btn-sm btn-secondary" onclick="openStockAdjustModal()">± Adjust Stock</button>
-        <button class="btn btn-sm btn-primary" onclick="openAddInventoryModal()">+ Inward New Stock</button>
+      <div class="page-actions" style="display: flex; gap: 8px;">
+        <button class="btn btn-sm btn-secondary" onclick="exportSkuHistoryCSV()">📥 Export Log</button>
       </div>
     </div>
 
-    <!-- Bento Ledger Metrics -->
-    <div class="bento-metrics-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 20px; gap: 16px;">
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Total Logged Movements</span><span>📜</span></div>
-        <div class="metric-value" style="font-size: 22px; font-weight: 800;">${totalEntries} Records</div>
-        <div class="metric-sub">Complete Chronological History</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Inward Receipts</span><span>📥</span></div>
-        <div class="metric-value" style="font-size: 22px; font-weight: 800; color: var(--success);">${inwardCount} Events</div>
-        <div class="metric-sub">Mill Production & GRN Receipts</div>
-      </div>
-      <div class="metric-card" style="border: 1px solid rgba(6, 182, 212, 0.35);">
-        <div class="metric-header"><span class="metric-label">Proof of Packing Sealed</span><span>📸</span></div>
-        <div class="metric-value" style="font-size: 22px; font-weight: 800; color: var(--brand-cyan);">${packingProofCount} Verified</div>
-        <div class="metric-sub">QC Photographic Snapshots</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Orders & Dispatches</span><span>🚚</span></div>
-        <div class="metric-value" style="font-size: 22px; font-weight: 800; color: var(--warning);">${orderCount} Events</div>
-        <div class="metric-sub">Allocations & Outbound Handoffs</div>
-      </div>
+    <!-- History Audit Filter Tabs -->
+    <div class="status-filter-pills">
+      <button class="filter-pill-btn ${f.type === 'all' ? 'active' : ''}" onclick="setTableFilter('skuHistory', 'type', 'all')">All Audit Logs (${AppState.skuHistory ? AppState.skuHistory.length : 0})</button>
+      <button class="filter-pill-btn ${f.type === 'GRN' ? 'active' : ''}" onclick="setTableFilter('skuHistory', 'type', 'GRN')">📥 Stock In (GRN)</button>
+      <button class="filter-pill-btn ${f.type === 'Dispatch' ? 'active' : ''}" onclick="setTableFilter('skuHistory', 'type', 'Dispatch')">📤 Sales Dispatch</button>
+      <button class="filter-pill-btn ${f.type === 'Transfer' ? 'active' : ''}" onclick="setTableFilter('skuHistory', 'type', 'Transfer')">⇆ Warehouse Transfer</button>
     </div>
 
-    <!-- Table Toolbar with Movement Type Filter & Search Input -->
     <div class="table-toolbar-box">
       <div class="table-toolbar-left" style="flex-wrap: wrap; gap: 10px;">
         <!-- Search Input -->
@@ -15586,6 +15510,7 @@ function renderSkuHistoryView() {
     </div>
   `;
 }
+window.renderSkuHistoryView = renderSkuHistoryView;
 
 // Inline Movement Type Updater for SKU History
 function changeSkuHistoryMovementType(index, newType) {
@@ -15876,10 +15801,6 @@ function openPackingCameraSnapshotModal(packRef, skuCode) {
             <span style="color: var(--text-muted);">👷 Inspector / Lead:</span>
             <strong style="color: var(--brand-cyan);">${historyItem.user}</strong>
           </div>
-          <div style="display: flex; justify-content: space-between; padding-bottom: 6px; border-bottom: 1px solid var(--border-subtle);">
-            <span style="color: var(--text-muted);">📍 Station Location:</span>
-            <span>${historyItem.source}</span>
-          </div>
           <div style="display: flex; justify-content: space-between;">
             <span style="color: var(--text-muted);">🔒 Security Tamper Seal:</span>
             <code style="color: var(--warning); font-size: 11px;">POLY-SEAL-#99214-TAMPER-EVIDENT</code>
@@ -15943,28 +15864,430 @@ function snapPackingCameraPhoto(skuCode) {
 // MODULE 8: WORKSTREAM 1 — DEMAND & REPLENISHMENT FORECASTING VIEW
 // ============================================================================
 
+// MODAL 1: SKU Demand Forecasting & Sales Velocity Charts Modal (Overall Forecasting)
+function openSkuForecastModal(skuCode) {
+  const sku = (AppState.skus || []).find(s => s.sku === skuCode) || AppState.skus[0];
+  const modal = document.getElementById("crudModal");
+  const box = modal ? modal.querySelector('.modal-box') : null;
+  if (box) {
+    box.style.maxWidth = "1260px";
+    box.style.width = "96vw";
+    box.style.maxHeight = "96vh";
+  }
+
+  const title = document.getElementById("crudModalTitle");
+  const badge = document.getElementById("crudBadge");
+  const body = document.getElementById("crudModalBody");
+  const footer = document.getElementById("crudModalFooter");
+
+  const usaStock = sku.stock ? (sku.stock.usaAvailable || 0) : 18;
+  const indiaStock = sku.stock ? (sku.stock.indiaAvailable || 0) : 45;
+  const inTransit = sku.stock ? (sku.stock.inTransit || 0) : 25;
+  const dailyVelocity = sku.sku.includes('HT-0810') ? 1.8 : sku.sku.includes('HK-0912') ? 1.1 : sku.sku.includes('DHU') ? 1.4 : 0.8;
+  
+  const weeklySold = Math.round(dailyVelocity * 7);
+  const monthlySold = Math.round(dailyVelocity * 30);
+  const yearlySold = Math.round(dailyVelocity * 365);
+
+  const daysRemaining = (usaStock / dailyVelocity).toFixed(1);
+  const mfgLeadTimeDays = 45; // 45 days Bhadohi loom weaving & export lead time
+  const outOfStockDays = Math.max(0, Math.round(mfgLeadTimeDays - parseFloat(daysRemaining)));
+  const suggestedReorderQty = Math.round(monthlySold * 2); // 60 days replenishment buffer
+
+  if (badge) badge.textContent = "AI Demand Forecasting & Replenishment Analytics";
+  if (title) title.textContent = `📊 Overall SKU Sales Velocity & Demand Analytics: ${sku.sku}`;
+
+  if (body) {
+    body.style.overflowY = "auto";
+    body.style.padding = "14px 18px";
+    body.innerHTML = `
+      <!-- Top Status Warning Banner -->
+      <div style="background: ${outOfStockDays > 0 ? 'rgba(239, 68, 68, 0.1)' : 'rgba(16, 185, 129, 0.1)'}; border: 1px solid ${outOfStockDays > 0 ? 'rgba(239, 68, 68, 0.3)' : 'rgba(16, 185, 129, 0.3)'}; padding: 8px 14px; border-radius: 6px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+        <div>
+          <strong style="color: ${outOfStockDays > 0 ? 'var(--danger)' : 'var(--success)'}; font-size: 13px;">
+            ${outOfStockDays > 0 ? `🚨 Stockout Risk: Projected Out of Stock for ${outOfStockDays} Days!` : '✅ Healthy Inventory Level'}
+          </strong>
+          <span style="font-size: 11px; color: var(--text-muted); margin-left: 8px;">
+            USA Stock runs out in <strong>${daysRemaining} Days</strong> &bull; Bhadohi Loom Lead Time: <strong>${mfgLeadTimeDays} Days</strong>
+          </span>
+        </div>
+        <div style="display: flex; gap: 6px;">
+          <button class="btn btn-xs btn-secondary" onclick="closeModal('crudModal'); openMultiWarehouseBalancingModal('${sku.sku}');">
+            🏭 Warehouse-wise Forecasting
+          </button>
+          <button class="btn btn-xs btn-primary" onclick="closeModal('crudModal'); if (window.openCreatePoModal) openCreatePoModal('${sku.sku}');">
+            + Reorder ${suggestedReorderQty} Rolls Now
+          </button>
+        </div>
+      </div>
+
+      <!-- 2-COLUMN SIDE-BY-SIDE MAIN CHARTS GRID -->
+      <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 10px; margin-bottom: 10px;">
+        
+        <!-- CARD 1: Daily Orders vs 7-Day Moving Average -->
+        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 10px 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <strong style="font-size: 12.5px; color: var(--text-main);">Daily orders vs 7-day moving average</strong>
+            <div style="display: flex; gap: 10px; font-size: 10px; font-weight: 600;">
+              <span style="display: inline-flex; align-items: center; gap: 4px; color: #f59e0b;">
+                <span style="width: 7px; height: 7px; background: #f59e0b; border-radius: 50%;"></span> Daily Orders
+              </span>
+              <span style="display: inline-flex; align-items: center; gap: 4px; color: #6366f1;">
+                <span style="width: 7px; height: 7px; background: #6366f1; border-radius: 50%;"></span> 7-day Moving Avg
+              </span>
+            </div>
+          </div>
+
+          <svg width="100%" height="135" viewBox="0 0 460 135" style="overflow: visible;">
+            <line x1="30" y1="15" x2="445" y2="15" stroke="var(--border-subtle)" stroke-dasharray="3 3"/>
+            <line x1="30" y1="42" x2="445" y2="42" stroke="var(--border-subtle)" stroke-dasharray="3 3"/>
+            <line x1="30" y1="69" x2="445" y2="69" stroke="var(--border-subtle)" stroke-dasharray="3 3"/>
+            <line x1="30" y1="96" x2="445" y2="96" stroke="var(--border-subtle)" stroke-dasharray="3 3"/>
+            <line x1="30" y1="115" x2="445" y2="115" stroke="var(--border-subtle)"/>
+
+            <text x="24" y="18" font-size="8" fill="var(--text-muted)" text-anchor="end">100</text>
+            <text x="24" y="45" font-size="8" fill="var(--text-muted)" text-anchor="end">80</text>
+            <text x="24" y="72" font-size="8" fill="var(--text-muted)" text-anchor="end">60</text>
+            <text x="24" y="99" font-size="8" fill="var(--text-muted)" text-anchor="end">20</text>
+            <text x="24" y="118" font-size="8" fill="var(--text-muted)" text-anchor="end">0</text>
+
+            <path d="M 35,20 Q 65,35 95,24 T 155,18 T 215,48 T 275,28 T 335,60 T 395,85 T 435,110" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-dasharray="3 3"/>
+            <circle cx="35" cy="20" r="3" fill="#f59e0b"/>
+            <circle cx="95" cy="24" r="3" fill="#f59e0b"/>
+            <circle cx="155" cy="18" r="3" fill="#f59e0b"/>
+            <circle cx="215" cy="48" r="3" fill="#f59e0b"/>
+            <circle cx="275" cy="28" r="3" fill="#f59e0b"/>
+            <circle cx="335" cy="60" r="3" fill="#f59e0b"/>
+            <circle cx="395" cy="85" r="3" fill="#f59e0b"/>
+
+            <path d="M 35,42 Q 75,36 115,34 T 195,32 T 275,38 T 355,44 T 435,58" fill="none" stroke="#6366f1" stroke-width="2.5"/>
+
+            <text x="35" y="128" font-size="7.5" fill="var(--text-muted)" text-anchor="middle">02 Sep</text>
+            <text x="95" y="128" font-size="7.5" fill="var(--text-muted)" text-anchor="middle">05 Sep</text>
+            <text x="155" y="128" font-size="7.5" fill="var(--text-muted)" text-anchor="middle">08 Sep</text>
+            <text x="215" y="128" font-size="7.5" fill="var(--text-muted)" text-anchor="middle">11 Sep</text>
+            <text x="275" y="128" font-size="7.5" fill="var(--text-muted)" text-anchor="middle">14 Sep</text>
+            <text x="335" y="128" font-size="7.5" font-weight="700" fill="var(--brand-cyan)" text-anchor="middle">16 Sep (Today)</text>
+            <text x="435" y="128" font-size="7.5" fill="var(--text-muted)" text-anchor="middle">20 Sep</text>
+          </svg>
+        </div>
+
+        <!-- CARD 2: This Week vs Last Week -->
+        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 10px 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <strong style="font-size: 12.5px; color: var(--text-main);">This week vs Last week</strong>
+            <div style="display: flex; gap: 8px; font-size: 10px; align-items: center;">
+              <span style="background: rgba(239, 68, 68, 0.15); color: #ef4444; font-weight: 700; font-size: 10px; padding: 2px 6px; border-radius: 4px;">-25.2%</span>
+              <span style="display: inline-flex; align-items: center; gap: 4px; color: #6366f1; font-weight: 600;">
+                <span style="width: 7px; height: 7px; background: #6366f1; border-radius: 50%;"></span> This week
+              </span>
+              <span style="display: inline-flex; align-items: center; gap: 4px; color: #94a3b8; font-weight: 600;">
+                <span style="width: 7px; height: 7px; background: #94a3b8; border-radius: 50%;"></span> Last week
+              </span>
+            </div>
+          </div>
+
+          <svg width="100%" height="135" viewBox="0 0 400 135" style="overflow: visible;">
+            <defs>
+              <linearGradient id="refThisWeekGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#6366f1" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#6366f1" stop-opacity="0.0"/>
+              </linearGradient>
+            </defs>
+
+            <line x1="30" y1="15" x2="385" y2="15" stroke="var(--border-subtle)" stroke-dasharray="3 3"/>
+            <line x1="30" y1="42" x2="385" y2="42" stroke="var(--border-subtle)" stroke-dasharray="3 3"/>
+            <line x1="30" y1="69" x2="385" y2="69" stroke="var(--border-subtle)" stroke-dasharray="3 3"/>
+            <line x1="30" y1="96" x2="385" y2="96" stroke="var(--border-subtle)" stroke-dasharray="3 3"/>
+            <line x1="30" y1="115" x2="385" y2="115" stroke="var(--border-subtle)"/>
+
+            <text x="24" y="18" font-size="8" fill="var(--text-muted)" text-anchor="end">100</text>
+            <text x="24" y="45" font-size="8" fill="var(--text-muted)" text-anchor="end">80</text>
+            <text x="24" y="72" font-size="8" fill="var(--text-muted)" text-anchor="end">60</text>
+            <text x="24" y="99" font-size="8" fill="var(--text-muted)" text-anchor="end">40</text>
+            <text x="24" y="118" font-size="8" fill="var(--text-muted)" text-anchor="end">20</text>
+
+            <path d="M 35,40 Q 85,35 135,28 T 235,25 T 335,42 T 380,36" fill="none" stroke="#94a3b8" stroke-width="1.8"/>
+            <polygon points="35,52 85,64 135,36 185,38 235,28 285,58 335,88 380,108 380,115 35,115" fill="url(#refThisWeekGrad)"/>
+            <path d="M 35,52 Q 85,64 135,36 T 235,28 T 335,88 T 380,108" fill="none" stroke="#6366f1" stroke-width="2.2"/>
+
+            <text x="35" y="128" font-size="7.5" fill="var(--text-muted)">Thu</text>
+            <text x="92" y="128" font-size="7.5" fill="var(--text-muted)">Fri</text>
+            <text x="150" y="128" font-size="7.5" fill="var(--text-muted)">Sat</text>
+            <text x="208" y="128" font-size="7.5" fill="var(--text-muted)">Sun</text>
+            <text x="265" y="128" font-size="7.5" fill="var(--text-muted)">Mon</text>
+            <text x="322" y="128" font-size="7.5" fill="var(--text-muted)">Tue</text>
+            <text x="380" y="128" font-size="7.5" fill="var(--text-muted)">Wed</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- BOTTOM FULL-WIDTH CARD: Monthly Sales Run-Rate & Projected Stock Depletion Trajectory -->
+      <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 10px 12px; margin-bottom: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <strong style="font-size: 12.5px; color: var(--text-main);">Monthly Sales Run-Rate & Projected Stock Depletion Trajectory</strong>
+          <div style="display: flex; gap: 14px; font-size: 10px; font-weight: 600;">
+            <span style="display: inline-flex; align-items: center; gap: 4px; color: #06b6d4;">
+              <span style="width: 7px; height: 7px; background: #06b6d4; border-radius: 50%;"></span> Monthly Run-Rate (${monthlySold}/mo)
+            </span>
+            <span style="display: inline-flex; align-items: center; gap: 4px; color: #ef4444;">
+              <span style="width: 7px; height: 7px; background: #ef4444; border-radius: 50%;"></span> Stockout Horizon (Day ${daysRemaining})
+            </span>
+          </div>
+        </div>
+
+        <svg width="100%" height="95" viewBox="0 0 900 95" style="overflow: visible;">
+          <defs>
+            <linearGradient id="refMonthlyBurnGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.0"/>
+            </linearGradient>
+          </defs>
+
+          <line x1="40" y1="12" x2="860" y2="12" stroke="var(--border-subtle)" stroke-dasharray="3 3"/>
+          <line x1="40" y1="38" x2="860" y2="38" stroke="var(--border-subtle)" stroke-dasharray="3 3"/>
+          <line x1="40" y1="64" x2="860" y2="64" stroke="var(--border-subtle)" stroke-dasharray="3 3"/>
+          <line x1="40" y1="80" x2="860" y2="80" stroke="var(--border-subtle)"/>
+
+          <text x="32" y="15" font-size="8" fill="var(--text-muted)" text-anchor="end">150</text>
+          <text x="32" y="41" font-size="8" fill="var(--text-muted)" text-anchor="end">75</text>
+          <text x="32" y="67" font-size="8" fill="var(--text-muted)" text-anchor="end">0</text>
+
+          <polygon points="50,22 170,26 290,18 410,28 530,36 650,50 770,70 830,80 830,80 50,80" fill="url(#refMonthlyBurnGrad)"/>
+          <path d="M50,22 L170,26 L290,18 L410,28 L530,36 L650,50 L770,70 L830,80" fill="none" stroke="#06b6d4" stroke-width="2.2"/>
+
+          <line x1="650" y1="8" x2="650" y2="80" stroke="#ef4444" stroke-dasharray="3 3" stroke-width="1.8"/>
+          <circle cx="650" cy="50" r="4" fill="#ef4444"/>
+          <text x="658" y="18" font-size="10" font-weight="800" fill="#ef4444">Stockout: Day ${daysRemaining}</text>
+
+          <text x="50" y="92" font-size="8" fill="var(--text-muted)">3 Months Ago</text>
+          <text x="230" y="92" font-size="8" fill="var(--text-muted)">2 Months Ago</text>
+          <text x="410" y="92" font-size="8" fill="var(--text-muted)">Current Month</text>
+          <text x="590" y="92" font-size="8" fill="var(--text-muted)">Next Month (Burn)</text>
+          <text x="770" y="92" font-size="8" font-weight="700" fill="#ef4444">+2 Months (Out of Stock)</text>
+        </svg>
+      </div>
+
+      <!-- 6 KEY ANALYTICS BENTO CARDS (Single 1x6 Horizontal Row) -->
+      <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-bottom: 0px;">
+        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 8px 10px; border-radius: 6px;">
+          <div style="font-size: 9.5px; color: var(--text-muted); font-weight: 700;">📅 WEEKLY SOLD</div>
+          <div style="font-size: 15px; font-weight: 800; font-family: var(--font-mono); color: var(--text-main); margin-top: 2px;">${weeklySold} Rolls / wk</div>
+          <div style="font-size: 9px; color: var(--text-dim);">Daily: ${dailyVelocity}/day</div>
+        </div>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 8px 10px; border-radius: 6px;">
+          <div style="font-size: 9.5px; color: var(--text-muted); font-weight: 700;">🗓️ MONTHLY SOLD</div>
+          <div style="font-size: 15px; font-weight: 800; font-family: var(--font-mono); color: var(--text-main); margin-top: 2px;">${monthlySold} Rolls / mo</div>
+          <div style="font-size: 9px; color: var(--text-dim);">Run-rate benchmark</div>
+        </div>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 8px 10px; border-radius: 6px;">
+          <div style="font-size: 9.5px; color: var(--text-muted); font-weight: 700;">📆 YEARLY SOLD</div>
+          <div style="font-size: 15px; font-weight: 800; font-family: var(--font-mono); color: var(--text-main); margin-top: 2px;">${yearlySold} Rolls / yr</div>
+          <div style="font-size: 9px; color: var(--text-dim);">Annualized volume</div>
+        </div>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 8px 10px; border-radius: 6px;">
+          <div style="font-size: 9.5px; color: var(--text-muted); font-weight: 700;">📦 CURRENT USA STOCK</div>
+          <div style="font-size: 15px; font-weight: 800; font-family: var(--font-mono); color: var(--brand-cyan); margin-top: 2px;">${usaStock} Rolls</div>
+          <div style="font-size: 9px; color: var(--text-dim);">Edison 3PL</div>
+        </div>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 8px 10px; border-radius: 6px;">
+          <div style="font-size: 9.5px; color: var(--text-muted); font-weight: 700;">⏳ DAYS REMAINING</div>
+          <div style="font-size: 15px; font-weight: 800; font-family: var(--font-mono); color: ${daysRemaining < 20 ? 'var(--danger)' : 'var(--success)'}; margin-top: 2px;">${daysRemaining} Days</div>
+          <div style="font-size: 9px; color: var(--text-dim);">Until stock hits 0</div>
+        </div>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 8px 10px; border-radius: 6px;">
+          <div style="font-size: 9.5px; color: var(--text-muted); font-weight: 700;">🏭 LOOM LEAD TIME</div>
+          <div style="font-size: 15px; font-weight: 800; font-family: var(--font-mono); color: var(--warning); margin-top: 2px;">${mfgLeadTimeDays} Days</div>
+          <div style="font-size: 9px; color: var(--text-dim);">Bhadohi Loom Weaving</div>
+        </div>
+      </div>
+    `;
+  }
+
+  if (footer) {
+    footer.innerHTML = `
+      <button class="btn btn-secondary" onclick="closeModal('crudModal')">Close</button>
+      <button class="btn btn-secondary" onclick="closeModal('crudModal'); openMultiWarehouseBalancingModal('${sku.sku}');">
+        🏭 Warehouse-wise Forecasting
+      </button>
+      <button class="btn btn-primary" onclick="closeModal('crudModal'); if (window.openCreatePoModal) openCreatePoModal('${sku.sku}');">
+        📋 Generate Loom PO (${suggestedReorderQty} Rolls)
+      </button>
+    `;
+  }
+
+  if (modal) modal.style.display = "flex";
+}
+
+// MODAL 2: Dynamic Multi-Warehouse & FBA Stock Rebalancing Modal (Warehouse-wise Forecasting)
+function openMultiWarehouseBalancingModal(skuCode) {
+  const sku = (AppState.skus || []).find(s => s.sku === skuCode) || AppState.skus[0];
+  const modal = document.getElementById("crudModal");
+  const box = modal ? modal.querySelector('.modal-box') : null;
+  if (box) {
+    box.style.maxWidth = "1260px";
+    box.style.width = "96vw";
+    box.style.maxHeight = "96vh";
+  }
+
+  const title = document.getElementById("crudModalTitle");
+  const badge = document.getElementById("crudBadge");
+  const body = document.getElementById("crudModalBody");
+  const footer = document.getElementById("crudModalFooter");
+
+  if (badge) badge.textContent = "AI Multi-Node Supply Chain Engine";
+  if (title) title.textContent = `🏭 Warehouse-wise Stock & Rebalance Forecast: ${sku.sku}`;
+
+  if (body) {
+    body.style.overflowY = "auto";
+    body.style.padding = "14px 18px";
+  }
+
+  const warehouses = [
+    { name: "⚡ Amazon FBA US East (Hazleton FC)", type: "Amazon FBA", stock: 140, velocity: 22.5, daysLeft: 6.2, leadTime: "2-3 Days Ground", status: "CRITICAL" },
+    { name: "🇺🇸 USA 3PL Hub (Edison, NJ)", type: "3PL Warehouse", stock: 185, velocity: 3.2, daysLeft: 57.8, leadTime: "1-2 Days Express", status: "SURPLUS" },
+    { name: "⚡ Amazon FBA US West (Moreno Valley FC)", type: "Amazon FBA", stock: 95, velocity: 12.0, daysLeft: 7.9, leadTime: "4 Days Freight", status: "WARNING" },
+    { name: "🇪🇺 EU 3PL Hub (Rotterdam, NL)", type: "3PL Warehouse", stock: 60, velocity: 1.5, daysLeft: 40.0, leadTime: "12 Days Transatlantic", status: "HEALTHY" },
+    { name: "🇮🇳 India Main Mill (Bhadohi Factory)", type: "Factory Loom", stock: 320, velocity: 0.0, daysLeft: 90.0, leadTime: "35 Days Ocean", status: "ORIGIN" }
+  ];
+
+  if (body) {
+    body.innerHTML = `
+      <!-- Top Alert Banner -->
+      <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); padding: 8px 14px; border-radius: 6px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <strong style="color: var(--danger); font-size: 13px;">🚨 Dynamic High-Demand Imbalance Detected!</strong>
+          <span style="font-size: 11px; color: var(--text-muted); margin-left: 8px;">
+            <strong>Amazon FBA US East</strong> (22.5 rolls/day) will stockout in <strong>6.2 Days</strong>, while <strong>USA 3PL Edison</strong> (3.2 rolls/day) has <strong>57.8 Days Surplus Stock</strong>.
+          </span>
+        </div>
+        <button class="btn btn-xs btn-primary" onclick="showToast('Executing automated FBA Rebalancing Transfer manifest!', 'success'); closeModal('crudModal');">
+          ⚡ Auto-Execute Rebalance
+        </button>
+      </div>
+
+      <!-- Dynamic Multi-Warehouse Stock & Velocity Matrix Table -->
+      <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 10px 12px; margin-bottom: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <strong style="font-size: 12.5px; color: var(--text-main);">🏢 Dynamic Warehouse Stock, Sales Velocity & Inter-WH Lead Time Matrix</strong>
+          <span style="font-size: 10px; color: var(--text-muted);">Real-time allocation across 5 node hubs</span>
+        </div>
+        <table class="data-table" style="width: 100%; font-size: 11.5px;">
+          <thead>
+            <tr style="background: var(--bg-main);">
+              <th style="padding: 6px 10px;">Warehouse Hub Name</th>
+              <th style="padding: 6px 10px;">Facility Type</th>
+              <th style="padding: 6px 10px;">Current Stock Balance</th>
+              <th style="padding: 6px 10px;">Sales Velocity</th>
+              <th style="padding: 6px 10px;">Days Stock Left</th>
+              <th style="padding: 6px 10px;">Inter-WH Lead Time</th>
+              <th style="padding: 6px 10px;">Stock Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${warehouses.map(w => `
+              <tr>
+                <td style="padding: 6px 10px;"><strong>${w.name}</strong></td>
+                <td style="padding: 6px 10px;"><span class="badge badge-secondary" style="font-size: 9.5px;">${w.type}</span></td>
+                <td style="padding: 6px 10px;"><strong style="font-family: var(--font-mono); color: var(--brand-cyan);">${w.stock} Rolls</strong></td>
+                <td style="padding: 6px 10px;"><strong>${w.velocity} / day</strong></td>
+                <td style="padding: 6px 10px;">
+                  <strong style="color: ${w.daysLeft < 10 ? 'var(--danger)' : w.daysLeft < 20 ? 'var(--warning)' : 'var(--success)'}; font-family: var(--font-mono);">
+                    ${w.daysLeft} Days
+                  </strong>
+                </td>
+                <td style="padding: 6px 10px; color: var(--text-muted);">${w.leadTime}</td>
+                <td style="padding: 6px 10px;">
+                  ${w.status === 'CRITICAL' ? '<span class="badge badge-danger" style="font-size: 9.5px;">🚨 HIGH RISK (<7 Days)</span>' :
+                    w.status === 'WARNING' ? '<span class="badge badge-warning" style="font-size: 9.5px;">⚠️ WARNING</span>' :
+                    w.status === 'SURPLUS' ? '<span class="badge badge-success" style="font-size: 9.5px;">✅ SURPLUS (57D)</span>' :
+                    '<span class="badge badge-secondary" style="font-size: 9.5px;">BALANCED</span>'}
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- AI Inter-Warehouse Rebalancing Action Recommendation Cards -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 0;">
+        <!-- Recommendation Card A -->
+        <div style="background: rgba(6, 182, 212, 0.08); border: 1px solid var(--brand-cyan); border-radius: 8px; padding: 10px 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <strong style="font-size: 12px; color: var(--brand-cyan);">⇆ Primary Recommendation: Local 3PL ➔ FBA Rebalancing</strong>
+            <span class="badge badge-success" style="font-size: 9.5px;">⚡ Fastest Route (2 Days)</span>
+          </div>
+          <div style="font-size: 11px; color: var(--text-main); margin-bottom: 6px; line-height: 1.4;">
+            Transfer <strong>45 Rolls</strong> from <strong>USA 3PL Edison (Surplus: 57.8 Days)</strong> ➔ <strong>Amazon FBA US East (Stockout: 6.2 Days)</strong>.
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 10px; color: var(--text-muted);">Impact: Extends FBA East Stock life to <strong>26.2 Days</strong> instantly!</span>
+            <button class="btn btn-xs btn-primary" onclick="showToast('Stock Transfer Manifest created! 45 Rolls dispatched to Hazleton FBA FC.', 'success'); closeModal('crudModal');">
+              🚀 Transfer 45 Rolls Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Recommendation Card B -->
+        <div style="background: rgba(168, 85, 247, 0.08); border: 1px solid var(--brand-purple); border-radius: 8px; padding: 10px 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <strong style="font-size: 12px; color: var(--brand-purple);">🚢 Secondary Recommendation: Factory ➔ FBA West Ocean Ship</strong>
+            <span class="badge badge-secondary" style="font-size: 9.5px;">Factory Inbound</span>
+          </div>
+          <div style="font-size: 11px; color: var(--text-main); margin-bottom: 6px; line-height: 1.4;">
+            Ship <strong>80 Rolls</strong> direct from <strong>India Mill (Bhadohi)</strong> ➔ <strong>Amazon FBA US West FC</strong>.
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 10px; color: var(--text-muted);">Est. Ocean Arrival: <strong>35 Days</strong> &bull; Covers Holiday Surge</span>
+            <button class="btn btn-xs btn-secondary" onclick="showToast('Factory Ocean Container booking confirmed for FBA West!', 'success'); closeModal('crudModal');">
+              📦 Plan Ocean Shipment
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  if (footer) {
+    footer.innerHTML = `
+      <button class="btn btn-secondary" onclick="closeModal('crudModal')">Close</button>
+      <button class="btn btn-secondary" onclick="closeModal('crudModal'); openSkuForecastModal('${sku.sku}');">
+        📊 Overall Forecasting
+      </button>
+      <button class="btn btn-primary" onclick="showToast('Dynamic Inter-Warehouse Rebalancing Plan Executed!', 'success'); closeModal('crudModal');">
+        ⚡ Execute Complete Rebalancing Plan
+      </button>
+    `;
+  }
+
+  if (modal) modal.style.display = "flex";
+}
+
+// MAIN VIEW: Demand & Replenishment Forecasting SKU Listing
 function renderForecastingView() {
+  const f = AppState.tableFilters.forecasting || (AppState.tableFilters.forecasting = { search: "", riskFilter: "all", collection: "all", page: 1, pageSize: 10 });
   const horizon = AppState.forecastHorizon || 60;
-  
-  // Calculate forecast metrics
-  let totalProjectedDemand = 0;
-  let totalCurrentStock = 0;
-  let imminentRiskCount = 0;
-  let recommendedReplenishmentUnits = 0;
-  
-  const forecastItems = (AppState.skus || []).map(s => {
-    const usaStock = s.stock.usaAvailable || 0;
+
+  // Process forecasting data with filters
+  let filtered = (AppState.skus || []).map(s => {
+    const usaStock = s.stock ? (s.stock.usaAvailable || 0) : 18;
     const velocity = (s.sku.includes('HT-0810') ? 1.8 : s.sku.includes('HK-0912') ? 1.1 : s.sku.includes('DHU') ? 1.4 : 0.8);
     const projDemand = Math.round(velocity * horizon);
     const daysSupply = velocity > 0 ? (usaStock / velocity).toFixed(1) : "99.0";
     const runOutDate = new Date(Date.now() + parseFloat(daysSupply) * 86400000).toLocaleDateString();
-    const risk = parseFloat(daysSupply) < 15 ? "CRITICAL" : parseFloat(daysSupply) < 30 ? "WARNING" : "HEALTHY";
-    const suggestedBatch = Math.max(0, projDemand - usaStock + 20);
+    
+    let risk = "HEALTHY";
+    const days = parseFloat(daysSupply);
+    if (days < 15) risk = "CRITICAL";
+    else if (days < 30) risk = "WARNING";
+    else if (days > 90) risk = "OVERSTOCK";
 
-    totalProjectedDemand += projDemand;
-    totalCurrentStock += usaStock;
-    if (parseFloat(daysSupply) < 20) imminentRiskCount++;
-    recommendedReplenishmentUnits += suggestedBatch;
+    const suggestedBatch = Math.max(0, projDemand - usaStock + 20);
 
     return {
       sku: s.sku,
@@ -15973,384 +16296,635 @@ function renderForecastingView() {
       usaStock,
       velocity,
       projDemand,
-      daysSupply,
+      daysSupply: days,
       runOutDate,
       risk,
       suggestedBatch
     };
+  }).filter(item => {
+    const matchesSearch = !f.search || item.sku.toLowerCase().includes(f.search.toLowerCase()) || item.title.toLowerCase().includes(f.search.toLowerCase());
+    const matchesRisk = f.riskFilter === "all" || item.risk === f.riskFilter;
+    const matchesColl = f.collection === "all" || item.collection.toLowerCase().includes(f.collection.toLowerCase());
+    return matchesSearch && matchesRisk && matchesColl;
   });
 
-  // 40ft container capacity benchmark: ~180 rugs
-  const containerCapacity = 180;
-  const containerFillPct = Math.min(100, Math.round((recommendedReplenishmentUnits / containerCapacity) * 100));
+  const pagination = paginateArray(filtered, f.page, f.pageSize);
 
   return `
     <div class="page-header">
       <div class="page-title-wrap">
-        <h1>📈 Demand & Replenishment Forecasting Engine</h1>
-        <p>Intelligent burn-rate forecasting, run-out velocity tracking, and automated 40ft ocean container replenishment planning (saving $18.50/rug over air courier).</p>
+        <h1 style="margin: 0; font-size: 20px;">📈 Demand & Replenishment Forecasting</h1>
+        <p style="margin: 4px 0 0 0; font-size: 12px; color: var(--text-muted);">Real-time sales velocity, 7-day moving averages, stockout depletion curves, and dynamic multi-warehouse rebalancing.</p>
       </div>
-      <div class="page-actions">
-        <button class="btn btn-secondary" onclick="exportForecastCSV()">📥 Export Forecast CSV</button>
-        <button class="btn btn-primary" onclick="initiateOceanReplenishmentBatch()">📦 Plan 40ft Ocean Batch</button>
-      </div>
-    </div>
-
-    <!-- Horizon Switcher Toolbar -->
-    <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-card); padding: 12px 20px; border-radius: var(--radius-md); border: 1px solid var(--border-main); margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <span style="font-size: 20px;">⏱️</span>
-        <div>
-          <strong style="font-size: 13px; color: var(--text-main);">Forecast Horizon:</strong>
-          <span style="font-size: 12px; color: var(--text-muted);">Predicting stock requirements based on trailing 30-day velocity</span>
-        </div>
-      </div>
-      <div style="display: flex; gap: 8px;">
-        <button class="btn btn-sm ${horizon === 30 ? 'btn-primary' : 'btn-secondary'}" onclick="setForecastHorizon(30)" style="font-weight: 700;">
-          30 Days (Immediate Burn)
-        </button>
-        <button class="btn btn-sm ${horizon === 60 ? 'btn-primary' : 'btn-secondary'}" onclick="setForecastHorizon(60)" style="font-weight: 700;">
-          60 Days (Standard Ocean Cycle)
-        </button>
-        <button class="btn btn-sm ${horizon === 90 ? 'btn-primary' : 'btn-secondary'}" onclick="setForecastHorizon(90)" style="font-weight: 700;">
-          90 Days (Quarterly Buffer)
-        </button>
+      <div class="page-actions" style="display: flex; gap: 8px;">
+        <button class="btn btn-sm btn-secondary" onclick="exportForecastCSV()">📥 Export Forecast CSV</button>
+        <button class="btn btn-sm btn-primary" onclick="initiateOceanReplenishmentBatch()">📦 Plan 40ft Ocean Batch</button>
       </div>
     </div>
 
-    <!-- 4 Bento Forecasting KPI Cards -->
-    <div class="bento-metrics-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 24px; gap: 16px;">
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Projected Demand (${horizon} Days)</span><span>📊</span></div>
-        <div class="metric-value" style="font-family: var(--font-mono);">${totalProjectedDemand} Rug Rolls</div>
-        <div class="metric-sub">Current USA Stock: <strong>${totalCurrentStock} Rolls</strong></div>
-        <svg style="position: absolute; right: 0; bottom: 0; width: 120px; height: 44px; opacity: 0.3; pointer-events: none;" viewBox="0 0 120 44">
-          <defs>
-            <linearGradient id="demSpark" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.6" />
-              <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.0" />
-            </linearGradient>
-          </defs>
-          <path d="M0,38 Q30,30 60,20 T100,10 T120,4 L120,44 L0,44 Z" fill="url(#demSpark)" />
-          <path d="M0,38 Q30,30 60,20 T100,10 T120,4" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" />
-        </svg>
-      </div>
-
-      <div class="metric-card" style="border: 2px solid ${imminentRiskCount > 0 ? 'rgba(239, 68, 68, 0.45)' : 'var(--border-main)'};">
-        <div class="metric-header">
-          <span class="metric-label" style="color: ${imminentRiskCount > 0 ? 'var(--danger)' : 'var(--text-muted)'}; font-weight: 700;">
-            Imminent Stockout Risk
-          </span>
-          <span>🚨</span>
-        </div>
-        <div class="metric-value" style="color: var(--danger); font-family: var(--font-mono);">
-          ${imminentRiskCount} SKUs (< 20 Days)
-        </div>
-        <div class="metric-sub">Requires urgent replenishment from Bhadohi</div>
-        <svg style="position: absolute; right: 0; bottom: 0; width: 120px; height: 44px; opacity: 0.3; pointer-events: none;" viewBox="0 0 120 44">
-          <defs>
-            <linearGradient id="riskSpark" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#ef4444" stop-opacity="0.6" />
-              <stop offset="100%" stop-color="#ef4444" stop-opacity="0.0" />
-            </linearGradient>
-          </defs>
-          <path d="M0,10 Q30,16 60,28 T100,36 T120,40 L120,44 L0,44 Z" fill="url(#riskSpark)" />
-          <path d="M0,10 Q30,16 60,28 T100,36 T120,40" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" />
-        </svg>
-      </div>
-
-      <div class="metric-card" style="border: 2px solid rgba(16, 185, 129, 0.45); background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, var(--bg-card) 100%);">
-        <div class="metric-header">
-          <span class="metric-label" style="color: var(--success); font-weight: 700;">Suggested Ocean Batch</span>
-          <span>🚢</span>
-        </div>
-        <div class="metric-value" style="color: var(--success); font-family: var(--font-mono);">
-          ${recommendedReplenishmentUnits} Rolls (1 FCL)
-        </div>
-        <div class="metric-sub">Optimal 40ft High Cube Container Load</div>
-        <svg style="position: absolute; right: 0; bottom: 0; width: 120px; height: 44px; opacity: 0.3; pointer-events: none;" viewBox="0 0 120 44">
-          <defs>
-            <linearGradient id="batchSpark" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#10b981" stop-opacity="0.6" />
-              <stop offset="100%" stop-color="#10b981" stop-opacity="0.0" />
-            </linearGradient>
-          </defs>
-          <path d="M0,35 Q30,22 60,30 T100,16 T120,8 L120,44 L0,44 Z" fill="url(#batchSpark)" />
-          <path d="M0,35 Q30,22 60,30 T100,16 T120,8" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" />
-        </svg>
-      </div>
-
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Ocean vs Air Freight Savings</span><span>💵</span></div>
-        <div class="metric-value" style="color: var(--brand-purple); font-family: var(--font-mono);">
-          +$${(recommendedReplenishmentUnits * 18.50).toLocaleString()} USD Saved
-        </div>
-        <div class="metric-sub">Via Landed Ocean Rate ($1.38/kg)</div>
-        <svg style="position: absolute; right: 0; bottom: 0; width: 120px; height: 44px; opacity: 0.3; pointer-events: none;" viewBox="0 0 120 44">
-          <defs>
-            <linearGradient id="savSpark" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#a855f7" stop-opacity="0.6" />
-              <stop offset="100%" stop-color="#a855f7" stop-opacity="0.0" />
-            </linearGradient>
-          </defs>
-          <path d="M0,40 L30,32 L60,24 L90,12 L120,4 L120,44 L0,44 Z" fill="url(#savSpark)" />
-          <path d="M0,40 L30,32 L60,24 L90,12 L120,4" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" />
-        </svg>
-      </div>
+    <!-- Outer Stock Risk Status Filter Pills -->
+    <div class="status-filter-pills" style="margin-bottom: 14px;">
+      <button class="filter-pill-btn ${f.riskFilter === 'all' ? 'active' : ''}" onclick="setTableFilter('forecasting', 'riskFilter', 'all')">All Stock Risk Statuses (${AppState.skus.length})</button>
+      <button class="filter-pill-btn ${f.riskFilter === 'CRITICAL' ? 'active' : ''}" onclick="setTableFilter('forecasting', 'riskFilter', 'CRITICAL')">🚨 Out of Stock Risk (< 15 Days)</button>
+      <button class="filter-pill-btn ${f.riskFilter === 'WARNING' ? 'active' : ''}" onclick="setTableFilter('forecasting', 'riskFilter', 'WARNING')">⚠️ Low Stock (15–30 Days)</button>
+      <button class="filter-pill-btn ${f.riskFilter === 'HEALTHY' ? 'active' : ''}" onclick="setTableFilter('forecasting', 'riskFilter', 'HEALTHY')">✅ Healthy Stock (30–90 Days)</button>
+      <button class="filter-pill-btn ${f.riskFilter === 'OVERSTOCK' ? 'active' : ''}" onclick="setTableFilter('forecasting', 'riskFilter', 'OVERSTOCK')">📊 Overstock (> 90 Days)</button>
     </div>
 
-    <!-- 40ft Ocean Container Landed Freight Planner Card -->
-    <div class="card" style="margin-bottom: 24px; border: 1px solid rgba(14, 165, 233, 0.4); background: linear-gradient(135deg, rgba(14, 165, 233, 0.05) 0%, var(--bg-card) 100%);">
-      <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-        <div class="card-title-group">
-          <h3>🚢 40ft High Cube Ocean Container Replenishment Batch Planner</h3>
-          <p>Consolidates loom production into direct container shipment from ICD Babatpur/JNPT to Edison, NJ</p>
+    <!-- Search, Filter & Horizon Controls -->
+    <div class="card" style="margin-bottom: 14px; padding: 12px 14px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;">
+        <div style="display: flex; gap: 10px; flex: 1; min-width: 280px;">
+          <input type="text" class="form-control" style="max-width: 280px;" placeholder="Search SKU or rug design..." value="${f.search}" oninput="setTableFilter('forecasting', 'search', this.value)">
+          <select class="form-control" style="max-width: 180px;" onchange="setTableFilter('forecasting', 'collection', this.value)">
+            <option value="all" ${f.collection === 'all' ? 'selected' : ''}>All Collections</option>
+            <option value="Heritage" ${f.collection === 'Heritage' ? 'selected' : ''}>Heritage</option>
+            <option value="Modern" ${f.collection === 'Modern' ? 'selected' : ''}>Modern</option>
+            <option value="Boho" ${f.collection === 'Boho' ? 'selected' : ''}>Boho</option>
+          </select>
         </div>
-        <button class="btn btn-sm btn-primary" onclick="initiateOceanReplenishmentBatch()">📦 Initiate Container Loading Plan</button>
-      </div>
-      <div class="card-body">
-        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: center;">
-          <div>
-            <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px;">
-              <span><strong>40ft High Cube Volume Utilization:</strong></span>
-              <strong>${recommendedReplenishmentUnits} / ${containerCapacity} Rolls (${containerFillPct}%)</strong>
-            </div>
-            <div style="height: 16px; background: var(--bg-app); border-radius: 8px; overflow: hidden; border: 1px solid var(--border-main);">
-              <div style="width: ${containerFillPct}%; height: 100%; background: linear-gradient(90deg, var(--brand-cyan) 0%, var(--success) 100%);"></div>
-            </div>
-            <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--text-dim); margin-top: 6px;">
-              <span>0 Rolls (Empty)</span>
-              <span>140 Rolls (Recommended Economic Order)</span>
-              <span>180 Rolls (Max Weight Limit 28,000 Kg)</span>
-            </div>
-          </div>
-          <div style="padding: 14px 18px; background: var(--bg-app); border-radius: var(--radius-md); border: 1px solid var(--border-main); font-size: 12px; line-height: 1.5;">
-            <strong style="color: var(--success); display: flex; align-items: center; gap: 6px;">
-              <span>💡</span> Landed Ocean Freight Advantage:
-            </strong>
-            Air express direct dispatch costs <strong>$6.50/Kg</strong> ($185.25 per 8x10 rug), whereas 40ft ocean container consolidation costs only <strong>$1.38/Kg</strong> ($39.33 per rug) — generating an immediate <strong>$145.92 profit margin boost</strong> on every single 8x10 rug sold in the USA.
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Forecast Horizon:</span>
+          <div class="segmented-control" style="display: flex; background: var(--bg-surface); padding: 2px; border-radius: 6px; border: 1px solid var(--border-subtle);">
+            <button class="btn btn-xs ${horizon === 30 ? 'btn-primary' : 'btn-ghost'}" onclick="setForecastHorizon(30)">30D</button>
+            <button class="btn btn-xs ${horizon === 60 ? 'btn-primary' : 'btn-ghost'}" onclick="setForecastHorizon(60)">60D</button>
+            <button class="btn btn-xs ${horizon === 90 ? 'btn-primary' : 'btn-ghost'}" onclick="setForecastHorizon(90)">90D</button>
+            <button class="btn btn-xs ${horizon === 120 ? 'btn-primary' : 'btn-ghost'}" onclick="setForecastHorizon(120)">120D</button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SKU Demand Velocity & Run-Out Matrix Table -->
-    <div class="card">
-      <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
-        <div class="card-title-group">
-          <h3>SKU Demand Burn Rate & Run-Out Matrix</h3>
-          <p>Real-time burn rate against physical stock at USA 3PL (Edison, NJ)</p>
-        </div>
-        <button class="btn btn-sm btn-secondary" onclick="exportForecastCSV()">📥 Download Forecast CSV</button>
-      </div>
+    <!-- SKU Demand Forecasting Listing Table -->
+    <div class="card" style="padding: 0; overflow: hidden;">
       <div class="table-responsive">
-        <table class="data-table">
+        <table class="data-table" style="width: 100%;">
           <thead>
             <tr>
-              <th>SKU & Description</th>
-              <th>Collection</th>
-              <th>Available USA Stock</th>
-              <th>Daily Burn Rate</th>
-              <th>${horizon}-Day Demand</th>
-              <th>Days of Supply</th>
-              <th>Projected Run-Out Date</th>
-              <th>Stockout Risk</th>
-              <th>Suggested Batch</th>
-              <th>Actions</th>
+              <th>SKU & Rug Title</th>
+              <th>USA 3PL Stock</th>
+              <th>Daily Sales Velocity</th>
+              <th>Weekly / Monthly Sold</th>
+              <th>Days Supply Left</th>
+              <th>Stockout Risk Status</th>
+              <th>Recommended Reorder Batch</th>
+              <th style="text-align: right; min-width: 290px;">Forecasting Actions</th>
             </tr>
           </thead>
           <tbody>
-            ${forecastItems.map(item => `
-              <tr>
+            ${pagination.items.length === 0 ? `
+              <tr><td colspan="8" style="text-align: center; padding: 30px; color: var(--text-dim);">No SKUs matching current forecasting filters.</td></tr>
+            ` : pagination.items.map(item => `
+              <tr style="cursor: pointer;" onclick="openSkuForecastModal('${item.sku}')">
                 <td>
-                  <strong style="color: var(--brand-cyan); font-family: var(--font-mono);">${item.sku}</strong>
-                  <div style="font-size: 11px; color: var(--text-dim);">${item.title}</div>
+                  <strong style="color: var(--brand-cyan); font-family: var(--font-mono); font-size: 12.5px;">${item.sku}</strong>
+                  <div style="font-size: 11px; color: var(--text-muted);">${item.title}</div>
                 </td>
-                <td><span class="badge badge-primary">${item.collection}</span></td>
-                <td><strong style="font-family: var(--font-mono); font-size: 13px;">${item.usaStock} Rolls</strong></td>
-                <td><span style="font-family: var(--font-mono);">${item.velocity} / day</span></td>
-                <td><strong style="font-family: var(--font-mono);">${item.projDemand} Rolls</strong></td>
                 <td>
-                  <strong style="font-family: var(--font-mono); color: ${parseFloat(item.daysSupply) < 15 ? 'var(--danger)' : parseFloat(item.daysSupply) < 30 ? 'var(--warning)' : 'var(--success)'}; font-size: 13px;">
+                  <strong style="font-size: 13px; font-family: var(--font-mono);">${item.usaStock} Rolls</strong>
+                </td>
+                <td>
+                  <span style="font-weight: 700;">${item.velocity.toFixed(1)} / day</span>
+                </td>
+                <td>
+                  <div style="font-size: 11px;">
+                    <strong>${Math.round(item.velocity * 7)}</strong> / wk &bull; <strong>${Math.round(item.velocity * 30)}</strong> / mo
+                  </div>
+                </td>
+                <td>
+                  <strong style="font-size: 13px; color: ${item.daysSupply < 15 ? 'var(--danger)' : item.daysSupply < 30 ? 'var(--warning)' : 'var(--success)'}; font-family: var(--font-mono);">
                     ${item.daysSupply} Days
                   </strong>
                 </td>
-                <td><span style="font-size: 12px; color: var(--text-muted);">${item.runOutDate}</span></td>
                 <td>
-                  <span class="badge ${item.risk === 'CRITICAL' ? 'badge-danger' : item.risk === 'WARNING' ? 'badge-warning' : 'badge-success'}">
-                    ${item.risk}
-                  </span>
+                  ${item.risk === 'CRITICAL' ? '<span class="badge badge-danger">🚨 CRITICAL (<15 Days)</span>' :
+                    item.risk === 'WARNING' ? '<span class="badge badge-warning">⚠️ LOW STOCK</span>' :
+                    item.risk === 'OVERSTOCK' ? '<span class="badge badge-secondary">📊 OVERSTOCK</span>' :
+                    '<span class="badge badge-success">✅ HEALTHY</span>'}
                 </td>
                 <td>
-                  <strong style="color: var(--success); font-family: var(--font-mono); font-size: 13px;">+${item.suggestedBatch} Rolls</strong>
+                  <strong style="color: var(--brand-cyan); font-family: var(--font-mono);">${item.suggestedBatch} Rolls</strong>
                 </td>
-                <td>
-                  <button class="btn btn-xs btn-primary" onclick="initiateOceanReplenishmentBatch()">
-                    🚀 Replenish
-                  </button>
+                <td onclick="event.stopPropagation()" style="text-align: right;">
+                  <div style="display: inline-flex; gap: 6px; justify-content: flex-end; flex-wrap: wrap;">
+                    <button class="btn btn-xs btn-primary" onclick="openSkuForecastModal('${item.sku}')" style="font-size: 11px; white-space: nowrap; background: linear-gradient(135deg, #6366f1, #06b6d4); border: none; font-weight: 600;" title="Overall Sales Velocity & Demand Charts">
+                      📊 Overall Forecasting
+                    </button>
+                    <button class="btn btn-xs btn-secondary" onclick="openMultiWarehouseBalancingModal('${item.sku}')" style="font-size: 11px; white-space: nowrap; font-weight: 600;" title="Dynamic Warehouse Breakdown & Rebalancing">
+                      🏭 Warehouse-wise Forecasting
+                    </button>
+                  </div>
                 </td>
               </tr>
             `).join('')}
           </tbody>
         </table>
       </div>
+
+      <!-- Pagination -->
+      <div style="padding: 10px 16px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 12px; color: var(--text-muted);">
+          Showing ${pagination.totalItems === 0 ? 0 : (pagination.currentPage - 1) * pagination.pageSize + 1} to ${Math.min(pagination.currentPage * pagination.pageSize, pagination.totalItems)} of ${pagination.totalItems} entries
+        </span>
+        <div class="pagination-controls" style="display: flex; gap: 4px;">
+          <button class="pagination-btn" ${pagination.currentPage === 1 ? 'disabled' : ''} onclick="setTablePage('forecasting', ${pagination.currentPage - 1})">◀</button>
+          <span style="padding: 4px 8px; font-size: 12px; font-weight: 600;">Page ${pagination.currentPage} of ${pagination.totalPages}</span>
+          <button class="pagination-btn" ${pagination.currentPage === pagination.totalPages ? 'disabled' : ''} onclick="setTablePage('forecasting', ${pagination.currentPage + 1})">▶</button>
+        </div>
+      </div>
     </div>
   `;
 }
 
+// Global window bindings
+window.openSkuForecastModal = openSkuForecastModal;
+window.openOverallForecastModal = openSkuForecastModal;
+window.openMultiWarehouseBalancingModal = openMultiWarehouseBalancingModal;
+window.openWarehouseForecastModal = openMultiWarehouseBalancingModal;
+window.renderForecastingView = renderForecastingView;
+if (typeof openCreatePoModal !== 'undefined') {
+  window.openCreatePOModal = openCreatePoModal;
+}
+
+
 // ============================================================================
-// MODULE 8: WORKSTREAM 2 — ALERTS & AUTOMATION ENGINE VIEW
+// MODULE 8: WORKSTREAM 2 — ENTERPRISE ALERTS & AUTOMATION RULES ENGINE VIEW
+// (SOW SPECIFICATION: 60 ENGINEERING HOURS)
 // ============================================================================
 
 function renderAutomationView() {
-  const activeAlerts = (AppState.activeAlerts || []).filter(a => !a.resolved);
-  const activeRules = (AppState.automations || []).filter(r => r.enabled);
+  const f = AppState.tableFilters.automations || (AppState.tableFilters.automations = { search: "", domain: "all", severity: "all" });
+
+  // Seed default active alerts covering all SOW operational & financial scenarios
+  if (!AppState.activeAlerts || AppState.activeAlerts.length === 0) {
+    AppState.activeAlerts = [
+      {
+        id: "ALT-001",
+        domain: "Operational — Stock Threshold",
+        severity: "CRITICAL",
+        icon: "🚨",
+        title: "Low Stock Alert — SKU-HER-9X12-01 at USA 3PL Edison NJ",
+        detail: "Heritage Kashan 9x12 ft stock dropped to 8 days supply (12 rolls remaining). Daily velocity: 1.8 pcs/day. Threshold: < 15 days supply. Immediate 40ft ocean container replenishment required.",
+        timestamp: "Today at 09:15 AM",
+        ruleId: "rule-01",
+        actionLabel: "📦 Initiate Replenishment PO",
+        actionFn: "if(window.openCreatePoModal)openCreatePoModal('SKU-HER-9X12-01');else showToast('Opening PO Draft for SKU-HER-9X12-01','info');",
+        resolved: false
+      },
+      {
+        id: "ALT-002",
+        domain: "Operational — Order Aging SLA",
+        severity: "HIGH",
+        icon: "⏱️",
+        title: "Unfulfilled Order SLA Breached — ORD-AMZ-99214 Pending > 24 Hours",
+        detail: "Customer order ORD-AMZ-99214 (Amazon US) ingested 26.4 hours ago. Inventory locked but packing scan not completed at Bhadohi packing deck. Operational SLA threshold: 24 hours.",
+        timestamp: "Today at 08:30 AM",
+        ruleId: "rule-02",
+        actionLabel: "🔍 Inspect in Order Queue",
+        actionFn: "switchView('mod3');",
+        resolved: false
+      },
+      {
+        id: "ALT-003",
+        domain: "Logistics — Courier Audit Variance",
+        severity: "HIGH",
+        icon: "🚚",
+        title: "FedEx AWB #7894-3321-992 — Volumetric Weight Discrepancy (₹2,096 Overcharge)",
+        detail: "Invoiced volumetric weight 19.5 kg vs calibrated Mettler digital scale weight 14.5 kg. Variance: +5.0 kg (+$25.70 USD / ₹2,096). Automated Clause 6.2 dispute manifest drafted.",
+        timestamp: "Today at 07:45 AM",
+        ruleId: "rule-03",
+        actionLabel: "📑 Review & File Dispute",
+        actionFn: "switchView('mod6-audit');",
+        resolved: false
+      },
+      {
+        id: "ALT-004",
+        domain: "Financial — FEMA Realization",
+        severity: "HIGH",
+        icon: "🏦",
+        title: "FEMA 210-Day Realization Sentinel — SB-6789124 ($4,250 USD, 28 Days Left)",
+        detail: "Export Shipping Bill SB-6789124 (Invoice EXP-INV-2026-121) unrealized after 182 days. Compulsory RBI FEMA export realization deadline (210 days) expiring soon. e-BRC risk logged.",
+        timestamp: "Yesterday at 04:20 PM",
+        ruleId: "rule-04",
+        actionLabel: "🏦 Send SWIFT Wire Tracer",
+        actionFn: "if(window.openReceivableDetailPage)openReceivableDetailPage('EXP-INV-2026-121');else switchView('mod6-audit');",
+        resolved: false
+      },
+      {
+        id: "ALT-005",
+        domain: "Logistics — Delivery Exception",
+        severity: "MEDIUM",
+        icon: "📦",
+        title: "FedEx Delivery Exception — AWB #8812-4412-990 (Customer Address Incomplete)",
+        detail: "Delivery attempt failed in Edison NJ: 'Apartment/Suite number missing'. Buyer notified via automated SMS. Awaiting updated shipping address.",
+        timestamp: "Yesterday at 02:15 PM",
+        ruleId: "rule-05",
+        actionLabel: "📍 Update Delivery Address",
+        actionFn: "showToast('Customer delivery address verified with Amazon buyer messages!','success');",
+        resolved: false
+      },
+      {
+        id: "ALT-006",
+        domain: "Financial — Returns & RMA",
+        severity: "INFO",
+        icon: "🔄",
+        title: "Customer Return Received — RMA-2026-041 (Graded Resalable)",
+        detail: "Customer return roll received at Edison 3PL. QC physical inspection completed: minor polywrap tear repaired, carpet pristine. Restocked to USA Available inventory.",
+        timestamp: "2 days ago",
+        ruleId: "rule-06",
+        actionLabel: "🔍 View RMA Ledger",
+        actionFn: "switchView('mod4-returns');",
+        resolved: false
+      }
+    ];
+  }
+
+  // Seed default automation rules matching SOW specification
+  if (!AppState.automations || AppState.automations.length === 0) {
+    AppState.automations = [
+      {
+        id: "rule-01",
+        name: "Low Stock Safety Replenishment Sentinel",
+        domain: "Operational Alerts",
+        severity: "CRITICAL",
+        trigger: "When any SKU Free Stock at USA 3PL Edison NJ falls below 15 days supply (< 18 units)",
+        condition: "Free Stock < 18 units (Days Supply < 15d)",
+        action: "Auto-generate Draft Ocean Replenishment PO & send SMTP email alert to SCM Lead",
+        active: true,
+        lastFired: "Today at 09:15 AM",
+        executionCount: 16,
+        nextCheck: "In 3 mins",
+        schedule: "*/5 * * * *"
+      },
+      {
+        id: "rule-02",
+        name: "Unfulfilled Order Aging (> 24 Hours) Intercept",
+        domain: "Operational Alerts",
+        severity: "HIGH",
+        trigger: "When any marketplace order remains in 'Allocated' status without packing scan for > 24 continuous hours",
+        condition: "Order Status = 'Allocated' & Age > 24h",
+        action: "Escalate to Warehouse QC Lead & re-route to high-priority packing station deck",
+        active: true,
+        lastFired: "Today at 08:30 AM",
+        executionCount: 28,
+        nextCheck: "In 8 mins",
+        schedule: "*/15 * * * *"
+      },
+      {
+        id: "rule-03",
+        name: "Carrier Volumetric Weight Discrepancy Auto-Dispute",
+        domain: "Logistics & Courier",
+        severity: "HIGH",
+        trigger: "When FedEx / DHL billed volumetric weight exceeds Mettler calibrated scale weight by > 1.5 Kg",
+        condition: "Billed Weight > Scale Weight + 1.5 Kg",
+        action: "Hold courier invoice payout, auto-generate Clause 6.2 Dispute Letter PDF & attach scale photo",
+        active: true,
+        lastFired: "Today at 07:45 AM",
+        executionCount: 22,
+        nextCheck: "On New Invoice",
+        schedule: "On Event (Invoice Sync)"
+      },
+      {
+        id: "rule-04",
+        name: "FEMA 210-Day e-BRC Realization Deadline Sentinel",
+        domain: "Financial & Export",
+        severity: "HIGH",
+        trigger: "When export invoice remains unrealized in DGFT EDPMS portal after 150 days from Shipping Bill date",
+        condition: "Invoice Age > 150 days & Status = 'Unrealized'",
+        action: "Dispatch SWIFT wire tracer to foreign buyer bank & notify AD Bank (HDFC Bhadohi)",
+        active: true,
+        lastFired: "Yesterday at 04:20 PM",
+        executionCount: 7,
+        nextCheck: "Daily 09:00 AM",
+        schedule: "0 9 * * *"
+      },
+      {
+        id: "rule-05",
+        name: "Courier In-Transit SLA Delay Alert",
+        domain: "Logistics & Courier",
+        severity: "MEDIUM",
+        trigger: "When FedEx Home Delivery tracking shows no checkpoint movement for > 48 hours in transit",
+        condition: "In-Transit Inactivity > 48h",
+        action: "Create courier trace ticket with FedEx carrier rep & notify recipient customer via SMS",
+        active: true,
+        lastFired: "Yesterday at 02:15 PM",
+        executionCount: 11,
+        nextCheck: "Every 4 Hours",
+        schedule: "0 */4 * * *"
+      },
+      {
+        id: "rule-06",
+        name: "Customer Return RMA Receipt & Restock Trigger",
+        domain: "Financial & Export",
+        severity: "INFO",
+        trigger: "When warehouse operator completes physical barcode scan on returned polywrap rug parcel",
+        condition: "RMA Scan Completed & Grade = 'Resalable'",
+        action: "Instantly unlock USA 3PL Available stock & credit customer marketplace order ledger",
+        active: true,
+        lastFired: "2 days ago",
+        executionCount: 19,
+        nextCheck: "On RMA Scan",
+        schedule: "On Event (Barcode Scan)"
+      },
+      {
+        id: "rule-07",
+        name: "Overdue B2B Wholesale Receivables (> 30 Days) Notice",
+        domain: "Financial & Export",
+        severity: "MEDIUM",
+        trigger: "When trade buyer invoice payment is past due date by > 30 calendar days",
+        condition: "Invoice Status = 'Unpaid' & Overdue Days > 30",
+        action: "Send automated statement of account PDF to buyer accounts department & place credit hold",
+        active: true,
+        lastFired: "3 days ago",
+        executionCount: 8,
+        nextCheck: "Daily 10:00 AM",
+        schedule: "0 10 * * *"
+      },
+      {
+        id: "rule-08",
+        name: "Dynamic Net Profit Recalculation Engine",
+        domain: "Recalculation & Sync",
+        severity: "INFO",
+        trigger: "When actual courier audited billings or customs duties replace estimated freight/tax figures",
+        condition: "Courier Audit Status = 'Audited' OR CSB-V Duty Finalized",
+        action: "Recalculate order true gross margin & realized net profit across Module 7 financial ledgers",
+        active: true,
+        lastFired: "Today at 06:00 AM",
+        executionCount: 142,
+        nextCheck: "Hourly",
+        schedule: "0 * * * *"
+      },
+      {
+        id: "rule-09",
+        name: "Nightly Multi-Warehouse Concurrency Ledger Reconciler",
+        domain: "Recalculation & Sync",
+        severity: "INFO",
+        trigger: "Scheduled daily midnight batch reconciliation between Bhadohi Mill, Ocean Transit, and Edison 3PL",
+        condition: "Cron 00:00 UTC Trigger",
+        action: "Reconcile hard inventory reservations vs marketplace stock allocations & log audit diff",
+        active: true,
+        lastFired: "Today at 00:00 UTC",
+        executionCount: 84,
+        nextCheck: "Tonight 00:00 UTC",
+        schedule: "0 0 * * *"
+      }
+    ];
+  }
+
+  const activeAlerts = (AppState.activeAlerts || []).filter(a => !a.resolved && (f.domain === "all" || a.domain.toLowerCase().includes(f.domain.toLowerCase())));
+  const automations = AppState.automations || [];
+  const filteredRules = automations.filter(r => {
+    const matchesSearch = !f.search || (r.name || "").toLowerCase().includes(f.search.toLowerCase()) || (r.trigger || "").toLowerCase().includes(f.search.toLowerCase());
+    const matchesDomain = f.domain === "all" || (r.domain || "").toLowerCase().includes(f.domain.toLowerCase());
+    const matchesSev = f.severity === "all" || (r.severity || "") === f.severity;
+    return matchesSearch && matchesDomain && matchesSev;
+  });
+
+  const activeRulesCount = automations.filter(r => r.active !== false && r.enabled !== false).length;
+  const pausedRulesCount = automations.length - activeRulesCount;
+  const totalFired = automations.reduce((s, r) => s + (r.executionCount || 0), 0);
+
+  // 7-day sparkline bar data
+  const barData = [3, 6, 4, 9, 5, 8, activeAlerts.length + 4];
+  const barLabels = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Today"];
+  const barMax = Math.max(...barData) || 1;
+  const bH = 48, bW = 26, bGap = 8;
+  const svgW = barData.length * (bW + bGap) - bGap;
+  const chartBars = barData.map((v, i) => {
+    const h = Math.max(4, Math.round((v / barMax) * bH));
+    const x = i * (bW + bGap);
+    const y = bH - h;
+    const isToday = i === barData.length - 1;
+    const fill = isToday ? (v >= 6 ? "#ef4444" : "#06b6d4") : "rgba(99,102,241,0.5)";
+    return `<g><rect x="${x}" y="${y}" width="${bW}" height="${h}" rx="3" fill="${fill}" opacity="${isToday ? 1 : 0.8}"/>
+      <text x="${x + bW/2}" y="${bH + 13}" fill="#64748b" font-size="8.5" text-anchor="middle">${barLabels[i]}</text>
+      <text x="${x + bW/2}" y="${y - 4}" fill="${isToday ? fill : "#64748b"}" font-size="9" text-anchor="middle" font-weight="${isToday ? 700 : 400}">${v}</text>
+    </g>`;
+  }).join("");
 
   return `
-    <div class="page-header">
-      <div class="page-title-wrap">
-        <h1>🔔 Enterprise Alerts & Automation Rules Engine</h1>
-        <p>Proactive threshold triggers: Low USA stock, courier weight variance blocks, DGFT 210-day FEMA limits, and automated scheduled sync daemons.</p>
+    <!-- SOW Blueprint Scope Callout Banner -->
+    <div style="background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.25); border-left: 4px solid #6366f1; border-radius: 8px; padding: 10px 14px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+      <div>
+        <span class="badge badge-primary" style="font-size: 10px; font-weight: 700; letter-spacing: 0.5px;">SOW MODULE 8 — WORKSTREAM 2 (60 ENGINEERING HOURS)</span>
+        <strong style="margin-left: 8px; font-size: 12.5px; color: var(--text-heading);">Enterprise Alerts, Advanced Automation & Profitability Recalculation Engine</strong>
+        <p style="margin: 2px 0 0 0; font-size: 11px; color: var(--text-muted);">
+          Operational stock threshold monitors, unfulfilled order aging alerts (>24h), courier weight dispute triggers, FEMA 210-day EBRC sentinels, and automated net profit recalculation.
+        </p>
       </div>
-      <div class="page-actions">
-        <button class="btn btn-secondary" onclick="showToast('All 5 automation cron jobs synchronized.', 'info')">🔄 Sync Automations</button>
-        <button class="btn btn-primary" onclick="openNewAlertRule()">+ Create Alert Rule</button>
-      </div>
-    </div>
-
-    <!-- 4 Bento Alert Status Cards -->
-    <div class="bento-metrics-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 24px; gap: 16px;">
-      <div class="metric-card" style="border: 2px solid ${activeAlerts.length > 0 ? 'rgba(239, 68, 68, 0.45)' : 'var(--border-main)'};">
-        <div class="metric-header">
-          <span class="metric-label" style="font-weight: 700; color: var(--danger);">Critical Active Alerts</span>
-          <span>🚨</span>
-        </div>
-        <div class="metric-value" style="color: var(--danger); font-family: var(--font-mono);">${activeAlerts.length} Active</div>
-        <div class="metric-sub">Requires operations team action</div>
-      </div>
-
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Configured Daemon Rules</span><span>⚡</span></div>
-        <div class="metric-value">${activeRules.length} / ${(AppState.automations || []).length} Active</div>
-        <div class="metric-sub">Zero Unhandled Exceptions</div>
-      </div>
-
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Background Polling Engine</span><span>⚙️</span></div>
-        <div class="metric-value" style="color: var(--success);">5-Min Polling Cron</div>
-        <div class="metric-sub">Continuous Daemon Active</div>
-      </div>
-
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Alert Notifications Sent</span><span>📢</span></div>
-        <div class="metric-value" style="color: var(--brand-cyan);">14 Events Today</div>
-        <div class="metric-sub">Email, Webhooks & In-App</div>
+      <div style="display: flex; gap: 6px;">
+        <button class="btn btn-xs btn-secondary" onclick="runAutomationSimulation()">⚡ Run Full Test Simulation</button>
+        <button class="btn btn-xs btn-primary" onclick="openNewAlertRule()" style="background: linear-gradient(135deg, #6366f1, #06b6d4); border: none; font-weight: 700;">+ Create Alert Rule</button>
       </div>
     </div>
 
-    <!-- Active Operational Alerts Feed -->
-    <div class="card" style="margin-bottom: 24px;">
-      <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
-        <div class="card-title-group">
-          <h3>Active Operational Alerts & SLA Exception Feed</h3>
-          <p>Real-time threshold violations needing immediate intervention</p>
-        </div>
-        <span class="badge badge-danger">${activeAlerts.length} Action Items</span>
+    <!-- Live System Health Metrics Strip -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:18px;">
+      <div style="background:var(--bg-elevated);border:1px solid ${activeAlerts.length > 0 ? "rgba(239,68,68,0.3)" : "rgba(16,185,129,0.3)"};border-top:3px solid ${activeAlerts.length > 0 ? "#ef4444" : "#10b981"};border-radius:10px;padding:12px 14px;">
+        <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-dim);margin-bottom:6px;">🚨 Active Alerts</div>
+        <div style="font-size:26px;font-weight:800;font-family:var(--font-mono);color:${activeAlerts.length > 0 ? "#ef4444" : "#10b981"};line-height:1;">${activeAlerts.length}</div>
+        <div style="font-size:10px;color:var(--text-dim);margin-top:4px;">${activeAlerts.length > 0 ? "Action required" : "All clear"}</div>
       </div>
-      <div class="card-body" style="padding: 0;">
-        ${activeAlerts.length === 0 ? `
-          <div style="padding: 30px; text-align: center; color: var(--text-muted);">
-            ✓ All operational alerts resolved! Zero threshold violations across warehouse, courier & DGFT ledgers.
-          </div>
-        ` : `
-          <div style="display: flex; flex-direction: column;">
-            ${activeAlerts.map(alert => `
-              <div style="padding: 16px 20px; border-bottom: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
-                <div style="display: flex; align-items: flex-start; gap: 14px; max-width: 75%;">
-                  <span style="font-size: 24px;">
-                    ${alert.severity === 'CRITICAL' ? '🚨' : alert.severity === 'HIGH' ? '⚠️' : 'ℹ️'}
-                  </span>
-                  <div>
-                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-                      <span class="badge ${alert.severity === 'CRITICAL' ? 'badge-danger' : alert.severity === 'HIGH' ? 'badge-warning' : 'badge-primary'}">${alert.severity}</span>
-                      <span class="badge badge-purple" style="font-size: 10px;">${alert.domain}</span>
-                      <strong style="color: var(--text-main); font-size: 13px;">${alert.title}</strong>
-                      <span style="font-size: 11px; color: var(--text-dim);">&bull; ${alert.timestamp}</span>
-                    </div>
-                    <div style="font-size: 12px; color: var(--text-muted); line-height: 1.4;">
-                      ${alert.detail}
-                    </div>
+      <div style="background:var(--bg-elevated);border:1px solid rgba(6,182,212,0.25);border-top:3px solid #06b6d4;border-radius:10px;padding:12px 14px;">
+        <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-dim);margin-bottom:6px;">⚡ Configured Rules</div>
+        <div style="font-size:26px;font-weight:800;font-family:var(--font-mono);color:#06b6d4;line-height:1;">${automations.length}</div>
+        <div style="font-size:10px;color:var(--text-dim);margin-top:4px;">${activeRulesCount} active · ${pausedRulesCount} paused</div>
+      </div>
+      <div style="background:var(--bg-elevated);border:1px solid rgba(99,102,241,0.25);border-top:3px solid #6366f1;border-radius:10px;padding:12px 14px;">
+        <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-dim);margin-bottom:6px;">🤖 Total Executions</div>
+        <div style="font-size:26px;font-weight:800;font-family:var(--font-mono);color:#6366f1;line-height:1;">${totalFired}</div>
+        <div style="font-size:10px;color:var(--text-dim);margin-top:4px;">Rule triggers executed</div>
+      </div>
+      <div style="background:var(--bg-elevated);border:1px solid rgba(16,185,129,0.25);border-top:3px solid #10b981;border-radius:10px;padding:12px 14px;">
+        <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-dim);margin-bottom:6px;">✅ Auto-Resolution</div>
+        <div style="font-size:26px;font-weight:800;font-family:var(--font-mono);color:#10b981;line-height:1;">94.2%</div>
+        <div style="font-size:10px;color:var(--text-dim);margin-top:4px;">Self-healing workflows</div>
+      </div>
+      <!-- 7-day sparkline bar chart -->
+      <div style="background:var(--bg-elevated);border:1px solid rgba(99,102,241,0.15);border-radius:10px;padding:12px 14px;grid-column:span 2;">
+        <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-dim);margin-bottom:8px;">📊 7-Day Alert Trigger Activity</div>
+        <svg width="${svgW}" height="${bH + 18}" style="display:block;overflow:visible;">${chartBars}</svg>
+      </div>
+    </div>
+
+    <!-- SOW Workstream Category Filter Pills -->
+    <div class="status-filter-pills" style="margin-bottom:16px;">
+      <button class="filter-pill-btn ${f.domain === "all" ? "active" : ""}" onclick="setTableFilter('automations', 'domain', 'all')">All Rules & Alerts (${automations.length})</button>
+      <button class="filter-pill-btn ${f.domain === "operational" ? "active" : ""}" onclick="setTableFilter('automations', 'domain', 'operational')">🏭 Operational Alerts (Stock & SLA)</button>
+      <button class="filter-pill-btn ${f.domain === "logistics" ? "active" : ""}" onclick="setTableFilter('automations', 'domain', 'logistics')">🚚 Logistics & Courier Audit</button>
+      <button class="filter-pill-btn ${f.domain === "financial" ? "active" : ""}" onclick="setTableFilter('automations', 'domain', 'financial')">🏦 Financial, FEMA & Returns</button>
+      <button class="filter-pill-btn ${f.domain === "recalculation" ? "active" : ""}" onclick="setTableFilter('automations', 'domain', 'recalculation')">🔄 Recalculation & Sync</button>
+    </div>
+
+    <!-- Active Alerts Requiring Operational Action -->
+    ${activeAlerts.length > 0 ? `
+    <div style="margin-bottom:20px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <h3 style="margin:0;font-size:13.5px;font-weight:700;color:var(--text-heading);display:flex;align-items:center;gap:7px;">
+          <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;animation:pulse-dot 1.2s infinite;"></span>
+          Active Operational & Financial Alerts Requiring Action
+        </h3>
+        <span class="badge badge-danger">${activeAlerts.length} Unresolved Incidents</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        ${activeAlerts.map(alert => {
+          const sevColor = alert.severity === "CRITICAL" ? "#ef4444" : alert.severity === "HIGH" ? "#f59e0b" : alert.severity === "INFO" ? "#10b981" : "#06b6d4";
+          const sevBg = alert.severity === "CRITICAL" ? "rgba(239,68,68,0.07)" : alert.severity === "HIGH" ? "rgba(245,158,11,0.07)" : alert.severity === "INFO" ? "rgba(16,185,129,0.07)" : "rgba(6,182,212,0.07)";
+          return `
+          <div style="background:var(--bg-elevated);border:1px solid ${sevColor}35;border-left:4px solid ${sevColor};border-radius:10px;padding:14px 16px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+              <div style="display:flex;gap:12px;flex:1;min-width:280px;">
+                <div style="width:40px;height:40px;border-radius:10px;background:${sevBg};border:1px solid ${sevColor}30;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">${alert.icon || "📋"}</div>
+                <div style="flex:1;">
+                  <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;flex-wrap:wrap;">
+                    <span style="font-size:9.5px;font-weight:800;letter-spacing:0.5px;color:${sevColor};background:${sevColor}18;padding:2px 8px;border-radius:20px;border:1px solid ${sevColor}30;">${alert.severity}</span>
+                    <span style="font-size:9.5px;color:var(--text-dim);background:rgba(15,23,42,0.5);padding:2px 8px;border-radius:20px;">${alert.domain}</span>
+                    ${alert.ruleId ? `<span style="font-size:9px;color:var(--brand-cyan);font-family:var(--font-mono);">↳ Rule: ${alert.ruleId}</span>` : ""}
                   </div>
-                </div>
-                <div style="display: flex; gap: 8px;">
-                  <button class="btn btn-sm btn-primary" onclick="${alert.actionFn}">
-                    ${alert.actionLabel}
-                  </button>
-                  <button class="btn btn-sm btn-secondary" onclick="dismissAlert('${alert.id}')" title="Dismiss Alert">
-                    ✕
-                  </button>
+                  <div style="font-weight:700;font-size:13px;color:var(--text-heading);line-height:1.35;margin-bottom:5px;">${alert.title}</div>
+                  <div style="font-size:11.5px;color:var(--text-muted);line-height:1.5;">${alert.detail}</div>
                 </div>
               </div>
-            `).join('')}
+              <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0;">
+                <span style="font-size:10px;color:var(--text-dim);">🕐 ${alert.timestamp}</span>
+                <div style="display:flex;gap:6px;">
+                  <button class="btn btn-xs btn-secondary" onclick="dismissAlert('${alert.id}')" style="font-size:11px;">✓ Resolve</button>
+                  <button class="btn btn-xs btn-primary" onclick="${alert.actionFn}" style="font-size:11px;background:${sevColor};border-color:${sevColor};color:#fff;font-weight:700;">${alert.actionLabel}</button>
+                </div>
+              </div>
+            </div>
           </div>
-        `}
+          `;
+        }).join("")}
+      </div>
+    </div>
+    ` : `
+    <div style="background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.25);border-left:4px solid #10b981;border-radius:10px;padding:14px 18px;margin-bottom:20px;display:flex;align-items:center;gap:12px;">
+      <span style="font-size:22px;">✅</span>
+      <div>
+        <div style="font-weight:700;font-size:13px;color:#10b981;">All Operational Alerts Cleared</div>
+        <div style="font-size:11.5px;color:var(--text-muted);">Zero threshold violations across warehouse stock, courier freight, or DGFT ledgers.</div>
+      </div>
+    </div>
+    `}
+
+    <!-- Configured Automation Rules (SOW Spec) -->
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:10px;">
+      <div>
+        <h3 style="margin:0;font-size:13.5px;font-weight:700;color:var(--text-heading);">⚡ Configured SOW Automation Rules & Scheduled Daemons</h3>
+        <p style="margin:3px 0 0;font-size:11px;color:var(--text-muted);">Real-time conditions evaluated every 5 mins by background worker daemons · Toggle to activate/pause</p>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <div class="table-search-input-wrap" style="min-width:220px;">
+          <span class="table-search-icon">🔍</span>
+          <input type="text" placeholder="Search rules or triggers..." value="${f.search}" oninput="setTableSearch('automations', this.value)">
+        </div>
+        <span style="font-size:11px;color:var(--text-dim);white-space:nowrap;">${filteredRules.length} of ${automations.length} Rules</span>
       </div>
     </div>
 
-    <!-- Configured Automation Rules Table -->
-    <div class="card" style="margin-bottom: 24px;">
-      <div class="card-header">
-        <div class="card-title-group">
-          <h3>Configured Enterprise Trigger Engines</h3>
-          <p>Toggle rules on/off or configure escalation threshold criteria</p>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:22px;">
+      ${filteredRules.length === 0 ? `
+        <div style="padding:40px;text-align:center;color:var(--text-muted);background:var(--bg-elevated);border-radius:12px;border:1px dashed rgba(99,102,241,0.2);">
+          <div style="font-size:32px;margin-bottom:8px;">⚙️</div>
+          <div style="font-weight:700;margin-bottom:4px;">No Matching Rules</div>
+          <div style="font-size:12px;">Adjust filters or create a new automation rule.</div>
+        </div>
+      ` : filteredRules.map(rule => {
+        const isEnabled = rule.enabled !== false && rule.active !== false;
+        const sevColor = rule.severity === "CRITICAL" ? "#ef4444" : rule.severity === "HIGH" ? "#f59e0b" : rule.severity === "INFO" ? "#10b981" : "#06b6d4";
+        const domainIcon = (rule.domain || "").includes("Operational") ? "🏭" : (rule.domain || "").includes("Logistics") ? "🚚" : (rule.domain || "").includes("Financial") ? "🏦" : "🔄";
+        return `
+        <div style="background:var(--bg-elevated);border:1px solid ${isEnabled ? sevColor + "28" : "rgba(100,116,139,0.2)"};border-left:4px solid ${isEnabled ? sevColor : "#334155"};border-radius:10px;padding:16px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
+            <div style="display:flex;gap:10px;flex:1;">
+              <div style="width:38px;height:38px;border-radius:8px;background:${isEnabled ? sevColor + "15" : "rgba(100,116,139,0.1)"};border:1px solid ${isEnabled ? sevColor + "30" : "rgba(100,116,139,0.2)"};display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">${domainIcon}</div>
+              <div style="flex:1;">
+                <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;flex-wrap:wrap;">
+                  <code style="font-size:10px;color:var(--brand-cyan);">${rule.id}</code>
+                  ${rule.severity ? `<span style="font-size:9px;font-weight:800;letter-spacing:0.4px;color:${sevColor};background:${sevColor}15;padding:2px 7px;border-radius:20px;border:1px solid ${sevColor}25;">${rule.severity}</span>` : ""}
+                  <span style="font-size:9px;color:var(--text-dim);background:rgba(15,23,42,0.5);padding:2px 7px;border-radius:20px;">${rule.domain || "General"}</span>
+                  <span style="font-size:9px;color:var(--text-dim);font-family:var(--font-mono);">${rule.schedule || "Event-driven"}</span>
+                </div>
+                <div style="font-weight:700;font-size:13.5px;color:var(--text-heading);line-height:1.3;">${rule.name}</div>
+              </div>
+            </div>
+            <!-- Live Toggle -->
+            <div style="display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0;">
+              <div onclick="toggleAutomationRule('${rule.id}', ${!isEnabled})" style="width:40px;height:22px;border-radius:11px;background:${isEnabled ? "#10b981" : "#334155"};position:relative;cursor:pointer;transition:background 0.2s;box-shadow:${isEnabled ? "0 0 10px rgba(16,185,129,0.3)" : "none"};">
+                <div style="position:absolute;top:3px;left:${isEnabled ? "20px" : "3px"};width:16px;height:16px;border-radius:50%;background:#fff;transition:left 0.2s;box-shadow:0 1px 4px rgba(0,0,0,0.3);"></div>
+              </div>
+              <span style="font-size:9px;font-weight:700;color:${isEnabled ? "#10b981" : "#64748b"};">${isEnabled ? "ACTIVE" : "PAUSED"}</span>
+            </div>
+          </div>
+          <!-- Trigger condition & Automated Action sub-panels -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;">
+            <div style="background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.12);border-radius:7px;padding:9px 11px;">
+              <div style="font-size:9.5px;font-weight:700;color:var(--text-dim);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.4px;">⚡ Operational Condition Trigger</div>
+              <div style="font-size:11.5px;color:var(--text-main);line-height:1.4;">${rule.condition || rule.trigger || "—"}</div>
+            </div>
+            <div style="background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.12);border-radius:7px;padding:9px 11px;">
+              <div style="font-size:9.5px;font-weight:700;color:var(--text-dim);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.4px;">🤖 Automated System Execution</div>
+              <div style="font-size:11.5px;color:var(--text-main);line-height:1.4;">${rule.action || "—"}</div>
+            </div>
+          </div>
+          <!-- Card Footer -->
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid rgba(99,102,241,0.1);">
+            <div style="display:flex;gap:14px;align-items:center;font-size:10.5px;color:var(--text-dim);">
+              <span>🕐 Last: <strong style="color:var(--text-muted);">${rule.lastFired || "Never"}</strong></span>
+              <span>🔁 Fired: <strong style="color:var(--brand-cyan);">${rule.executionCount || 0}×</strong></span>
+              ${rule.nextCheck ? `<span>⏭ Next: <strong style="color:var(--text-muted);">${rule.nextCheck}</strong></span>` : ""}
+            </div>
+            <div style="display:flex;gap:6px;">
+              <button class="btn btn-xs btn-secondary" onclick="testFireRule('${rule.id}')" style="font-size:10.5px;">⚡ Test Fire</button>
+              <button class="btn btn-xs" onclick="deleteAutomationRule('${rule.id}')" style="font-size:10.5px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);color:#ef4444;border-radius:6px;padding:3px 8px;cursor:pointer;">🗑</button>
+            </div>
+          </div>
+        </div>
+        `;
+      }).join("")}
+
+      <!-- Add New Automation Rule Card -->
+      <div onclick="openNewAlertRule()" style="background:transparent;border:2px dashed rgba(99,102,241,0.25);border-radius:10px;padding:20px;display:flex;align-items:center;justify-content:center;gap:12px;cursor:pointer;transition:all 0.2s;color:var(--text-muted);" onmouseenter="this.style.background='rgba(99,102,241,0.06)';this.style.borderColor='rgba(99,102,241,0.5)'" onmouseleave="this.style.background='transparent';this.style.borderColor='rgba(99,102,241,0.25)'">
+        <div style="width:32px;height:32px;border-radius:50%;background:rgba(99,102,241,0.12);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#6366f1;">+</div>
+        <div>
+          <div style="font-weight:700;font-size:13px;color:var(--text-muted);">Configure Custom SOW Automation Rule</div>
+          <div style="font-size:11px;color:var(--text-dim);">Set an operational threshold condition, notification channel & automated trigger</div>
         </div>
       </div>
-      <div class="table-responsive">
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>Rule ID & Name</th>
-              <th>Monitored Domain</th>
-              <th>Trigger Condition / Threshold</th>
-              <th>Automated System Action</th>
-              <th>Alert Severity</th>
-              <th>Status (ON/OFF)</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${(AppState.automations || []).map(rule => `
-              <tr>
-                <td>
-                  <strong style="color: var(--brand-cyan); font-family: var(--font-mono);">${rule.id}</strong>
-                  <div style="font-weight: 600; font-size: 13px;">${rule.name}</div>
-                </td>
-                <td><span class="badge badge-primary">${rule.domain}</span></td>
-                <td><span style="font-size: 12px; color: var(--text-main);">${rule.condition}</span></td>
-                <td><span style="font-size: 12px; color: var(--text-muted);">${rule.action}</span></td>
-                <td>
-                  <span class="badge ${rule.severity === 'CRITICAL' ? 'badge-danger' : rule.severity === 'HIGH' ? 'badge-warning' : 'badge-primary'}">${rule.severity}</span>
-                </td>
-                <td>
-                  <label class="switch-toggle" style="display: inline-flex; align-items: center; cursor: pointer;">
-                    <input type="checkbox" ${rule.enabled ? 'checked' : ''} onchange="toggleAutomationRule('${rule.id}', this.checked)" style="cursor: pointer; width: 18px; height: 18px;">
-                    <span style="margin-left: 8px; font-weight: 700; font-size: 11px; color: ${rule.enabled ? 'var(--success)' : 'var(--text-dim)'};">${rule.enabled ? 'ACTIVE' : 'PAUSED'}</span>
-                  </label>
-                </td>
-                <td>
-                  <button class="btn btn-sm btn-secondary" onclick="testFireRule('${rule.id}')">⚡ Test Fire</button>
-                </td>
-              </tr>
-            `).join('')}
-          </tbody>
-        </table>
+    </div>
+
+    <!-- SOW Notification Channel Status Bar -->
+    <div class="card" style="padding:0;">
+      <div style="padding:12px 16px;border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center;">
+        <h3 style="margin:0;font-size:13px;font-weight:700;">📡 Multi-Channel Notification Daemon Status (SOW Spec)</h3>
+        <span class="badge badge-success">All Dispatch Channels Operational</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));">
+        ${[
+          { label: "Cron Daemon",    value: "5-min cycle",  status: "ONLINE",  icon: "🟢", color: "#10b981" },
+          { label: "Email Dispatch", value: "SMTP Server",  status: "ONLINE",  icon: "📧", color: "#10b981" },
+          { label: "In-App Push",    value: "WebSocket",    status: "ONLINE",  icon: "🔔", color: "#10b981" },
+          { label: "Webhook Relay",  value: "REST Active",  status: "ONLINE",  icon: "🪝", color: "#10b981" },
+          { label: "SMS / WhatsApp", value: "Twilio Ready", status: "STANDBY", icon: "💬", color: "#06b6d4" },
+          { label: "S3 Audit Logger",value: "Encrypted",    status: "ONLINE",  icon: "🔒", color: "#10b981" },
+        ].map((item, i, arr) => `
+          <div style="padding:12px 14px;border-right:${i < arr.length - 1 ? "1px solid var(--border-subtle)" : "none"};text-align:center;">
+            <div style="font-size:16px;margin-bottom:3px;">${item.icon}</div>
+            <div style="font-weight:700;font-size:11.5px;color:var(--text-heading);">${item.label}</div>
+            <div style="font-size:10px;color:var(--text-dim);">${item.value}</div>
+            <div style="width:6px;height:6px;border-radius:50%;background:${item.color};margin:5px auto 0;box-shadow:0 0 5px ${item.color}60;"></div>
+          </div>
+        `).join("")}
       </div>
     </div>
   `;
 }
 
+
 // ============================================================================
-// MODULE 8: WORKSTREAM 3 — INTEGRATION GATEWAYS & WORKER DAEMONS VIEW
+// MODULE 8: WORKSTREAM 3 — INTEGRATION GATEWAY & BACKGROUND WORKER DAEMONS
+// (SOW SPECIFICATION: 20 ENGINEERING HOURS)
 // ============================================================================
 
 function renderIntegrationsView() {
@@ -16358,140 +16932,202 @@ function renderIntegrationsView() {
   const failedJobs = AppState.failedJobs || INITIAL_FAILED_JOBS;
 
   return `
-    <div class="page-header">
-      <div class="page-title-wrap">
-        <h1>🔌 Integration Gateway & Background Worker Daemons</h1>
-        <p>Omnichannel API orchestration: Amazon SP-API, Etsy Webhooks, FedEx Express Web Services, ICEGATE Customs EDI, and RBI Banking daemons with idempotent safety.</p>
+    <!-- SOW Blueprint Scope Callout Banner -->
+    <div style="background: rgba(6,182,212,0.08); border: 1px solid rgba(6,182,212,0.25); border-left: 4px solid #06b6d4; border-radius: 8px; padding: 10px 14px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+      <div>
+        <span class="badge badge-primary" style="font-size: 10px; font-weight: 700; letter-spacing: 0.5px; background: linear-gradient(135deg, #0ea5e9, #06b6d4);">SOW MODULE 8 — WORKSTREAM 3 (20 ENGINEERING HOURS)</span>
+        <strong style="margin-left: 8px; font-size: 12.5px; color: var(--text-heading);">Integration Gateway, Background Worker Daemons & Idempotent Deduplication Engine</strong>
+        <p style="margin: 2px 0 0 0; font-size: 11px; color: var(--text-muted);">
+          Reusable integration processing controls: status monitoring, dead-letter error queues (DLQ), automated idempotent retry handling, SHA-256 duplicate prevention, and scheduled cron execution.
+        </p>
       </div>
-      <div class="page-actions">
-        <button class="btn btn-secondary" onclick="syncAllIntegrationWorkers()">⚡ Sync All Gateways</button>
-        <button class="btn btn-primary" onclick="retryFailedJob('JOB-FAIL-8812')">🔁 Retry Failed Jobs</button>
-      </div>
-    </div>
-
-    <!-- 4 Bento Integration KPI Cards -->
-    <div class="bento-metrics-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 24px; gap: 16px;">
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Active Worker Daemons</span><span>🔌</span></div>
-        <div class="metric-value" style="color: var(--success); font-family: var(--font-mono);">${workers.length} Online</div>
-        <div class="metric-sub">100% Upstream Gateway SLA</div>
-      </div>
-
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Average Sync Latency</span><span>⚡</span></div>
-        <div class="metric-value" style="color: var(--brand-cyan); font-family: var(--font-mono);">142 ms</div>
-        <div class="metric-sub">Sub-second webhook response</div>
-      </div>
-
-      <div class="metric-card">
-        <div class="metric-header"><span class="metric-label">Payloads Ingested Today</span><span>📦</span></div>
-        <div class="metric-value" style="font-family: var(--font-mono);">1,840 Events</div>
-        <div class="metric-sub">Orders, Tracking & Shipping Bills</div>
-      </div>
-
-      <div class="metric-card" style="border: 2px solid rgba(16, 185, 129, 0.45);">
-        <div class="metric-header"><span class="metric-label">Idempotency Protection</span><span>🔒</span></div>
-        <div class="metric-value" style="color: var(--success);">0 Duplicates</div>
-        <div class="metric-sub">100% Safe Atomic Ingestion</div>
+      <div style="display: flex; gap: 6px;">
+        <button class="btn btn-xs btn-secondary" onclick="syncAllIntegrationWorkers()">⚡ Sync All Gateways</button>
+        <button class="btn btn-xs btn-primary" onclick="retryFailedJob('JOB-FAIL-8812')" style="background: linear-gradient(135deg, #0ea5e9, #06b6d4); border: none; font-weight: 700;">🔁 Retry Failed Jobs</button>
       </div>
     </div>
 
-    <!-- 5 Worker Daemons Status Grid -->
-    <div class="card" style="margin-bottom: 24px;">
-      <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
-        <div class="card-title-group">
-          <h3>Omnichannel Integration Worker Daemons</h3>
-          <p>Real-time gateway connectivity, latency telemetry and synchronization schedule</p>
+    <!-- Live System Health Status Strip -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:18px;">
+      <div style="background:var(--bg-elevated);border:1px solid rgba(16,185,129,0.3);border-top:3px solid #10b981;border-radius:10px;padding:12px 14px;">
+        <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-dim);margin-bottom:6px;">🔌 Daemons Online</div>
+        <div style="font-size:26px;font-weight:800;font-family:var(--font-mono);color:#10b981;line-height:1;">${workers.length} / ${workers.length}</div>
+        <div style="font-size:10px;color:var(--text-dim);margin-top:4px;">100% Operational Health</div>
+      </div>
+      <div style="background:var(--bg-elevated);border:1px solid rgba(6,182,212,0.25);border-top:3px solid #06b6d4;border-radius:10px;padding:12px 14px;">
+        <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-dim);margin-bottom:6px;">⚡ Average Latency</div>
+        <div style="font-size:26px;font-weight:800;font-family:var(--font-mono);color:#06b6d4;line-height:1;">142 ms</div>
+        <div style="font-size:10px;color:var(--text-dim);margin-top:4px;">p95 API Round-Trip</div>
+      </div>
+      <div style="background:var(--bg-elevated);border:1px solid rgba(99,102,241,0.25);border-top:3px solid #6366f1;border-radius:10px;padding:12px 14px;">
+        <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-dim);margin-bottom:6px;">📦 Ingested Today</div>
+        <div style="font-size:26px;font-weight:800;font-family:var(--font-mono);color:#6366f1;line-height:1;">1,840</div>
+        <div style="font-size:10px;color:var(--text-dim);margin-top:4px;">Events processed safely</div>
+      </div>
+      <div style="background:var(--bg-elevated);border:1px solid rgba(16,185,129,0.25);border-top:3px solid #10b981;border-radius:10px;padding:12px 14px;">
+        <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-dim);margin-bottom:6px;">🛡️ Duplicates Blocked</div>
+        <div style="font-size:26px;font-weight:800;font-family:var(--font-mono);color:#10b981;line-height:1;">14</div>
+        <div style="font-size:10px;color:var(--text-dim);margin-top:4px;">Idempotency SHA-256</div>
+      </div>
+      <div style="background:var(--bg-elevated);border:1px solid ${failedJobs.length > 0 ? "rgba(245,158,11,0.3)" : "rgba(16,185,129,0.3)"};border-top:3px solid ${failedJobs.length > 0 ? "#f59e0b" : "#10b981"};border-radius:10px;padding:12px 14px;">
+        <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-dim);margin-bottom:6px;">💀 Dead-Letter Queue</div>
+        <div style="font-size:26px;font-weight:800;font-family:var(--font-mono);color:${failedJobs.length > 0 ? "#f59e0b" : "#10b981"};line-height:1;">${failedJobs.length}</div>
+        <div style="font-size:10px;color:var(--text-dim);margin-top:4px;">Pending safe retry</div>
+      </div>
+      <div style="background:var(--bg-elevated);border:1px solid rgba(6,182,212,0.25);border-top:3px solid #06b6d4;border-radius:10px;padding:12px 14px;">
+        <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-dim);margin-bottom:6px;">⚙️ Active Crons</div>
+        <div style="font-size:26px;font-weight:800;font-family:var(--font-mono);color:#06b6d4;line-height:1;">6 Jobs</div>
+        <div style="font-size:10px;color:var(--text-dim);margin-top:4px;">Scheduled queues active</div>
+      </div>
+    </div>
+
+    <!-- 6 Enterprise Integration Worker Daemons Grid -->
+    <div style="margin-bottom: 22px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <div>
+          <h3 style="margin:0;font-size:14px;font-weight:700;color:var(--text-heading);">🔌 Active Integration Worker Daemons & Connectors</h3>
+          <p style="margin:3px 0 0 0;font-size:11px;color:var(--text-muted);">Real-time bidirectional gateway synchronization across marketplaces, couriers, customs EDI & banking portals</p>
         </div>
-        <button class="btn btn-sm btn-secondary" onclick="syncAllIntegrationWorkers()">🔄 Sync All Gateways</button>
+        <button class="btn btn-xs btn-secondary" onclick="syncAllIntegrationWorkers()">⚡ Sync All Gateways</button>
       </div>
-      <div class="table-responsive">
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>Daemon / Gateway Name</th>
-              <th>Channel / Protocol</th>
-              <th>Execution Schedule</th>
-              <th>Health Status</th>
-              <th>Avg Latency</th>
-              <th>Last Synced</th>
-              <th>Events Today</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${workers.map(w => `
-              <tr>
-                <td>
-                  <strong style="color: var(--brand-cyan); font-family: var(--font-mono);">${w.id}</strong>
-                  <div style="font-weight: 700; font-size: 13px;">${w.name}</div>
-                  <div style="font-size: 11px; color: var(--text-dim);">${w.description}</div>
-                </td>
-                <td><span class="badge badge-purple">${w.channel}</span></td>
-                <td><span style="font-size: 12px; color: var(--text-main); font-family: var(--font-mono);">${w.schedule}</span></td>
-                <td><span class="badge badge-success">● ${w.status}</span></td>
-                <td><span style="font-family: var(--font-mono); color: var(--brand-cyan);">${w.latencyMs} ms</span></td>
-                <td><span style="font-size: 12px; color: var(--text-muted);">${w.lastRun}</span></td>
-                <td><strong style="font-family: var(--font-mono);">${w.eventsToday}</strong></td>
-                <td>
-                  <button class="btn btn-xs btn-primary" onclick="syncIntegrationWorker('${w.id}')">
-                    🔄 Sync Now
-                  </button>
-                </td>
-              </tr>
-            `).join('')}
-          </tbody>
-        </table>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px;">
+        ${workers.map(w => {
+          const statusColor = (w.status === "ONLINE" || w.status === "HEALTHY" || w.status === "RUNNING") ? "#10b981" : w.status === "STANDBY" ? "#06b6d4" : "#f59e0b";
+          const latencyColor = w.latencyMs < 200 ? "#10b981" : w.latencyMs < 400 ? "#06b6d4" : "#f59e0b";
+          return `
+          <div style="background:var(--bg-elevated);border:1px solid rgba(6,182,212,0.2);border-top:3px solid ${statusColor};border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+              <div style="flex:1;">
+                <div style="display:flex;align-items:center;gap:7px;margin-bottom:5px;">
+                  <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${statusColor};box-shadow:0 0 6px ${statusColor};"></span>
+                  <code style="font-size:10px;color:var(--brand-cyan);">${w.id}</code>
+                  <span style="font-size:9.5px;color:${statusColor};background:${statusColor}18;padding:2px 8px;border-radius:20px;border:1px solid ${statusColor}30;font-weight:700;">${w.status}</span>
+                </div>
+                <div style="font-weight:700;font-size:13.5px;color:var(--text-heading);line-height:1.3;margin-bottom:3px;">${w.name}</div>
+                <div style="font-size:11px;color:var(--text-dim);">${w.description || ""}</div>
+              </div>
+              <span style="font-size:9.5px;color:var(--text-dim);background:rgba(99,102,241,0.12);padding:2px 8px;border-radius:20px;margin-left:8px;white-space:nowrap;">${w.channel || "REST"}</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div style="background:rgba(15,23,42,0.4);border-radius:7px;padding:8px 10px;">
+                <div style="font-size:9.5px;text-transform:uppercase;letter-spacing:0.4px;color:var(--text-dim);margin-bottom:3px;">Schedule</div>
+                <code style="font-size:10.5px;color:var(--text-main);">${w.schedule || '*/5 * * * *'}</code>
+              </div>
+              <div style="background:rgba(15,23,42,0.4);border-radius:7px;padding:8px 10px;">
+                <div style="font-size:9.5px;text-transform:uppercase;letter-spacing:0.4px;color:var(--text-dim);margin-bottom:3px;">Avg Latency</div>
+                <div style="font-weight:700;font-family:var(--font-mono);font-size:13px;color:${latencyColor};">${w.latencyMs} ms</div>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="font-size:10.5px;color:var(--text-dim);">
+                🕐 Last: <span style="color:var(--text-muted);font-weight:500;">${w.lastRun || "N/A"}</span>
+                · <span style="color:var(--brand-cyan);font-weight:600;">${w.eventsToday || 0} events</span>
+              </div>
+              <button class="btn btn-xs btn-secondary" onclick="syncIntegrationWorker('${w.id}')">🔄 Sync Now</button>
+            </div>
+          </div>
+          `;
+        }).join("")}
       </div>
     </div>
 
-    <!-- Dead-Letter Failure Queue & Retry Inspector -->
-    <div class="card" style="margin-bottom: 24px; border: 1px solid ${failedJobs.length > 0 ? 'rgba(239, 68, 68, 0.4)' : 'var(--border-main)'};">
-      <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
-        <div class="card-title-group">
-          <h3>Dead-Letter Error Queue & Idempotent Retry Inspector</h3>
-          <p>Preserves actionable integration errors with safe retry and deduplication key guarantee</p>
+    <!-- Idempotent Processing & Duplicate Prevention Engine (SOW Clause 175) -->
+    <div class="card" style="margin-bottom:22px;padding:0;border:1px solid rgba(16,185,129,0.25);">
+      <div class="card-header" style="display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--border-subtle);">
+        <div>
+          <h3 style="margin:0;font-size:14px;font-weight:700;color:var(--text-heading);display:flex;align-items:center;gap:8px;">
+            <span style="color:#10b981;font-size:16px;">🛡️</span> Idempotent Processing & Deduplication Guard (SOW Spec)
+          </h3>
+          <p style="margin:3px 0 0 0;font-size:11px;color:var(--text-muted);">
+            Ensures zero duplicate orders, shipments, or stock sync records when network requests are retried via SHA-256 key hashing
+          </p>
         </div>
-        <span class="badge ${failedJobs.length > 0 ? 'badge-danger' : 'badge-success'}">${failedJobs.length} Failed Queues</span>
+        <span class="badge badge-success">Idempotency Lock Active</span>
       </div>
-      <div class="card-body" style="padding: 0;">
+      <div class="card-body" style="padding:16px 18px;">
+        <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:14px;align-items:center;">
+          <div style="font-size:12px;color:var(--text-main);line-height:1.6;">
+            Every inbound webhook and outbound dispatch request assigns an atomic <strong>X-Idempotency-Key</strong> (e.g. <code>IDEM-AMZ-ORD-99214-HASH</code>).
+            If an upstream gateway (Amazon SP-API, Etsy, or FedEx) times out and re-attempts transmission, the <strong>RugsOS Deduplication Engine</strong> detects the matching SHA-256 payload digest, prevents double allocation, and returns the cached idempotent response code without creating duplicate records.
+          </div>
+          <div style="background:var(--bg-main);border:1px solid var(--border-subtle);border-radius:8px;padding:12px;">
+            <div style="font-size:10px;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">Live Idempotent Token Hash Table (Last 3 Tokens)</div>
+            <div style="display:flex;flex-direction:column;gap:6px;font-family:var(--font-mono);font-size:11px;">
+              <div style="display:flex;justify-content:space-between;padding:4px 8px;background:rgba(16,185,129,0.06);border-radius:4px;border:1px solid rgba(16,185,129,0.2);">
+                <span style="color:var(--brand-cyan);">SHA256: 4f8a...9921</span>
+                <span style="color:#10b981;font-weight:700;">UNIQUE (LOCKED)</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:4px 8px;background:rgba(16,185,129,0.06);border-radius:4px;border:1px solid rgba(16,185,129,0.2);">
+                <span style="color:var(--brand-cyan);">SHA256: b21c...8812</span>
+                <span style="color:#10b981;font-weight:700;">RETRY SAFE</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:4px 8px;background:rgba(239,68,68,0.06);border-radius:4px;border:1px solid rgba(239,68,68,0.2);">
+                <span style="color:var(--brand-cyan);">SHA256: 77a0...1104</span>
+                <span style="color:#ef4444;font-weight:700;">DUPLICATE REJECTED (409)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dead-Letter Queue & Actionable Integration Errors (SOW Clause 173-174) -->
+    <div class="card" style="margin-bottom:22px;border:1px solid ${failedJobs.length > 0 ? "rgba(245,158,11,0.35)" : "var(--border-main)"};padding:0;">
+      <div class="card-header" style="display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--border-subtle);">
+        <div>
+          <h3 style="margin:0;font-size:14px;font-weight:700;color:var(--text-heading);display:flex;align-items:center;gap:8px;">
+            <span>💀</span> Dead-Letter Error Queue &amp; Actionable Error Inspector (SOW Spec)
+          </h3>
+          <p style="margin:3px 0 0 0;font-size:11px;color:var(--text-muted);">
+            Preserves failed integration payloads with complete request diagnostics, error traces, and safe idempotent retry
+          </p>
+        </div>
+        <span class="badge ${failedJobs.length > 0 ? 'badge-warning' : 'badge-success'}">${failedJobs.length} Pending In Queue</span>
+      </div>
+      <div class="card-body" style="padding:0;">
         ${failedJobs.length === 0 ? `
-          <div style="padding: 30px; text-align: center; color: var(--text-muted);">
-            ✓ Dead-letter queue empty! Zero pending retries across all worker daemons.
+          <div style="padding:32px;text-align:center;color:var(--text-muted);">
+            <div style="font-size:28px;margin-bottom:8px;">✅</div>
+            <div style="font-weight:700;font-size:13px;color:#10b981;margin-bottom:4px;">Dead-Letter Queue Clean!</div>
+            <div style="font-size:11.5px;">All background integrations succeeded with zero unrecoverable errors.</div>
           </div>
         ` : `
           <div class="table-responsive">
-            <table class="data-table">
+            <table class="data-table" style="width:100%;">
               <thead>
                 <tr>
                   <th>Job ID</th>
                   <th>Gateway Endpoint</th>
                   <th>Payload Reference</th>
-                  <th>Failure Reason</th>
+                  <th>Actionable Failure Reason</th>
                   <th>Retries</th>
-                  <th>Idempotent Key</th>
-                  <th>Actions</th>
+                  <th>Idempotency Token</th>
+                  <th style="text-align:right;">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 ${failedJobs.map(j => `
                   <tr>
-                    <td><strong style="color: var(--danger); font-family: var(--font-mono);">${j.jobId}</strong></td>
+                    <td><strong style="color:var(--danger);font-family:var(--font-mono);">${j.jobId}</strong></td>
                     <td>
                       <strong>${j.gateway}</strong>
-                      <div style="font-size: 10px; color: var(--text-dim); font-family: var(--font-mono);">${j.endpoint}</div>
+                      <div style="font-size:10px;color:var(--text-dim);font-family:var(--font-mono);">${j.endpoint}</div>
                     </td>
-                    <td><code>${j.payloadRef}</code></td>
-                    <td><span style="color: var(--danger); font-size: 12px;">${j.error}</span></td>
-                    <td><span class="badge badge-warning">${j.retryCount} Retries</span></td>
-                    <td><code style="color: var(--brand-purple);">${j.idempotentKey}</code></td>
+                    <td><code style="font-size:11px;">${j.payloadRef}</code></td>
                     <td>
-                      <button class="btn btn-xs btn-primary" onclick="retryFailedJob('${j.jobId}')">
-                        🔁 Retry with Idempotency
-                      </button>
+                      <span style="color:#f59e0b;font-size:11.5px;font-weight:600;">${j.error}</span>
+                    </td>
+                    <td><span class="badge badge-warning">${j.retryCount || 1} Retries</span></td>
+                    <td><code style="color:var(--brand-purple);font-size:10.5px;">${j.idempotentKey}</code></td>
+                    <td style="text-align:right;">
+                      <div style="display:inline-flex;gap:6px;">
+                        <button class="btn btn-xs btn-secondary" onclick="inspectJobPayload('${j.jobId}')" style="font-size:10.5px;">🔍 Inspect Payload</button>
+                        <button class="btn btn-xs btn-primary" onclick="retryFailedJob('${j.jobId}')" style="font-size:10.5px;background:linear-gradient(135deg,#0ea5e9,#06b6d4);border:none;font-weight:700;">🔁 Retry</button>
+                      </div>
                     </td>
                   </tr>
-                `).join('')}
+                `).join("")}
               </tbody>
             </table>
           </div>
@@ -16499,64 +17135,56 @@ function renderIntegrationsView() {
       </div>
     </div>
 
-    <!-- Scheduled Background Cron Manager -->
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title-group">
-          <h3>Scheduled Background Cron Daemon Manager</h3>
-          <p>Automated background tasks executed according to SOW specification</p>
+    <!-- Scheduled Background Cron Daemon Manager (SOW Clause 176) -->
+    <div class="card" style="padding:0;margin-bottom:22px;">
+      <div class="card-header" style="padding:14px 18px;border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <h3 style="margin:0;font-size:14px;font-weight:700;color:var(--text-heading);">⚙️ Scheduled Background Cron Queue Manager (SOW Spec)</h3>
+          <p style="margin:3px 0 0 0;font-size:11px;color:var(--text-muted);">Background queues for imports, synchronization, recalculation and reconciliation</p>
         </div>
+        <span class="badge badge-primary">6 Active Cron Queues</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));">
+        ${[
+          { name: "Marketplace Order Poller",        cron: "*/5 * * * *",  desc: "Ingest Amazon SP-API & Etsy Orders with atomic reservation", last: "3 mins ago",    next: "In 2 mins",       state: "RUNNING",  color: "#10b981" },
+          { name: "Inventory Concurrency Reconciler",cron: "0 * * * *",    desc: "Sync stock ledgers across India WH, Transit & USA 3PL",       last: "22 mins ago",   next: "In 38 mins",      state: "STANDBY",  color: "#06b6d4" },
+          { name: "Courier 3-Way Weight Audit",      cron: "0 2 * * *",    desc: "Compare FedEx/DHL invoices vs calibrated Mettler scale",     last: "Today 02:00",   next: "Tomorrow 02:00",  state: "STANDBY",  color: "#06b6d4" },
+          { name: "True Profit Recalculator",        cron: "0 3 * * *",    desc: "Update actual margins when courier audited costs finalize",    last: "Today 03:00",   next: "Tomorrow 03:00",  state: "STANDBY",  color: "#10b981" },
+          { name: "DGFT EDPMS Realization Scanner",  cron: "0 9 * * 1-5",  desc: "Scan FEMA 210-day export realization deadlines via AD Bank",  last: "Today 09:00",   next: "Tomorrow 09:00",  state: "STANDBY",  color: "#6366f1" },
+          { name: "Demand Forecast Batch Scanner",   cron: "0 0 * * 0",    desc: "Compute 60-day SKU burn rates & plan 40ft Ocean Batches",     last: "Sunday 00:00",  next: "Next Sunday",     state: "STANDBY",  color: "#6366f1" },
+        ].map((cron, i, arr) => `
+          <div style="padding:16px;border-right:${(i + 1) % 3 !== 0 ? "1px solid var(--border-subtle)" : "none"};border-bottom:1px solid var(--border-subtle);">
+            <div style="display:flex;align-items:center;gap:7px;margin-bottom:8px;">
+              <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${cron.color};box-shadow:0 0 5px ${cron.color};"></span>
+              <span style="font-size:9.5px;font-weight:700;letter-spacing:0.5px;color:${cron.color};background:${cron.color}18;padding:2px 7px;border-radius:20px;">${cron.state}</span>
+            </div>
+            <div style="font-weight:700;font-size:12.5px;color:var(--text-heading);margin-bottom:4px;">${cron.name}</div>
+            <div style="font-size:11px;color:var(--text-dim);margin-bottom:8px;line-height:1.4;">${cron.desc}</div>
+            <code style="font-size:10px;color:var(--brand-cyan);display:block;margin-bottom:6px;">${cron.cron}</code>
+            <div style="font-size:10px;color:var(--text-dim);">Last: <span style="color:var(--text-muted);">${cron.last}</span> · Next: <span style="color:var(--text-muted);">${cron.next}</span></div>
+            <button class="btn btn-xs btn-secondary" onclick="triggerCronJob('${cron.name}')" style="margin-top:10px;width:100%;font-size:10.5px;">▶ Trigger Job Manually</button>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+
+    <!-- Live Integration Event Audit Stream -->
+    <div class="card" style="padding:0;">
+      <div class="card-header" style="padding:12px 18px;border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center;">
+        <h3 style="margin:0;font-size:13px;font-weight:700;color:var(--text-heading);">📜 Live Integration Gateway Telemetry & Event Audit Stream</h3>
+        <span style="font-size:11px;color:var(--text-dim);font-family:var(--font-mono);">Stream Polling Active</span>
       </div>
       <div class="table-responsive">
-        <table class="data-table">
+        <table class="data-table" style="width:100%;font-size:11.5px;">
           <thead>
-            <tr>
-              <th>Task Name</th>
-              <th>Cron Schedule</th>
-              <th>Target Routine</th>
-              <th>Last Executed</th>
-              <th>Next Run</th>
-              <th>Execution State</th>
-              <th>Manual Action</th>
-            </tr>
+            <tr><th>Timestamp</th><th>Gateway Source</th><th>Event Type</th><th>Payload Identifier</th><th>Status</th><th>Latency</th></tr>
           </thead>
           <tbody>
-            <tr>
-              <td><strong>Marketplace Order Poller</strong></td>
-              <td><code>*/5 * * * *</code> (Every 5 mins)</td>
-              <td>Ingest Amazon SP-API & Etsy Orders</td>
-              <td>2 mins ago</td>
-              <td>In 3 mins</td>
-              <td><span class="badge badge-success">RUNNING</span></td>
-              <td><button class="btn btn-xs btn-secondary" onclick="triggerCronJob('Order Poller')">Trigger</button></td>
-            </tr>
-            <tr>
-              <td><strong>Inventory Concurrency Reconciler</strong></td>
-              <td><code>0 * * * *</code> (Hourly)</td>
-              <td>Sync India WH vs USA 3PL Stock Positions</td>
-              <td>18 mins ago</td>
-              <td>In 42 mins</td>
-              <td><span class="badge badge-success">STANDBY</span></td>
-              <td><button class="btn btn-xs btn-secondary" onclick="triggerCronJob('Inventory Reconciler')">Trigger</button></td>
-            </tr>
-            <tr>
-              <td><strong>Carrier 3-Way Weight Audit Reconciliation</strong></td>
-              <td><code>0 2 * * *</code> (Daily 02:00 IST)</td>
-              <td>Compare FedEx Invoices against Scale Mass</td>
-              <td>Today 02:00</td>
-              <td>Tomorrow 02:00</td>
-              <td><span class="badge badge-success">STANDBY</span></td>
-              <td><button class="btn btn-xs btn-secondary" onclick="triggerCronJob('Courier Audit')">Trigger</button></td>
-            </tr>
-            <tr>
-              <td><strong>Demand Forecast & Replenishment Scanner</strong></td>
-              <td><code>0 0 * * 0</code> (Weekly Sunday)</td>
-              <td>Compute 60-day SKU burn rates & Ocean FCL Batches</td>
-              <td>Yesterday 00:00</td>
-              <td>Sunday 00:00</td>
-              <td><span class="badge badge-success">STANDBY</span></td>
-              <td><button class="btn btn-xs btn-secondary" onclick="triggerCronJob('Replenishment Scanner')">Trigger</button></td>
-            </tr>
+            <tr><td>Today 11:32:04</td><td><strong>Amazon SP-API</strong></td><td>Order Ingestion</td><td><code>ORD-AMZ-99214</code></td><td><span class="badge badge-success">✓ Ingested & Locked</span></td><td>142 ms</td></tr>
+            <tr><td>Today 11:28:15</td><td><strong>Etsy Open API</strong></td><td>Direct Sale Webhook</td><td><code>ORD-ETS-44109</code></td><td><span class="badge badge-success">✓ Synced</span></td><td>58 ms</td></tr>
+            <tr><td>Today 11:15:00</td><td><strong>FedEx Web Services</strong></td><td>AWB Dispatch Telemetry</td><td><code>AWB-7894-3321-992</code></td><td><span class="badge badge-success">✓ Checkpoint Logged</span></td><td>218 ms</td></tr>
+            <tr><td>Today 10:45:10</td><td><strong>ICEGATE EDI</strong></td><td>CSB-V LEO Status Poll</td><td><code>SB-6789124-IN</code></td><td><span class="badge badge-success">✓ LEO Cleared</span></td><td>380 ms</td></tr>
+            <tr><td>Today 09:30:00</td><td><strong>HDFC EDPMS</strong></td><td>Swift MT103 IRM Match</td><td><code>FIRA-HDFC-99120</code></td><td><span class="badge badge-success">✓ Realized</span></td><td>295 ms</td></tr>
           </tbody>
         </table>
       </div>
@@ -16565,15 +17193,323 @@ function renderIntegrationsView() {
 }
 
 
-function openNewAlertRule() {
-  showToast("Alert Rule Builder: Configure condition threshold and notification channel.", "info");
+// ============================================================================
+// MODAL & SIMULATION HELPER FUNCTIONS
+// ============================================================================
+
+// Universal openModal helper
+function openModal(title, bodyHtml, badgeText = "RugsOS Enterprise") {
+  const modal = document.getElementById("crudModal");
+  if (!modal) return;
+  const box = modal.querySelector('.modal-box');
+  if (box) {
+    box.style.maxWidth = "960px";
+    box.style.width = "92vw";
+    box.style.maxHeight = "92vh";
+  }
+  const titleEl = document.getElementById("crudModalTitle");
+  const badgeEl = document.getElementById("crudBadge");
+  const bodyEl = document.getElementById("crudModalBody");
+  const footerEl = document.getElementById("crudModalFooter");
+
+  if (titleEl) titleEl.textContent = title;
+  if (badgeEl) badgeEl.textContent = badgeText;
+  if (bodyEl) {
+    bodyEl.style.overflowY = "auto";
+    bodyEl.style.padding = "16px 20px";
+    bodyEl.innerHTML = bodyHtml;
+  }
+  if (footerEl) {
+    footerEl.innerHTML = `<button class="btn btn-secondary" onclick="closeModal('crudModal')">Close</button>`;
+  }
+  modal.style.display = "flex";
 }
 
+function openNewAlertRule() {
+  const bodyHtml = `
+    <div style="padding: 4px 0; font-size: 13px; color: var(--text-main);">
+      <!-- Step indicator -->
+      <div style="display: flex; justify-content: center; gap: 0; margin-bottom: 20px;">
+        ${['Domain & Category', 'Threshold Trigger', 'Automated Action'].map((step, i) => `
+          <div style="display: flex; align-items: center;">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+              <div style="width: 28px; height: 28px; border-radius: 50%; background: ${i === 0 ? 'linear-gradient(135deg, #6366f1, #06b6d4)' : 'rgba(99,102,241,0.15)'}; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: ${i === 0 ? '#fff' : 'var(--text-muted)'};">${i + 1}</div>
+              <div style="font-size: 10px; color: var(--text-dim); font-weight: 600; white-space: nowrap;">${step}</div>
+            </div>
+            ${i < 2 ? '<div style="width: 60px; height: 2px; background: rgba(99,102,241,0.2); margin: 0 4px; margin-bottom: 18px;"></div>' : ''}
+          </div>
+        `).join('')}
+      </div>
+
+      <!-- Rule Name -->
+      <div class="form-group" style="margin-bottom: 14px;">
+        <label style="font-weight: 700; font-size: 11px; margin-bottom: 6px; display: block; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted);">Automation Rule Name</label>
+        <input type="text" id="ruleNameInput" class="form-control" placeholder="e.g. Amazon FBA Low Stock Emergency Ship" value="USA 3PL Low Stock Emergency Auto-Transfer" style="font-weight: 600; font-size: 14px;">
+      </div>
+
+      <!-- Domain + Severity -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
+        <div class="form-group">
+          <label style="font-weight: 700; font-size: 11px; margin-bottom: 6px; display: block; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted);">SOW Domain Category</label>
+          <select id="ruleDomainInput" class="form-control" style="font-weight: 600;">
+            <option value="Operational Alerts">🏭 Operational Alerts (Stock & SLA)</option>
+            <option value="Logistics & Courier">🚚 Logistics & Courier Audit</option>
+            <option value="Financial & Export">🏦 Financial, FEMA & Returns</option>
+            <option value="Recalculation & Sync">🔄 Recalculation & Sync</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label style="font-weight: 700; font-size: 11px; margin-bottom: 6px; display: block; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted);">Severity Level</label>
+          <select id="ruleSeverityInput" class="form-control" style="font-weight: 600;">
+            <option value="CRITICAL">🚨 CRITICAL — Immediate Intercept</option>
+            <option value="HIGH">⚠️ HIGH — Same-Day Action</option>
+            <option value="MEDIUM">ℹ️ MEDIUM — Warning Notification</option>
+            <option value="INFO">✅ INFO — Informational Log</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Trigger condition -->
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label style="font-weight: 700; font-size: 11px; margin-bottom: 6px; display: block; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted);">⚡ Trigger Threshold Condition</label>
+        <input type="text" id="ruleConditionInput" class="form-control" placeholder="e.g. When USA 3PL Free Stock falls below 15 Days Supply" value="When Edison 3PL Free Stock falls below 15 Days Supply" style="font-weight: 500;">
+        <div style="font-size: 10.5px; color: var(--text-dim); margin-top: 5px;">Define the measurable condition (stock level, order aging >24h, weight variance, or FEMA date).</div>
+      </div>
+
+      <!-- Automated action -->
+      <div class="form-group" style="margin-bottom: 4px;">
+        <label style="font-weight: 700; font-size: 11px; margin-bottom: 6px; display: block; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted);">🤖 Automated System Execution</label>
+        <input type="text" id="ruleActionInput" class="form-control" placeholder="e.g. Auto-generate Draft Purchase Order & notify SCM Lead" value="Auto-generate Draft PO & dispatch SMTP email alert to SCM Lead" style="font-weight: 500;">
+        <div style="font-size: 10.5px; color: var(--text-dim); margin-top: 5px;">Define the automated workflow or notification triggered upon threshold breach.</div>
+      </div>
+    </div>
+  `;
+
+  openModal("⚡ Create New SOW Automation Rule", bodyHtml, "Automation Engine");
+
+  const footer = document.getElementById("crudModalFooter");
+  if (footer) {
+    footer.innerHTML = `
+      <button class="btn btn-secondary" onclick="closeModal('crudModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveNewAutomationRule()" style="background: linear-gradient(135deg, #6366f1, #06b6d4); color: #fff; font-weight: 700; border: none;">
+        ✓ Save & Activate Rule
+      </button>
+    `;
+  }
+}
+
+function saveNewAutomationRule() {
+  const name = document.getElementById("ruleNameInput")?.value.trim() || "Custom Automation Rule";
+  const domain = document.getElementById("ruleDomainInput")?.value || "Operational Alerts";
+  const severity = document.getElementById("ruleSeverityInput")?.value || "HIGH";
+  const condition = document.getElementById("ruleConditionInput")?.value.trim() || "When threshold is breached";
+  const action = document.getElementById("ruleActionInput")?.value.trim() || "Trigger automated alert";
+
+  const newRule = {
+    id: `rule-0${(AppState.automations || []).length + 1}`,
+    name,
+    domain,
+    severity,
+    trigger: condition,
+    condition,
+    action,
+    enabled: true,
+    active: true,
+    lastFired: "Just Created",
+    executionCount: 0,
+    schedule: "*/5 * * * *"
+  };
+
+  if (!AppState.automations) AppState.automations = [];
+  AppState.automations.unshift(newRule);
+  closeModal('crudModal');
+  showToast(`⚡ Automation Rule "${name}" activated successfully!`, "success");
+  renderCurrentView();
+}
+
+function runAutomationSimulation() {
+  showToast("⚡ Running full SOW automation simulation against all 9 active rules...", "info");
+  setTimeout(() => {
+    const summaryHtml = `
+      <div style="padding: 10px 0; font-size: 12.5px; color: var(--text-main);">
+        <div style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); border-radius: 8px; padding: 12px 16px; margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 24px;">✅</span>
+          <div>
+            <strong style="color: #10b981; font-size: 13.5px;">Simulation Complete: 9 / 9 Rules Evaluated Successfully</strong>
+            <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Execution took 42ms · 0 unhandled exceptions · All notification channels verified.</div>
+          </div>
+        </div>
+
+        <table class="data-table" style="width: 100%; font-size: 11.5px;">
+          <thead>
+            <tr><th>Rule ID</th><th>Rule Name</th><th>Condition Evaluated</th><th>Simulation Result</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>rule-01</code></td><td>Low Stock Safety Replenishment</td><td>Free Stock < 18 units</td><td><span class="badge badge-danger">🚨 Triggered (SKU-HER-9X12-01)</span></td></tr>
+            <tr><td><code>rule-02</code></td><td>Unfulfilled Order Aging (>24h)</td><td>Allocated & Age > 24h</td><td><span class="badge badge-warning">⚠️ Triggered (ORD-AMZ-99214)</span></td></tr>
+            <tr><td><code>rule-03</code></td><td>Courier Weight Discrepancy</td><td>Billed Wt > Scale + 1.5kg</td><td><span class="badge badge-warning">⚠️ Triggered (AWB-7894-3321-992)</span></td></tr>
+            <tr><td><code>rule-04</code></td><td>FEMA 210-Day Realization</td><td>Age > 150d & Unrealized</td><td><span class="badge badge-warning">⚠️ Triggered (SB-6789124)</span></td></tr>
+            <tr><td><code>rule-08</code></td><td>Net Profit Recalculator</td><td>Courier Audit Finalized</td><td><span class="badge badge-success">✓ 142 Orders Recalculated</span></td></tr>
+            <tr><td><code>rule-09</code></td><td>Multi-WH Concurrency Sync</td><td>Midnight Reconcile Check</td><td><span class="badge badge-success">✓ All 3 Nodes Synced</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    `;
+    openModal("⚡ SOW Automation Engine — Live Simulation Report", summaryHtml, "Simulation Complete");
+  }, 600);
+}
+
+function testFireRule(ruleId) {
+  const rule = (AppState.automations || []).find(r => r.id === ruleId);
+  const name = rule ? rule.name : ruleId;
+  showToast(`⚡ Test Fired Rule: "${name}". Simulated alert generated & email dispatched!`, "success");
+  if (rule) {
+    rule.executionCount = (rule.executionCount || 0) + 1;
+    rule.lastFired = "Just Now (Test Fire)";
+    renderCurrentView();
+  }
+}
+
+function dismissAlert(alertId) {
+  const alert = (AppState.activeAlerts || []).find(a => a.id === alertId);
+  if (alert) alert.resolved = true;
+  showToast(`Alert ${alertId} resolved and archived to audit log.`, "success");
+  renderCurrentView();
+}
+
+function toggleAutomationRule(ruleId, newState) {
+  const rule = (AppState.automations || []).find(r => r.id === ruleId);
+  if (rule) {
+    rule.active = newState;
+    rule.enabled = newState;
+    showToast(`Rule "${rule.name}" is now ${newState ? "ACTIVE" : "PAUSED"}.`, newState ? "success" : "info");
+    renderCurrentView();
+  }
+}
+
+function deleteAutomationRule(ruleId) {
+  AppState.automations = (AppState.automations || []).filter(r => r.id !== ruleId);
+  showToast(`Rule ${ruleId} deleted successfully.`, "info");
+  renderCurrentView();
+}
+
+function syncAllIntegrationWorkers() {
+  showToast("⚡ Syncing all 6 Enterprise Integration Daemons with upstream gateways...", "info");
+  setTimeout(() => {
+    (AppState.integrationWorkers || []).forEach(w => {
+      w.lastRun = "Just Now";
+      w.eventsToday = (w.eventsToday || 0) + Math.floor(Math.random() * 8) + 2;
+    });
+    showToast("✓ All 6 Integration Gateways synchronized successfully!", "success");
+    renderCurrentView();
+  }, 700);
+}
+
+function syncIntegrationWorker(workerId) {
+  const worker = (AppState.integrationWorkers || INITIAL_INTEGRATION_WORKERS).find(w => w.id === workerId);
+  const name = worker ? worker.name : workerId;
+  showToast(`Syncing ${name}...`, "info");
+  setTimeout(() => {
+    if (worker) {
+      worker.lastRun = "Just Now";
+      worker.eventsToday = (worker.eventsToday || 0) + 5;
+    }
+    showToast(`✓ ${name} synchronized cleanly (0 errors)!`, "success");
+    renderCurrentView();
+  }, 500);
+}
+
+function inspectJobPayload(jobId) {
+  const job = (AppState.failedJobs || INITIAL_FAILED_JOBS).find(j => j.jobId === jobId) || INITIAL_FAILED_JOBS[0];
+  const payloadJson = JSON.stringify({
+    jobId: job.jobId,
+    gateway: job.gateway,
+    endpoint: job.endpoint,
+    httpStatus: 503,
+    error: job.error,
+    idempotentKey: job.idempotentKey,
+    retryCount: job.retryCount,
+    requestPayload: {
+      awbNumber: "7894-3324-411",
+      orderRef: "ORD-WMT-11045",
+      recipient: {
+        name: "Jennifer Miller",
+        address: "742 Evergreen Terrace, Edison NJ 08817",
+        country: "US"
+      },
+      package: {
+        weightKg: 28.5,
+        dimsCm: [250, 30, 30],
+        declaredValueUSD: 680.00
+      }
+    },
+    diagnosticTrace: "CarrierUpstreamTimeoutException: Connection reset by peer at FedEx Edge Gateway api.fedex.com:443"
+  }, null, 2);
+
+  const bodyHtml = `
+    <div style="font-size: 12px; color: var(--text-main);">
+      <div style="background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+        <strong style="color: #f59e0b;">Actionable Diagnostic Error Report:</strong>
+        <div style="font-size: 11px; color: var(--text-muted); margin-top: 3px;">
+          ${job.error} · Idempotency Key: <code style="color: var(--brand-purple);">${job.idempotentKey}</code>
+        </div>
+      </div>
+      <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px;">Raw Preserved Payload & Stack Trace (JSON)</div>
+      <pre style="background: var(--bg-main); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 12px; font-size: 11px; font-family: var(--font-mono); color: #a5f3fc; overflow-x: auto; max-height: 280px;">${payloadJson}</pre>
+    </div>
+  `;
+
+  openModal(`🔍 Payload Inspector — ${job.jobId}`, bodyHtml, "Dead-Letter Queue");
+
+  const footer = document.getElementById("crudModalFooter");
+  if (footer) {
+    footer.innerHTML = `
+      <button class="btn btn-secondary" onclick="closeModal('crudModal')">Close</button>
+      <button class="btn btn-primary" onclick="closeModal('crudModal'); retryFailedJob('${job.jobId}')" style="background: linear-gradient(135deg, #0ea5e9, #06b6d4); border: none; font-weight: 700;">
+        🔁 Idempotent Retry Now
+      </button>
+    `;
+  }
+}
+
+function retryFailedJob(jobId) {
+  showToast(`🔁 Dispatching idempotent retry for ${jobId}...`, "info");
+  setTimeout(() => {
+    AppState.failedJobs = (AppState.failedJobs || INITIAL_FAILED_JOBS).filter(j => j.jobId !== jobId);
+    showToast(`✓ ${jobId} successfully retried & acknowledged by upstream carrier gateway! Zero duplicate records generated.`, "success");
+    renderCurrentView();
+  }, 700);
+}
+
+function triggerCronJob(name) {
+  showToast(`⚙️ Triggering background cron queue: "${name}"...`, "info");
+  setTimeout(() => {
+    showToast(`✓ Background job "${name}" completed successfully!`, "success");
+    renderCurrentView();
+  }, 600);
+}
+
+// Global window bindings
+window.openModal = openModal;
+window.renderAutomationView = renderAutomationView;
+window.renderIntegrationsView = renderIntegrationsView;
+window.openNewAlertRule = openNewAlertRule;
+window.saveNewAutomationRule = saveNewAutomationRule;
+window.runAutomationSimulation = runAutomationSimulation;
+window.testFireRule = testFireRule;
+window.dismissAlert = dismissAlert;
+window.toggleAutomationRule = toggleAutomationRule;
+window.deleteAutomationRule = deleteAutomationRule;
+window.syncAllIntegrationWorkers = syncAllIntegrationWorkers;
+window.syncIntegrationWorker = syncIntegrationWorker;
+window.inspectJobPayload = inspectJobPayload;
+window.retryFailedJob = retryFailedJob;
+window.triggerCronJob = triggerCronJob;
 
 
 function renderSOWDocView() {
   return `
-    <div class="page-header"><div class="page-title-wrap"><h1>📖 Full SOW Document & Traceability Explorer</h1><p>Rugs — Scope of Work & Deliverable Verification Matrix (1,645 Engineering Hours).</p></div></div>
+    <div class="page-header"><div class="page-title-wrap"><h1>📖 Full SOW Document & Traceability Explorer</h1><p>Scope of Work & Deliverable Verification Matrix (1,645 Engineering Hours).</p></div></div>
     <div class="card">
       <div class="card-header"><h3>SOW Enterprise Architecture Breakdown</h3></div>
       <div class="card-body">
@@ -16749,13 +17685,13 @@ function renderUserProfilePage() {
       <!-- Profile Hero Banner -->
       <div class="profile-hero-card">
         <div style="display: flex; align-items: center; gap: 20px;">
-          <div class="profile-avatar-large">SA</div>
+          <div class="profile-avatar-large">CT</div>
           <div class="profile-identity-info">
             <h2>${adminUser.name}</h2>
             <div class="profile-identity-meta">
               <span>📧 <strong>${adminUser.email}</strong></span>
               <span>•</span>
-              <span>🏢 <strong>RUGS GLOBAL (Operations)</strong></span>
+              <span>🏢 <strong>(Operations)</strong></span>
               <span>•</span>
               <span>🌐 <strong>Asia/Kolkata (IST +05:30)</strong></span>
             </div>
@@ -18097,7 +19033,7 @@ function openDocPaperPreviewModal(docType, id) {
         <div style="font-size: 13px; line-height: 1.8;">
           <p>We hereby certify that the following foreign inward remittance has been received and credited to the exporter's account:</p>
           <table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 12px;">
-            <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0; width: 40%;"><strong>1. Beneficiary Exporter:</strong></td><td>RUGS GLOBAL (RugOS Export Hub), Bhadohi (UP)</td></tr>
+            <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0; width: 40%;"><strong>1. Beneficiary Exporter:</strong></td><td>(RugOS Export Hub), Bhadohi (UP)</td></tr>
             <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>2. Importer / Remitter:</strong></td><td>${r.client}</td></tr>
             <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>3. SWIFT MT103 Wire Ref:</strong></td><td><code>SWIFT/DANSKE/9901428</code></td></tr>
             <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>4. Commercial Invoice Ref:</strong></td><td><strong>${r.invoiceNo}</strong></td></tr>
@@ -18188,7 +19124,7 @@ function openDocPaperPreviewModal(docType, id) {
           </div>
           <p>Photographic proof captured at our high-resolution calibrated packing bench station is attached herewith, proving roll dimensions. We demand an immediate Credit Note in the sum of <strong>$${a.varianceUSD.toFixed(2)} USD</strong> prior to release of invoice settlement.</p>
           <div style="margin-top: 40px;">
-            <strong>RUGS GLOBAL (RugOS Legal SCM Unit)</strong><br>
+            <strong>(RugOS Legal SCM Unit)</strong><br>
             Station Road, Bhadohi Carpet Industrial Hub, India
           </div>
         </div>
@@ -18213,7 +19149,7 @@ function openDocPaperPreviewModal(docType, id) {
       AMOUNT: $${r.amountUSD.toLocaleString()}
 :50K: ORDERING CUSTOMER: ${r.client}
 :57A: BENEFICIARY INSTITUTION: HDFC BANK LTD, BHADOHI (HDFCINBB051)
-:59:  BENEFICIARY CUSTOMER: RUGS GLOBAL (RUGOS EXPORT HUB)
+:59:  BENEFICIARY CUSTOMER: Rugs
       A/C NO: 50200089124401
 :70:  REMITTANCE INFORMATION: INVOICE ${r.invoiceNo} / SB ${r.shippingBillNo}
 :71A: DETAILS OF CHARGES: OUR
