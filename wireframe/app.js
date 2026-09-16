@@ -3336,7 +3336,7 @@ function initApp() {
 }
 
 function loadSavedTheme() {
-  const saved = localStorage.getItem("rugos_theme") || "dark";
+  const saved = localStorage.getItem("rugos_theme") || "light";
   setTheme(saved);
 }
 
@@ -3349,12 +3349,12 @@ function setTheme(theme) {
   const themeIcon = document.getElementById("themeIcon");
   const themeLabel = document.getElementById("themeLabel");
   if (themeIcon && themeLabel) {
-    if (theme === "light") {
-      themeIcon.textContent = "🌙";
-      themeLabel.textContent = "Dark Mode";
-    } else {
+    if (theme === "dark") {
       themeIcon.textContent = "☀️";
       themeLabel.textContent = "Light Mode";
+    } else {
+      themeIcon.textContent = "🌙";
+      themeLabel.textContent = "Dark Mode";
     }
   }
 }
