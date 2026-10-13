@@ -3,6 +3,26 @@
 
 <head>
   <meta charset="UTF-8">
+  <script>
+    (function() {
+      try {
+        var t = localStorage.getItem("rugos_theme") || "light";
+        var c = t === "dark" ? "theme-dark" : "theme-light";
+        document.documentElement.className = c;
+        if (document.body) {
+          document.body.className = c;
+        } else {
+          var obs = new MutationObserver(function() {
+            if (document.body) {
+              document.body.className = c;
+              obs.disconnect();
+            }
+          });
+          obs.observe(document.documentElement, { childList: true });
+        }
+      } catch (e) {}
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Odette Rugs — Enterprise Commerce, Export, Warehouse & Finance Platform</title>
   <link rel="shortcut icon" type="image/png"
@@ -16,7 +36,12 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body class="theme-dark">
+<body>
+  <!-- Dedicated Full-Screen Login & OTP Screen -->
+  <div class="login-screen-overlay" id="loginScreen">
+    <!-- Rendered dynamically by renderLoginScreen() in app.js -->
+  </div>
+
   <!-- Top Application Header -->
   <header class="app-header" id="appHeader">
     <div class="header-left">
@@ -59,12 +84,38 @@
         <span id="themeLabel">Light Mode</span>
       </button>
 
-      <div class="user-avatar-pill" onclick="openUserProfile()" style="cursor: pointer;"
-        title="Open Admin Profile">
-        <div class="avatar">CT</div>
-        <div class="user-info">
-          <span class="user-name">Admin</span>
-          <span class="user-role-display" id="userRoleTag">Management</span>
+      <div class="user-menu-wrapper" id="userMenuWrapper">
+        <div class="user-avatar-pill" onclick="toggleUserDropdownMenu()" style="cursor: pointer;"
+          title="Account & Security Settings">
+          <div class="avatar" id="headerUserAvatar">CT</div>
+          <div class="user-info">
+            <span class="user-name" id="headerUserName">Ctas Admin</span>
+            <span class="user-role-display" id="userRoleTag">Management</span>
+          </div>
+          <span style="font-size: 10px; color: var(--text-dim); margin-left: 2px;">▾</span>
+        </div>
+
+        <!-- Dropdown Menu -->
+        <div class="user-dropdown-menu" id="userDropdownMenu" style="display: none;">
+          <div class="user-dropdown-header">
+            <div style="font-weight: 700; font-size: 13px; color: var(--text-main);" id="dropdownUserName">Ctas Admin</div>
+            <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;" id="dropdownUserEmail">admin@odetterugs.com</div>
+            <div style="margin-top: 6px;">
+              <span class="badge badge-primary" id="dropdownUserRole" style="font-size: 10px;">Super Admin</span>
+            </div>
+          </div>
+          <button class="user-dropdown-item" onclick="openUserProfile(); closeUserDropdownMenu();">
+            <span>👤</span>
+            <span>Security & Governance Dossier</span>
+          </button>
+          <button class="user-dropdown-item" onclick="switchView('mod8-sow'); closeUserDropdownMenu();">
+            <span>⚙️</span>
+            <span>System Configuration</span>
+          </button>
+          <button class="user-dropdown-item danger" onclick="logoutUser(); closeUserDropdownMenu();">
+            <span>🚪</span>
+            <span>Sign Out / Lock Session</span>
+          </button>
         </div>
       </div>
     </div>
@@ -73,10 +124,17 @@
   <div class="app-layout">
     <!-- Sidebar Navigation -->
     <aside class="app-sidebar" id="appSidebar">
-      <!-- <div class="sidebar-header-box">
-        <span class="sidebar-section-title">PLATFORM NAVIGATION</span>
-        <span class="sidebar-active-badge">ACTIVE SCOPE</span>
-      </div> -->
+      <!-- Mobile Drawer Header -->
+      <div class="sidebar-mobile-header" id="sidebarMobileHeader">
+        <div class="sidebar-mobile-brand">
+          <img
+            src="https://www.odetterugs.com/cdn/shop/files/Odette-Rugs-Fave-IconOdette-Rugs-Fave-Icon_1.png?crop=center&height=32&v=1754630107&width=32"
+            alt="Odette Rugs" style="width: 24px; height: 24px; border-radius: 4px; object-fit: contain;">
+          <span style="font-weight: 800; font-size: 14px; color: var(--text-main); margin-left: 8px;">Odette Rugs <span style="color: var(--brand-cyan); font-weight: 700;">/ RugOS</span></span>
+        </div>
+        <button class="sidebar-close-btn" id="sidebarCloseBtn" title="Close Sidebar" onclick="toggleMobileSidebar(false)">&times;</button>
+      </div>
+
       <nav class="sidebar-nav" id="sidebarNav">
         <!-- Overview -->
         <div class="nav-module-heading">OVERVIEW</div>
@@ -136,6 +194,15 @@
               <path d="M9 18h6v-4H9z"></path>
             </svg></span>
           <span class="nav-text">Warehouses</span>
+        </a>
+        <a href="#mod3-wh-analytics" class="nav-item" data-module="mod3-wh-analytics">
+          <span class="nav-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg></span>
+          <span class="nav-text">Warehouse Analytics</span>
         </a>
         <a href="#mod2-history" class="nav-item" data-module="mod2-hist">
           <span class="nav-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -245,7 +312,21 @@
         </a>
 
         <!-- Administration -->
-        <div class="nav-module-heading">ADMINISTRATION</div>
+        <div class="nav-module-heading">ADMINISTRATION & MASTERS</div>
+        <a href="#admin-company" class="nav-item" data-module="admin-company">
+          <span class="nav-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 21h18"></path>
+              <path d="M9 8h1"></path>
+              <path d="M9 12h1"></path>
+              <path d="M9 16h1"></path>
+              <path d="M14 8h1"></path>
+              <path d="M14 12h1"></path>
+              <path d="M14 16h1"></path>
+              <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"></path>
+            </svg></span>
+          <span class="nav-text">Company</span>
+        </a>
         <a href="#mod2-rbac" class="nav-item" data-module="mod2-rbac">
           <span class="nav-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -276,6 +357,9 @@
         </a>
       </nav>
     </aside>
+
+    <!-- Mobile Drawer Overlay Backdrop -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleMobileSidebar(false)"></div>
 
     <!-- Main Viewport Area -->
     <main class="app-main" id="mainContainer">
@@ -392,6 +476,12 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <script src="app.js"></script>
+  <!-- Deterministic analytics layer (Module 8 + warehouse node analytics).
+       Loaded after app.js so these definitions supersede the original stubs. -->
+  <script src="analytics-core.js"></script>
+  <script src="analytics-actions.js"></script>
+  <script src="analytics-forecast.js"></script>
+  <script src="analytics-warehouse.js"></script>
 </body>
 
 </html>

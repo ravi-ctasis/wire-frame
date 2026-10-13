@@ -1,6 +1,7 @@
 # RugOS / ExportOS — Enterprise Interactive Wireframe Prototype & SOW Specifications
 
-> **Commerce, Export, Warehouse, Finance & SaaS Platform** 
+> **Commerce, Export, Warehouse, Finance & SaaS Platform**  
+> **Prepared by:** Ctas Info Services LLP  
 > **Original SOW Date:** 07/09/2026  
 > **Total SOW Scope:** 9 Modules • 1,645 Estimated Hours • 12 Weeks Delivery Timeline
 

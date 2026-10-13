@@ -1461,101 +1461,577 @@ const INITIAL_RECEIVABLES = [
 
 const INITIAL_RETURNS = [
   {
-    rmaNo: "RMA-2026-042",
+    returnId: "RET-2026-081",
+    rmaNo: "RET-2026-081",
     orderId: "ORD-AMZ-99214",
+    orderDate: "2026-09-13",
     customer: "Eleanor Vance",
+    customerEmail: "e.vance@dallasdesign.com",
+    customerPhone: "+1 (214) 555-0199",
+    customerAddress: "4820 Highland Park Blvd, Suite 400, Dallas, TX 75205, United States",
     channel: "Amazon US",
+    marketplaceOrderId: "114-8902341-7782103",
+    orderAmount: 736.10,
     sku: "SKU-RUG-HT-0810-IVR",
+    productTitle: "Jungle Tiger Hand-Tufted Wool Rug (8x10 ft)",
+    shipmentId: "SHIP-FEDEX-99214",
+    trackingNo: "7894-3321-992",
+    courier: "FedEx Home Delivery",
+    shipmentDate: "2026-09-13",
+    deliveryStatus: "Delivered",
+    outboundFreightUSD: 42.50,
+    returnType: "Customer Return",
+    returnReason: "Size Mismatch (Customer ordered 8x10, room requires 9x12 ft)",
+    returnDestination: "USA 3PL Distribution Center (Edison, NJ)",
     returnDate: "2026-09-14",
-    reason: "Size Mismatch (Customer ordered 8x10, room needed 9x12)",
+    expectedReturnDate: "2026-09-16",
+    returnCourier: "FedEx Ground Return",
+    returnTrackingNo: "9821-4451-0912",
+    returnStatus: "Completed",
+    itemCondition: "Resalable",
     grade: "Grade A (Resalable Full Price)",
     restockWh: "USA 3PL Distribution Center (Edison, NJ)",
     restockBin: "Zone A / Rack 04 / Bin 12",
-    status: "Restocked to Inventory",
+    items: [
+      {
+        sku: "SKU-RUG-HT-0810-IVR",
+        name: "Jungle Tiger Hand-Tufted Wool Rug (8x10 ft)",
+        productId: "PRD-HT-0810",
+        orderedQty: 1,
+        returnQty: 1,
+        unitPrice: 680.00,
+        itemValue: 680.00
+      }
+    ],
+    inspection: {
+      receivedDate: "2026-09-14",
+      inspectionDate: "2026-09-14",
+      inspector: "Devon Miller (USA 3PL QC)",
+      condition: "Resalable",
+      disposition: "Restocked to USA 3PL Primary Inventory",
+      restockWh: "USA 3PL Distribution Center (Edison, NJ)",
+      restockBin: "Zone A / Rack 04 / Bin 12",
+      notes: "Outer polywrap opened cleanly by customer; wool pile pristine, no stains or odor. Re-polywrapped & barcode tagged for sale.",
+      evidence: ["qc-pile-top.png", "qc-backing.png", "qc-label-tag.png"]
+    },
+    refund: {
+      refundRequired: true,
+      refundAmount: 736.10,
+      refundReason: "Customer Return (Resalable Condition)",
+      refundMethod: "Amazon SP-API Automated Refund",
+      refundRef: "REF-AMZ-2026-99214",
+      refundDate: "2026-09-14",
+      refundStatus: "Completed"
+    },
+    replacement: {
+      replacementRequired: false,
+      replacementOrderId: "",
+      product: "",
+      sku: "",
+      qty: 0,
+      shipmentId: "",
+      trackingNo: "",
+      replacementStatus: "N/A"
+    },
+    claim: {
+      claimRequired: false,
+      claimId: "",
+      claimReason: "No Damage (Item Resalable)",
+      claimAmount: 0.00,
+      claimStatus: "No Claim",
+      carrier: "FedEx",
+      evidence: [],
+      recoveredAmount: 0.00,
+      recoveryStatus: "N/A",
+      rejectionReason: ""
+    },
+    financialImpact: {
+      orderRevenue: 736.10,
+      refundAmount: 736.10,
+      returnShippingCost: 32.00,
+      rtoCost: 0.00,
+      damageLoss: 0.00,
+      replacementCost: 0.00,
+      otherCosts: 5.00,
+      claimRecovery: 0.00,
+      otherRecovery: 0.00,
+      netLoss: 37.00,
+      netProfitabilityImpact: -37.00
+    },
+    refundAmountUSD: 736.10,
     carrierClaimUSD: 0.00,
-    refundAmountUSD: 736.10
+    status: "Restocked to Inventory",
+    notes: "Customer contacted via Amazon Buyer Messaging requesting 9x12 replacement catalog link."
   },
   {
-    rmaNo: "RMA-2026-041",
+    returnId: "RET-2026-082",
+    rmaNo: "RET-2026-082",
     orderId: "ORD-ETSY-48190",
+    orderDate: "2026-09-11",
     customer: "Julian Thorne",
+    customerEmail: "j.thorne@brooklynloft.io",
+    customerPhone: "+1 (917) 555-0144",
+    customerAddress: "128 Wythe Ave, Apt 4B, Brooklyn, NY 11249, United States",
     channel: "Etsy Direct",
+    marketplaceOrderId: "ETSY-99410-TX",
+    orderAmount: 340.00,
     sku: "SKU-RUG-RUN-0212-BGE",
-    returnDate: "2026-09-12",
-    reason: "Transit Outer Polywrap Tear (Minor Soil on Fringe)",
+    productTitle: "Nomadic Runner Hand-Knotted Jute Rug (2.5x12 ft)",
+    shipmentId: "SHIP-FEDEX-48190",
+    trackingNo: "7894-3321-993",
+    courier: "FedEx Ground Home",
+    shipmentDate: "2026-09-11",
+    deliveryStatus: "Delivered",
+    outboundFreightUSD: 28.00,
+    returnType: "Customer Return",
+    returnReason: "Transit Outer Polywrap Tear (Fringe soiled during courier handling)",
+    returnDestination: "USA 3PL Distribution Center (Edison, NJ)",
+    returnDate: "2026-09-13",
+    expectedReturnDate: "2026-09-15",
+    returnCourier: "FedEx Return Express",
+    returnTrackingNo: "9821-4451-0913",
+    returnStatus: "Refund / Replacement Processing",
+    itemCondition: "Repairable",
     grade: "Grade B (Distressed / Warehouse Sample Sale)",
     restockWh: "USA 3PL Distribution Center (Edison, NJ)",
     restockBin: "Zone B / Sample Clearance Rack",
-    status: "Discounted Sample Sale",
+    items: [
+      {
+        sku: "SKU-RUG-RUN-0212-BGE",
+        name: "Nomadic Runner Hand-Knotted Jute Rug (2.5x12 ft)",
+        productId: "PRD-RUN-0212",
+        orderedQty: 1,
+        returnQty: 1,
+        unitPrice: 340.00,
+        itemValue: 340.00
+      }
+    ],
+    inspection: {
+      receivedDate: "2026-09-13",
+      inspectionDate: "2026-09-13",
+      inspector: "Devon Miller (USA 3PL QC)",
+      condition: "Repairable",
+      disposition: "Sent to Loom Repair Station / Clearance Lot",
+      restockWh: "USA 3PL Distribution Center (Edison, NJ)",
+      restockBin: "Zone B / Repair Station 02",
+      notes: "Courier dragged package; 10 cm corner fringe dirty. Jute body pristine. Sent for spot cleaning and fringe trimming.",
+      evidence: ["fringe-damage-corner.png", "carrier-wrap-puncture.png"]
+    },
+    refund: {
+      refundRequired: false,
+      refundAmount: 0.00,
+      refundReason: "Customer requested expedited replacement",
+      refundMethod: "N/A (Replacement Dispatched)",
+      refundRef: "N/A",
+      refundDate: "",
+      refundStatus: "Not Required"
+    },
+    replacement: {
+      replacementRequired: true,
+      replacementOrderId: "ORD-REP-48190-01",
+      product: "Nomadic Runner Hand-Knotted Jute Rug (2.5x12 ft)",
+      sku: "SKU-RUG-RUN-0212-BGE",
+      qty: 1,
+      shipmentId: "SHIP-FEDEX-REP-01",
+      trackingNo: "7894-3321-999",
+      replacementStatus: "Dispatched"
+    },
+    claim: {
+      claimRequired: true,
+      claimId: "CLM-FDX-2026-904",
+      claimReason: "Transit Packaging Tear & Fringe Soiling",
+      claimAmount: 45.00,
+      claimStatus: "Under Review",
+      carrier: "FedEx Ground",
+      evidence: ["carrier-damage-report.pdf", "photo-outer-carton.png"],
+      recoveredAmount: 0.00,
+      recoveryStatus: "Pending",
+      rejectionReason: ""
+    },
+    financialImpact: {
+      orderRevenue: 340.00,
+      refundAmount: 0.00,
+      returnShippingCost: 24.00,
+      rtoCost: 0.00,
+      damageLoss: 35.00,
+      replacementCost: 110.00,
+      otherCosts: 8.00,
+      claimRecovery: 0.00,
+      otherRecovery: 0.00,
+      netLoss: 177.00,
+      netProfitabilityImpact: 163.00
+    },
+    refundAmountUSD: 0.00,
     carrierClaimUSD: 45.00,
-    refundAmountUSD: 340.00
+    status: "Discounted Sample Sale",
+    notes: "Replacement rug dispatched from NJ 3PL under priority tracking."
   },
   {
-    rmaNo: "RMA-2026-040",
+    returnId: "RET-2026-083",
+    rmaNo: "RET-2026-083",
     orderId: "ORD-WMT-11045",
+    orderDate: "2026-09-09",
     customer: "Marcus Sterling",
+    customerEmail: "m.sterling@chicagoarch.com",
+    customerPhone: "+1 (312) 555-0182",
+    customerAddress: "710 S Michigan Ave, Chicago, IL 60605, United States",
     channel: "Walmart US",
+    marketplaceOrderId: "WMT-88102-IL",
+    orderAmount: 195.00,
     sku: "SKU-RUG-FLW-0508-JUT",
+    productTitle: "Rustic Braided Jute Flatweave (5x8 ft)",
+    shipmentId: "SHIP-FEDEX-11045",
+    trackingNo: "7894-3321-994",
+    courier: "FedEx Freight Delivery",
+    shipmentDate: "2026-09-09",
+    deliveryStatus: "Delivered",
+    outboundFreightUSD: 22.00,
+    returnType: "Customer Return",
+    returnReason: "Water Ingress in FedEx Delivery Truck (Severe mold and water damage)",
+    returnDestination: "USA 3PL Distribution Center (Edison, NJ)",
     returnDate: "2026-09-11",
-    reason: "Water Ingress in FedEx Delivery Truck (Severe Damage)",
+    expectedReturnDate: "2026-09-13",
+    returnCourier: "FedEx Hazmat Scrap Pickup",
+    returnTrackingNo: "9821-4451-0914",
+    returnStatus: "Completed",
+    itemCondition: "Damaged",
     grade: "Grade C (Scrap / Total Loss)",
     restockWh: "Disposal Quarantine Facility",
     restockBin: "Quarantine Bay Q-01",
-    status: "Carrier Claim Approved ($195)",
+    items: [
+      {
+        sku: "SKU-RUG-FLW-0508-JUT",
+        name: "Rustic Braided Jute Flatweave (5x8 ft)",
+        productId: "PRD-FLW-0508",
+        orderedQty: 1,
+        returnQty: 1,
+        unitPrice: 195.00,
+        itemValue: 195.00
+      }
+    ],
+    inspection: {
+      receivedDate: "2026-09-11",
+      inspectionDate: "2026-09-11",
+      inspector: "Devon Miller (USA 3PL QC)",
+      condition: "Damaged",
+      disposition: "Scrapped / Total Write-off & Quarantine",
+      restockWh: "Disposal Quarantine Facility",
+      restockBin: "Quarantine Bay Q-01",
+      notes: "Severe water soaking in transit during storm. Mold growth on latex backing. Beyond repair; tagged for certified environmental disposal.",
+      evidence: ["water-damage-latex.png", "driver-incident-report.pdf"]
+    },
+    refund: {
+      refundRequired: true,
+      refundAmount: 195.00,
+      refundReason: "Carrier Water Ingress Damage (Full Buyer Refund)",
+      refundMethod: "Walmart Marketplace API Direct Refund",
+      refundRef: "REF-WMT-2026-11045",
+      refundDate: "2026-09-11",
+      refundStatus: "Completed"
+    },
+    replacement: {
+      replacementRequired: false,
+      replacementOrderId: "",
+      product: "",
+      sku: "",
+      qty: 0,
+      shipmentId: "",
+      trackingNo: "",
+      replacementStatus: "N/A"
+    },
+    claim: {
+      claimRequired: true,
+      claimId: "CLM-FDX-2026-901",
+      claimReason: "Water Ingress Transit Cargo Damage",
+      claimAmount: 195.00,
+      claimStatus: "Recovered",
+      carrier: "FedEx Freight Insurance",
+      evidence: ["driver-soaking-report.pdf", "quarantine-disposal-cert.pdf"],
+      recoveredAmount: 195.00,
+      recoveryStatus: "Fully Recovered",
+      rejectionReason: "",
+      recoveryRef: "REC-FDX-WIRE-88910",
+      recoveryDate: "2026-09-14"
+    },
+    financialImpact: {
+      orderRevenue: 195.00,
+      refundAmount: 195.00,
+      returnShippingCost: 18.00,
+      rtoCost: 0.00,
+      damageLoss: 110.00,
+      replacementCost: 0.00,
+      otherCosts: 10.00,
+      claimRecovery: 195.00,
+      otherRecovery: 0.00,
+      netLoss: 138.00,
+      netProfitabilityImpact: 57.00
+    },
+    refundAmountUSD: 195.00,
     carrierClaimUSD: 195.00,
-    refundAmountUSD: 195.00
+    status: "Carrier Claim Approved ($195)",
+    notes: "FedEx approved 100% claim payout under Cargo Policy FX-99210. Funds deposited."
   },
   {
-    rmaNo: "RMA-2026-039",
+    returnId: "RTO-2026-015",
+    rmaNo: "RTO-2026-015",
     orderId: "ORD-WAY-55140",
+    orderDate: "2026-09-12",
     customer: "Castlegate West Coast Hub",
+    customerEmail: "inbound@castlegatellc.com",
+    customerPhone: "+1 (415) 555-0133",
+    customerAddress: "2200 Gateway Blvd, Suite 100, South San Francisco, CA 94080, United States",
     channel: "Wayfair US",
+    marketplaceOrderId: "WAY-33910-CA",
+    orderAmount: 387.90,
     sku: "SKU-RUG-DHU-0507-BLU",
+    productTitle: "Mirzapur Geometric Dhurrie Flatweave (5x7 ft)",
+    shipmentId: "SHIP-FEDEX-55140",
+    trackingNo: "7894-3321-995",
+    courier: "FedEx Freight Express",
+    shipmentDate: "2026-09-12",
+    deliveryStatus: "Delivery Failed",
+    outboundFreightUSD: 36.50,
+    returnType: "RTO",
+    returnReason: "Delivery Refused / Bay Closed / Incomplete Dock Entry Permit",
+    returnDestination: "USA 3PL Distribution Center (Edison, NJ)",
     returnDate: "2026-09-14",
-    reason: "Polywrap Scuff in Freight Transit (Weave Pristine)",
+    expectedReturnDate: "2026-09-17",
+    returnCourier: "FedEx Freight RTO Direct",
+    returnTrackingNo: "FX-RTO-99210",
+    returnStatus: "RTO In Transit",
+    itemCondition: "Pending Inspection",
     grade: "Grade A (Resalable Full Price)",
     restockWh: "USA 3PL Distribution Center (Edison, NJ)",
-    restockBin: "Zone A / Rack 05 / Bin 01",
-    status: "Return Received",
-    carrierClaimUSD: 0.00,
-    refundAmountUSD: 387.90
+    restockBin: "Zone A / Inbound Staging Bay 03",
+    items: [
+      {
+        sku: "SKU-RUG-DHU-0507-BLU",
+        name: "Mirzapur Geometric Dhurrie Flatweave (5x7 ft)",
+        productId: "PRD-DHU-0507",
+        orderedQty: 1,
+        returnQty: 1,
+        unitPrice: 387.90,
+        itemValue: 387.90
+      }
+    ],
+    inspection: {
+      receivedDate: "",
+      inspectionDate: "",
+      inspector: "Pending Receipt at Edison 3PL",
+      condition: "Pending Inspection",
+      disposition: "Pending Physical Check-In",
+      restockWh: "USA 3PL Distribution Center (Edison, NJ)",
+      restockBin: "Zone A / Inbound Staging Bay 03",
+      notes: "RTO package currently in transit back from San Francisco Hub. Outer seal intact as per carrier GPS tracking.",
+      evidence: []
+    },
+    refund: {
+      refundRequired: false,
+      refundAmount: 0.00,
+      refundReason: "Refund on Hold pending physical receipt & inspection",
+      refundMethod: "Pending",
+      refundRef: "",
+      refundDate: "",
+      refundStatus: "Pending"
+    },
+    replacement: {
+      replacementRequired: false,
+      replacementOrderId: "",
+      product: "",
+      sku: "",
+      qty: 0,
+      shipmentId: "",
+      trackingNo: "",
+      replacementStatus: "N/A"
+    },
+    claim: {
+      claimRequired: true,
+      claimId: "CLM-FDX-2026-905",
+      claimReason: "RTO Freight Surcharge Variance Dispute",
+      claimAmount: 48.50,
+      claimStatus: "Submitted",
+      carrier: "FedEx Ground Freight",
+      evidence: ["rto-tracking-manifest.pdf"],
+      recoveredAmount: 0.00,
+      recoveryStatus: "Pending",
+      rejectionReason: ""
+    },
+    financialImpact: {
+      orderRevenue: 387.90,
+      refundAmount: 0.00,
+      returnShippingCost: 0.00,
+      rtoCost: 48.50,
+      damageLoss: 0.00,
+      replacementCost: 0.00,
+      otherCosts: 5.00,
+      claimRecovery: 0.00,
+      otherRecovery: 0.00,
+      netLoss: 53.50,
+      netProfitabilityImpact: 334.40
+    },
+    refundAmountUSD: 0.00,
+    carrierClaimUSD: 48.50,
+    status: "RTO In Transit",
+    notes: "Customer notified. Will re-attempt or restock upon Edison check-in."
   },
   {
-    rmaNo: "RMA-2026-038",
-    orderId: "ORD-AMZ-98810",
-    customer: "Clara Beauchamp",
-    channel: "Amazon US",
+    returnId: "RET-2026-084",
+    rmaNo: "RET-2026-084",
+    orderId: "ORD-B2B-10882",
+    orderDate: "2026-09-05",
+    customer: "RH Restoration Hardware (Contract Div)",
+    customerEmail: "procurement@rh-contract.com",
+    customerPhone: "+1 (415) 555-0900",
+    customerAddress: "15 Bennett St, Corte Madera, CA 94925, United States",
+    channel: "B2B Wholesale",
+    marketplaceOrderId: "RH-PO-2026-9901",
+    orderAmount: 1420.00,
     sku: "SKU-RUG-HT-0810-IVR",
-    returnDate: "2026-09-08",
-    reason: "Buyer Remorse / Color Shade Mismatch in Sunlight",
+    productTitle: "Jungle Tiger Hand-Tufted Wool Rug (8x10 ft) - 2 Units",
+    shipmentId: "SHIP-FEDEX-10882",
+    trackingNo: "7894-3321-996",
+    courier: "FedEx International Priority",
+    shipmentDate: "2026-09-05",
+    deliveryStatus: "Delivered",
+    outboundFreightUSD: 145.00,
+    returnType: "Customer Return",
+    returnReason: "B2B Project Specification Change (Architect opted for charcoal colorway)",
+    returnDestination: "India Central WH (Bhadohi)",
+    returnDate: "2026-09-12",
+    expectedReturnDate: "2026-09-14",
+    returnCourier: "DHL Air Express",
+    returnTrackingNo: "DHL-9941-88210",
+    returnStatus: "Completed",
+    itemCondition: "Resalable",
     grade: "Grade A (Resalable Full Price)",
-    restockWh: "USA 3PL Distribution Center (Edison, NJ)",
-    restockBin: "Zone A / Rack 02 / Bin 06",
-    status: "Restocked to Inventory",
+    restockWh: "India Central WH (Bhadohi)",
+    restockBin: "Zone A / Loom Bay 01",
+    items: [
+      {
+        sku: "SKU-RUG-HT-0810-IVR",
+        name: "Jungle Tiger Hand-Tufted Wool Rug (8x10 ft)",
+        productId: "PRD-HT-0810",
+        orderedQty: 2,
+        returnQty: 2,
+        unitPrice: 710.00,
+        itemValue: 1420.00
+      }
+    ],
+    inspection: {
+      receivedDate: "2026-09-12",
+      inspectionDate: "2026-09-12",
+      inspector: "Rameshwar Singh (Bhadohi QC Lead)",
+      condition: "Resalable",
+      disposition: "Restocked to India Central Export Warehouse",
+      restockWh: "India Central WH (Bhadohi)",
+      restockBin: "Zone A / Loom Bay 01",
+      notes: "Commercial samples returned sealed in original wooden export crate. 100% immaculate condition.",
+      evidence: ["crate-seal-qc.png", "rug-inspection-rh.png"]
+    },
+    refund: {
+      refundRequired: true,
+      refundAmount: 1420.00,
+      refundReason: "B2B Credit Note Issued for Future Container Order",
+      refundMethod: "B2B Commercial Credit Note",
+      refundRef: "CN-2026-089",
+      refundDate: "2026-09-12",
+      refundStatus: "Completed"
+    },
+    replacement: {
+      replacementRequired: false,
+      replacementOrderId: "",
+      product: "",
+      sku: "",
+      qty: 0,
+      shipmentId: "",
+      trackingNo: "",
+      replacementStatus: "N/A"
+    },
+    claim: {
+      claimRequired: false,
+      claimId: "",
+      claimReason: "No Damage",
+      claimAmount: 0.00,
+      claimStatus: "No Claim",
+      carrier: "DHL",
+      evidence: [],
+      recoveredAmount: 0.00,
+      recoveryStatus: "N/A",
+      rejectionReason: ""
+    },
+    financialImpact: {
+      orderRevenue: 1420.00,
+      refundAmount: 1420.00,
+      returnShippingCost: 65.00,
+      rtoCost: 0.00,
+      damageLoss: 0.00,
+      replacementCost: 0.00,
+      otherCosts: 15.00,
+      claimRecovery: 0.00,
+      otherRecovery: 0.00,
+      netLoss: 80.00,
+      netProfitabilityImpact: -80.00
+    },
+    refundAmountUSD: 1420.00,
     carrierClaimUSD: 0.00,
-    refundAmountUSD: 680.00
+    status: "Restocked to Inventory",
+    notes: "Credit note applied against pending container PO #RH-PO-2026-104."
   }
 ];
+
 
 const INITIAL_LOADING_PLANS = [
   {
     planId: "LP-2026-001",
     carrier: "FedEx International Priority",
+    transporter: "FedEx International Priority",
     mode: "✈️ Air Cargo Express",
     awb: "7894-3321-992",
-    vehicleContainer: "Flight FX-8812 (DEL ➔ DFW)",
+    vehicleContainer: "Air Unit #ULD-8812 (DEL ➔ DFW)",
     originWh: "India Central WH (Bhadohi)",
+    originFacility: "Bhadohi Central Weaving Unit #1",
     destination: "Dallas Design Center, TX, USA",
     orderIds: ["ORD-AMZ-99214"],
-    consignee: "Eleanor Vance (Dallas, TX)",
-    items: [
-      { sku: "SKU-RUG-HT-0810-IVR", title: "Jungle Tiger Hand-Tufted Wool Rug (8x10 ft)", size: "8x10 ft", qty: 1, unitWeightKg: 28.5, totalWeightKg: 28.5, barcode: "8904321908129", status: "Packed & Tagged" }
+    consignee: "Dallas Design Center, TX, USA",
+    consigneeContact: "Eleanor Vance (Dallas, TX)",
+    palletSticker: "ODT-PLT-STK-01",
+    boxBrand: "ODETTE EXPORT PREMIUM",
+    preparedBy: "Rajesh Kumar (Logistics Lead)",
+    notes: "Express air cargo dispatch. Pre-weighed and verified on electronic platform scale.",
+    containers: [
+      {
+        id: "CNT-1",
+        containerNo: "Air Unit #ULD-8812 (CNT-1)",
+        lineSealNo: "SEAL-8821",
+        rfidNo: "RF-11",
+        lrNo: "LR-4402",
+        truckNo: "DL-1V-8821",
+        trackNo: "TRK-9021",
+        maxPayloadKg: 5000,
+        items: [
+          {
+            sku: "SKU-RUG-HT-0810-IVR",
+            title: "Jungle Tiger Hand-Tufted Wool Rug (8x10 ft / 244x305 cm)",
+            size: "8x10 ft",
+            qty: 20,
+            unitWeightKg: 28.5,
+            netWeightKg: 570.0,
+            tareWeightKg: 24.0,
+            grossWeightKg: 594.0,
+            notes: "Staged in Bay A-12"
+          }
+        ]
+      }
     ],
-    totalRolls: 1,
-    actualWeightKg: 28.5,
-    volumetricWeightKg: 27.2,
+    items: [
+      { sku: "SKU-RUG-HT-0810-IVR", title: "Jungle Tiger Hand-Tufted Wool Rug (8x10 ft)", size: "8x10 ft", qty: 20, unitWeightKg: 28.5, netWeightKg: 570.0, tareWeightKg: 24.0, grossWeightKg: 594.0, barcode: "8904321908129", status: "Packed & Tagged" }
+    ],
+    totalRolls: 20,
+    actualWeightKg: 570.0,
+    grossWeightKg: 594.0,
+    volumetricWeightKg: 540.0,
     dimensions: "244 x 28 x 28 cm",
-    freightUSD: 42.50,
+    freightUSD: 420.50,
     status: "Exported & Dispatched",
     isExported: true,
     exportInvoiceNo: "EXP-INV-2026-112",
@@ -1569,21 +2045,54 @@ const INITIAL_LOADING_PLANS = [
   {
     planId: "LP-2026-002",
     carrier: "FedEx Freight LTL",
+    transporter: "FedEx Freight LTL",
     mode: "🚚 Interstate Road Express",
     awb: "7894-3323-900",
     vehicleContainer: "Trailer #TL-4410 (Edison ➔ Fontana)",
     originWh: "USA 3PL Warehouse (Edison, NJ)",
+    originFacility: "Panipat Flatweave Facility",
     destination: "Fontana, CA, USA (Castlegate Hub)",
     orderIds: ["ORD-WAY-55140"],
     consignee: "Castlegate West Coast Hub (Fontana, CA)",
-    items: [
-      { sku: "SKU-RUG-DHU-0507-BLU", title: "Indigo Modern Dhurrie Flatweave (5x7 ft)", size: "5x7 ft", qty: 3, unitWeightKg: 28.5, totalWeightKg: 85.5, barcode: "8904321908136", status: "Packed & Tagged" }
+    consigneeContact: "Marcus Sterling (Fontana, CA)",
+    palletSticker: "ODT-PLT-STK-02",
+    boxBrand: "ODETTE EXPORT PREMIUM",
+    preparedBy: "Rajesh Kumar (Logistics Lead)",
+    notes: "Cross-dock shipment. Rugs wrapped with moisture-barrier film.",
+    containers: [
+      {
+        id: "CNT-1",
+        containerNo: "Trailer #TL-4410 (CNT-1)",
+        lineSealNo: "SEAL-9012",
+        rfidNo: "RF-24",
+        lrNo: "LR-7718",
+        truckNo: "NJ-44-TL-9012",
+        trackNo: "TRK-5510",
+        maxPayloadKg: 20000,
+        items: [
+          {
+            sku: "SKU-RUG-DHU-0507-BLU",
+            title: "Indigo Modern Dhurrie Flatweave (5x7 ft / 152x213 cm)",
+            size: "5x7 ft",
+            qty: 60,
+            unitWeightKg: 28.5,
+            netWeightKg: 1710.0,
+            tareWeightKg: 72.0,
+            grossWeightKg: 1782.0,
+            notes: "Staged in Bay B-04"
+          }
+        ]
+      }
     ],
-    totalRolls: 3,
-    actualWeightKg: 85.5,
-    volumetricWeightKg: 78.0,
+    items: [
+      { sku: "SKU-RUG-DHU-0507-BLU", title: "Indigo Modern Dhurrie Flatweave (5x7 ft)", size: "5x7 ft", qty: 60, unitWeightKg: 28.5, netWeightKg: 1710.0, tareWeightKg: 72.0, grossWeightKg: 1782.0, barcode: "8904321908136", status: "Packed & Tagged" }
+    ],
+    totalRolls: 60,
+    actualWeightKg: 1710.0,
+    grossWeightKg: 1782.0,
+    volumetricWeightKg: 1600.0,
     dimensions: "180 x 40 x 40 cm",
-    freightUSD: 120.00,
+    freightUSD: 720.00,
     status: "Exported & Dispatched",
     isExported: true,
     exportInvoiceNo: "EXP-INV-2026-121",
@@ -1596,20 +2105,64 @@ const INITIAL_LOADING_PLANS = [
   {
     planId: "LP-2026-003",
     carrier: "MSC Mediterranean Shipping",
+    transporter: "MSC Mediterranean Shipping",
     mode: "🚢 Ocean FCL Container",
     awb: "MSCU-908129",
     vehicleContainer: "MSCU-890123-4 (40ft High Cube)",
     originWh: "India Central WH (Bhadohi)",
+    originFacility: "Bhadohi Central Weaving Unit #1",
     destination: "Copenhagen Port, Denmark",
     orderIds: ["ORD-B2B-EXP-089"],
     consignee: "Nordic Home Interior ApS (Copenhagen, Denmark)",
-    items: [
-      { sku: "SKU-RUG-HK-0912-NVY", title: "Unique Jaguar Hand-Tufted Wool Rug (9x12 ft)", size: "9x12 ft", qty: 60, unitWeightKg: 36.0, totalWeightKg: 2160.0, barcode: "8904321908143", status: "Packed & Tagged" },
-      { sku: "SKU-RUG-HT-0810-IVR", title: "Jungle Tiger Hand-Tufted Wool Rug (8x10 ft)", size: "8x10 ft", qty: 80, unitWeightKg: 15.75, totalWeightKg: 1260.0, barcode: "8904321908129", status: "Packed & Tagged" }
+    consigneeContact: "Julian Thorne (Copenhagen)",
+    palletSticker: "ODT-PLT-STK-03",
+    boxBrand: "ODETTE EXPORT PREMIUM",
+    preparedBy: "Rajesh Kumar (Logistics Lead)",
+    notes: "Ocean freight container stuffing. Certified weight verified for SOLAS VGM compliance.",
+    containers: [
+      {
+        id: "CNT-1",
+        containerNo: "MSCU-890123-4 (CNT-1)",
+        lineSealNo: "SEAL-4401",
+        rfidNo: "RF-88",
+        lrNo: "LR-1102",
+        truckNo: "MH-46-AR-8802",
+        trackNo: "TRK-8820",
+        maxPayloadKg: 28000,
+        items: [
+          {
+            sku: "SKU-RUG-HK-0912-NVY",
+            title: "Unique Jaguar Hand-Tufted Wool Rug (9x12 ft / 274x366 cm)",
+            size: "9x12 ft",
+            qty: 120,
+            unitWeightKg: 36.0,
+            netWeightKg: 4320.0,
+            tareWeightKg: 144.0,
+            grossWeightKg: 4464.0,
+            notes: "Staged in Bay A-14"
+          },
+          {
+            sku: "SKU-RUG-HT-0810-IVR",
+            title: "Jungle Tiger Hand-Tufted Wool Rug (8x10 ft / 244x305 cm)",
+            size: "8x10 ft",
+            qty: 160,
+            unitWeightKg: 28.5,
+            netWeightKg: 4560.0,
+            tareWeightKg: 192.0,
+            grossWeightKg: 4752.0,
+            notes: "Staged in Bay A-12"
+          }
+        ]
+      }
     ],
-    totalRolls: 140,
-    actualWeightKg: 3420.0,
-    volumetricWeightKg: 4200.0,
+    items: [
+      { sku: "SKU-RUG-HK-0912-NVY", title: "Unique Jaguar Hand-Tufted Wool Rug (9x12 ft)", size: "9x12 ft", qty: 120, unitWeightKg: 36.0, netWeightKg: 4320.0, tareWeightKg: 144.0, grossWeightKg: 4464.0, barcode: "8904321908143", status: "Packed & Tagged" },
+      { sku: "SKU-RUG-HT-0810-IVR", title: "Jungle Tiger Hand-Tufted Wool Rug (8x10 ft)", size: "8x10 ft", qty: 160, unitWeightKg: 28.5, netWeightKg: 4560.0, tareWeightKg: 192.0, grossWeightKg: 4752.0, barcode: "8904321908129", status: "Packed & Tagged" }
+    ],
+    totalRolls: 280,
+    actualWeightKg: 8880.0,
+    grossWeightKg: 9216.0,
+    volumetricWeightKg: 9200.0,
     dimensions: "40ft High Cube Container",
     freightUSD: 4200.00,
     status: "Exported & Dispatched",
@@ -2415,7 +2968,7 @@ const INITIAL_SYSTEM_LOGS = [
     level: "SECURITY",
     module: "SECURITY",
     moduleIcon: "🛡️",
-    actor: "Admin (Super Admin)",
+    actor: "Ctas Admin (Super Admin)",
     ip: "10.14.2.88",
     action: "Super Admin Session Authenticated",
     details: "Admin user session opened with MFA hardware token verification. Role verified with full master permissions across Indian ICD and US 3PL nodes.",
@@ -2513,7 +3066,7 @@ const INITIAL_SYSTEM_LOGS = [
     level: "SECURITY",
     module: "SECURITY",
     moduleIcon: "🛡️",
-    actor: "Admin (Super Admin)",
+    actor: "Ctas Admin (Super Admin)",
     ip: "10.14.2.88",
     action: "RBAC Warehouse Scope Updated",
     details: "Granted USA 3PL Warehouse Operations access scope to user Samantha Miller (s.miller@amazon-fba.com) for regional FBA consolidation.",
@@ -2565,7 +3118,7 @@ const INITIAL_SYSTEM_LOGS = [
 ];
 
 const INITIAL_USERS = [
-  { name: "Admin", email: "admin@info.com", role: "Super Admin / Management", status: "Active", whAccess: "All Warehouses", perm: "Full Read/Write/Approve" },
+  { name: "Ctas Admin", email: "admin@ctasinfo.com", role: "Super Admin / Management", status: "Active", whAccess: "All Warehouses", perm: "Full Read/Write/Approve" },
   { name: "Vikram Singh", email: "vikram@rugos.in", role: "India Warehouse Manager", status: "Active", whAccess: "India Central Manufacturing & Export WH", perm: "MTO, Pack, Dispatch, Transfers" },
   { name: "John Gallagher", email: "j.gallagher@3pl-edison.com", role: "USA 3PL Warehouse Lead", status: "Active", whAccess: "USA 3PL Distribution Center (Edison, NJ)", perm: "Inbound Receive, Put-Away, Pick/Pack" },
   { name: "Deepak Sharma", email: "deepak.logistics@rugos.in", role: "Logistics & Export Lead", status: "Active", whAccess: "All Warehouses", perm: "FedEx Booking, Shipping Bills, Manifests" },
@@ -2578,8 +3131,84 @@ const INITIAL_USERS = [
 ];
 
 // ============================================================================
-// NEW ENTERPRISE MASTERS DATA (BUYERS, LOOMS, CARRIERS, CURRENCIES)
+// NEW ENTERPRISE MASTERS DATA (COMPANIES, BUYERS, LOOMS, CARRIERS, CURRENCIES)
 // ============================================================================
+
+const INITIAL_COMPANIES = [
+  {
+    id: "COMP-001",
+    legalName: "ODETTE RUGS LLC (MAIN EXPORT WING)",
+    email: "export@odetterugs.com",
+    website: "https://www.odetterugs.com",
+    address: "NH-19 CARPET HUB, MARYADPATTI, BHADOHI - 221401, UTTAR PRADESH, INDIA",
+    country: "India",
+    contactPerson: "Rajesh Kumar (Logistics Lead)",
+    phone: "+91 5414 228910",
+    companyRegister: "U17226UP2020PTC139821",
+    mobile: "+91 98391 22001",
+    fax: "-",
+    companyType: "Private Limited Company",
+    postalAddress: "NH-19 Carpet Hub, Maryadpatti, Bhadohi - 221401, Uttar Pradesh, India",
+    proformaRemark: "Export of Hand-Tufted, Hand-Knotted & Flatweave Artisan Rugs (HSN 57011000 / 57023110).",
+    quotationTerms: "FOB Mundra Port / CIF Destination Port / Net-60 Days B/L.",
+    taxDecLine3: "SUPPLY MEANT FOR EXPORT UNDER LUT WITHOUT PAYMENT OF INTEGRATED TAX (IGST)",
+    rodtepConfig: "RoDTEP Scheme Rate 3.1% under Heading 5701 / 5702",
+    drawbackConfig: "All Industry Duty Drawback Rate 2.8% (Schedule 5701)",
+    colorCode: "#0f766e",
+    gstin: "09AAACR8821N1ZM",
+    lutNo: "AD090326089140U",
+    cinNo: "U17226UP2020PTC139821",
+    stateCode: "09 (UP)",
+    leiNo: "8945009711K5G6Z79261",
+    aeoNo: "INAAACR8821N1F182",
+    pan: "AAACR8821N",
+    lutExpiry: "2027-03-31",
+    rcmcNo: "CEPC/RCMC/2020/88192",
+    filingDate: "2026-03-30",
+    rexNo: "INREX0514029108",
+    iec: "0514029108",
+    binNo: "BIN-0901",
+    rcmcExpiry: "2027-03-31",
+    defaultPortLoading: "MUNDRA PORT, INDIA / ICD BABATPUR",
+    partialShipment: "Allowed",
+    transshipment: "Allowed",
+    variationQty: "5%",
+    deliveryPeriod: "30 Days",
+    exporterRemarks: "AUTHENTIC HANDCRAFTED CARPET EXPORT UNDER CEPC COMPLIANCE",
+    exporterUnder1: "ODETTE RUGS LLC\nNH-19 CARPET HUB, MARYADPATTI, BHADOHI - 221401, UP",
+    exporterUnder2: "N/A",
+    gstRange: "RANGE-IV, CGST & CX DIVISION VARANASI, COMMISSIONERATE ALLAHABAD",
+    locationCode: "INVTZ1",
+    commissionerate: "COMMISSIONER OF CUSTOMS (PREVENTIVE), LUCKNOW / VARANASI",
+    division: "CUSTOMS DIVISION ICD BABATPUR / VARANASI",
+    annexureRemarks: "EPCG LICENSE Number: 0530008819 Date 12/04/2024\nEXPORT UNDER LETTER OF UNDERTAKING-BOND. Sr. No. of LUT : ODETTE RUGS LLC, ARN: AD090326089140U",
+    shipperName: "ODETTE RUGS LLC",
+    defaultSlipNo: "WB-UP65-9921",
+    weighbridgeReg: "WB-UP65-9921 / BHADOHI CENTRAL WEIGHBRIDGE",
+    shipperAddress: "NH-19 CARPET HUB, MARYADPATTI, BHADOHI - 221401, UTTAR PRADESH, INDIA",
+    vgmMethod: "METHOD - 1",
+    authorisedSignatory: "Rajesh Kumar (Logistics Lead)",
+    commercialSignatory: "Amitabh Sen (VP Operations & Customs)",
+    signatories: [
+      {
+        id: "SIG-01",
+        name: "Rajesh Kumar",
+        designation: "LOGISTICS LEAD / DESIGNATED PARTNER",
+        companyName: "ODETTE RUGS LLC",
+        signatureText: "Rajesh Kumar"
+      },
+      {
+        id: "SIG-02",
+        name: "Amitabh Sen",
+        designation: "VP OPERATIONS & CUSTOMS",
+        companyName: "ODETTE RUGS LLC",
+        signatureText: "Amitabh Sen"
+      }
+    ],
+    defaultBank: "HDFC BANK LTD (EEFC A/C #502000881290 / IFSC: HDFC0000128)",
+    defaultCha: "JEENA & COMPANY CUSTOMS HOUSE AGENT"
+  }
+];
 
 const INITIAL_BUYERS = [
   {
@@ -3266,12 +3895,52 @@ const AppState = {
   activeDetail: null,
   activeRole: "admin",
   activeWarehouseFilter: "all",
-  theme: "dark",
+  theme: "light",
   blueprintMode: false,
   simStep: 0,
   activeRbacSubtab: "users", // "users" or "roles"
   activeProfitabilityOrderId: "ORD-AMZ-99214",
   activeReportTab: "dgft",
+
+  // Company Profile & Statutory General Settings
+  companySettings: {
+    legalName: "ODETTE RUGS LLC",
+    exportDivision: "EXPORT WING, BHADOHI (U.P) INDIA",
+    fullExporterString: "ODETTE RUGS LLC / EXPORT WING, BHADOHI (U.P) INDIA",
+    address: "NH-19 Carpet Hub, Maryadpatti, Bhadohi 221401, Uttar Pradesh, India",
+    gstin: "09AAACR8821N1ZM",
+    iec: "0514029108",
+    pan: "AAACR8821N",
+    branchCode: "0514029108001A",
+    rexNo: "INREX0514029108",
+    rexStatement: "INREX0514029108 - EU Registered Exporter Scheme Statement",
+    defaultBank: "HDFC BANK LTD (EEFC A/C #502000881290 / IFSC: HDFC0000128)",
+    defaultCha: "JEENA & COMPANY CUSTOMS HOUSE AGENT",
+    defaultPortLoading: "MUNDRA PORT INDIA / ICD BABATPUR",
+    defaultCountryOrigin: "INDIA",
+    appraiserDivision: "CUSTOMS DIVISION ICD BABATPUR / VARANASI",
+    locationCode: "INVTZ1",
+    weighbridgeReg: "WB-UP65-9921 / BHADOHI CENTRAL WEIGHBRIDGE",
+    defaultLUT: "SUPPLY MEANT FOR EXPORT UNDER LUT WITHOUT PAYMENT OF INTEGRATED TAX (IGST)",
+    commercialSignatory: "Amitabh Sen (VP Operations & Customs)",
+    authorisedSignatory: "Rajesh Kumar (Logistics Lead)",
+    signatories: [
+      {
+        id: "SIG-01",
+        name: "Rajesh Kumar",
+        designation: "LOGISTICS LEAD / DESIGNATED PARTNER",
+        companyName: "ODETTE RUGS LLC",
+        signatureText: "Rajesh Kumar"
+      },
+      {
+        id: "SIG-02",
+        name: "Amitabh Sen",
+        designation: "VP OPERATIONS & CUSTOMS",
+        companyName: "ODETTE RUGS LLC",
+        signatureText: "Amitabh Sen"
+      }
+    ]
+  },
 
   // Mutable Data Collections
   purchaseOrders: [...INITIAL_PURCHASE_ORDERS],
@@ -3295,9 +3964,13 @@ const AppState = {
   exportDocs: [...INITIAL_EXPORT_DOCS],
   rawMaterials: [...INITIAL_RAW_MATERIALS],
   automations: [...INITIAL_AUTOMATIONS],
+  companies: [...INITIAL_COMPANIES],
+  activeCompanyId: null,
+  companyMasterStep: 1,
 
   // Active Search & Filter State
   tableFilters: {
+    companies: { search: "", type: "all", sortBy: "legalName", sortOrder: "asc", page: 1, pageSize: 10 },
     purchaseOrders: { search: "", status: "all", destWh: "all", sortBy: "poNumber", sortOrder: "desc", page: 1, pageSize: 5 },
     orders: { search: "", channel: "all", status: "all", sortBy: "orderDate", sortOrder: "desc", page: 1, pageSize: 5 },
     skus: { search: "", collection: "all", sortBy: "sku", sortOrder: "asc", page: 1, pageSize: 5 },
@@ -3311,7 +3984,7 @@ const AppState = {
     currencies: { search: "", sortBy: "code", sortOrder: "asc" },
     courierAudit: { search: "", status: "all", page: 1, pageSize: 5 },
     receivables: { search: "", status: "all", page: 1, pageSize: 5 },
-    returns: { search: "", grade: "all", page: 1, pageSize: 5 },
+    returns: { search: "", subView: "returns_list", returnType: "all", status: "all", condition: "all", refundStatus: "all", claimStatus: "all", channel: "all", page: 1, pageSize: 10 },
     shipments: { search: "", status: "all", page: 1, pageSize: 5 },
     loadingPlans: { search: "", status: "all", page: 1, pageSize: 5 },
     exportDocs: { search: "", status: "all", page: 1, pageSize: 5 },
@@ -3320,6 +3993,16 @@ const AppState = {
     profitability: { search: "", channel: "all", marginTier: "all", page: 1, pageSize: 5 },
     reports: { search: "", page: 1, pageSize: 10 },
     skuHistory: { search: "", sku: "all", type: "all", sortBy: "timestamp", sortOrder: "desc", page: 1, pageSize: 10 }
+  },
+
+  // Authentication & Wireframe Login State (Email + Default OTP: 1111)
+  auth: {
+    isLoggedIn: false,
+    currentUser: null,
+    step: "email", // "email" | "otp"
+    pendingEmail: "",
+    defaultOtp: "1111",
+    errorMessage: ""
   }
 };
 window.AppState = AppState;
@@ -3330,9 +4013,602 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function initApp() {
   loadSavedTheme();
+  loadSavedCompanyMaster();
   setupEventListeners();
-  handleHashNavigation();
-  updateRoleContext();
+  initAuthState();
+}
+
+// ============================================================================
+// WIREFRAME AUTHENTICATION & LOGIN WORKFLOW (Email + Default OTP: 1111)
+// ============================================================================
+
+function initAuthState() {
+  try {
+    const saved = localStorage.getItem("rugos_auth_user");
+    if (saved) {
+      const user = JSON.parse(saved);
+      if (user && user.email) {
+        AppState.auth.isLoggedIn = true;
+        AppState.auth.currentUser = user;
+        AppState.auth.step = "email";
+        AppState.auth.pendingEmail = "";
+        AppState.auth.errorMessage = "";
+        document.body.classList.remove("auth-screen-active");
+        updateHeaderUserInfo(user);
+        handleHashNavigation();
+        updateRoleContext();
+        return;
+      }
+    }
+  } catch (e) {}
+
+  // If not authenticated, activate wireframe login screen
+  AppState.auth.isLoggedIn = false;
+  AppState.auth.currentUser = null;
+  AppState.auth.step = "email";
+  AppState.auth.pendingEmail = "";
+  AppState.auth.errorMessage = "";
+  document.body.classList.add("auth-screen-active");
+  renderLoginScreen();
+}
+
+function renderLoginScreen() {
+  const container = document.getElementById("loginScreen");
+  if (!container) return;
+
+  const currentTheme = AppState.theme || "light";
+  const themeIcon = currentTheme === "dark" ? "🌙" : "☀️";
+  const themeText = currentTheme === "dark" ? "Dark Mode" : "Light Mode";
+
+  // Common Left AI Showcase Panel
+  const showcasePanelHtml = `
+    <div class="login-showcase-panel">
+      <div class="login-ai-pill-badge">
+        <span>✦</span>
+        <span>Next-Gen Autonomous ERP</span>
+      </div>
+
+      <h1 class="login-ai-hero-title">
+        Autonomous OS for <span class="login-gradient-text">Global Luxury Rugs</span>.
+      </h1>
+
+      <p class="login-ai-hero-sub">
+        Real-time neural demand forecasting, multi-warehouse inventory mesh, ICD Babatpur customs EDI, and zero-stoppage worldwide fulfillment.
+      </p>
+
+      <div class="ai-telemetry-stack">
+        <div class="ai-telemetry-card">
+          <div class="ai-telemetry-left">
+            <div class="ai-telemetry-icon">📊</div>
+            <div class="ai-telemetry-info">
+              <h4>Neural Replenishment & Rebalancer</h4>
+              <p>Bhadohi Origin ➔ Savannah 3PL ➔ Hamburg Hub</p>
+            </div>
+          </div>
+          <div class="ai-telemetry-status">
+            <span class="telemetry-pulse-dot" style="width: 5px; height: 5px;"></span>
+            <span>99.4% Precision</span>
+          </div>
+        </div>
+
+        <div class="ai-telemetry-card">
+          <div class="ai-telemetry-left">
+            <div class="ai-telemetry-icon">🚢</div>
+            <div class="ai-telemetry-info">
+              <h4>Real-Time Port & Customs Telemetry</h4>
+              <p>Direct ICEGATE EDI & Automated Shipping Bills</p>
+            </div>
+          </div>
+          <div class="ai-telemetry-status">
+            <span class="telemetry-pulse-dot" style="width: 5px; height: 5px;"></span>
+            <span>Instant LEO Cleared</span>
+          </div>
+        </div>
+
+        <div class="ai-telemetry-card">
+          <div class="ai-telemetry-left">
+            <div class="ai-telemetry-icon">🛡️</div>
+            <div class="ai-telemetry-info">
+              <h4>Zero-Trust Access Governance</h4>
+              <p>FIPS 140-3 Cryptographic HSM Session Tokens</p>
+            </div>
+          </div>
+          <div class="ai-telemetry-status">
+            <span>🔒 Enforced</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-pills-bar">
+        <span class="ai-tech-tag">⚡ Sub-Second Barcode Inwarding</span>
+        <span class="ai-tech-tag">🌐 Live FedEx / DHL Telemetry</span>
+        <span class="ai-tech-tag">🤖 GPT-4o Supply Forecaster</span>
+      </div>
+    </div>
+  `;
+
+  // Common Top Bar
+  const topBarHtml = `
+    <div class="login-orb login-orb-1"></div>
+    <div class="login-orb login-orb-2"></div>
+
+    <div class="login-top-bar">
+      <div class="login-top-brand">
+        <img src="https://www.odetterugs.com/cdn/shop/files/Odette-Rugs-Fave-IconOdette-Rugs-Fave-Icon_1.png?crop=center&height=32&v=1754630107&width=32" alt="Odette Rugs" style="width: 22px; height: 22px; border-radius: 4px; object-fit: contain;">
+        <span style="font-weight: 800; font-size: 13px; color: var(--text-main); letter-spacing: -0.2px;">Odette Rugs <span style="color: var(--brand-cyan);">/ RugOS</span></span>
+        <span style="font-size: 10px; font-weight: 700; color: var(--brand-purple); background: rgba(168, 85, 247, 0.12); border: 1px solid rgba(168, 85, 247, 0.25); padding: 2px 7px; border-radius: 9999px;">AI-Core v4.2</span>
+      </div>
+
+      <div class="login-top-telemetry">
+        <span class="telemetry-pulse-dot"></span>
+        <span>Neural Mesh: <strong>99.98%</strong></span>
+        <span>•</span>
+        <span>Active Nodes: <strong>IN / US / EU</strong></span>
+        <span>•</span>
+        <span>HSM Zero-Trust</span>
+      </div>
+
+      <button class="theme-toggle-btn" onclick="toggleTheme(); renderLoginScreen();" title="Toggle Theme" style="padding: 7px 14px; font-size: 12px; border-radius: 9999px;">
+        <span>${themeIcon}</span>
+        <span>${themeText}</span>
+      </button>
+    </div>
+  `;
+
+  if (AppState.auth.step === "otp") {
+    container.innerHTML = `
+      ${topBarHtml}
+
+      <div class="login-ai-wrapper">
+        ${showcasePanelHtml}
+
+        <div class="login-ai-card-wrap">
+          <div class="login-card">
+            <button type="button" class="login-back-link" onclick="loginEditEmail()">
+              <span>←</span> Back to Email
+            </button>
+
+            <div class="login-brand-header">
+              <div class="login-brand-logo-wrap">
+                <img src="https://www.odetterugs.com/cdn/shop/files/Odette-Rugs-Fave-IconOdette-Rugs-Fave-Icon_1.png?crop=center&height=32&v=1754630107&width=32" alt="Odette Rugs">
+              </div>
+              <h2 class="login-brand-title">Verify One-Time Passcode</h2>
+              <p class="login-brand-sub">
+                Enter passcode sent to<br>
+                <strong style="color: var(--brand-cyan); font-family: var(--font-mono);">${AppState.auth.pendingEmail || 'user@company.com'}</strong>
+                <button type="button" onclick="loginEditEmail()" style="margin-left: 6px; font-size: 11px; color: var(--brand-primary); background: none; border: none; cursor: pointer; text-decoration: underline;">Change</button>
+              </p>
+              <div class="login-step-badge">
+                <span>●</span> Step 2 of 2: OTP Verification
+              </div>
+            </div>
+
+            ${AppState.auth.errorMessage ? `
+              <div class="login-error-alert" id="loginErrorAlert">
+                <span>⚠️</span>
+                <span>${AppState.auth.errorMessage}</span>
+              </div>
+            ` : ''}
+
+            <form onsubmit="event.preventDefault(); loginSubmitOtp();">
+              <div class="login-form-group" style="margin-bottom: 8px;">
+                <label class="login-label" style="justify-content: center;">Enter 4-Digit Passcode</label>
+                <div class="login-otp-row">
+                  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="login-otp-digit" id="otpDigit0" oninput="handleOtpInput(0, event)" onkeydown="handleOtpKeydown(0, event)" onpaste="handleOtpPaste(event)" autofocus autocomplete="one-time-code">
+                  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="login-otp-digit" id="otpDigit1" oninput="handleOtpInput(1, event)" onkeydown="handleOtpKeydown(1, event)" onpaste="handleOtpPaste(event)" autocomplete="off">
+                  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="login-otp-digit" id="otpDigit2" oninput="handleOtpInput(2, event)" onkeydown="handleOtpKeydown(2, event)" onpaste="handleOtpPaste(event)" autocomplete="off">
+                  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="login-otp-digit" id="otpDigit3" oninput="handleOtpInput(3, event)" onkeydown="handleOtpKeydown(3, event)" onpaste="handleOtpPaste(event)" autocomplete="off">
+                </div>
+              </div>
+
+              <!-- Wireframe Hint Box with 1-click Auto-fill -->
+              <div class="login-hint-box">
+                <div>
+                  <span>💡 Default Test OTP:</span> <strong>1111</strong>
+                </div>
+                <button type="button" class="btn btn-xs btn-secondary" onclick="loginAutoFillOtp()" style="padding: 4px 10px; font-size: 11px; font-weight: 700; border-radius: 6px;">
+                  ⚡ Auto-fill 1111
+                </button>
+              </div>
+
+              <div style="margin-top: 20px;">
+                <button type="submit" class="login-btn-primary" id="loginVerifyBtn">
+                  <span>Verify & Authenticate Session</span>
+                  <span>➔</span>
+                </button>
+              </div>
+
+              <div style="margin-top: 16px; text-align: center; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-muted);">
+                <span>Didn't receive code?</span>
+                <button type="button" onclick="loginResendOtp()" style="background: none; border: none; color: var(--brand-cyan); font-weight: 600; cursor: pointer; text-decoration: underline;">
+                  Resend OTP Code
+                </button>
+              </div>
+            </form>
+
+            <div class="login-footer-meta">
+              <span>🛡️ 256-bit TLS Encrypted</span>
+              <span>•</span>
+              <span>RugOS Enterprise Zero-Trust</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    setTimeout(() => {
+      const d0 = document.getElementById("otpDigit0");
+      if (d0) d0.focus();
+    }, 50);
+
+  } else {
+    // Step 1: Email Input
+    container.innerHTML = `
+      ${topBarHtml}
+
+      <div class="login-ai-wrapper">
+        ${showcasePanelHtml}
+
+        <div class="login-ai-card-wrap">
+          <div class="login-card">
+            <div class="login-brand-header">
+              <div class="login-brand-logo-wrap">
+                <img src="https://www.odetterugs.com/cdn/shop/files/Odette-Rugs-Fave-IconOdette-Rugs-Fave-Icon_1.png?crop=center&height=32&v=1754630107&width=32" alt="Odette Rugs">
+              </div>
+              <h2 class="login-brand-title">Sign In to RugOS</h2>
+              <p class="login-brand-sub">Autonomous Multi-Facility & Global Export ERP</p>
+              <div class="login-step-badge">
+                <span>●</span> Step 1 of 2: Email Authentication
+              </div>
+            </div>
+
+            ${AppState.auth.errorMessage ? `
+              <div class="login-error-alert">
+                <span>⚠️</span>
+                <span>${AppState.auth.errorMessage}</span>
+              </div>
+            ` : ''}
+
+            <form onsubmit="event.preventDefault(); loginSubmitEmail();">
+              <div class="login-form-group">
+                <label class="login-label" for="loginEmailInput">
+                  <span>Work or Operational Email</span>
+                  <span style="font-size: 10px; color: var(--brand-cyan); font-weight: 600; text-transform: none;">Any email accepted</span>
+                </label>
+                <div class="login-input-wrap">
+                  <span class="login-input-icon">✉️</span>
+                  <input
+                    type="email"
+                    id="loginEmailInput"
+                    class="login-input"
+                    placeholder="e.g. admin@odetterugs.com or your email"
+                    value="${AppState.auth.pendingEmail || ''}"
+                    required
+                    autofocus
+                    autocomplete="email"
+                  >
+                </div>
+              </div>
+
+              <button type="submit" class="login-btn-primary" id="loginContinueBtn">
+                <span>Continue with Passcode</span>
+                <span>➔</span>
+              </button>
+
+              <!-- Quick 1-Click Demo Shortcut -->
+              <button type="button" class="login-demo-btn" onclick="loginQuickDemo()" title="Instant 1-Click Demo Sign In">
+                <span>⚡</span> Instant Sandbox Access (admin@odetterugs.com • OTP: 1111)
+              </button>
+            </form>
+
+            <!-- Wireframe Note -->
+            <div class="login-hint-box">
+              <div>
+                <span>💡 Wireframe Test OTP:</span> <strong>1111</strong>
+              </div>
+              <span style="font-size: 11px; color: var(--text-dim);">Enter on step 2</span>
+            </div>
+
+            <div class="login-footer-meta">
+              <span>🛡️ 256-bit TLS Encrypted</span>
+              <span>•</span>
+              <span>RugOS Enterprise Zero-Trust</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    setTimeout(() => {
+      const emailInput = document.getElementById("loginEmailInput");
+      if (emailInput) emailInput.focus();
+    }, 50);
+  }
+}
+
+function loginSubmitEmail(customEmail) {
+  const input = document.getElementById("loginEmailInput");
+  const email = (customEmail || (input ? input.value : "") || "").trim();
+
+  if (!email) {
+    showToast("Please enter an email address.", "danger");
+    return;
+  }
+
+  AppState.auth.pendingEmail = email;
+  AppState.auth.step = "otp";
+  AppState.auth.errorMessage = "";
+  renderLoginScreen();
+  showToast(`Verification OTP sent to ${email} (Default OTP: 1111)`, "info");
+}
+
+function loginEditEmail() {
+  AppState.auth.step = "email";
+  AppState.auth.errorMessage = "";
+  renderLoginScreen();
+}
+
+function loginResendOtp() {
+  AppState.auth.errorMessage = "";
+  showToast(`New verification passcode sent to ${AppState.auth.pendingEmail}! Default OTP: 1111`, "info");
+  for (let i = 0; i < 4; i++) {
+    const el = document.getElementById(`otpDigit${i}`);
+    if (el) el.value = "";
+  }
+  const d0 = document.getElementById("otpDigit0");
+  if (d0) d0.focus();
+}
+
+function loginAutoFillOtp() {
+  for (let i = 0; i < 4; i++) {
+    const el = document.getElementById(`otpDigit${i}`);
+    if (el) el.value = "1";
+  }
+  const btn = document.getElementById("loginVerifyBtn");
+  if (btn) btn.focus();
+}
+
+function handleOtpInput(index, event) {
+  const input = event.target;
+  let val = input.value.replace(/[^0-9]/g, "");
+  if (val.length > 0) {
+    val = val.slice(-1);
+    input.value = val;
+    if (index < 3) {
+      const next = document.getElementById(`otpDigit${index + 1}`);
+      if (next) next.focus();
+    } else if (index === 3) {
+      const d0 = document.getElementById("otpDigit0")?.value;
+      const d1 = document.getElementById("otpDigit1")?.value;
+      const d2 = document.getElementById("otpDigit2")?.value;
+      const d3 = document.getElementById("otpDigit3")?.value;
+      if (d0 && d1 && d2 && d3) {
+        loginSubmitOtp();
+      }
+    }
+  } else {
+    input.value = "";
+  }
+}
+
+function handleOtpKeydown(index, event) {
+  if (event.key === "Backspace") {
+    const input = event.target;
+    if (!input.value && index > 0) {
+      const prev = document.getElementById(`otpDigit${index - 1}`);
+      if (prev) {
+        prev.focus();
+        prev.value = "";
+      }
+    }
+  } else if (event.key === "Enter") {
+    event.preventDefault();
+    loginSubmitOtp();
+  }
+}
+
+function handleOtpPaste(event) {
+  event.preventDefault();
+  const pasteData = (event.clipboardData || window.clipboardData).getData("text") || "";
+  const clean = pasteData.replace(/[^0-9]/g, "").slice(0, 4);
+  if (clean.length > 0) {
+    for (let i = 0; i < 4; i++) {
+      const el = document.getElementById(`otpDigit${i}`);
+      if (el) el.value = clean[i] || "";
+    }
+    if (clean.length === 4) {
+      loginSubmitOtp();
+    } else {
+      const next = document.getElementById(`otpDigit${clean.length}`);
+      if (next) next.focus();
+    }
+  }
+}
+
+function loginSubmitOtp() {
+  const d0 = document.getElementById("otpDigit0")?.value || "";
+  const d1 = document.getElementById("otpDigit1")?.value || "";
+  const d2 = document.getElementById("otpDigit2")?.value || "";
+  const d3 = document.getElementById("otpDigit3")?.value || "";
+  const code = `${d0}${d1}${d2}${d3}`.trim();
+
+  if (code.length < 4) {
+    showToast("Please enter the complete 4-digit passcode.", "danger");
+    return;
+  }
+
+  if (code === "1111") {
+    // Valid OTP
+    const btn = document.getElementById("loginVerifyBtn");
+    if (btn) {
+      btn.innerHTML = `<span>✓ Passcode Verified! Redirecting...</span>`;
+      btn.style.background = "var(--success)";
+    }
+
+    const email = (AppState.auth.pendingEmail || "admin@odetterugs.com").trim();
+    const existing = (AppState.users || []).find(u => u.email.toLowerCase() === email.toLowerCase());
+    
+    // Derive sensible user info
+    let name = "Ctas Admin";
+    let role = "Super Admin / Management";
+    if (existing) {
+      name = existing.name;
+      role = existing.role;
+    } else {
+      // Format name from email
+      const prefix = email.split("@")[0].replace(/[._-]/g, " ");
+      name = prefix.split(" ").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "User";
+      role = "Super Admin / Management";
+    }
+
+    const initials = name.split(" ").map(w => w[0]).join("").toUpperCase().slice(0, 2) || "CT";
+
+    const userObj = {
+      email: email,
+      name: name,
+      role: role,
+      initials: initials,
+      loginTimestamp: new Date().toISOString()
+    };
+
+    localStorage.setItem("rugos_auth_user", JSON.stringify(userObj));
+    AppState.auth.isLoggedIn = true;
+    AppState.auth.currentUser = userObj;
+    AppState.auth.step = "email";
+    AppState.auth.pendingEmail = "";
+    AppState.auth.errorMessage = "";
+
+    setTimeout(() => {
+      document.body.classList.remove("auth-screen-active");
+      updateHeaderUserInfo(userObj);
+      showToast(`Welcome back, ${name}! Logged in successfully.`, "success");
+      handleHashNavigation();
+      updateRoleContext();
+    }, 350);
+
+  } else {
+    // Invalid OTP
+    AppState.auth.errorMessage = "Invalid passcode. For this wireframe, please enter default OTP: 1111";
+    for (let i = 0; i < 4; i++) {
+      const el = document.getElementById(`otpDigit${i}`);
+      if (el) {
+        el.classList.add("error-shake");
+        setTimeout(() => el.classList.remove("error-shake"), 450);
+      }
+    }
+    showToast("Invalid OTP code! Default test OTP is 1111", "danger");
+    renderLoginScreen();
+  }
+}
+
+function loginQuickDemo() {
+  loginSubmitEmail("admin@odetterugs.com");
+  setTimeout(() => {
+    loginAutoFillOtp();
+    setTimeout(() => {
+      loginSubmitOtp();
+    }, 250);
+  }, 100);
+}
+
+function logoutUser() {
+  localStorage.removeItem("rugos_auth_user");
+  AppState.auth.isLoggedIn = false;
+  AppState.auth.currentUser = null;
+  AppState.auth.step = "email";
+  AppState.auth.pendingEmail = "";
+  AppState.auth.errorMessage = "";
+  document.body.classList.add("auth-screen-active");
+  renderLoginScreen();
+  showToast("You have been signed out.", "info");
+}
+
+function updateHeaderUserInfo(user) {
+  if (!user) return;
+  const avatar = document.getElementById("headerUserAvatar");
+  const name = document.getElementById("headerUserName");
+  const role = document.getElementById("userRoleTag");
+  const dropName = document.getElementById("dropdownUserName");
+  const dropEmail = document.getElementById("dropdownUserEmail");
+  const dropRole = document.getElementById("dropdownUserRole");
+
+  if (avatar) avatar.textContent = user.initials || "CT";
+  if (name) name.textContent = user.name || "Ctas Admin";
+  if (role) role.textContent = user.role?.split("/")[0]?.trim() || "Management";
+  if (dropName) dropName.textContent = user.name || "Ctas Admin";
+  if (dropEmail) dropEmail.textContent = user.email || "admin@odetterugs.com";
+  if (dropRole) dropRole.textContent = user.role || "Super Admin";
+}
+
+function toggleUserDropdownMenu() {
+  const menu = document.getElementById("userDropdownMenu");
+  if (!menu) return;
+  const isHidden = menu.style.display === "none" || !menu.style.display;
+  menu.style.display = isHidden ? "block" : "none";
+}
+
+function closeUserDropdownMenu() {
+  const menu = document.getElementById("userDropdownMenu");
+  if (menu) menu.style.display = "none";
+}
+
+// Global click outside to dismiss user dropdown menu
+document.addEventListener("click", (e) => {
+  const wrapper = document.getElementById("userMenuWrapper");
+  const menu = document.getElementById("userDropdownMenu");
+  if (wrapper && menu && !wrapper.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+
+window.initAuthState = initAuthState;
+window.renderLoginScreen = renderLoginScreen;
+window.loginSubmitEmail = loginSubmitEmail;
+window.loginEditEmail = loginEditEmail;
+window.loginResendOtp = loginResendOtp;
+window.loginAutoFillOtp = loginAutoFillOtp;
+window.handleOtpInput = handleOtpInput;
+window.handleOtpKeydown = handleOtpKeydown;
+window.handleOtpPaste = handleOtpPaste;
+window.loginSubmitOtp = loginSubmitOtp;
+window.loginQuickDemo = loginQuickDemo;
+window.logoutUser = logoutUser;
+window.updateHeaderUserInfo = updateHeaderUserInfo;
+window.toggleUserDropdownMenu = toggleUserDropdownMenu;
+window.closeUserDropdownMenu = closeUserDropdownMenu;
+
+function loadSavedCompanyMaster() {
+  try {
+    const saved = localStorage.getItem("rugos_company_master");
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (parsed.legalName && (parsed.legalName.includes("ARTICER") || parsed.legalName.includes("CEROC") || parsed.legalName.includes("PORTOCER"))) {
+        localStorage.removeItem("rugos_company_master");
+      } else {
+        AppState.companySettings = { ...AppState.companySettings, ...parsed };
+      }
+    }
+    const savedList = localStorage.getItem("rugos_companies_list");
+    if (savedList) {
+      const parsedList = JSON.parse(savedList);
+      if (Array.isArray(parsedList) && parsedList.some(c => c.legalName && (c.legalName.includes("ARTICER") || c.legalName.includes("CEROC") || c.legalName.includes("PORTOCER")))) {
+        localStorage.removeItem("rugos_companies_list");
+        AppState.companies = [...INITIAL_COMPANIES];
+      } else if (Array.isArray(parsedList) && parsedList.length === 1 && parsedList[0].legalName && parsedList[0].legalName.includes("ODETTE")) {
+        AppState.companies = parsedList;
+      } else {
+        // Reset to single Odette Rugs entity as requested
+        localStorage.removeItem("rugos_companies_list");
+        AppState.companies = [...INITIAL_COMPANIES];
+      }
+    } else {
+      AppState.companies = [...INITIAL_COMPANIES];
+    }
+    // Keep companySettings in lockstep with the primary master company
+    if (AppState.companies && AppState.companies[0]) {
+      AppState.companySettings = { ...AppState.companySettings, ...AppState.companies[0] };
+    }
+  } catch (e) {}
 }
 
 function loadSavedTheme() {
@@ -3343,18 +4619,20 @@ function loadSavedTheme() {
 function setTheme(theme) {
   AppState.theme = theme;
   localStorage.setItem("rugos_theme", theme);
+  document.documentElement.classList.remove("theme-dark", "theme-light");
+  document.documentElement.classList.add(theme === "light" ? "theme-light" : "theme-dark");
   document.body.classList.remove("theme-dark", "theme-light");
   document.body.classList.add(theme === "light" ? "theme-light" : "theme-dark");
 
   const themeIcon = document.getElementById("themeIcon");
   const themeLabel = document.getElementById("themeLabel");
   if (themeIcon && themeLabel) {
-    if (theme === "dark") {
-      themeIcon.textContent = "☀️";
-      themeLabel.textContent = "Light Mode";
-    } else {
+    if (theme === "light") {
       themeIcon.textContent = "🌙";
       themeLabel.textContent = "Dark Mode";
+    } else {
+      themeIcon.textContent = "☀️";
+      themeLabel.textContent = "Light Mode";
     }
   }
 }
@@ -3367,10 +4645,25 @@ function setupEventListeners() {
   const themeBtn = document.getElementById("themeToggleBtn");
   if (themeBtn) themeBtn.addEventListener("click", toggleTheme);
 
-  const sidebarToggle = document.getElementById("sidebarToggle");
+function toggleMobileSidebar(force) {
   const sidebar = document.getElementById("appSidebar");
-  if (sidebarToggle && sidebar) {
-    sidebarToggle.addEventListener("click", () => sidebar.classList.toggle("collapsed"));
+  const backdrop = document.getElementById("sidebarBackdrop");
+  if (!sidebar) return;
+  const isMobile = window.innerWidth <= 1024;
+  if (isMobile) {
+    const shouldOpen = force !== undefined ? force : !sidebar.classList.contains("mobile-open");
+    sidebar.classList.toggle("mobile-open", shouldOpen);
+    if (backdrop) backdrop.classList.toggle("active", shouldOpen);
+    document.body.classList.toggle("sidebar-open-locked", shouldOpen);
+  } else {
+    sidebar.classList.toggle("collapsed");
+  }
+}
+window.toggleMobileSidebar = toggleMobileSidebar;
+
+  const sidebarToggle = document.getElementById("sidebarToggle");
+  if (sidebarToggle) {
+    sidebarToggle.addEventListener("click", () => toggleMobileSidebar());
   }
 
   const navItems = document.querySelectorAll(".nav-item");
@@ -3381,8 +4674,21 @@ function setupEventListeners() {
       item.classList.add("active");
       const target = item.getAttribute("data-module");
       AppState.activeDetail = null;
+      if (window.innerWidth <= 1024) {
+        toggleMobileSidebar(false);
+      }
       switchView(target);
     });
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1024) {
+      const sidebar = document.getElementById("appSidebar");
+      const backdrop = document.getElementById("sidebarBackdrop");
+      if (sidebar) sidebar.classList.remove("mobile-open");
+      if (backdrop) backdrop.classList.remove("active");
+      document.body.classList.remove("sidebar-open-locked");
+    }
   });
 
   const roleSelector = document.getElementById("roleSelector");
@@ -3541,8 +4847,39 @@ function showToast(message, type = "success") {
 // ============================================================================
 
 function setTableSearch(tableKey, value) {
-  AppState.tableFilters[tableKey].search = value.toLowerCase();
+  const activeEl = document.activeElement;
+  const isInput = activeEl && activeEl.tagName === 'INPUT';
+  const start = isInput ? activeEl.selectionStart : null;
+  const end = isInput ? activeEl.selectionEnd : null;
+
+  AppState.tableFilters[tableKey].search = value;
   AppState.tableFilters[tableKey].page = 1;
+  renderCurrentView();
+
+  if (isInput) {
+    const newInput = document.querySelector(`.table-search-input-wrap input[oninput*="${tableKey}"]`) || (activeEl.id ? document.getElementById(activeEl.id) : null);
+    if (newInput) {
+      newInput.focus();
+      if (start !== null && end !== null) {
+        try {
+          newInput.setSelectionRange(start, end);
+        } catch (e) {}
+      }
+    }
+  }
+}
+
+function refreshTableFilters(tableKey, label) {
+  if (AppState.tableFilters && AppState.tableFilters[tableKey]) {
+    const f = AppState.tableFilters[tableKey];
+    f.search = "";
+    f.page = 1;
+    Object.keys(f).forEach(k => {
+      if (k !== 'sortBy' && k !== 'sortOrder' && k !== 'page' && k !== 'pageSize') {
+        f[k] = k === 'search' ? "" : "all";
+      }
+    });
+  }
   renderCurrentView();
 }
 
@@ -3716,10 +5053,11 @@ function renderCurrentView() {
       break;
 
     case "mod6-ret":
-      crumbMod.textContent = "Module 6: Returns & Claims";
-      crumbView.textContent = "RMA Processing, Damage Grading & Carrier Claims";
+      crumbMod.textContent = "Module 6: Returns, Refunds & Claims";
+      crumbView.textContent = "Returns & RTO, Inspection Grading, Refunds, Claims, Recovery & Profitability";
       quickActions.innerHTML = `
-        <button class="btn btn-sm btn-primary" onclick="openNewReturnModal()">+ Register Return</button>
+        <button class="btn btn-sm btn-secondary" onclick="exportReturnsCSV()">📥 Export CSV</button>
+        <button class="btn btn-sm btn-primary" onclick="switchView('mod3-orders')">🛍️ Order Pipeline</button>
       `;
       viewport.innerHTML = renderReturnsView();
       break;
@@ -3831,7 +5169,7 @@ function renderCurrentView() {
 
     case "profile":
       crumbMod.textContent = "User Governance";
-      crumbView.textContent = "Admin — Enterprise Profile, Permissions & Security Command Center";
+      crumbView.textContent = "Ctas Admin — Enterprise Profile, Permissions & Security Command Center";
       quickActions.innerHTML = `
         <button class="btn btn-sm btn-secondary" onclick="generateNewApiKey()">🔑 Generate New API Key</button>
         <button class="btn btn-sm btn-primary" onclick="showToast('Profile security settings updated.', 'success')">💾 Save Preferences</button>
@@ -3848,6 +5186,29 @@ function renderCurrentView() {
         <button class="btn btn-sm btn-primary" onclick="refreshSystemLogs()">🔄 Refresh Stream</button>
       `;
       viewport.innerHTML = renderSystemLogsView();
+      break;
+
+    case "admin-company":
+      crumbMod.textContent = "Administration & Masters";
+      crumbView.textContent = "Company & Statutory Organization Profile";
+      quickActions.innerHTML = `
+        <div style="position: relative; display: inline-block;">
+          <button class="btn btn-sm btn-secondary" onclick="toggleCompanyExportMenu(event, 'header')" style="display: inline-flex; align-items: center; gap: 5px;">
+            📥 Export ▾
+          </button>
+          <div id="companyExportHeaderMenu" class="company-export-dropdown-menu" style="display: none; position: absolute; right: 0; top: calc(100% + 4px); background: var(--bg-card); border: 1px solid var(--border-main); border-radius: var(--radius-md); box-shadow: var(--shadow-lg, 0 10px 25px rgba(0,0,0,0.25)); min-width: 190px; z-index: 1000; overflow: hidden; padding: 4px;">
+            <div style="padding: 6px 10px; font-size: 10px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; border-bottom: 1px solid var(--border-subtle);">Export Format</div>
+            <button onclick="exportCompanyMasterExcel(); closeCompanyExportMenu();" style="width: 100%; text-align: left; padding: 8px 12px; background: transparent; border: none; color: var(--text-main); font-size: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; border-radius: var(--radius-sm);" onmouseover="this.style.background='var(--bg-elevated)'" onmouseout="this.style.background='transparent'">
+              <span>📊</span> Excel Spreadsheet (.xls)
+            </button>
+            <button onclick="exportCompanyMasterCSV(); closeCompanyExportMenu();" style="width: 100%; text-align: left; padding: 8px 12px; background: transparent; border: none; color: var(--text-main); font-size: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; border-radius: var(--radius-sm);" onmouseover="this.style.background='var(--bg-elevated)'" onmouseout="this.style.background='transparent'">
+              <span>📄</span> CSV Document (.csv)
+            </button>
+          </div>
+        </div>
+        <button class="btn btn-sm btn-primary" onclick="saveCompanyMaster()">💾 Save Company</button>
+      `;
+      viewport.innerHTML = renderCompanyMasterView();
       break;
 
     case "mod2-rbac":
@@ -3870,7 +5231,7 @@ function renderCurrentView() {
 
     case "mod8-sow":
       crumbMod.textContent = "SOW Document & Traceability Matrix";
-      crumbView.textContent = "Rugs — Original Scope & Timeline";
+      crumbView.textContent = "Ctas Info Services LLP — Original Scope & Timeline";
       quickActions.innerHTML = `
         <button class="btn btn-sm btn-primary" onclick="switchView('mod8')">← Back to Dashboard</button>
       `;
@@ -3891,12 +5252,13 @@ function renderOrdersView() {
   const f = AppState.tableFilters.orders || (AppState.tableFilters.orders = { search: "", channel: "all", status: "all", sortBy: "orderDate", sortOrder: "desc", page: 1, pageSize: 10 });
 
   let filtered = (AppState.orders || []).filter(ord => {
-    const matchesSearch = !f.search ||
-      ord.orderId.toLowerCase().includes(f.search.toLowerCase()) ||
-      ord.marketplaceOrderId.toLowerCase().includes(f.search.toLowerCase()) ||
-      ord.customer.name.toLowerCase().includes(f.search.toLowerCase()) ||
-      ord.customer.city.toLowerCase().includes(f.search.toLowerCase()) ||
-      (ord.items && ord.items.some(it => it.sku.toLowerCase().includes(f.search.toLowerCase())));
+    const s = (f.search || "").trim().toLowerCase();
+    const matchesSearch = !s ||
+      ord.orderId.toLowerCase().includes(s) ||
+      ord.marketplaceOrderId.toLowerCase().includes(s) ||
+      ord.customer.name.toLowerCase().includes(s) ||
+      ord.customer.city.toLowerCase().includes(s) ||
+      (ord.items && ord.items.some(it => it.sku.toLowerCase().includes(s)));
     const matchesChannel = !f.channel || f.channel === "all" || ord.channel.toLowerCase().includes(f.channel.toLowerCase());
     const matchesStatus = !f.status || f.status === "all" || ord.status.toLowerCase() === f.status.toLowerCase();
     return matchesSearch && matchesChannel && matchesStatus;
@@ -3924,14 +5286,11 @@ function renderOrdersView() {
       <button class="filter-pill-btn ${f.status === 'Delivered' ? 'active' : ''}" onclick="setTableFilter('orders', 'status', 'Delivered')">✅ Delivered</button>
     </div>
 
-    <div class="table-toolbar-box">
-    <div class="table-toolbar-box">
+    <div class="table-toolbar-box" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
       <div class="table-toolbar-left">
-        <div class="table-search-input-wrap">
-          <span class="table-search-icon">🔍</span>
-          <input type="text" placeholder="Search orders, buyers, SKUs..." value="${f.search}" oninput="setTableSearch('orders', this.value)">
-        </div>
-
+        <span style="font-size: 11px; color: var(--text-dim);">${filtered.length} Orders matching</span>
+      </div>
+      <div class="table-toolbar-right" style="display: flex; gap: 8px; align-items: center; margin-left: auto; flex-wrap: wrap;">
         <select class="table-filter-select" onchange="setTableFilter('orders', 'channel', this.value)">
           <option value="all" ${f.channel === 'all' ? 'selected' : ''}>All Channels</option>
           <option value="amazon" ${f.channel === 'amazon' ? 'selected' : ''}>Amazon US</option>
@@ -3948,10 +5307,13 @@ function renderOrdersView() {
           <option value="delivered" ${f.status === 'delivered' ? 'selected' : ''}>Delivered</option>
           <option value="make" ${f.status === 'make' ? 'selected' : ''}>To Make (MTO)</option>
         </select>
-      </div>
 
-      <div class="table-toolbar-right">
-        <span style="font-size: 11px; color: var(--text-dim);">${filtered.length} Orders matching</span>
+        <div class="table-search-input-wrap">
+          <span class="table-search-icon">🔍</span>
+          <input type="text" placeholder="Search orders, buyers, SKUs..." value="${f.search}" oninput="setTableSearch('orders', this.value)">
+        </div>
+
+        <button class="btn btn-sm btn-secondary" onclick="refreshTableFilters('orders', 'Orders registry')">🔄 Refresh</button>
       </div>
     </div>
 
@@ -3960,24 +5322,24 @@ function renderOrdersView() {
         <table class="data-table">
           <thead>
             <tr>
-              <th class="sortable" onclick="setTableSort('orders', 'orderId')">
+              <th class="sortable" style="min-width: 160px; white-space: nowrap;" onclick="setTableSort('orders', 'orderId')">
                 Order ID & Channel ${f.sortBy === 'orderId' ? `<span class="sort-icon">${f.sortOrder === 'asc' ? '▲' : '▼'}</span>` : ''}
               </th>
-              <th class="sortable" onclick="setTableSort('orders', 'buyerName')">
+              <th class="sortable" style="min-width: 160px; white-space: nowrap;" onclick="setTableSort('orders', 'buyerName')">
                 Customer & Destination ${f.sortBy === 'buyerName' ? `<span class="sort-icon">${f.sortOrder === 'asc' ? '▲' : '▼'}</span>` : ''}
               </th>
-              <th class="sortable" onclick="setTableSort('orders', 'sku')">
+              <th class="sortable" style="min-width: 200px; white-space: nowrap;" onclick="setTableSort('orders', 'sku')">
                 Rug SKU & Specs ${f.sortBy === 'sku' ? `<span class="sort-icon">${f.sortOrder === 'asc' ? '▲' : '▼'}</span>` : ''}
               </th>
-              <th class="sortable" onclick="setTableSort('orders', 'totalOrderUSD')">
+              <th class="sortable" style="min-width: 120px; text-align: right; white-space: nowrap;" onclick="setTableSort('orders', 'totalOrderUSD')">
                 Qty & Total ${f.sortBy === 'totalOrderUSD' ? `<span class="sort-icon">${f.sortOrder === 'asc' ? '▲' : '▼'}</span>` : ''}
               </th>
-              <th>Fulfillment WH</th>
-              <th class="sortable" onclick="setTableSort('orders', 'status')">
+              <th style="min-width: 120px; text-align: center; white-space: nowrap;">Fulfillment WH</th>
+              <th class="sortable" style="min-width: 120px; text-align: center; white-space: nowrap;" onclick="setTableSort('orders', 'status')">
                 Status ${f.sortBy === 'status' ? `<span class="sort-icon">${f.sortOrder === 'asc' ? '▲' : '▼'}</span>` : ''}
               </th>
-              <th>Courier & AWB</th>
-              <th>Actions (CRUD)</th>
+              <th style="min-width: 140px; white-space: nowrap;">Courier & AWB</th>
+              <th style="min-width: 150px; text-align: center; white-space: nowrap;">Actions (CRUD)</th>
             </tr>
           </thead>
           <tbody>
@@ -3985,36 +5347,37 @@ function renderOrdersView() {
               <tr><td colspan="8" style="text-align: center; padding: 30px; color: var(--text-dim);">No orders matching current filter criteria.</td></tr>
             ` : pagination.items.map(order => `
               <tr style="cursor: pointer;" onclick="openOrderDetail('${order.orderId}')">
-                <td>
+                <td style="min-width: 160px;">
                   <strong>${order.orderId}</strong>
                   <div style="margin-top: 4px;"><span class="marketplace-icon-tag ${order.channelIcon}">${order.channel}</span></div>
                   <div style="font-size: 10px; color: var(--text-dim); font-family: var(--font-mono); margin-top: 2px;">${order.marketplaceOrderId}</div>
                 </td>
-                <td>
+                <td style="min-width: 160px;">
                   <strong>${order.buyerName}</strong>
                   <div style="font-size: 11px; color: var(--text-muted);">${order.shippingAddress.split(',')[0]}</div>
                 </td>
-                <td>
+                <td style="min-width: 200px;">
                   <div style="display: flex; align-items: center; gap: 6px;">
                     <span style="font-family: var(--font-mono); color: var(--brand-cyan); font-weight: 700;">${order.sku}</span>
                     <span class="badge badge-success" style="font-size: 9px; padding: 1px 5px;">🔒 Stock Locked</span>
                   </div>
-                  <div style="font-size: 11px; color: var(--text-dim);">${getSkuTitle(order.sku)}</div>
+                  <div style="font-size: 11px; color: var(--text-dim); max-width: 190px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${getSkuTitle(order.sku)}</div>
                 </td>
-                <td>
-                  <strong>$${order.totalOrderUSD.toFixed(2)}</strong>
+                <td style="min-width: 120px; text-align: right;">
+                  <strong style="font-family: var(--font-mono); font-size: 13px;">$${order.totalOrderUSD.toFixed(2)}</strong>
                   <div style="font-size: 10px; color: var(--text-dim);">Qty: ${order.qty}</div>
                 </td>
-                <td><span class="badge ${order.fulfillmentWh.includes('USA') ? 'badge-success' : 'badge-primary'}">${order.fulfillmentWh.split(' ')[0]}</span></td>
-                <td><span class="badge ${getStatusBadgeClass(order.status)}">${order.status}</span></td>
-                <td>
+                <td style="min-width: 120px; text-align: center;"><span class="badge ${order.fulfillmentWh.includes('USA') ? 'badge-success' : 'badge-primary'}">${order.fulfillmentWh.split(' ')[0]}</span></td>
+                <td style="min-width: 120px; text-align: center;"><span class="badge ${getStatusBadgeClass(order.status)}">${order.status}</span></td>
+                <td style="min-width: 140px;">
                   <span style="font-size: 11px; font-weight: 600;">${order.courier.split(' ')[0]}</span>
                   <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted);">${order.awb}</div>
                 </td>
-                <td onclick="event.stopPropagation()">
-                  <div class="row-actions-group">
+                <td style="min-width: 150px;" onclick="event.stopPropagation()">
+                  <div class="row-actions-group" style="justify-content: center;">
                     <button class="btn-icon-action" title="View Full Page" onclick="openOrderDetail('${order.orderId}')">👁️</button>
                     <button class="btn-icon-action" title="Edit Order" onclick="openEditOrderModal('${order.orderId}')">✏️</button>
+                    <button class="btn-icon-action" title="Create Return / RTO" onclick="openCreateReturnModal('${order.orderId}')" style="color: #f59e0b; font-weight: 700;">↩️</button>
                     <button class="btn-icon-action delete" title="Delete Order" onclick="confirmDeleteOrder('${order.orderId}')">🗑️</button>
                   </div>
                 </td>
@@ -4055,12 +5418,13 @@ function renderWarehouseMasterView() {
   const warehouses = AppState.warehouses || [];
 
   let filtered = warehouses.filter(wh => {
-    const matchesSearch = !f.search ||
-      wh.id.toLowerCase().includes(f.search.toLowerCase()) ||
-      wh.name.toLowerCase().includes(f.search.toLowerCase()) ||
-      wh.city.toLowerCase().includes(f.search.toLowerCase()) ||
-      wh.country.toLowerCase().includes(f.search.toLowerCase()) ||
-      (wh.address && wh.address.toLowerCase().includes(f.search.toLowerCase()));
+    const s = (f.search || "").trim().toLowerCase();
+    const matchesSearch = !s ||
+      wh.id.toLowerCase().includes(s) ||
+      wh.name.toLowerCase().includes(s) ||
+      wh.city.toLowerCase().includes(s) ||
+      wh.country.toLowerCase().includes(s) ||
+      (wh.address && wh.address.toLowerCase().includes(s));
     const matchesCountry = !f.country || f.country === "all" || wh.country.toLowerCase().includes(f.country.toLowerCase());
     return matchesSearch && matchesCountry;
   });
@@ -4099,12 +5463,11 @@ function renderWarehouseMasterView() {
     </div>
 
     <!-- Search & Country Dropdown Toolbar -->
-    <div class="table-toolbar-box" style="margin-bottom: 14px;">
-      <div class="table-toolbar-left" style="flex-wrap: wrap; gap: 10px;">
-        <div class="table-search-input-wrap" style="min-width: 320px;">
-          <span class="table-search-icon">🔍</span>
-          <input type="text" placeholder="Search facilities by Code, Name, City, Country, or Address..." value="${f.search}" oninput="setTableSearch('warehouses', this.value)">
-        </div>
+    <div class="table-toolbar-box" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
+      <div class="table-toolbar-left">
+        <span style="font-size: 11px; color: var(--text-dim);">${filtered.length} matching facilities</span>
+      </div>
+      <div class="table-toolbar-right" style="display: flex; gap: 8px; align-items: center; margin-left: auto; flex-wrap: wrap;">
         <select class="table-filter-select" onchange="setTableFilter('warehouses', 'country', this.value)">
           <option value="all" ${!f.country || f.country === 'all' ? 'selected' : ''}>All Countries</option>
           <option value="India" ${f.country === 'India' ? 'selected' : ''}>India</option>
@@ -4112,9 +5475,11 @@ function renderWarehouseMasterView() {
           <option value="Germany" ${f.country === 'Germany' ? 'selected' : ''}>Germany</option>
           <option value="United Kingdom" ${f.country === 'United Kingdom' ? 'selected' : ''}>United Kingdom</option>
         </select>
-      </div>
-      <div class="table-toolbar-right" style="display: flex; gap: 8px; align-items: center;">
-        <span style="font-size: 11px; color: var(--text-dim);">${filtered.length} matching facilities</span>
+        <div class="table-search-input-wrap" style="min-width: 300px;">
+          <span class="table-search-icon">🔍</span>
+          <input type="text" placeholder="Search facilities by Code, Name, City, Country, or Address..." value="${f.search}" oninput="setTableSearch('warehouses', this.value)">
+        </div>
+        <button class="btn btn-sm btn-secondary" onclick="refreshTableFilters('warehouses', 'Facilities registry')">🔄 Refresh</button>
         <button class="btn btn-xs btn-primary" onclick="openAddWarehouseModal()">+ Quick Add</button>
       </div>
     </div>
@@ -4125,20 +5490,20 @@ function renderWarehouseMasterView() {
         <table class="data-table" style="width: 100%;">
           <thead>
             <tr>
-              <th class="sortable" onclick="setTableSort('warehouses', 'id')">
+              <th class="sortable" style="min-width: 220px; white-space: nowrap;" onclick="setTableSort('warehouses', 'id')">
                 Facility Code & Name ${f.sortBy === 'id' ? `<span class="sort-icon">${f.sortOrder === 'asc' ? '▲' : '▼'}</span>` : ''}
               </th>
-              <th class="sortable" onclick="setTableSort('warehouses', 'city')">
+              <th class="sortable" style="min-width: 140px; white-space: nowrap;" onclick="setTableSort('warehouses', 'city')">
                 City / Region ${f.sortBy === 'city' ? `<span class="sort-icon">${f.sortOrder === 'asc' ? '▲' : '▼'}</span>` : ''}
               </th>
-              <th class="sortable" onclick="setTableSort('warehouses', 'country')">
+              <th class="sortable" style="min-width: 140px; white-space: nowrap;" onclick="setTableSort('warehouses', 'country')">
                 Country ${f.sortBy === 'country' ? `<span class="sort-icon">${f.sortOrder === 'asc' ? '▲' : '▼'}</span>` : ''}
               </th>
-              <th>Physical Address</th>
-              <th class="sortable" onclick="setTableSort('warehouses', 'status')">
+              <th style="min-width: 260px; white-space: nowrap;">Physical Address</th>
+              <th class="sortable" style="min-width: 100px; text-align: center; white-space: nowrap;" onclick="setTableSort('warehouses', 'status')">
                 Status ${f.sortBy === 'status' ? `<span class="sort-icon">${f.sortOrder === 'asc' ? '▲' : '▼'}</span>` : ''}
               </th>
-              <th style="text-align: right; min-width: 150px;">Actions</th>
+              <th style="text-align: right; min-width: 190px; white-space: nowrap;">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -4151,7 +5516,7 @@ function renderWarehouseMasterView() {
 
               return `
                 <tr class="clickable-row" onclick="openWarehouseDetail('${wh.id}')">
-                  <td>
+                  <td style="min-width: 220px;">
                     <div style="display: flex; align-items: center; gap: 8px;">
                       <span style="font-size: 16px;">${isIndia ? '🏭' : isUSA ? '🏬' : '🏢'}</span>
                       <div>
@@ -4160,22 +5525,22 @@ function renderWarehouseMasterView() {
                       </div>
                     </div>
                   </td>
-                  <td>
+                  <td style="min-width: 140px;">
                     <strong style="color: var(--text-main); font-size: 12px;">${wh.city}</strong>
                   </td>
-                  <td>
+                  <td style="min-width: 140px;">
                     <div style="display: flex; align-items: center; gap: 6px;">
                       <span>${isIndia ? '🇮🇳' : isUSA ? '🇺🇸' : '🇪🇺'}</span>
                       <strong style="font-size: 11.5px; color: var(--text-muted);">${wh.country}</strong>
                     </div>
                   </td>
-                  <td>
-                    <div style="font-size: 11.5px; color: var(--text-muted); max-width: 320px; line-height: 1.4;">${wh.address || '—'}</div>
+                  <td style="min-width: 260px; white-space: normal;">
+                    <div style="font-size: 11.5px; color: var(--text-muted); line-height: 1.4; word-break: break-word;">${wh.address || '—'}</div>
                   </td>
-                  <td>
+                  <td style="min-width: 100px; text-align: center;">
                     <span class="badge ${statusClass}">${wh.status || 'Active'}</span>
                   </td>
-                  <td onclick="event.stopPropagation()" style="text-align: right;">
+                  <td onclick="event.stopPropagation()" style="text-align: right; min-width: 190px;">
                     <div style="display: inline-flex; gap: 5px; justify-content: flex-end;">
                       <button class="btn btn-xs btn-secondary" title="Inspect Warehouse Bins & Stock" onclick="openWarehouseDetail('${wh.id}')">👁️ Bins</button>
                       <button class="btn btn-xs btn-secondary" title="Edit Warehouse Details" onclick="openEditWarehouseModal('${wh.id}')">✏️ Edit</button>
@@ -4411,8 +5776,8 @@ function renderProductsView() {
   });
 
   let filtered = skus.filter(sku => {
-    const searchLower = (f.search || "").toLowerCase();
-    const matchesSearch = !f.search ||
+    const searchLower = (f.search || "").trim().toLowerCase();
+    const matchesSearch = !searchLower ||
       sku.sku.toLowerCase().includes(searchLower) ||
       sku.title.toLowerCase().includes(searchLower) ||
       (sku.collection && sku.collection.toLowerCase().includes(searchLower)) ||
@@ -4477,13 +5842,12 @@ function renderProductsView() {
     </div>
 
     <!-- Search & Toolbar Box -->
-    <div class="table-toolbar-box" style="margin-bottom: 14px;">
-      <div class="table-toolbar-left" style="flex-wrap: wrap; gap: 10px;">
-        <div class="table-search-input-wrap" style="min-width: 320px;">
-          <span class="table-search-icon">🔍</span>
-          <input type="text" placeholder="Search by SKU code, title, weave, material, or barcode..." value="${f.search}" oninput="setTableSearch('skus', this.value)">
-        </div>
+    <div class="table-toolbar-box" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
+      <div class="table-toolbar-left">
+        <span style="font-size: 11px; color: var(--text-dim);">${filtered.length} matching SKUs</span>
+      </div>
 
+      <div class="table-toolbar-right" style="display: flex; gap: 8px; align-items: center; margin-left: auto; flex-wrap: wrap;">
         <select class="table-filter-select" onchange="setTableFilter('skus', 'collection', this.value)">
           <option value="all" ${f.collection === 'all' ? 'selected' : ''}>All Collections</option>
           <option value="Heritage" ${f.collection === 'Heritage' ? 'selected' : ''}>Royal Heritage</option>
@@ -4499,10 +5863,13 @@ function renderProductsView() {
           <option value="inStockIndia" ${f.stockFilter === 'inStockIndia' ? 'selected' : ''}>🇮🇳 Available in India WH</option>
           <option value="inTransit" ${f.stockFilter === 'inTransit' ? 'selected' : ''}>🚢 Currently In-Transit</option>
         </select>
-      </div>
 
-      <div class="table-toolbar-right" style="display: flex; gap: 8px; align-items: center;">
-        <span style="font-size: 11px; color: var(--text-dim);">${filtered.length} matching SKUs</span>
+        <div class="table-search-input-wrap" style="min-width: 300px;">
+          <span class="table-search-icon">🔍</span>
+          <input type="text" placeholder="Search by SKU code, title, weave, material, or barcode..." value="${f.search}" oninput="setTableSearch('skus', this.value)">
+        </div>
+
+        <button class="btn btn-sm btn-secondary" onclick="refreshTableFilters('skus', 'SKU catalog')">🔄 Refresh</button>
         <button class="btn btn-xs btn-primary" onclick="openCreateSkuModal()">+ New SKU</button>
       </div>
     </div>
@@ -4962,6 +6329,986 @@ function presetAllRoleWh(roleId, mode) {
   AppState.warehouses.forEach(w => presetSingleRoleWh(w.id, mode));
 }
 
+// ============================================================================
+// COMPANY MASTER (LIST VIEW + 5-STEP DETAIL WIZARD)
+// ============================================================================
+
+function openCompanyForm(companyId) {
+  AppState.activeCompanyId = companyId || "NEW";
+  AppState.companyMasterStep = 1;
+  renderCurrentView();
+}
+
+function backToCompanyMasterList() {
+  AppState.activeCompanyId = null;
+  AppState.companyMasterStep = 1;
+  renderCurrentView();
+}
+
+function switchCompanyMasterStep(step) {
+  if (!AppState.companyMasterStep) AppState.companyMasterStep = 1;
+  AppState.companyMasterStep = step;
+  renderCurrentView();
+}
+
+function filterCompanyMaster(field, val) {
+  const f = AppState.tableFilters.companies || (AppState.tableFilters.companies = { searchName: "", searchEmail: "", searchAddress: "", page: 1, pageSize: 10 });
+  if (field === 'name') f.searchName = val;
+  if (field === 'email') f.searchEmail = val;
+  if (field === 'address') f.searchAddress = val;
+  f.page = 1;
+  renderCurrentView();
+}
+
+function resetCompanyMasterFilter() {
+  AppState.tableFilters.companies = { searchName: "", searchEmail: "", searchAddress: "", page: 1, pageSize: 10 };
+  renderCurrentView();
+}
+
+function deleteCompany(companyId) {
+  if (!confirm("Are you sure you want to delete this company entity from the master registry?")) return;
+  AppState.companies = (AppState.companies || []).filter(c => c.id !== companyId);
+  showToast("✓ Company deleted from Master registry.", "info");
+  renderCurrentView();
+}
+
+function saveCompanyMaster(stayOnForm = false) {
+  const compId = AppState.activeCompanyId;
+  if (!AppState.companies) AppState.companies = [...INITIAL_COMPANIES];
+  
+  let target = (compId && compId !== 'NEW') 
+    ? AppState.companies.find(c => c.id === compId)
+    : null;
+
+  if (!target) {
+    const nextId = `COMP-00${AppState.companies.length + 1}`;
+    target = { id: nextId };
+    AppState.companies.unshift(target);
+    AppState.activeCompanyId = nextId;
+  }
+
+  // Step 1: Basic Information
+  if (document.getElementById("cmLegalName")) target.legalName = document.getElementById("cmLegalName").value;
+  else if (document.getElementById("cmCompanyName")) target.legalName = document.getElementById("cmCompanyName").value;
+  if (document.getElementById("cmEmail")) target.email = document.getElementById("cmEmail").value;
+  if (document.getElementById("cmWebsite")) target.website = document.getElementById("cmWebsite").value;
+  if (document.getElementById("cmAddress")) target.address = document.getElementById("cmAddress").value;
+  if (document.getElementById("cmCountry")) target.country = document.getElementById("cmCountry").value;
+  if (document.getElementById("cmContactPerson")) target.contactPerson = document.getElementById("cmContactPerson").value;
+  if (document.getElementById("cmPhone")) target.phone = document.getElementById("cmPhone").value;
+  if (document.getElementById("cmCompanyRegister")) target.companyRegister = document.getElementById("cmCompanyRegister").value;
+  if (document.getElementById("cmMobile")) target.mobile = document.getElementById("cmMobile").value;
+  if (document.getElementById("cmFax")) target.fax = document.getElementById("cmFax").value;
+  if (document.getElementById("cmCompanyType")) target.companyType = document.getElementById("cmCompanyType").value;
+  if (document.getElementById("cmPostalAddress")) target.postalAddress = document.getElementById("cmPostalAddress").value;
+  if (document.getElementById("cmProformaRemark")) target.proformaRemark = document.getElementById("cmProformaRemark").value;
+  if (document.getElementById("cmQuotationTerms")) target.quotationTerms = document.getElementById("cmQuotationTerms").value;
+  if (document.getElementById("cmTaxDecLine3")) target.taxDecLine3 = document.getElementById("cmTaxDecLine3").value;
+  if (document.getElementById("cmRodtepConfig")) target.rodtepConfig = document.getElementById("cmRodtepConfig").value;
+  if (document.getElementById("cmDrawbackConfig")) target.drawbackConfig = document.getElementById("cmDrawbackConfig").value;
+  if (document.getElementById("cmColorCode")) target.colorCode = document.getElementById("cmColorCode").value;
+
+  // Step 2: Register Info
+  if (document.getElementById("cmGstNo")) target.gstin = document.getElementById("cmGstNo").value;
+  if (document.getElementById("cmLutNo")) target.lutNo = document.getElementById("cmLutNo").value;
+  if (document.getElementById("cmCinNo")) target.cinNo = document.getElementById("cmCinNo").value;
+  if (document.getElementById("cmStateCode")) target.stateCode = document.getElementById("cmStateCode").value;
+  if (document.getElementById("cmLeiNo")) target.leiNo = document.getElementById("cmLeiNo").value;
+  if (document.getElementById("cmAeoNo")) target.aeoNo = document.getElementById("cmAeoNo").value;
+  if (document.getElementById("cmPanNo")) target.pan = document.getElementById("cmPanNo").value;
+  if (document.getElementById("cmLutExpiry")) target.lutExpiry = document.getElementById("cmLutExpiry").value;
+  if (document.getElementById("cmRcmcNo")) target.rcmcNo = document.getElementById("cmRcmcNo").value;
+  if (document.getElementById("cmFilingDate")) target.filingDate = document.getElementById("cmFilingDate").value;
+  if (document.getElementById("cmRexNumber")) target.rexNo = document.getElementById("cmRexNumber").value;
+  if (document.getElementById("cmIecNo")) target.iec = document.getElementById("cmIecNo").value;
+  if (document.getElementById("cmBinNo")) target.binNo = document.getElementById("cmBinNo").value;
+  if (document.getElementById("cmRcmcExpiry")) target.rcmcExpiry = document.getElementById("cmRcmcExpiry").value;
+
+  // Step 3: Shipment Details
+  if (document.getElementById("cmPortLoading")) target.defaultPortLoading = document.getElementById("cmPortLoading").value;
+  if (document.getElementById("cmPartialShipment")) target.partialShipment = document.getElementById("cmPartialShipment").value;
+  if (document.getElementById("cmTransshipment")) target.transshipment = document.getElementById("cmTransshipment").value;
+  if (document.getElementById("cmVariationQty")) target.variationQty = document.getElementById("cmVariationQty").value;
+  if (document.getElementById("cmDeliveryPeriod")) target.deliveryPeriod = document.getElementById("cmDeliveryPeriod").value;
+  if (document.getElementById("cmExporterRemarks")) target.exporterRemarks = document.getElementById("cmExporterRemarks").value;
+  if (document.getElementById("cmExporterUnder1")) target.exporterUnder1 = document.getElementById("cmExporterUnder1").value;
+  if (document.getElementById("cmExporterUnder2")) target.exporterUnder2 = document.getElementById("cmExporterUnder2").value;
+  if (document.getElementById("cmRange")) target.gstRange = document.getElementById("cmRange").value;
+  if (document.getElementById("cmLocationCode")) target.locationCode = document.getElementById("cmLocationCode").value;
+  if (document.getElementById("cmCommissionerate")) target.commissionerate = document.getElementById("cmCommissionerate").value;
+  if (document.getElementById("cmDivision")) target.division = document.getElementById("cmDivision").value;
+  if (document.getElementById("cmAnnexureRemarks")) target.annexureRemarks = document.getElementById("cmAnnexureRemarks").value;
+  if (document.getElementById("cmShipperName")) target.shipperName = document.getElementById("cmShipperName").value;
+  if (document.getElementById("cmSlipNo")) target.defaultSlipNo = document.getElementById("cmSlipNo").value;
+  if (document.getElementById("cmWeighbridgeReg")) target.weighbridgeReg = document.getElementById("cmWeighbridgeReg").value;
+  if (document.getElementById("cmShipperAddress")) target.shipperAddress = document.getElementById("cmShipperAddress").value;
+  if (document.getElementById("cmVgmMethod")) target.vgmMethod = document.getElementById("cmVgmMethod").value;
+
+  // Step 4: Multiple Signatories
+  const signInputs = document.querySelectorAll(".cm-sign-name-input");
+  if (signInputs.length > 0) {
+    if (!target.signatories) target.signatories = [];
+    signInputs.forEach(input => {
+      const sigId = input.getAttribute("data-id");
+      let sig = target.signatories.find(s => s.id === sigId);
+      if (sig) {
+        sig.name = input.value;
+        sig.signatureText = input.value;
+      }
+    });
+    if (target.signatories.length > 0) {
+      target.authorisedSignatory = target.signatories[0].name;
+    }
+  } else if (document.getElementById("cmSignPersonName")) {
+    target.authorisedSignatory = document.getElementById("cmSignPersonName").value;
+  }
+
+  // Step 5: Credentials
+  if (document.getElementById("cmBankName")) target.defaultBank = document.getElementById("cmBankName").value;
+  if (document.getElementById("cmChaName")) target.defaultCha = document.getElementById("cmChaName").value;
+  if (document.getElementById("cmCommercialSignatory")) target.commercialSignatory = document.getElementById("cmCommercialSignatory").value;
+  if (document.getElementById("cmRexStatement")) target.rexStatement = document.getElementById("cmRexStatement").value;
+
+  // Sync to primary company settings
+  AppState.companySettings = { ...AppState.companySettings, ...target };
+
+  try {
+    localStorage.setItem("rugos_company_master", JSON.stringify(AppState.companySettings));
+    localStorage.setItem("rugos_companies_list", JSON.stringify(AppState.companies));
+  } catch (e) {}
+
+  showToast(`✓ Company ${target.legalName || 'Master'} saved successfully!`, "success");
+
+  if (!stayOnForm) {
+    AppState.activeCompanyId = null;
+    renderCurrentView();
+  }
+}
+
+function addCompanySignatory() {
+  const compId = AppState.activeCompanyId;
+  const companies = AppState.companies || INITIAL_COMPANIES;
+  const comp = (compId && compId !== 'NEW')
+    ? (companies.find(c => c.id === compId) || AppState.companySettings)
+    : (companies[0] || AppState.companySettings);
+  if (!comp) return;
+  if (!comp.signatories) comp.signatories = [];
+  const nextNum = comp.signatories.length + 1;
+  const newSig = {
+    id: `SIG-0${nextNum}_${Date.now()}`,
+    name: `New Signatory ${nextNum}`,
+    designation: "DESIGNATED PARTNER / AUTHORIZED SIGNATORY",
+    companyName: comp.legalName || "ODETTE RUGS LLC",
+    signatureText: `Signatory ${nextNum}`
+  };
+  comp.signatories.push(newSig);
+  try {
+    localStorage.setItem("rugos_company_master", JSON.stringify(AppState.companySettings));
+    localStorage.setItem("rugos_companies_list", JSON.stringify(AppState.companies));
+  } catch (e) {}
+  renderCurrentView();
+  showToast("✓ New Authorized Signatory card added.", "success");
+}
+
+function deleteCompanySignatory(sigId) {
+  const compId = AppState.activeCompanyId;
+  const companies = AppState.companies || INITIAL_COMPANIES;
+  const comp = (compId && compId !== 'NEW')
+    ? (companies.find(c => c.id === compId) || AppState.companySettings)
+    : (companies[0] || AppState.companySettings);
+  if (!comp || !comp.signatories) return;
+  if (comp.signatories.length <= 1) {
+    showToast("At least one authorized signatory must remain.", "warning");
+    return;
+  }
+  if (!confirm("Are you sure you want to remove this authorized signatory?")) return;
+  comp.signatories = comp.signatories.filter(s => s.id !== sigId);
+  if (comp.signatories.length > 0) {
+    comp.authorisedSignatory = comp.signatories[0].name;
+  }
+  try {
+    localStorage.setItem("rugos_company_master", JSON.stringify(AppState.companySettings));
+    localStorage.setItem("rugos_companies_list", JSON.stringify(AppState.companies));
+  } catch (e) {}
+  renderCurrentView();
+  showToast("✓ Signatory removed.", "info");
+}
+
+function updateSignatoryName(sigId, newName) {
+  const compId = AppState.activeCompanyId;
+  const companies = AppState.companies || INITIAL_COMPANIES;
+  const comp = (compId && compId !== 'NEW')
+    ? (companies.find(c => c.id === compId) || AppState.companySettings)
+    : (companies[0] || AppState.companySettings);
+  if (!comp || !comp.signatories) return;
+  const sig = comp.signatories.find(s => s.id === sigId);
+  if (sig) {
+    sig.name = newName;
+    sig.signatureText = newName;
+    const previewEl = document.getElementById(`sign-preview-${sigId}`);
+    if (previewEl) previewEl.textContent = newName || 'Signature';
+  }
+}
+
+function saveSingleSignatory(sigId) {
+  saveCompanyMaster();
+  showToast("✓ Signatory card details saved.", "success");
+}
+
+function exportCompanyMasterExcel() {
+  const list = AppState.companies || INITIAL_COMPANIES;
+  const rows = [
+    ["ODETTE RUGS LLC - COMPANY STATUTORY REGISTRY DIRECTORY"],
+    ["Generated On", new Date().toLocaleString(), "Total Registered Entities", `${list.length} Companies`],
+    [],
+    [
+      "Company ID",
+      "Legal Entity Name",
+      "Company Type",
+      "Email Address",
+      "Contact Phone",
+      "Contact Person",
+      "Registered Address",
+      "State Code",
+      "Country",
+      "GSTIN",
+      "IEC Number",
+      "LUT Number",
+      "CIN Number",
+      "RCMC Number (CEPC)",
+      "PAN",
+      "Port of Loading",
+      "Authorized Signatory"
+    ]
+  ];
+
+  list.forEach(c => {
+    rows.push([
+      c.id || "",
+      c.legalName || "",
+      c.companyType || "Private Limited",
+      c.email || "",
+      c.phone || c.mobile || "",
+      c.contactPerson || "",
+      c.address || c.postalAddress || "",
+      c.stateCode || "09 (UP)",
+      c.country || "India",
+      c.gstin || "",
+      c.iec || "",
+      c.lutNo || "",
+      c.cinNo || "",
+      c.rcmcNo || "",
+      c.pan || "",
+      c.defaultPortLoading || "MUNDRA PORT / ICD BABATPUR",
+      c.authorisedSignatory || ""
+    ]);
+  });
+
+  downloadExcelFile("COMPANY_REGISTRY_DIRECTORY.xls", rows);
+  showToast("📊 Company Directory exported as Excel (.xls) successfully!", "success");
+}
+
+function exportCompanyMasterCSV() {
+  const list = AppState.companies || INITIAL_COMPANIES;
+  const headers = [
+    "Company ID", "Legal Name", "Company Type", "Email", "Phone", "Contact Person",
+    "Address", "State Code", "Country", "GSTIN", "IEC", "LUT No", "CIN No", "RCMC No", "PAN", "Port of Loading"
+  ];
+
+  const csvRows = [headers.join(",")];
+  list.forEach(c => {
+    const row = [
+      `"${c.id || ''}"`,
+      `"${(c.legalName || '').replace(/"/g, '""')}"`,
+      `"${(c.companyType || '').replace(/"/g, '""')}"`,
+      `"${(c.email || '').replace(/"/g, '""')}"`,
+      `"${(c.phone || c.mobile || '').replace(/"/g, '""')}"`,
+      `"${(c.contactPerson || '').replace(/"/g, '""')}"`,
+      `"${(c.address || c.postalAddress || '').replace(/"/g, '""')}"`,
+      `"${(c.stateCode || '').replace(/"/g, '""')}"`,
+      `"${(c.country || 'India').replace(/"/g, '""')}"`,
+      `"${(c.gstin || '').replace(/"/g, '""')}"`,
+      `"${(c.iec || '').replace(/"/g, '""')}"`,
+      `"${(c.lutNo || '').replace(/"/g, '""')}"`,
+      `"${(c.cinNo || '').replace(/"/g, '""')}"`,
+      `"${(c.rcmcNo || '').replace(/"/g, '""')}"`,
+      `"${(c.pan || '').replace(/"/g, '""')}"`,
+      `"${(c.defaultPortLoading || '').replace(/"/g, '""')}"`
+    ];
+    csvRows.push(row.join(","));
+  });
+
+  const blob = new Blob([csvRows.join("\n")], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "COMPANY_REGISTRY_DIRECTORY.csv";
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 200);
+  showToast("📄 Company Directory exported as CSV (.csv) successfully!", "success");
+}
+
+function toggleCompanyExportMenu(e, menuId) {
+  if (e) e.stopPropagation();
+  const id = menuId === 'header' ? 'companyExportHeaderMenu' : 'companyExportPageMenu';
+  const menu = document.getElementById(id);
+  const isOpen = menu && menu.style.display === "block";
+  closeCompanyExportMenu();
+  if (menu && !isOpen) {
+    menu.style.display = "block";
+  }
+}
+
+function closeCompanyExportMenu() {
+  document.querySelectorAll(".company-export-dropdown-menu").forEach(m => {
+    m.style.display = "none";
+  });
+}
+
+function renderCompanyMasterView() {
+  if (AppState.activeCompanyId !== null && AppState.activeCompanyId !== undefined) {
+    return renderCompanyMasterFormView(AppState.activeCompanyId);
+  }
+  return renderCompanyMasterListView();
+}
+
+function renderCompanyMasterListView() {
+  const f = AppState.tableFilters.companies || (AppState.tableFilters.companies = { search: "", sortBy: "legalName", sortOrder: "asc", page: 1, pageSize: 10 });
+  const companies = AppState.companies || INITIAL_COMPANIES;
+
+  // Filter companies based on search
+  let filtered = companies.filter(c => {
+    const s = (f.search || "").trim().toLowerCase();
+    return !s ||
+      (c.legalName && c.legalName.toLowerCase().includes(s)) ||
+      (c.email && c.email.toLowerCase().includes(s)) ||
+      (c.address && c.address.toLowerCase().includes(s)) ||
+      (c.gstin && c.gstin.toLowerCase().includes(s)) ||
+      (c.iec && c.iec.toLowerCase().includes(s)) ||
+      (c.rcmcNo && c.rcmcNo.toLowerCase().includes(s)) ||
+      (c.contactPerson && c.contactPerson.toLowerCase().includes(s)) ||
+      (c.country && c.country.toLowerCase().includes(s));
+  });
+
+  // Sorting
+  if (f.sortBy) {
+    filtered.sort((a, b) => {
+      let va = (a[f.sortBy] || "").toString().toLowerCase();
+      let vb = (b[f.sortBy] || "").toString().toLowerCase();
+      if (va < vb) return f.sortOrder === "asc" ? -1 : 1;
+      if (va > vb) return f.sortOrder === "asc" ? 1 : -1;
+      return 0;
+    });
+  }
+
+  const pagination = paginateArray(filtered, f.page, f.pageSize);
+
+  return `
+    <div class="page-header" style="margin-bottom: 16px;">
+      <div class="page-title-wrap">
+        <h1 style="margin: 0; font-size: 20px;">🏢 Company</h1>
+        <p style="margin: 4px 0 0 0; font-size: 12px; color: var(--text-muted);">Manage legal entities, GSTIN, IEC, CEPC RCMC certifications, and statutory export billing profiles.</p>
+      </div>
+      <div class="page-actions" style="display: flex; gap: 8px; align-items: center;">
+        <div style="position: relative; display: inline-block;">
+          <button class="btn btn-sm btn-secondary" onclick="toggleCompanyExportMenu(event, 'page')" style="display: inline-flex; align-items: center; gap: 5px; font-weight: 600;">
+            📥 Export ▾
+          </button>
+          <div id="companyExportPageMenu" class="company-export-dropdown-menu" style="display: none; position: absolute; right: 0; top: calc(100% + 4px); background: var(--bg-card); border: 1px solid var(--border-main); border-radius: var(--radius-md); box-shadow: var(--shadow-lg, 0 10px 25px rgba(0,0,0,0.25)); min-width: 190px; z-index: 1000; overflow: hidden; padding: 4px;">
+            <div style="padding: 6px 10px; font-size: 10px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; border-bottom: 1px solid var(--border-subtle); letter-spacing: 0.5px;">Export Format</div>
+            <button onclick="exportCompanyMasterExcel(); closeCompanyExportMenu();" style="width: 100%; text-align: left; padding: 8px 12px; background: transparent; border: none; color: var(--text-main); font-size: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; border-radius: var(--radius-sm); transition: background 0.15s ease;" onmouseover="this.style.background='var(--bg-elevated)'" onmouseout="this.style.background='transparent'">
+              <span style="font-size: 14px;">📊</span> Excel Spreadsheet (.xls)
+            </button>
+            <button onclick="exportCompanyMasterCSV(); closeCompanyExportMenu();" style="width: 100%; text-align: left; padding: 8px 12px; background: transparent; border: none; color: var(--text-main); font-size: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; border-radius: var(--radius-sm); transition: background 0.15s ease;" onmouseover="this.style.background='var(--bg-elevated)'" onmouseout="this.style.background='transparent'">
+              <span style="font-size: 14px;">📄</span> CSV Document (.csv)
+            </button>
+          </div>
+        </div>
+        <button class="btn btn-sm btn-primary" onclick="openCompanyForm(null)">➕ + Add Company</button>
+      </div>
+    </div>
+
+    <!-- Table Toolbar Box -->
+    <div class="table-toolbar-box" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
+      <div class="table-toolbar-left">
+        <span style="font-size: 11px; color: var(--text-dim);">${filtered.length} entities registered</span>
+      </div>
+      <div class="table-toolbar-right" style="display: flex; gap: 8px; align-items: center; margin-left: auto; flex-wrap: wrap;">
+        <div class="table-search-input-wrap" style="min-width: 320px;">
+          <span class="table-search-icon">🔍</span>
+          <input type="text" placeholder="Search companies by Legal Name, Email, Address, GSTIN, IEC, Contact..." value="${f.search || ''}" oninput="setTableSearch('companies', this.value)">
+        </div>
+        <button class="btn btn-sm btn-secondary" onclick="refreshTableFilters('companies', 'Companies registry')">🔄 Refresh</button>
+        <button class="btn btn-xs btn-primary" onclick="openCompanyForm(null)">+ Quick Add</button>
+      </div>
+    </div>
+
+    <!-- Data Table Card -->
+    <div class="card" style="padding: 0; overflow: hidden; margin-bottom: 24px;">
+      <div class="table-responsive">
+        <table class="data-table" style="width: 100%;">
+          <thead>
+            <tr>
+              <th class="sortable" style="min-width: 200px; white-space: nowrap;" onclick="setTableSort('companies', 'legalName')">
+                COMPANY / LEGAL NAME ${f.sortBy === 'legalName' ? `<span class="sort-icon">${f.sortOrder === 'asc' ? '▲' : '▼'}</span>` : ''}
+              </th>
+              <th class="sortable" style="min-width: 180px; white-space: nowrap;" onclick="setTableSort('companies', 'email')">
+                CONTACT PERSON & EMAIL ${f.sortBy === 'email' ? `<span class="sort-icon">${f.sortOrder === 'asc' ? '▲' : '▼'}</span>` : ''}
+              </th>
+              <th style="min-width: 260px; white-space: nowrap;">REGISTERED ADDRESS</th>
+              <th style="min-width: 190px; white-space: nowrap;">STATUTORY IDENTIFIERS</th>
+              <th style="min-width: 90px; text-align: center; white-space: nowrap;">STATUS</th>
+              <th style="text-align: right; min-width: 130px; white-space: nowrap;">ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${pagination.items.length === 0 ? `
+              <tr>
+                <td colspan="6" style="text-align: center; padding: 36px; color: var(--text-muted);">
+                  No company records found matching criteria. Click <strong>+ Add Company</strong> above to register a new entity.
+                </td>
+              </tr>
+            ` : pagination.items.map(comp => `
+              <tr style="cursor: pointer;" onclick="openCompanyForm('${comp.id}')">
+                <td style="min-width: 200px;">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 32px; height: 32px; border-radius: var(--radius-sm); background: var(--brand-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; flex-shrink: 0;">
+                      ${(comp.legalName || 'C').charAt(0)}
+                    </div>
+                    <div>
+                      <div style="font-weight: 700; color: var(--text-main); font-size: 13px;">${comp.legalName || 'N/A'}</div>
+                      <div style="font-size: 11px; color: var(--text-muted); display: flex; gap: 6px; align-items: center; margin-top: 2px;">
+                        <span class="badge badge-secondary" style="font-size: 10px; padding: 2px 6px;">${comp.companyType || 'Entity'}</span>
+                        <span>${comp.id}</span>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td style="min-width: 180px;">
+                  <div style="font-weight: 600; color: var(--text-main); font-size: 12px;">${comp.contactPerson || 'Logistics Lead'}</div>
+                  <div style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); margin-top: 2px;">${comp.email || '—'}</div>
+                  ${comp.phone ? `<div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;">${comp.phone}</div>` : ''}
+                </td>
+                <td style="min-width: 260px; white-space: normal;">
+                  <div style="font-size: 11.5px; color: var(--text-muted); line-height: 1.4; word-break: break-word;">${comp.address || comp.postalAddress || '—'}</div>
+                  <div style="font-size: 10.5px; color: var(--text-dim); margin-top: 2px; font-weight: 600;">🇮🇳 ${comp.country || 'India'} ${comp.stateCode ? `• State Code: ${comp.stateCode}` : ''}</div>
+                </td>
+                <td style="min-width: 190px;">
+                  <div style="display: flex; flex-direction: column; gap: 3px;">
+                    ${comp.gstin ? `<span style="font-size: 10px; font-family: var(--font-mono); font-weight: 700; background: var(--bg-elevated); padding: 2px 6px; border-radius: 3px; border: 1px solid var(--border-subtle); display: inline-block; width: fit-content;">GSTIN: ${comp.gstin}</span>` : ''}
+                    ${comp.iec ? `<span style="font-size: 10px; font-family: var(--font-mono); color: var(--brand-primary); font-weight: 700; display: inline-block;">IEC: ${comp.iec}</span>` : ''}
+                    ${comp.rcmcNo ? `<span style="font-size: 10px; color: var(--text-dim); display: inline-block;">RCMC: ${comp.rcmcNo}</span>` : ''}
+                  </div>
+                </td>
+                <td style="min-width: 90px; text-align: center;">
+                  <span class="badge badge-success">Active</span>
+                </td>
+                <td onclick="event.stopPropagation()" style="text-align: right; min-width: 130px;">
+                  <div style="display: inline-flex; gap: 5px; justify-content: flex-end;">
+                    <button class="btn btn-xs btn-secondary" title="Edit Company Details" onclick="openCompanyForm('${comp.id}')">✏️ Edit</button>
+                    <button class="btn btn-xs btn-danger" title="Delete Company" onclick="deleteCompany('${comp.id}')">🗑️</button>
+                  </div>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination Footer -->
+      <div class="table-pagination-footer" style="padding: 10px 16px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center;">
+        <div class="pagination-info" style="font-size: 12px; color: var(--text-muted);">
+          Showing <strong>${pagination.items.length ? pagination.start : 0}</strong> to <strong>${pagination.end}</strong> of <strong>${pagination.total}</strong> companies
+        </div>
+        <div class="pagination-controls" style="display: flex; gap: 4px; align-items: center;">
+          <select class="rows-per-page-select" onchange="setTablePageSize('companies', this.value)" style="margin-right: 8px;">
+            <option value="5" ${f.pageSize === 5 ? 'selected' : ''}>5 per page</option>
+            <option value="10" ${f.pageSize === 10 ? 'selected' : ''}>10 per page</option>
+            <option value="25" ${f.pageSize === 25 ? 'selected' : ''}>25 per page</option>
+          </select>
+          <button class="page-btn" ${pagination.currentPage === 1 ? 'disabled' : ''} onclick="setTablePage('companies', ${pagination.currentPage - 1})">◀</button>
+          ${Array.from({ length: pagination.totalPages }, (_, i) => i + 1).map(p => `
+            <button class="page-btn ${p === pagination.currentPage ? 'active' : ''}" onclick="setTablePage('companies', ${p})">${p}</button>
+          `).join('')}
+          <button class="page-btn" ${pagination.currentPage === pagination.totalPages ? 'disabled' : ''} onclick="setTablePage('companies', ${pagination.currentPage + 1})">▶</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderCompanyMasterFormView(companyId) {
+  const step = AppState.companyMasterStep || 1;
+  const companies = AppState.companies || INITIAL_COMPANIES;
+  const comp = (companyId && companyId !== 'NEW')
+    ? (companies.find(c => c.id === companyId) || AppState.companySettings || {})
+    : {};
+
+  const isEdit = Boolean(companyId && companyId !== 'NEW');
+
+  return `
+    <div class="full-detail-page" style="width: 100%; max-width: 100%; margin: 0; padding-bottom: 60px;">
+      
+      <!-- Top Action Bar -->
+      <div style="background: var(--bg-card); border: 1px solid var(--border-main); border-bottom: 2px solid var(--brand-primary); padding: 14px 20px; border-radius: var(--radius-lg) var(--radius-lg) 0 0; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-sm); margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <button class="btn btn-sm btn-secondary" onclick="backToCompanyMasterList()" style="font-weight: 700;">
+            ← Back to Company List
+          </button>
+          <h2 style="margin: 0; font-size: 16px; font-weight: 800; color: var(--text-main);">
+            ${isEdit ? `Edit: ${comp.legalName || 'Company'}` : 'Register New Company Entity'}
+          </h2>
+          <span class="badge badge-primary" style="font-size: 11px; font-weight: 700;">
+            ${isEdit ? 'EDIT MODE' : 'NEW REGISTRATION'}
+          </span>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <button class="btn btn-sm btn-primary" onclick="saveCompanyMaster()" style="font-weight: 700;">
+            💾 Save Company
+          </button>
+        </div>
+      </div>
+
+      <!-- Top Stepper Header matching user screenshot -->
+      <div class="card" style="margin-bottom: 16px; padding: 14px 24px; border: 1px solid var(--border-main); background: var(--bg-card); border-radius: var(--radius-lg);">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+          
+          <div style="display: flex; align-items: center; gap: 8px; cursor: pointer; opacity: ${step === 1 ? '1' : '0.7'}; font-weight: ${step === 1 ? '700' : '500'}; color: ${step === 1 ? 'var(--brand-primary)' : 'var(--text-muted)'};" onclick="switchCompanyMasterStep(1)">
+            <span style="display: inline-flex; width: 24px; height: 24px; border-radius: 50%; background: ${step === 1 ? 'var(--brand-primary)' : step > 1 ? 'var(--success)' : 'var(--bg-elevated)'}; color: #ffffff; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;">
+              ${step > 1 ? '✓' : '1'}
+            </span>
+            <span style="font-size: 13px;">Basic Information</span>
+          </div>
+
+          <div style="flex: 1; height: 1px; background: var(--border-main); min-width: 20px;"></div>
+
+          <div style="display: flex; align-items: center; gap: 8px; cursor: pointer; opacity: ${step === 2 ? '1' : '0.7'}; font-weight: ${step === 2 ? '700' : '500'}; color: ${step === 2 ? 'var(--brand-primary)' : 'var(--text-muted)'};" onclick="switchCompanyMasterStep(2)">
+            <span style="display: inline-flex; width: 24px; height: 24px; border-radius: 50%; background: ${step === 2 ? 'var(--brand-primary)' : step > 2 ? 'var(--success)' : 'var(--bg-elevated)'}; color: ${step >= 2 ? '#ffffff' : 'var(--text-muted)'}; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;">
+              ${step > 2 ? '✓' : '2'}
+            </span>
+            <span style="font-size: 13px;">Register Info.</span>
+          </div>
+
+          <div style="flex: 1; height: 1px; background: var(--border-main); min-width: 20px;"></div>
+
+          <div style="display: flex; align-items: center; gap: 8px; cursor: pointer; opacity: ${step === 3 ? '1' : '0.7'}; font-weight: ${step === 3 ? '700' : '500'}; color: ${step === 3 ? 'var(--brand-primary)' : 'var(--text-muted)'};" onclick="switchCompanyMasterStep(3)">
+            <span style="display: inline-flex; width: 24px; height: 24px; border-radius: 50%; background: ${step === 3 ? 'var(--brand-primary)' : step > 3 ? 'var(--success)' : 'var(--bg-elevated)'}; color: ${step >= 3 ? '#ffffff' : 'var(--text-muted)'}; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;">
+              ${step > 3 ? '✓' : '3'}
+            </span>
+            <span style="font-size: 13px;">Shipment Details</span>
+          </div>
+
+          <div style="flex: 1; height: 1px; background: var(--border-main); min-width: 20px;"></div>
+
+          <div style="display: flex; align-items: center; gap: 8px; cursor: pointer; opacity: ${step === 4 ? '1' : '0.7'}; font-weight: ${step === 4 ? '700' : '500'}; color: ${step === 4 ? 'var(--brand-primary)' : 'var(--text-muted)'};" onclick="switchCompanyMasterStep(4)">
+            <span style="display: inline-flex; width: 24px; height: 24px; border-radius: 50%; background: ${step === 4 ? 'var(--brand-primary)' : step > 4 ? 'var(--success)' : 'var(--bg-elevated)'}; color: ${step >= 4 ? '#ffffff' : 'var(--text-muted)'}; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;">
+              ${step > 4 ? '✓' : '4'}
+            </span>
+            <span style="font-size: 13px;">Upload Attachments</span>
+          </div>
+
+          <div style="flex: 1; height: 1px; background: var(--border-main); min-width: 20px;"></div>
+
+          <div style="display: flex; align-items: center; gap: 8px; cursor: pointer; opacity: ${step === 5 ? '1' : '0.7'}; font-weight: ${step === 5 ? '700' : '500'}; color: ${step === 5 ? 'var(--brand-primary)' : 'var(--text-muted)'};" onclick="switchCompanyMasterStep(5)">
+            <span style="display: inline-flex; width: 24px; height: 24px; border-radius: 50%; background: ${step === 5 ? 'var(--brand-primary)' : 'var(--bg-elevated)'}; color: ${step === 5 ? '#ffffff' : 'var(--text-muted)'}; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;">
+              5
+            </span>
+            <span style="font-size: 13px;">Credentials</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Main Step Form Body Container -->
+      <div class="card" style="padding: 24px; border: 1px solid var(--border-main); background: var(--bg-card); border-radius: var(--radius-lg);">
+        
+        ${step === 1 ? `
+          <!-- STEP 1: BASIC INFORMATION (Matching Screenshot 1) -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Company Name *</label>
+              <input type="text" id="cmCompanyName" class="form-control" placeholder="Company Name" value="${comp.legalName || ''}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Email *</label>
+              <input type="email" id="cmEmail" class="form-control" placeholder="Email" value="${comp.email || ''}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Website</label>
+              <input type="text" id="cmWebsite" class="form-control" placeholder="Website" value="${comp.website || ''}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Address *</label>
+              <textarea id="cmAddress" class="form-control" rows="2" placeholder="Address Details" style="width: 100%;">${comp.address || ''}</textarea>
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Country *</label>
+              <input type="text" id="cmCountry" class="form-control" placeholder="Country Name" value="${comp.country || 'India'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Contact Person Name *</label>
+              <input type="text" id="cmContactPerson" class="form-control" placeholder="Contact Person Name" value="${comp.contactPerson || ''}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1.5fr 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Phone No *</label>
+              <input type="text" id="cmPhone" class="form-control" placeholder="Phone No" value="${comp.phone || ''}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Company Register *</label>
+              <input type="text" id="cmCompanyRegister" class="form-control" placeholder="Company Register Number" value="${comp.companyRegister || ''}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Mobile No *</label>
+              <input type="text" id="cmMobile" class="form-control" placeholder="Mobile No" value="${comp.mobile || ''}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Fax No</label>
+              <input type="text" id="cmFax" class="form-control" placeholder="Fax No" value="${comp.fax || ''}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 16px; margin-bottom: 16px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Company Type</label>
+              <input type="text" id="cmCompanyType" class="form-control" placeholder="Company Type" value="${comp.companyType || 'Limited Liability Partnership (LLP)'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Postal Address</label>
+              <input type="text" id="cmPostalAddress" class="form-control" placeholder="Postal Address" value="${comp.postalAddress || ''}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Proforma Invoice Remark *</label>
+              <textarea id="cmProformaRemark" class="form-control" rows="2" placeholder="Proforma Invoice Remark" style="width: 100%;">${comp.proformaRemark || 'High-grade Vitrified Tiles & Handcrafted Surfaces.'}</textarea>
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Quotation Terms Conditions *</label>
+              <textarea id="cmQuotationTerms" class="form-control" rows="2" placeholder="Quotation Terms Conditions" style="width: 100%;">${comp.quotationTerms || 'FOB Mundra Port / CIF Destination Port.'}</textarea>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Without TaxDec Line 3 (Create Export Invoice) *</label>
+              <input type="text" id="cmTaxDecLine3" class="form-control" value="${comp.taxDecLine3 || 'SUPPLY MEANT FOR EXPORT UNDER LUT WITHOUT PAYMENT OF INTEGRATED TAX'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">RODTEP CONFIGURATION *</label>
+              <input type="text" id="cmRodtepConfig" class="form-control" placeholder="Roadtep Configuration" value="${comp.rodtepConfig || 'RODTEP Scheme Rate 2.8%'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">DRAWBACK CONFIGURATION *</label>
+              <input type="text" id="cmDrawbackConfig" class="form-control" placeholder="Drawback Configuration" value="${comp.drawbackConfig || 'Drawback Rate 2.5% under Schedule 6907'}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 10px;">
+            <button class="btn btn-primary" onclick="saveCompanyMaster(true); switchCompanyMasterStep(2)">Next ➔</button>
+          </div>
+        ` : step === 2 ? `
+          <!-- STEP 2: REGISTER INFO (Matching Screenshot 2) -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">GST No *</label>
+              <input type="text" id="cmGstNo" class="form-control" value="${comp.gstin || '09AAACR8821N1ZM'}" style="width: 100%; font-family: var(--font-mono); font-weight: 700;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">LUT No *</label>
+              <input type="text" id="cmLutNo" class="form-control" value="${comp.lutNo || 'AD090326089140U'}" style="width: 100%; font-family: var(--font-mono);">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">CIN No *</label>
+              <input type="text" id="cmCinNo" class="form-control" value="${comp.cinNo || 'U17226UP2020PTC139821'}" style="width: 100%; font-family: var(--font-mono);">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">State Code *</label>
+              <input type="text" id="cmStateCode" class="form-control" value="${comp.stateCode || '09 (UP)'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">LEI No *</label>
+              <input type="text" id="cmLeiNo" class="form-control" value="${comp.leiNo || '8945009711K5G6Z79261'}" style="width: 100%; font-family: var(--font-mono);">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">AEO No *</label>
+              <input type="text" id="cmAeoNo" class="form-control" value="${comp.aeoNo || 'INAAACR8821N1F182'}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">PAN No *</label>
+              <input type="text" id="cmPanNo" class="form-control" value="${comp.pan || 'AAACR8821N'}" style="width: 100%; font-family: var(--font-mono); font-weight: 700;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">LUT Expiry *</label>
+              <input type="date" id="cmLutExpiry" class="form-control" value="${comp.lutExpiry || '2027-03-31'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">RCMC No *</label>
+              <input type="text" id="cmRcmcNo" class="form-control" value="${comp.rcmcNo || 'CEPC/RCMC/2020/88192'}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Date of Filing *</label>
+              <input type="date" id="cmFilingDate" class="form-control" value="${comp.filingDate || '2026-03-30'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">REX Number *</label>
+              <input type="text" id="cmRexNumber" class="form-control" value="${comp.rexNo || 'INREX0514029108'}" style="width: 100%; font-family: var(--font-mono); font-weight: 700; color: var(--brand-primary);">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">IEC No *</label>
+              <input type="text" id="cmIecNo" class="form-control" value="${comp.iec || '0514029108'}" style="width: 100%; font-family: var(--font-mono); font-weight: 700;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">BIN No *</label>
+              <input type="text" id="cmBinNo" class="form-control" value="${comp.binNo || 'BIN-0901'}" style="width: 100%; font-family: var(--font-mono);">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">RCMC Expiry *</label>
+              <input type="date" id="cmRcmcExpiry" class="form-control" value="${comp.rcmcExpiry || '2027-03-31'}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <button class="btn btn-secondary" onclick="switchCompanyMasterStep(1)">← Back</button>
+            <button class="btn btn-primary" onclick="saveCompanyMaster(true); switchCompanyMasterStep(3)">Next ➔</button>
+          </div>
+        ` : step === 3 ? `
+          <!-- STEP 3: SHIPMENT DETAILS (Matching Screenshot 3) -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Port of Loading *</label>
+              <input type="text" id="cmPortLoading" class="form-control" value="${comp.defaultPortLoading || 'MUNDRA PORT, INDIA / ICD BABATPUR'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Partial Shipment *</label>
+              <input type="text" id="cmPartialShipment" class="form-control" value="${comp.partialShipment || 'Allowed'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Transshipment *</label>
+              <input type="text" id="cmTransshipment" class="form-control" value="${comp.transshipment || 'Allowed'}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 16px; margin-bottom: 16px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Variation in Quantity *</label>
+              <input type="text" id="cmVariationQty" class="form-control" value="${comp.variationQty || '5%'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Delivery Period *</label>
+              <input type="text" id="cmDeliveryPeriod" class="form-control" value="${comp.deliveryPeriod || '30 Days'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Exporter Remarks *</label>
+              <textarea id="cmExporterRemarks" class="form-control" rows="2" style="width: 100%;">${comp.exporterRemarks || 'AUTHENTIC HANDCRAFTED CARPET EXPORT UNDER CEPC COMPLIANCE'}</textarea>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Exporter Under Detail 1 *</label>
+              <textarea id="cmExporterUnder1" class="form-control" rows="2" style="width: 100%;">${comp.exporterUnder1 || 'ODETTE RUGS LLC\nNH-19 CARPET HUB, MARYADPATTI, BHADOHI - 221401, UP'}</textarea>
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Exporter Under Detail 2 *</label>
+              <textarea id="cmExporterUnder2" class="form-control" rows="2" style="width: 100%;">${comp.exporterUnder2 || 'N/A'}</textarea>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1.5fr 1fr 1.5fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Range *</label>
+              <input type="text" id="cmRange" class="form-control" value="${comp.gstRange || 'RANGE-IV, CGST & CX DIVISION VARANASI, COMMISSIONERATE ALLAHABAD'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Location Code *</label>
+              <input type="text" id="cmLocationCode" class="form-control" value="${comp.locationCode || 'INVTZ1'}" style="width: 100%; font-family: var(--font-mono); font-weight: 700;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Commissionerate *</label>
+              <input type="text" id="cmCommissionerate" class="form-control" value="${comp.commissionerate || 'COMMISSIONER OF CUSTOMS (PREVENTIVE), LUCKNOW / VARANASI'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Division *</label>
+              <input type="text" id="cmDivision" class="form-control" value="${comp.division || 'CUSTOMS DIVISION ICD BABATPUR / VARANASI'}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Annexure Remarks *</label>
+              <textarea id="cmAnnexureRemarks" class="form-control" rows="2" style="width: 100%;">${comp.annexureRemarks || 'EPCG LICENSE Number: 0530008819 Date 12/04/2024\nEXPORT UNDER LETTER OF UNDERTAKING-BOND. Sr. No. of LUT : ODETTE RUGS LLC, ARN: AD090326089140U'}</textarea>
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Shipper Name *</label>
+              <input type="text" id="cmShipperName" class="form-control" value="${comp.shipperName || comp.legalName || 'ODETTE RUGS LLC'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Weighment Slip No. *</label>
+              <input type="text" id="cmSlipNo" class="form-control" value="${comp.defaultSlipNo || 'WB-UP65-9921'}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 16px; margin-bottom: 24px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Weighbridge Registration No. *</label>
+              <input type="text" id="cmWeighbridgeReg" class="form-control" value="${comp.weighbridgeReg || 'WB-UP65-9921 / BHADOHI CENTRAL WEIGHBRIDGE'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Shipper Address *</label>
+              <input type="text" id="cmShipperAddress" class="form-control" value="${comp.shipperAddress || comp.address || 'NH-19 CARPET HUB, MARYADPATTI, BHADOHI - 221401, UTTAR PRADESH, INDIA'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Method used for VGM *</label>
+              <input type="text" id="cmVgmMethod" class="form-control" value="${comp.vgmMethod || 'METHOD - 1'}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <button class="btn btn-secondary" onclick="switchCompanyMasterStep(2)">← Back</button>
+            <button class="btn btn-primary" onclick="saveCompanyMaster(true); switchCompanyMasterStep(4)">Next ➔</button>
+          </div>
+        ` : step === 4 ? `
+          <!-- STEP 4: UPLOAD ATTACHMENTS & AUTHORIZED SIGNATORIES (Matching Screenshot 1) -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+            
+            <!-- 1. Sign Upload -->
+            <div style="border: 1px solid var(--border-main); border-radius: var(--radius-md); padding: 18px; background: var(--bg-elevated); text-align: center;">
+              <div style="font-size: 13px; font-weight: 700; margin-bottom: 10px; color: var(--text-main);">Sign Upload</div>
+              <div style="border: 1px dashed var(--border-main); background: #ffffff; border-radius: var(--radius-sm); padding: 12px; margin-bottom: 12px; min-height: 90px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <div style="font-weight: 800; color: #1e3a8a; font-size: 12px;">${comp.legalName || 'ODETTE RUGS LLC'}</div>
+                <div style="font-family: 'Brush Script MT', cursive, sans-serif; font-size: 24px; color: #4338ca; margin: 3px 0;">${(comp.signatories && comp.signatories[0] && comp.signatories[0].signatureText) || comp.authorisedSignatory || 'Rajesh Kumar'}</div>
+                <div style="font-size: 9px; font-weight: 700; color: #1e3a8a; letter-spacing: 0.5px;">${(comp.signatories && comp.signatories[0] && comp.signatories[0].designation) || 'DESIGNATED PARTNER'}</div>
+              </div>
+              <button type="button" class="btn btn-sm btn-primary" onclick="addCompanySignatory()" style="width: 100%; font-size: 11px; font-weight: 700;">
+                📤 Upload Authorized Signatory
+              </button>
+            </div>
+
+            <!-- 2. Company Logo -->
+            <div style="border: 1px solid var(--border-main); border-radius: var(--radius-md); padding: 18px; background: var(--bg-elevated); text-align: center;">
+              <div style="font-size: 13px; font-weight: 700; margin-bottom: 10px; color: var(--text-main);">Company Logo</div>
+              <div style="border: 1px dashed var(--border-main); background: #ffffff; border-radius: var(--radius-sm); padding: 12px; margin-bottom: 12px; min-height: 90px; display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 22px; font-weight: 800; color: #0f766e; letter-spacing: 1px;">ODETTE RUGS</span>
+              </div>
+              <button type="button" class="btn btn-sm btn-secondary" onclick="showToast('Company logo updated.', 'success')" style="width: 100%; font-size: 11px; font-weight: 700;">
+                🖼️ Upload Brand Logo
+              </button>
+            </div>
+
+            <!-- 3. Header Image -->
+            <div style="border: 1px solid var(--border-main); border-radius: var(--radius-md); padding: 18px; background: var(--bg-elevated); text-align: center;">
+              <div style="font-size: 13px; font-weight: 700; margin-bottom: 10px; color: var(--text-main);">Header Image</div>
+              <div style="border: 1px dashed var(--border-main); background: #ffffff; border-radius: var(--radius-sm); padding: 12px; margin-bottom: 12px; min-height: 90px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <strong style="font-size: 15px; color: #0f766e; font-weight: 800; letter-spacing: 1px;">ODETTE RUGS LLC</strong>
+                <span style="font-size: 9px; color: #64748b;">OFFICIAL INVOICE & CUSTOMS EXPORT HEADER</span>
+              </div>
+              <button type="button" class="btn btn-sm btn-secondary" onclick="showToast('Header letterhead image updated.', 'success')" style="width: 100%; font-size: 11px; font-weight: 700;">
+                📄 Upload Letterhead Header
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Bottom Section: Multiple Signatory Cards Grid (Matching Screenshot 1) -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px;">
+            <div style="font-size: 13px; font-weight: 800; color: var(--brand-primary); text-transform: uppercase; letter-spacing: 0.5px;">
+              ✍️ Authorized Signatories Registry (${(comp.signatories || []).length})
+            </div>
+            <button type="button" class="btn btn-sm btn-secondary" onclick="addCompanySignatory()" style="font-size: 11px; font-weight: 700;">
+              + Add Another Signatory
+            </button>
+          </div>
+
+          <div class="signatory-cards-grid">
+            ${((comp.signatories && comp.signatories.length > 0) ? comp.signatories : [
+              { id: 'SIG-01', name: comp.authorisedSignatory || 'Rajesh Kumar', designation: 'LOGISTICS LEAD / DESIGNATED PARTNER', signatureText: 'Rajesh Kumar' },
+              { id: 'SIG-02', name: 'Amitabh Sen', designation: 'VP OPERATIONS & CUSTOMS', signatureText: 'Amitabh Sen' }
+            ]).map(s => `
+              <div class="signatory-card">
+                <button type="button" class="signatory-card-delete-btn" onclick="deleteCompanySignatory('${s.id}')" title="Delete Signatory">ⓧ</button>
+                <div class="signatory-stamp-box">
+                  <div class="signatory-stamp-company">${comp.legalName || 'ODETTE RUGS LLC'}</div>
+                  <div class="signatory-stamp-sign" id="sign-preview-${s.id}">${s.signatureText || s.name}</div>
+                  <div class="signatory-stamp-designation">${s.designation || 'DESIGNATED PARTNER'}</div>
+                </div>
+                <div class="form-group" style="margin: 0;">
+                  <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px; color: var(--text-main);">Person Name</label>
+                  <input type="text" class="form-control cm-sign-name-input" data-id="${s.id}" value="${s.name}" oninput="updateSignatoryName('${s.id}', this.value)" style="width: 100%;">
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                  <button type="button" onclick="saveSingleSignatory('${s.id}')" class="btn btn-sm" style="background: transparent; border: none; font-size: 18px; color: #10b981; cursor: pointer; padding: 0;" title="Save Signatory">💾</button>
+                  <span style="font-size: 10px; color: var(--text-muted); font-weight: 600;">Verified Stamp</span>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+            <button class="btn btn-secondary" onclick="switchCompanyMasterStep(3)">← Back</button>
+            <button class="btn btn-primary" onclick="saveCompanyMaster(true); switchCompanyMasterStep(5)">Next ➔</button>
+          </div>
+        ` : `
+          <!-- STEP 5: CREDENTIALS & STATUTORY BANKING -->
+          <div style="font-size: 13px; font-weight: 800; color: var(--brand-primary); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">
+            🏦 Designated EEFC Bank & Customs House Agent Credentials
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Designated Bank Name *</label>
+              <input type="text" id="cmBankName" class="form-control" value="${comp.defaultBank || 'HDFC BANK LTD (EEFC A/C #502000881290 / IFSC: HDFC0000128)'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Default Customs House Agent (C.H.A) *</label>
+              <input type="text" id="cmChaName" class="form-control" value="${comp.defaultCha || 'JEENA & COMPANY CUSTOMS HOUSE AGENT'}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Commercial Signatory Authority *</label>
+              <input type="text" id="cmCommercialSignatory" class="form-control" value="${comp.commercialSignatory || 'Amitabh Sen (VP Operations & Customs)'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">EU REX Certificate Statement *</label>
+              <input type="text" id="cmRexStatement" class="form-control" value="${comp.rexStatement || 'INREX0514029108 - EU Registered Exporter Scheme Statement'}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <button class="btn btn-secondary" onclick="switchCompanyMasterStep(4)">← Back</button>
+            <button class="btn btn-primary" onclick="saveCompanyMaster(false)" style="font-weight: 800; font-size: 14px; padding: 10px 24px;">
+              💾 Save Company Profile
+            </button>
+          </div>
+        `}
+
+      </div>
+
+    </div>
+  `;
+}
+
 function renderRBACView() {
   const activeSubtab = AppState.activeRbacSubtab || "users";
   const f = AppState.tableFilters.users;
@@ -4969,11 +7316,12 @@ function renderRBACView() {
 
   // Filter Users
   let filteredUsers = AppState.users.filter(u => {
-    const matchesSearch = !f.search ||
-      u.name.toLowerCase().includes(f.search) ||
-      u.email.toLowerCase().includes(f.search) ||
-      u.role.toLowerCase().includes(f.search) ||
-      (u.whAccess && u.whAccess.toLowerCase().includes(f.search));
+    const searchLower = (f.search || "").trim().toLowerCase();
+    const matchesSearch = !searchLower ||
+      u.name.toLowerCase().includes(searchLower) ||
+      u.email.toLowerCase().includes(searchLower) ||
+      u.role.toLowerCase().includes(searchLower) ||
+      (u.whAccess && u.whAccess.toLowerCase().includes(searchLower));
     const matchesRole = !f.role || f.role === "all" || u.role.toLowerCase().includes(f.role.toLowerCase());
 
     // Warehouse Filter Match
@@ -5062,12 +7410,11 @@ function renderRBACView() {
 
     ${activeSubtab === 'users' ? `
       <!-- TAB 1: USER ACCOUNTS DIRECTORY -->
-      <div class="table-toolbar-box">
-        <div class="table-toolbar-left" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
-          <div class="table-search-input-wrap" style="width: 260px;">
-            <span class="table-search-icon">🔍</span>
-            <input type="text" placeholder="Search by name, email, role, warehouse..." value="${f.search}" oninput="setTableSearch('users', this.value)">
-          </div>
+      <div class="table-toolbar-box" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
+        <div class="table-toolbar-left">
+          <!-- Left spacer -->
+        </div>
+        <div class="table-toolbar-right" style="display: flex; gap: 8px; align-items: center; margin-left: auto; flex-wrap: wrap;">
           <select class="table-filter-select" onchange="setTableFilter('users', 'role', this.value)">
             <option value="all">All Enterprise Roles</option>
             ${AppState.roles.map(r => `<option value="${r.name}" ${f.role === r.name ? 'selected' : ''}>${r.name}</option>`).join('')}
@@ -5077,8 +7424,11 @@ function renderRBACView() {
             <option value="Global" ${f.whAccess === 'Global' ? 'selected' : ''}>🌐 Global Access (All Facilities)</option>
             ${AppState.warehouses.map(w => `<option value="${w.name}" ${f.whAccess === w.name ? 'selected' : ''}>${w.name}</option>`).join('')}
           </select>
-        </div>
-        <div class="table-toolbar-right">
+          <div class="table-search-input-wrap" style="width: 260px;">
+            <span class="table-search-icon">🔍</span>
+            <input type="text" placeholder="Search by name, email, role, warehouse..." value="${f.search}" oninput="setTableSearch('users', this.value)">
+          </div>
+          <button class="btn btn-sm btn-secondary" onclick="refreshTableFilters('users', 'Users directory')">🔄 Refresh</button>
           <button class="btn btn-sm btn-secondary" onclick="navigateTo('mod2-wh')">🏭 Manage Facilities</button>
           <button class="btn btn-sm btn-primary" onclick="openCreateUserModal()">+ Add User Account</button>
         </div>
@@ -5174,13 +7524,13 @@ function renderRBACView() {
       </div>
     ` : activeSubtab === 'roles' ? `
       <!-- TAB 2: ROLES CARDS -->
-      <div class="table-toolbar-box">
+      <div class="table-toolbar-box" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
         <div class="table-toolbar-left">
           <div style="font-size: 13px; color: var(--text-muted);">
             Configured Enterprise Roles: <strong>${AppState.roles.length} Roles</strong> across 8 operational modules.
           </div>
         </div>
-        <div class="table-toolbar-right">
+        <div class="table-toolbar-right" style="display: flex; gap: 8px; align-items: center;">
           <button class="btn btn-secondary" onclick="switchRbacSubtab('wh_perms')">🏭 Facility Rights Matrix</button>
           <button class="btn btn-primary" onclick="openCreateRoleModal()">+ Create Custom Role</button>
         </div>
@@ -5969,7 +8319,7 @@ function saveNewOrder() {
     qty: -qty,
     source: wh,
     dest: `Order ${orderId} (${channelNames[channel]})`,
-    user: "Admin / Management",
+    user: "Ctas Admin / Management",
     ref: `ORD-ALLOC: ${orderId}`
   });
 
@@ -6776,10 +9126,31 @@ function renderDetailView(detailObj) {
   const quickActions = document.getElementById("moduleQuickActions");
 
   switch (detailObj.type) {
+    case "export_invoice_form":
+      crumbMod.textContent = "Module 5: Export Documentation";
+      crumbView.textContent = detailObj.isEdit ? `Edit Export Invoice — ${detailObj.invoiceNo}` : `Create Export Invoice from Loading Plan — ${detailObj.planId || 'New'}`;
+      quickActions.innerHTML = `
+        <button class="btn btn-sm btn-secondary" onclick="backToListView('mod5-ship')">← Back to Loading Plan</button>
+        <button class="btn btn-sm btn-primary" onclick="saveExportInvoiceWizard(${detailObj.isEdit ? 'true' : 'false'})">💾 Save Export Invoice</button>
+      `;
+      viewport.innerHTML = renderExportInvoiceWizardPage(detailObj.invoiceNo, detailObj.planId, detailObj.isEdit);
+      break;
+
+    case "loading_plan_editor":
+      crumbMod.textContent = "Module 5: Loading Plans & Shipping";
+      crumbView.textContent = detailObj.planId ? `Edit Loading Plan — ${detailObj.planId}` : "Create New Loading Plan & Container Staging";
+      quickActions.innerHTML = `
+        <button class="btn btn-sm btn-secondary" onclick="backToListView('mod5-ship')">← Back to Plans</button>
+        <button class="btn btn-sm btn-primary" onclick="saveLoadingPlanDraft()">💾 Save Loading Plan</button>
+      `;
+      viewport.innerHTML = renderLoadingPlanEditorPage(detailObj.planId);
+      break;
+
     case "loading_plan":
       crumbMod.textContent = "Module 5: Loading Plans & Shipping";
       crumbView.textContent = `Loading Plan & Dispatch — ${detailObj.id}`;
       quickActions.innerHTML = `
+        <button class="btn btn-sm btn-secondary" onclick="openLoadingPlanPDFPreview('${detailObj.id}')">📄 Preview PDF</button>
         <button class="btn btn-sm btn-secondary" onclick="printShippingLabel('${detailObj.id}')">🏷️ Thermal Labels</button>
         <button class="btn btn-sm btn-primary" onclick="exportLoadingPlanToCustoms('${detailObj.id}')">🚀 Export to Customs</button>
       `;
@@ -6839,11 +9210,11 @@ function renderDetailView(detailObj) {
       break;
 
     case "return":
-      crumbMod.textContent = "Module 6: Returns & Claims";
-      crumbView.textContent = `Return & RMA Details — ${detailObj.id}`;
+      crumbMod.textContent = "Module 6: Returns, Refunds & Claims";
+      crumbView.textContent = `Return Dossier & Profitability — ${detailObj.id}`;
       quickActions.innerHTML = `
-        <button class="btn btn-sm btn-secondary" onclick="downloadRmaSlip('${detailObj.id}')">🖨️ RMA Slip</button>
-        <button class="btn btn-sm btn-success" onclick="restockRmaToInventory('${detailObj.id}')">♻️ Restock (+1)</button>
+        <button class="btn btn-sm btn-secondary" onclick="downloadRmaSlip('${detailObj.id}')">🖨️ RMA QC Slip</button>
+        <button class="btn btn-sm btn-primary" onclick="openInspectionModal('${detailObj.id}')">🔍 Record Inspection</button>
       `;
       viewport.innerHTML = renderReturnDetailPage(detailObj.id);
       break;
@@ -7081,6 +9452,7 @@ function renderWarehouseDetailPage(whId) {
           <span>🚢 Inward & Outward Docks</span>
           <span class="detail-tab-badge">3 Active Bays</span>
         </button>
+        ${typeof raWarehouseTabButton === "function" ? raWarehouseTabButton(wh) : ""}
       </div>
 
       <!-- ========================================== -->
@@ -7168,7 +9540,8 @@ function renderWarehouseDetailPage(whId) {
                       $${row.landedVal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </td>
                     <td style="text-align: center;">
-                      <button class="btn btn-xs btn-secondary" onclick="openSkuDetail('${row.sku.sku}')">Inspect SKU &rarr;</button>
+                      <button class="btn btn-xs btn-primary" onclick="raOpenSkuAnalytics('${row.sku.sku}','${wh.id}')" title="Stock history, velocity, WoW/QoQ/YoY sales &amp; profit">📊 Analytics</button>
+                      <button class="btn btn-xs btn-secondary" style="margin-top:4px;" onclick="openSkuDetail('${row.sku.sku}')">Inspect SKU &rarr;</button>
                     </td>
                   </tr>
                 `).join('')}
@@ -7279,6 +9652,8 @@ function renderWarehouseDetailPage(whId) {
         </div>
       </div>
 
+      ${typeof raWarehouseAnalyticsTab === "function" ? raWarehouseAnalyticsTab(wh) : ""}
+
     </div>
   `;
 }
@@ -7361,6 +9736,7 @@ function renderOrderDetailPage(orderId) {
           <button class="btn btn-sm btn-secondary" onclick="printPackSlip('${order.orderId}')">🖨️ Packing Slip</button>
           <button class="btn btn-sm btn-secondary" onclick="showToast('Reprinting FedEx Home Delivery Label #${order.awb}...', 'info')">🏷️ Print Shipping Label</button>
           <button class="btn btn-sm btn-secondary" onclick="openExportDocSuiteFullPage('${order.exportInvoice}')">📜 Export Invoice</button>
+          <button class="btn btn-sm btn-warning" onclick="openCreateReturnModal('${order.orderId}')" style="font-weight: 700;">↩️ Create Return / RTO</button>
         </div>
       </div>
 
@@ -7372,6 +9748,11 @@ function renderOrderDetailPage(orderId) {
               <h1 style="font-size: 24px; font-weight: 800; margin: 0; color: var(--text-main); font-family: var(--font-mono);">${order.orderId}</h1>
               <span class="marketplace-icon-tag ${order.channelIcon}">${order.channel}</span>
               <span class="badge ${getStatusBadgeClass(order.status)}">${order.status}</span>
+              ${(AppState.returns || []).some(r => r.orderId === order.orderId) ? `
+                <a href="javascript:void(0)" onclick="openReturnDetail('${((AppState.returns || []).find(r => r.orderId === order.orderId) || {}).returnId || ((AppState.returns || []).find(r => r.orderId === order.orderId) || {}).rmaNo}')" class="badge badge-warning" style="text-decoration: none; cursor: pointer;">
+                  🔄 Return Linked: ${((AppState.returns || []).find(r => r.orderId === order.orderId) || {}).returnId || ((AppState.returns || []).find(r => r.orderId === order.orderId) || {}).rmaNo}
+                </a>
+              ` : ''}
             </div>
             <p style="color: var(--text-muted); font-size: 13px; margin: 0;">
               Marketplace Order ID: <code style="color: var(--brand-cyan); font-weight: 700;">${order.marketplaceOrderId}</code> &bull; 
@@ -8777,6 +11158,13 @@ function renderExportDocSuitePage(invoiceNo) {
   const skuObj = (AppState.skus || []).find(s => s.sku === skuCode) || {};
   const rollCount = lp.totalRolls || order.qty || 1;
   const weightKg = lp.actualWeightKg || order.weightKg || (skuObj.weightKg ? skuObj.weightKg * rollCount : 28.5);
+  const comp = (AppState.companies && AppState.companies[0]) || AppState.companySettings || {};
+  const companyTitle = comp.legalName || "ODETTE RUGS LLC";
+  const companyAddress = comp.postalAddress || comp.address || "NH-19 CARPET HUB, MARYADPATTI, BHADOHI - 221401, UTTAR PRADESH, INDIA";
+  const compIec = comp.iec || "0514029108";
+  const compGst = comp.gstin || "09AAACR8821N1ZM";
+  const compLut = comp.taxDecLine3 || comp.defaultLUT || "SUPPLY MEANT FOR EXPORT UNDER LETTER OF UNDERTAKING (LUT) WITHOUT PAYMENT OF INTEGRATED TAX";
+  const compSignatory = comp.authorisedSignatory || "Rajesh Kumar (Logistics Lead)";
 
   return `
     <div class="full-detail-page">
@@ -8804,7 +11192,7 @@ function renderExportDocSuitePage(invoiceNo) {
           <span style="font-size: 18px;">📜</span>
           <div>
             <strong style="font-size: 13px; color: var(--text-main);">Indian Customs ICEGATE & GST Compliance Status:</strong>
-            <div style="font-size: 11px; color: var(--text-muted);">Letter of Undertaking (LUT) ARN: LUT/2026/08912 • Port: ICD Babatpur (INVTZ1)</div>
+            <div style="font-size: 11px; color: var(--text-muted);">Letter of Undertaking (LUT) ARN: ${comp.lutNo || 'AD090326089140U'} • Exporter: ${companyTitle}</div>
           </div>
         </div>
         <div style="display: flex; align-items: center; gap: 10px;">
@@ -8835,9 +11223,9 @@ function renderExportDocSuitePage(invoiceNo) {
         <div class="doc-preview-sheet">
           <div class="doc-sheet-header">
             <div>
-              <div class="doc-company-title">COMMERCIAL INVOICE FOR EXPORT</div>
-              <div style="font-size: 11px; color: #64748b;">Rugs Global LLP • IEC: 0516908124 • GSTIN: 09AAAFC1249P1Z8</div>
-              <div style="font-size: 11px; color: #059669; font-weight: 700;">SUPPLY MEANT FOR EXPORT UNDER LETTER OF UNDERTAKING (LUT) WITHOUT PAYMENT OF INTEGRATED TAX</div>
+              <div class="doc-company-title">${companyTitle}</div>
+              <div style="font-size: 11px; color: #64748b;">${companyAddress} • IEC: ${compIec} • GSTIN: ${compGst}</div>
+              <div style="font-size: 11px; color: #059669; font-weight: 700;">${compLut}</div>
             </div>
             <div class="doc-meta-block">
               <div><strong>Invoice #:</strong> ${doc.invoiceNo}</div>
@@ -8847,18 +11235,22 @@ function renderExportDocSuitePage(invoiceNo) {
           </div>
           <div class="doc-grid-2">
             <div class="doc-box-section">
+              <strong>Exporter (Shipper):</strong><br>
+              <strong>${companyTitle}</strong><br>
+              ${companyAddress}<br>
+              GSTIN: <strong>${compGst}</strong> • IEC: <strong>${compIec}</strong>
+            </div>
+            <div class="doc-box-section">
               <strong>Buyer (Consignee):</strong><br>
-              ${doc.consignee}<br>
+              <strong>${doc.consignee}</strong><br>
               ${order.shippingAddress || doc.destination}<br>
               Order Ref: <strong>${doc.orderId}</strong>
             </div>
-            <div class="doc-box-section">
-              <strong>Export Logistics Reference:</strong><br>
-              Port of Lading: ICD Babatpur / JNPT Mumbai<br>
-              Port of Discharge: ${doc.destination}<br>
-              Carrier / Waybill: ${lp.awb || order.awb || '7894-3321-992'}<br>
-              Loading Plan Ref: <strong>${doc.loadingPlanId || lp.planId || 'LP-2026-001'}</strong>
-            </div>
+          </div>
+          <div class="doc-box-section" style="margin-bottom: 14px;">
+            <strong>Export Logistics & Port Reference:</strong><br>
+            Port of Loading: <strong>${comp.defaultPortLoading || 'MUNDRA PORT, INDIA / ICD BABATPUR'}</strong> • Port of Discharge: <strong>${doc.destination}</strong><br>
+            Carrier / Waybill: <strong>${lp.awb || order.awb || '7894-3321-992'}</strong> • Loading Plan Ref: <strong>${doc.loadingPlanId || lp.planId || 'LP-2026-001'}</strong>
           </div>
           <table class="doc-table">
             <thead>
@@ -8881,9 +11273,9 @@ function renderExportDocSuitePage(invoiceNo) {
           </table>
           <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: flex-end;">
             <div style="font-size: 11px; color: #64748b;">Generated via RugOS ExportOS Automation Engine • DGFT & ICEGATE Rule 8 Certified</div>
-            <div style="text-align: right; border-top: 1px solid #94a3b8; padding-top: 6px; width: 220px;">
-              <strong>For Rugs Global LLP</strong><br>
-              <span style="font-size: 11px; color: #059669;">[Digitally Signed by Authorized Signatory]</span>
+            <div style="text-align: right; border-top: 1px solid #94a3b8; padding-top: 6px; width: 240px;">
+              <strong>For ${companyTitle}</strong><br>
+              <span style="font-size: 11px; color: #059669;">[Digitally Signed by ${compSignatory}]</span>
             </div>
           </div>
         </div>
@@ -8895,7 +11287,7 @@ function renderExportDocSuitePage(invoiceNo) {
           <div class="doc-sheet-header">
             <div>
               <div class="doc-company-title">EXPORT PACKING LIST & WEIGHT CERTIFICATE</div>
-              <div style="font-size: 11px; color: #64748b;">Package Marks: RUGS/${doc.invoiceNo}/1-${rollCount}</div>
+              <div style="font-size: 11px; color: #64748b;">Shipper: ${companyTitle} • Package Marks: ODT/${doc.invoiceNo}/1-${rollCount}</div>
             </div>
             <div class="doc-meta-block">
               <div><strong>Packing List #:</strong> PL-${doc.invoiceNo}</div>
@@ -8931,12 +11323,12 @@ function renderExportDocSuitePage(invoiceNo) {
           <div class="doc-sheet-header">
             <div>
               <div class="doc-company-title">CERTIFICATE OF ORIGIN (HANDICRAFTS)</div>
-              <div style="font-size: 11px; color: #64748b;">Export Promotion Council for Handicrafts (EPCH) & Carpet Export Promotion Council (CEPC)</div>
+              <div style="font-size: 11px; color: #64748b;">Exporter: ${companyTitle} (${companyAddress}) • CEPC RCMC: ${comp.rcmcNo || 'CEPC/RCMC/2020/88192'}</div>
             </div>
             <div class="doc-meta-block"><div>Certificate #: CEPC/IND/2026/${doc.invoiceNo.replace(/[^0-9]/g, '') || '08912'}</div></div>
           </div>
           <div class="doc-box-section">
-            The undersigned hereby certifies that the handmade carpets described in Commercial Invoice <strong>${doc.invoiceNo}</strong> were entirely carded, spun, dyed, and woven in Bhadohi / Mirzapur (Uttar Pradesh, India) using 100% Indian artisan craftsmanship and meet all rules of origin under CEPC/EPCH.
+            The undersigned hereby certifies that the handmade carpets described in Commercial Invoice <strong>${doc.invoiceNo}</strong> manufactured by <strong>${companyTitle}</strong> were entirely carded, spun, dyed, and woven in Bhadohi / Mirzapur (Uttar Pradesh, India) using 100% Indian artisan craftsmanship and meet all rules of origin under CEPC/EPCH.
           </div>
         </div>
       </div>
@@ -8947,12 +11339,12 @@ function renderExportDocSuitePage(invoiceNo) {
           <div class="doc-sheet-header">
             <div>
               <div class="doc-company-title">CUSTOMS SHIPPING BILL DECLARATION (CSB-V)</div>
-              <div style="font-size: 11px; color: #64748b;">Indian Customs EDI Gateway • Port: ICD Babatpur (INVTZ1) / JNPT</div>
+              <div style="font-size: 11px; color: #64748b;">Indian Customs EDI Gateway • Exporter: ${companyTitle} (IEC: ${compIec}) • Port: ${comp.defaultPortLoading || 'ICD Babatpur (INVTZ1)'}</div>
             </div>
             <div class="doc-meta-block"><div>SB Ref: ${doc.shippingBill}</div></div>
           </div>
           <div class="doc-box-section">
-            Declaration under Rule 8 of Foreign Trade (Development and Regulation) Act: We declare that the goods mentioned in this shipping bill correspond to the export specifications in Commercial Invoice <strong>${doc.invoiceNo}</strong>, and the value of $${doc.valueUSD.toFixed(2)} USD is the true and correct export value.
+            Declaration under Rule 8 of Foreign Trade (Development and Regulation) Act: We (<strong>${companyTitle}</strong>) declare that the goods mentioned in this shipping bill correspond to the export specifications in Commercial Invoice <strong>${doc.invoiceNo}</strong>, and the value of $${doc.valueUSD.toFixed(2)} USD is the true and correct export value.
           </div>
         </div>
       </div>
@@ -9345,7 +11737,7 @@ function renderDashboardView() {
     <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; margin-bottom: 24px;">
       <!-- Channel Distribution Card -->
       <div class="card" style="margin-bottom: 0;">
-        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="card-header">
           <div class="card-title-group">
             <h3>Multi-Channel Revenue & Margin Radar</h3>
             <p>Direct vs Marketplace vs B2B Wholesale Performance</p>
@@ -9408,7 +11800,7 @@ function renderDashboardView() {
 
       <!-- Global Multi-Facility Fulfillment Radar -->
       <div class="card" style="margin-bottom: 0;">
-        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="card-header">
           <div class="card-title-group">
             <h3>Global Logistics & Hub Stock Radar</h3>
             <p>Inventory distribution across manufacturing & fulfillment nodes</p>
@@ -9464,7 +11856,7 @@ function renderDashboardView() {
 
     <!-- NEW SECTION 1: Top-Performing Rug Collections & Fast-Moving SKU Velocity -->
     <div class="card" style="margin-bottom: 24px;">
-      <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+      <div class="card-header">
         <div class="card-title-group">
           <h3>🏆 Top-Performing Rug Collections & Fast-Moving SKU Velocity</h3>
           <p>Cross-channel sales volume, true landed margins, multi-facility distribution & burn rates</p>
@@ -9647,7 +12039,7 @@ function renderDashboardView() {
 
     <!-- NEW SECTION 2: Cross-Border Multimodal Logistics Pipeline -->
     <div class="card" style="margin-bottom: 24px;">
-      <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+      <div class="card-header">
         <div class="card-title-group">
           <h3>🌐 Cross-Border Multimodal Logistics & In-Transit Pipeline</h3>
           <p>Real-time telemetry across ocean containers, air courier freighters, and domestic linehaul</p>
@@ -9721,7 +12113,7 @@ function renderDashboardView() {
 
     <!-- NEW SECTION 3: Recent High-Value Orders & Profit Realization Feed -->
     <div class="card" style="margin-bottom: 24px;">
-      <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+      <div class="card-header">
         <div class="card-title-group">
           <h3>🛒 Recent High-Value Orders & Live Realized EBITDA Margin</h3>
           <p>Live transaction stream with true landed economics, carrier tracking & fulfillment status</p>
@@ -9886,7 +12278,7 @@ function renderDashboardView() {
     <div style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; margin-bottom: 24px;">
       <!-- Real-Time Activity Ticker with clickable drill-downs -->
       <div class="card" style="margin-bottom: 0;">
-        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="card-header">
           <div class="card-title-group">
             <h3>Live Operational Stream</h3>
             <p>Real-time events across warehouses, looms, customs & courier dispatch</p>
@@ -10071,7 +12463,8 @@ function renderDashboardView() {
 function renderInventoryView() {
   const f = AppState.tableFilters.skus;
   let filtered = AppState.skus.filter(s => {
-    const matchesSearch = !f.search || s.sku.toLowerCase().includes(f.search) || s.title.toLowerCase().includes(f.search) || s.collection.toLowerCase().includes(f.search);
+    const searchLower = (f.search || "").trim().toLowerCase();
+    const matchesSearch = !searchLower || s.sku.toLowerCase().includes(searchLower) || s.title.toLowerCase().includes(searchLower) || s.collection.toLowerCase().includes(searchLower);
     const matchesCol = f.collection === "all" || s.collection.toLowerCase().includes(f.collection.toLowerCase());
     return matchesSearch && matchesCol;
   });
@@ -10167,12 +12560,11 @@ function renderInventoryView() {
     </div>
 
     <!-- Table Toolbar -->
-    <div class="table-toolbar-box">
+    <div class="table-toolbar-box" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
       <div class="table-toolbar-left">
-        <div class="table-search-input-wrap">
-          <span class="table-search-icon">🔍</span>
-          <input type="text" placeholder="Search by SKU, rug title, collection..." value="${f.search}" oninput="setTableSearch('skus', this.value)">
-        </div>
+        <!-- Left spacer -->
+      </div>
+      <div class="table-toolbar-right" style="display: flex; gap: 8px; align-items: center; margin-left: auto; flex-wrap: wrap;">
         <select class="table-filter-select" onchange="setTableFilter('skus', 'collection', this.value)">
           <option value="all">All Rug Collections</option>
           <option value="Royal Heritage">Royal Heritage Collection</option>
@@ -10183,9 +12575,11 @@ function renderInventoryView() {
           <option value="Imperial Silk">Imperial Silk Dynasty</option>
           <option value="Nordic Modern">Nordic Modern Looms</option>
         </select>
-      </div>
-      <div class="table-toolbar-right">
-        <button class="btn btn-sm btn-secondary" onclick="openExportModal('inventory')">📥 Export Stock Ledger CSV</button>
+        <div class="table-search-input-wrap">
+          <span class="table-search-icon">🔍</span>
+          <input type="text" placeholder="Search by SKU, rug title, collection..." value="${f.search}" oninput="setTableSearch('skus', this.value)">
+        </div>
+        <button class="btn btn-sm btn-secondary" onclick="openExportModal('inventory')">📥 Export CSV</button>
         <button class="btn btn-sm btn-primary" onclick="openAddInventoryModal()">+ Inward / Add Inventory</button>
       </div>
     </div>
@@ -10524,11 +12918,12 @@ function renderPurchaseOrdersView() {
   const f = AppState.tableFilters.purchaseOrders || (AppState.tableFilters.purchaseOrders = { search: "", status: "all", destWh: "all", sortBy: "poNumber", sortOrder: "desc", page: 1, pageSize: 5 });
 
   let filtered = (AppState.purchaseOrders || []).filter(po => {
+    const s = (f.search || "").trim().toLowerCase();
     const vendorStr = po.vendor || po.vendorName || "";
-    const matchesSearch = !f.search || 
-      po.poNumber.toLowerCase().includes(f.search.toLowerCase()) || 
-      vendorStr.toLowerCase().includes(f.search.toLowerCase()) || 
-      (po.items && po.items.some(i => i.sku.toLowerCase().includes(f.search.toLowerCase())));
+    const matchesSearch = !s || 
+      po.poNumber.toLowerCase().includes(s) || 
+      vendorStr.toLowerCase().includes(s) || 
+      (po.items && po.items.some(i => i.sku.toLowerCase().includes(s)));
 
     let matchesStatus = true;
     if (f.status && f.status !== "all") {
@@ -10571,12 +12966,11 @@ function renderPurchaseOrdersView() {
       <button class="filter-pill-btn ${f.status === 'Completed' ? 'active' : ''}" onclick="setTableFilter('purchaseOrders', 'status', 'Completed')">✅ Completed / Received</button>
     </div>
 
-    <div class="table-toolbar-box">
+    <div class="table-toolbar-box" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
       <div class="table-toolbar-left">
-        <div class="table-search-input-wrap">
-          <span class="table-search-icon">🔍</span>
-          <input type="text" placeholder="Search PO #, vendor, SKU..." value="${f.search}" oninput="setTableSearch('purchaseOrders', this.value)">
-        </div>
+        <!-- Left spacer -->
+      </div>
+      <div class="table-toolbar-right" style="display: flex; gap: 8px; align-items: center; margin-left: auto; flex-wrap: wrap;">
         <select class="table-filter-select" onchange="setTableFilter('purchaseOrders', 'status', this.value)">
           <option value="all" ${f.status === 'all' ? 'selected' : ''}>All PO Statuses</option>
           <option value="Draft" ${f.status === 'Draft' ? 'selected' : ''}>Draft</option>
@@ -10590,8 +12984,11 @@ function renderPurchaseOrdersView() {
           <option value="all" ${f.destWh === 'all' ? 'selected' : ''}>All Receiving Warehouses</option>
           ${AppState.warehouses.map(w => `<option value="${w.id}" ${f.destWh === w.id ? 'selected' : ''}>${w.name}</option>`).join('')}
         </select>
-      </div>
-      <div class="table-toolbar-right">
+        <div class="table-search-input-wrap">
+          <span class="table-search-icon">🔍</span>
+          <input type="text" placeholder="Search PO #, vendor, SKU..." value="${f.search}" oninput="setTableSearch('purchaseOrders', this.value)">
+        </div>
+        <button class="btn btn-sm btn-secondary" onclick="refreshTableFilters('purchaseOrders', 'Purchase Orders')">🔄 Refresh</button>
         <button class="btn btn-sm btn-primary" onclick="openCreatePoModal()">+ New PO</button>
       </div>
     </div>
@@ -11423,7 +13820,8 @@ function renderWarehouseTransfersView() {
   const f = AppState.tableFilters.replenishment || (AppState.tableFilters.replenishment = { search: "", status: "all", originWh: "all", destWh: "all", mode: "all", page: 1, pageSize: 5 });
 
   let filtered = (AppState.replenishment || []).filter(r => {
-    const matchesSearch = !f.search || r.id.toLowerCase().includes(f.search.toLowerCase()) || r.carrier.toLowerCase().includes(f.search.toLowerCase());
+    const s = (f.search || "").trim().toLowerCase();
+    const matchesSearch = !s || r.id.toLowerCase().includes(s) || r.carrier.toLowerCase().includes(s);
     const matchesStatus = f.status === "all" || r.status.toLowerCase().includes(f.status.toLowerCase());
     return matchesSearch && matchesStatus;
   });
@@ -11447,20 +13845,22 @@ function renderWarehouseTransfersView() {
       <button class="filter-pill-btn ${f.status === 'Completed' ? 'active' : ''}" onclick="setTableFilter('replenishment', 'status', 'Completed')">✅ Completed & Received</button>
     </div>
 
-    <div class="table-toolbar-box">
+    <div class="table-toolbar-box" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
       <div class="table-toolbar-left">
-        <div class="table-search-input-wrap">
-          <span class="table-search-icon">🔍</span>
-          <input type="text" placeholder="Search transfer ID, carrier, warehouse..." value="${f.search}" oninput="setTableSearch('replenishment', this.value)">
-        </div>
+        <!-- Left spacer -->
+      </div>
+      <div class="table-toolbar-right" style="display: flex; gap: 8px; align-items: center; margin-left: auto; flex-wrap: wrap;">
         <select class="table-filter-select" onchange="setTableFilter('replenishment', 'status', this.value)">
           <option value="all">All Transfer Statuses</option>
           <option value="Transit" ${f.status === 'Transit' ? 'selected' : ''}>In Transit</option>
           <option value="Received" ${f.status === 'Received' ? 'selected' : ''}>Received & Verified</option>
           <option value="Planning" ${f.status === 'Planning' ? 'selected' : ''}>Planning & Staging</option>
         </select>
-      </div>
-      <div class="table-toolbar-right">
+        <div class="table-search-input-wrap">
+          <span class="table-search-icon">🔍</span>
+          <input type="text" placeholder="Search transfer ID, carrier, warehouse..." value="${f.search}" oninput="setTableSearch('replenishment', this.value)">
+        </div>
+        <button class="btn btn-sm btn-secondary" onclick="refreshTableFilters('replenishment', 'Stock Transfers')">🔄 Refresh</button>
         <button class="btn btn-sm btn-primary" onclick="openCreateTransferModal()">+ New Transfer</button>
       </div>
     </div>
@@ -11808,12 +14208,26 @@ function exportTransfersCSV() {
 
 
 
+// Global Status Changer for Loading Plans & Container Staging
+function changeLoadingPlanStatus(planId, newStatus) {
+  const plan = (AppState.loadingPlans || []).find(p => p.planId === planId);
+  if (!plan) return;
+  const oldStatus = plan.status;
+  plan.status = newStatus;
+  if (newStatus.includes("Exported") || newStatus.includes("Dispatched")) {
+    plan.isExported = true;
+  }
+  showToast(`Loading Plan ${planId} status updated: "${oldStatus}" ➔ "${newStatus}"`, "success");
+  renderCurrentView();
+}
+
 function renderLoadingPlansView() {
   const f = AppState.tableFilters.loadingPlans || (AppState.tableFilters.loadingPlans = { search: "", status: "all", page: 1, pageSize: 5 });
   let filtered = (AppState.loadingPlans || []).filter(p => {
-    const s = f.search ? f.search.toLowerCase() : "";
+    const s = (f.search || "").trim().toLowerCase();
     const matchesSearch = !s || 
-      p.planId.toLowerCase().includes(s) || 
+      (p.planId && p.planId.toLowerCase().includes(s)) || 
+      (p.exportInvoiceNo && p.exportInvoiceNo.toLowerCase().includes(s)) ||
       (p.destination && p.destination.toLowerCase().includes(s)) ||
       (p.consignee && p.consignee.toLowerCase().includes(s)) ||
       (p.carrier && p.carrier.toLowerCase().includes(s)) ||
@@ -11845,30 +14259,21 @@ function renderLoadingPlansView() {
   return `
     <div class="page-header" style="margin-bottom: 16px;">
       <div class="page-title-wrap">
-        <h1 style="margin: 0; font-size: 20px;">🚚 Loading Plans & Shipping</h1>
-        <p style="margin: 4px 0 0 0; font-size: 12px; color: var(--text-muted);">Manage consignment loading plans, ICD staging, AWB telemetry, and vehicle stuffing.</p>
+        <h1 style="margin: 0; font-size: 20px;">🚚 Loading Plans & Container Staging</h1>
+        <p style="margin: 4px 0 0 0; font-size: 12px; color: var(--text-muted);">Manage consignment loading plans, container stuffing, product weight distribution, and export shipping.</p>
       </div>
       <div class="page-actions" style="display: flex; gap: 8px;">
         <button class="btn btn-sm btn-secondary" onclick="exportLoadingPlansCSV()">📥 Export Registry CSV</button>
-        <button class="btn btn-sm btn-primary" onclick="openCreateLoadingPlanModal()">+ Create Loading Plan</button>
+        <button class="btn btn-sm btn-primary" onclick="openLoadingPlanEditor()">+ Create Loading Plan</button>
       </div>
     </div>
 
-    <!-- Container Pipeline Stage Tabs -->
-    <div class="status-filter-pills" style="margin-bottom: 14px;">
-      <button class="filter-pill-btn ${f.status === 'all' ? 'active' : ''}" onclick="setTableFilter('loadingPlans', 'status', 'all')">All Container Shipments (${AppState.loadingPlans ? AppState.loadingPlans.length : 0})</button>
-      <button class="filter-pill-btn ${f.status === 'Planning & Staging' ? 'active' : ''}" onclick="setTableFilter('loadingPlans', 'status', 'Planning & Staging')">📦 Planning & Staging</button>
-      <button class="filter-pill-btn ${f.status === 'Loaded & Labeled' ? 'active' : ''}" onclick="setTableFilter('loadingPlans', 'status', 'Loaded & Labeled')">🏷️ Loaded & Labeled</button>
-      <button class="filter-pill-btn ${f.status === 'Exported & Dispatched' ? 'active' : ''}" onclick="setTableFilter('loadingPlans', 'status', 'Exported & Dispatched')">🚢 Exported & Dispatched</button>
-      <button class="filter-pill-btn ${f.status === 'Customs Cleared' ? 'active' : ''}" onclick="setTableFilter('loadingPlans', 'status', 'Customs Cleared')">⚓ Customs Exported</button>
-    </div>
 
-    <div class="table-toolbar-box">
+    <div class="table-toolbar-box" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
       <div class="table-toolbar-left">
-        <div class="table-search-input-wrap">
-          <span class="table-search-icon">🔍</span>
-          <input type="text" placeholder="Search by Plan ID, AWB, Destination, Consignee..." value="${f.search}" oninput="setTableSearch('loadingPlans', this.value)">
-        </div>
+        <!-- Left spacer or quick info -->
+      </div>
+      <div class="table-toolbar-right" style="display: flex; gap: 8px; align-items: center; margin-left: auto; flex-wrap: wrap;">
         <select class="table-filter-select" onchange="setTableFilter('loadingPlans', 'status', this.value)">
           <option value="all">All Plan Statuses</option>
           <option value="Planning & Staging" ${f.status === 'Planning & Staging' ? 'selected' : ''}>Planning & Staging</option>
@@ -11876,8 +14281,12 @@ function renderLoadingPlansView() {
           <option value="Exported & Dispatched" ${f.status === 'Exported & Dispatched' ? 'selected' : ''}>Exported & Dispatched</option>
           <option value="Delivered" ${f.status === 'Delivered' ? 'selected' : ''}>Delivered & Verified</option>
         </select>
-      </div>
-      <div class="table-toolbar-right">
+        <div class="table-search-input-wrap" style="min-width: 280px;">
+          <span class="table-search-icon">🔍</span>
+          <input type="text" placeholder="Search by Plan ID, Invoice No, Destination, Consignee..." value="${f.search}" oninput="setTableSearch('loadingPlans', this.value)">
+        </div>
+        <button class="btn btn-sm btn-secondary" onclick="refreshTableFilters('loadingPlans', 'Loading Plans')">🔄 Refresh</button>
+        <button class="btn btn-sm btn-secondary" onclick="openWeightCalculatorDialog()">🧮 Weight Calculator</button>
       </div>
     </div>
 
@@ -11887,49 +14296,57 @@ function renderLoadingPlansView() {
         <table class="data-table">
           <thead>
             <tr>
-              <th>Loading Plan Ref</th>
+              <th>Date</th>
+              <th>#Invoice / Plan ID</th>
               <th>Consignee & Destination</th>
-              <th>Carrier & Tracking AWB</th>
-              <th>Rolls & Scale Mass</th>
-              <th>Freight Tariff</th>
-              <th>Workflow Status (Change)</th>
-              <th>Customs Export State</th>
+              <th>Containers</th>
+              <th>Total Net Wt</th>
+              <th>Total Gross Wt</th>
+              <th>Workflow Status</th>
+              <th>Option</th>
+              <th>Preview PDF</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            ${pagination.items.map(p => {
-              const exportBadge = p.isExported ? 
-                `<span class="badge badge-success" style="font-size: 11px; font-weight: 700;">✓ Exported (${p.exportInvoiceNo})</span>` :
-                `<button class="btn btn-sm btn-primary" onclick="exportLoadingPlanToCustoms('${p.planId}')" style="font-size: 11px; padding: 4px 10px; font-weight: 700;">🚀 Export to Customs</button>`;
+            ${pagination.items.length === 0 ? `
+              <tr>
+                <td colspan="10" style="text-align: center; padding: 32px; color: var(--text-muted);">
+                  No loading plans found matching the filters. Click <strong>+ Create Loading Plan</strong> to create one.
+                </td>
+              </tr>
+            ` : pagination.items.map(p => {
+              const containers = p.containers || [{ id: "CNT-1", containerNo: p.vehicleContainer || "CNT-1", items: p.items || [] }];
+              const containerCount = containers.length;
+              const totalNet = p.actualWeightKg || containers.reduce((acc, c) => acc + (c.items || []).reduce((s, it) => s + (it.netWeightKg || it.totalWeightKg || 0), 0), 0);
+              const totalGross = p.grossWeightKg || Math.round(totalNet * 1.06 + (containerCount * 80));
 
               return `
-                <tr style="cursor: pointer;" onclick="openLoadingPlanDetail('${p.planId}')">
+                <tr style="cursor: pointer;" onclick="openLoadingPlanEditor('${p.planId}')">
                   <td>
-                    <strong style="font-family: var(--font-mono); color: var(--brand-cyan); font-size: 13px;">${p.planId}</strong>
-                    <div style="font-size: 11px; color: var(--text-dim); margin-top: 2px;">${p.mode} &bull; ${p.vehicleContainer}</div>
+                    <span style="font-size: 12px; color: var(--text-muted);">${p.date || '2026-09-17'}</span>
                   </td>
                   <td>
-                    <strong style="color: var(--text-main);">${p.destination}</strong>
-                    <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">${p.consignee}</div>
+                    <strong style="font-family: var(--font-mono); color: var(--brand-cyan); font-size: 13px;">${p.exportInvoiceNo || p.planId}</strong>
+                    <div style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono);">${p.planId}</div>
                   </td>
-                  <td onclick="event.stopPropagation()">
-                    <div style="font-weight: 600; color: var(--text-main); font-size: 12px;">${p.carrier}</div>
-                    <a href="javascript:void(0)" onclick="openLiveTrackingModal('${p.awb}', '${p.carrier}', '${p.planId}')" style="color: var(--brand-cyan); font-size: 11px; font-family: var(--font-mono); text-decoration: underline; font-weight: 600;" title="Click for live carrier tracking telemetry">
-                      📡 ${p.awb}
-                    </a>
+                  <td>
+                    <strong style="color: var(--text-main);">${p.consignee || 'Odette Global Partner'}</strong>
+                    <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">${p.destination || 'International Port'}</div>
                   </td>
                   <td>
                     <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-                      <span class="badge badge-primary" style="font-size: 11px; font-weight: 700;">${(p.items || []).length || 1} SKUs</span>
-                      <strong>${p.totalRolls} Rolls</strong> &bull; <strong style="font-family: var(--font-mono); color: var(--success);">${p.actualWeightKg} Kg</strong>
+                      <span class="badge badge-primary" style="font-size: 11px; font-weight: 700;">${containerCount} Container${containerCount > 1 ? 's' : ''}</span>
                     </div>
-                    <div style="font-size: 11px; color: var(--brand-cyan); font-family: var(--font-mono); margin-top: 3px;">
-                      ${(p.items || []).map(it => `${it.sku.split('-').slice(2).join('-') || it.sku} (${it.qty})`).join(', ') || 'RUG-ROLLS'}
+                    <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;">
+                      ${containers.map(c => c.containerNo || c.id).join(', ')}
                     </div>
                   </td>
                   <td>
-                    <strong style="color: var(--success); font-family: var(--font-mono); font-size: 13px;">$${p.freightUSD.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong>
+                    <strong style="font-family: var(--font-mono); color: var(--brand-cyan); font-size: 13px;">${totalNet.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} kg</strong>
+                  </td>
+                  <td>
+                    <strong style="font-family: var(--font-mono); color: var(--success); font-size: 13px;">${totalGross.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} kg</strong>
                   </td>
                   <td onclick="event.stopPropagation()">
                     <select class="table-status-select" data-status="${p.status}" onchange="changeLoadingPlanStatus('${p.planId}', this.value)">
@@ -11940,17 +14357,25 @@ function renderLoadingPlansView() {
                     </select>
                   </td>
                   <td onclick="event.stopPropagation()">
-                    ${exportBadge}
+                    ${p.isExported ? `
+                      <button class="btn btn-sm btn-success" onclick="openExportInvoiceForm('${p.planId}', '${p.exportInvoiceNo}', true)" title="Click to View / Edit Export Invoice" style="font-size: 11px; padding: 4px 8px; font-weight: 700;">
+                        ✓ Exported
+                      </button>
+                    ` : `
+                      <button class="btn btn-sm btn-primary" onclick="openExportInvoiceForm('${p.planId}', null, false)" title="Create Export Invoice & Customs Suite" style="font-size: 11px; padding: 4px 8px; font-weight: 700;">
+                        Export Invoice →
+                      </button>
+                    `}
                   </td>
                   <td onclick="event.stopPropagation()">
-                    <div style="display: flex; gap: 6px; align-items: center;">
-                      <button class="btn btn-sm btn-secondary" onclick="printShippingLabel('${p.awb}')" title="Print 4x6 Thermal Labels">🏷️ Labels</button>
-                      <button class="btn btn-sm btn-secondary" onclick="openLoadingPlanDetail('${p.planId}')" title="View Plan & Manifest">🔍 View</button>
-                      ${p.isExported ? `
-                        <div class="dropdown" style="display: inline-block; position: relative;">
-                          <button class="btn btn-sm btn-secondary" onclick="downloadDocumentPDF('${p.exportInvoiceNo}', 'invoice')" title="Download Commercial Invoice">📥 PDF</button>
-                        </div>
-                      ` : ''}
+                    <button class="btn btn-sm btn-secondary" onclick="openLoadingPlanPDFPreview('${p.planId}')" title="Preview Official Loading Plan Document" style="font-size: 11px; padding: 4px 8px;">
+                      📄 Preview PDF
+                    </button>
+                  </td>
+                  <td onclick="event.stopPropagation()">
+                    <div class="row-actions-group" style="justify-content: center; display: inline-flex; gap: 6px;">
+                      <button class="btn-icon-action" onclick="openLoadingPlanEditor('${p.planId}')" title="Edit Loading Plan">✏️</button>
+                      <button class="btn-icon-action delete" onclick="deleteLoadingPlan('${p.planId}')" title="Delete Plan">🗑️</button>
                     </div>
                   </td>
                 </tr>
@@ -11986,362 +14411,1280 @@ function renderShippingView() {
   return renderLoadingPlansView();
 }
 
-function openLoadingPlanDetail(planId) {
-  AppState.activeDetail = { type: "loading_plan", id: planId };
-  renderCurrentView();
+function openCreateLoadingPlanModal() {
+  openLoadingPlanEditor();
 }
 
-function changeLoadingPlanStatus(planId, newStatus) {
-  const plan = (AppState.loadingPlans || []).find(p => p.planId === planId);
-  if (!plan) return;
-  plan.status = newStatus;
-
-  if (!plan.milestones) plan.milestones = [];
-  const nowStr = new Date().toISOString().replace('T', ' ').substring(0, 16);
-  plan.milestones.unshift({
-    time: nowStr,
-    event: `Status updated to ${newStatus} on Loading Dock`,
-    location: plan.originWh || "Warehouse Staging Dock"
-  });
-
-  showToast(`Loading Plan ${planId} status updated to: ${newStatus}`, "success");
-  renderCurrentView();
-}
-
-function exportLoadingPlanToCustoms(planId) {
-  const plan = (AppState.loadingPlans || []).find(p => p.planId === planId);
-  if (!plan) return;
-
-  if (plan.isExported) {
-    showToast(`Loading Plan ${planId} is already exported as ${plan.exportInvoiceNo}.`, "info");
-    openExportDocSuiteFullPage(plan.exportInvoiceNo);
-    return;
+function openLoadingPlanEditor(planId = null) {
+  if (planId) {
+    const existing = (AppState.loadingPlans || []).find(p => p.planId === planId);
+    if (existing) {
+      // Clone existing into draft
+      AppState.activeLoadingPlanDraft = JSON.parse(JSON.stringify(existing));
+      if (!AppState.activeLoadingPlanDraft.containers || !AppState.activeLoadingPlanDraft.containers.length) {
+        AppState.activeLoadingPlanDraft.containers = [
+          {
+            id: "CNT-1",
+            containerNo: existing.vehicleContainer || "CNT-1 (40ft HC)",
+            lineSealNo: "SEAL-8821",
+            rfidNo: "RF-11",
+            lrNo: "LR-4402",
+            trackNo: existing.awb || "TRK-9021",
+            maxPayloadKg: 28000,
+            items: (existing.items || []).map((it, idx) => ({
+              sku: it.sku,
+              title: it.title,
+              size: it.size || "8x10 ft",
+              qty: it.qty || 20,
+              unitWeightKg: it.unitWeightKg || 28.5,
+              netWeightKg: it.totalWeightKg || it.netWeightKg || ((it.unitWeightKg || 28.5) * (it.qty || 20)),
+              tareWeightKg: Math.round((it.qty || 20) * 1.2 * 10) / 10,
+              grossWeightKg: (it.totalWeightKg || it.netWeightKg || ((it.unitWeightKg || 28.5) * (it.qty || 20))) + (Math.round((it.qty || 20) * 1.2 * 10) / 10),
+              notes: "Staged"
+            }))
+          }
+        ];
+      }
+    }
+  } else {
+    // New draft
+    const nextNum = Math.floor(10 + Math.random() * 90);
+    AppState.activeLoadingPlanDraft = {
+      planId: `LP-2026-0${nextNum}`,
+      isNew: true,
+      consignee: "",
+      consigneeContact: "",
+      transporter: "",
+      invoiceNo: "",
+      date: new Date().toISOString().split('T')[0],
+      palletSticker: "",
+      boxBrand: "",
+      preparedBy: "",
+      originFacility: "",
+      notes: "",
+      containers: []
+    };
   }
 
-  // Generate Invoice & Shipping Bill
-  const nextNum = Math.floor(100 + Math.random() * 900);
-  const invoiceNo = `EXP-INV-2026-${nextNum}`;
-  const shippingBill = `SB-908${nextNum}`;
-
-  plan.status = "Exported & Dispatched";
-  plan.isExported = true;
-  plan.exportInvoiceNo = invoiceNo;
-  plan.shippingBillNo = shippingBill;
-
-  if (!plan.milestones) plan.milestones = [];
-  const nowStr = new Date().toISOString().replace('T', ' ').substring(0, 16);
-  plan.milestones.unshift({
-    time: nowStr,
-    event: `Exported to Indian Customs ICEGATE. Generated ${invoiceNo} & ${shippingBill}`,
-    location: "Customs EDI Gateway"
-  });
-
-  // Push into AppState.exportDocs
-  if (!AppState.exportDocs) AppState.exportDocs = [];
-  AppState.exportDocs.unshift({
-    invoiceNo: invoiceNo,
-    loadingPlanId: plan.planId,
-    date: new Date().toISOString().split('T')[0],
-    orderId: (plan.orderIds || []).join(', ') || "ORD-CONSIGNMENT",
-    consignee: plan.consignee || plan.destination,
-    destination: plan.destination,
-    incoterms: "CIF " + plan.destination.split(',')[0],
-    hsn: "57011000",
-    shippingBill: `${shippingBill} / ${new Date().toLocaleDateString('en-GB')}`,
-    valueUSD: plan.freightUSD * 10 || 2450.00,
-    valueINR: Math.round((plan.freightUSD * 10 || 2450.00) * 83.3),
-    status: "Customs Passed",
-    lutStatus: "LUT Compliant"
-  });
-
-  showToast(`🎉 Plan ${planId} exported! Created ${invoiceNo} in Export Document Suite. Stored in Loading Plans.`, "success");
+  AppState.activeDetail = { type: "loading_plan_editor", planId: planId || null };
   renderCurrentView();
 }
 
-function openCreateLoadingPlanModal() {
+function renderLoadingPlanEditorPage(planId) {
+  const draft = AppState.activeLoadingPlanDraft || {
+    planId: "LP-2026-099",
+    consignee: "",
+    consigneeContact: "",
+    transporter: "",
+    invoiceNo: "",
+    date: new Date().toISOString().split('T')[0],
+    palletSticker: "",
+    boxBrand: "",
+    preparedBy: "",
+    originFacility: "",
+    notes: "",
+    containers: []
+  };
+
+  const containers = draft.containers || [];
+  
+  // Calculate Global Grand Totals
+  let grandUnits = 0;
+  let grandNetKg = 0;
+  let grandGrossKg = 0;
+
+  containers.forEach(c => {
+    (c.items || []).forEach(it => {
+      grandUnits += (it.qty || 0);
+      grandNetKg += (it.netWeightKg || 0);
+      grandGrossKg += (it.grossWeightKg || 0);
+    });
+  });
+
+  return `
+    <div class="full-detail-page">
+      <!-- Enterprise Action & Breadcrumbs Bar -->
+      <div class="detail-action-bar">
+        <div class="detail-breadcrumbs" style="display: flex; align-items: center; gap: 8px;">
+          <button class="btn btn-sm btn-secondary" onclick="backToListView('mod5-ship')" style="font-weight: 600;">
+            ← Back to Loading Plan
+          </button>
+          <span style="color: var(--text-dim);">/</span>
+          <span style="color: var(--text-muted); font-size: 13px;">Consignment Loading & Stuffing</span>
+          <span style="color: var(--text-dim);">/</span>
+          <strong style="color: var(--text-main); font-family: var(--font-mono); font-size: 13px;">${draft.planId}</strong>
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button class="btn btn-sm btn-secondary" onclick="openWeightCalculatorDialog()">🧮 Weight Calculator</button>
+          <button class="btn btn-sm btn-secondary" onclick="showToast('Exported Container Structure to CSV', 'info')">📤 Export CSV</button>
+          <button class="btn btn-sm btn-primary" onclick="saveLoadingPlanDraft()" style="font-weight: 700;">
+            💾 Save Loading Plan
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Form Header Card -->
+      <div class="card" style="padding: 24px; border: 1px solid var(--border-main); background: var(--bg-card); margin-bottom: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h2 style="font-size: 20px; font-weight: 800; margin: 0; color: var(--text-main);">
+              🚚 Loading Plan & Container Staging
+            </h2>
+            <p style="font-size: 12px; color: var(--text-muted); margin: 4px 0 0 0;">
+              Container stuffing, product quantity allocation & certified weight distribution
+            </p>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <span class="badge badge-primary" style="font-family: var(--font-mono); font-size: 12px;">${draft.planId}</span>
+            <span class="badge badge-warning">Draft Mode</span>
+          </div>
+        </div>
+
+        <!-- Row 1: 5 Columns -->
+        <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-bottom: 14px; align-items: start;">
+          <div class="form-group" id="group-lpConsignee" style="margin: 0;">
+            <label style="font-size: 11px; font-weight: 700; display: flex; justify-content: space-between; margin-bottom: 4px;">
+              <span>Consignee Name: <span style="color: var(--danger);">*</span></span>
+              <a href="javascript:void(0)" onclick="quickAddConsignee()" style="color: var(--brand-cyan); font-weight: 700;">+ Add</a>
+            </label>
+            <select class="form-control" id="draftConsignee" onchange="updateDraftField('consignee', this.value)" style="width: 100%;">
+              <option value="" disabled ${!draft.consignee ? 'selected' : ''}>-- Select Consignee --</option>
+              <option value="Dallas Design Center, TX, USA" ${draft.consignee && draft.consignee.includes('Dallas') ? 'selected' : ''}>Dallas Design Center (USA)</option>
+              <option value="Castlegate West Coast Hub, Fontana, CA" ${draft.consignee && draft.consignee.includes('Castlegate') ? 'selected' : ''}>Castlegate West Coast Hub (USA)</option>
+              <option value="Nordic Home Interior ApS, Copenhagen" ${draft.consignee && draft.consignee.includes('Nordic') ? 'selected' : ''}>Nordic Home Interior ApS (Denmark)</option>
+              <option value="Odette USA 3PL Fulfillment Partner, NJ" ${draft.consignee && draft.consignee.includes('Odette') ? 'selected' : ''}>Odette USA 3PL Fulfillment (NJ)</option>
+              <option value="Beverly Hills Rug Gallery, CA" ${draft.consignee && draft.consignee.includes('Beverly') ? 'selected' : ''}>Beverly Hills Rug Gallery (USA)</option>
+            </select>
+          </div>
+          <div class="form-group" id="group-lpTransporter" style="margin: 0;">
+            <label style="font-size: 11px; font-weight: 700; display: flex; justify-content: space-between; margin-bottom: 4px;">
+              <span>Transporter: <span style="color: var(--danger);">*</span></span>
+              <a href="javascript:void(0)" onclick="quickAddTransporter()" style="color: var(--brand-cyan); font-weight: 700;">+ Add</a>
+            </label>
+            <select class="form-control" id="draftTransporter" onchange="updateDraftField('transporter', this.value)" style="width: 100%;">
+              <option value="" disabled ${!draft.transporter ? 'selected' : ''}>-- Select Transporter --</option>
+              <option value="MSC Mediterranean Shipping" ${draft.transporter && draft.transporter.includes('MSC') ? 'selected' : ''}>MSC Mediterranean Shipping</option>
+              <option value="Maersk Line Ocean" ${draft.transporter && draft.transporter.includes('Maersk') ? 'selected' : ''}>Maersk Line Ocean Direct</option>
+              <option value="FedEx International Priority" ${draft.transporter && draft.transporter.includes('International') ? 'selected' : ''}>FedEx International Priority</option>
+              <option value="FedEx Freight LTL" ${draft.transporter && draft.transporter.includes('Freight') ? 'selected' : ''}>FedEx Freight LTL</option>
+              <option value="DHL Express Worldwide" ${draft.transporter && draft.transporter.includes('DHL') ? 'selected' : ''}>DHL Express Worldwide</option>
+            </select>
+          </div>
+          <div class="form-group" id="group-lpInvoice" style="margin: 0;">
+            <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Invoice No.: <span style="color: var(--danger);">*</span></label>
+            <input type="text" class="form-control" id="draftInvoiceNo" value="${draft.invoiceNo || ''}" placeholder="e.g. EXP-INV-2026-140" oninput="updateDraftField('invoiceNo', this.value)" style="width: 100%;">
+          </div>
+          <div class="form-group" id="group-lpDate" style="margin: 0;">
+            <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Date: <span style="color: var(--danger);">*</span></label>
+            <input type="date" class="form-control" id="draftDate" value="${draft.date || ''}" oninput="updateDraftField('date', this.value)" style="width: 100%;">
+          </div>
+          <div class="form-group" id="group-lpFacility" style="margin: 0;">
+            <label style="font-size: 11px; font-weight: 700; display: flex; justify-content: space-between; margin-bottom: 4px;">
+              <span>Origin Facility / MFG:</span>
+              <a href="javascript:void(0)" onclick="quickAddFacility()" style="color: var(--brand-cyan); font-weight: 700;">+ Add</a>
+            </label>
+            <select class="form-control" id="draftFacility" onchange="updateDraftField('originFacility', this.value)" style="width: 100%;">
+              <option value="" disabled ${!draft.originFacility ? 'selected' : ''}>-- Select Facility / MFG --</option>
+              <option value="Bhadohi Central Weaving Unit #1" ${draft.originFacility && draft.originFacility.includes('Bhadohi') ? 'selected' : ''}>Bhadohi Central Unit #1</option>
+              <option value="Mirzapur Master Loom Cluster" ${draft.originFacility && draft.originFacility.includes('Mirzapur') ? 'selected' : ''}>Mirzapur Master Loom Cluster</option>
+              <option value="Panipat Flatweave Facility" ${draft.originFacility && draft.originFacility.includes('Panipat') ? 'selected' : ''}>Panipat Flatweave Facility</option>
+              <option value="Jaipur Wool Artisans" ${draft.originFacility && draft.originFacility.includes('Jaipur') ? 'selected' : ''}>Jaipur Wool Artisans</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Row 2: 4 Columns (Notes spans comfortable space) -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 2fr; gap: 12px; align-items: start;">
+          <div class="form-group" style="margin: 0;">
+            <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Packaging Sticker Ref:</label>
+            <input type="text" class="form-control" id="draftPalletSticker" value="${draft.palletSticker || ''}" placeholder="e.g. ODT-PLT-STK-01" oninput="updateDraftField('palletSticker', this.value)" style="width: 100%;">
+          </div>
+          <div class="form-group" style="margin: 0;">
+            <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Box / Packaging Brand:</label>
+            <input type="text" class="form-control" id="draftBoxBrand" value="${draft.boxBrand || ''}" placeholder="e.g. ODETTE PREMIUM" oninput="updateDraftField('boxBrand', this.value)" style="width: 100%;">
+          </div>
+          <div class="form-group" style="margin: 0;">
+            <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Prepared By:</label>
+            <input type="text" class="form-control" id="draftPreparedBy" value="${draft.preparedBy || ''}" placeholder="Staff / Lead Name" oninput="updateDraftField('preparedBy', this.value)" style="width: 100%;">
+          </div>
+          <div class="form-group" style="margin: 0;">
+            <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Loading Plan Notes:</label>
+            <input type="text" class="form-control" id="draftNotes" value="${draft.notes || ''}" placeholder="Loading & stuffing remarks" oninput="updateDraftField('notes', this.value)" style="width: 100%;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Containers Section Bar -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <h3 style="margin: 0; font-size: 16px; font-weight: 800; color: var(--text-main);">
+            📦 Container Stuffing & Product Allocations (${containers.length} Container${containers.length > 1 ? 's' : ''})
+          </h3>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <button type="button" class="btn btn-sm btn-primary" onclick="promptContainerCountDialog()">
+            + Load Container
+          </button>
+        </div>
+      </div>
+
+      <!-- Container Cards / Blocks -->
+      <div id="containersListContainer">
+        ${containers.length === 0 ? `
+          <div class="card" style="padding: 40px; text-align: center; background: var(--bg-card); border: 2px dashed var(--border-main); border-radius: var(--radius-lg); margin-bottom: 20px;">
+            <div style="font-size: 36px; margin-bottom: 12px;">📦</div>
+            <strong style="font-size: 16px; color: var(--text-main);">No Containers Added Yet</strong>
+            <p style="font-size: 13px; color: var(--text-muted); max-width: 480px; margin: 6px auto 16px auto;">
+              Click below to load containers into this shipment plan and attach rug products with certified weight details.
+            </p>
+            <button class="btn btn-primary" onclick="promptContainerCountDialog()">+ Load Container Now</button>
+          </div>
+        ` : containers.map((c, cIdx) => {
+          let cUnits = 0;
+          let cNet = 0;
+          let cGross = 0;
+
+          (c.items || []).forEach(it => {
+            cUnits += (it.qty || 0);
+            cNet += (it.netWeightKg || 0);
+            cGross += (it.grossWeightKg || 0);
+          });
+
+          const maxPayload = c.maxPayloadKg || 28000;
+          const payloadPercent = Math.min(100, Math.round((cGross / maxPayload) * 100));
+
+          return `
+            <div class="container-card-block" id="container-block-${c.id}">
+              <!-- Container Card Header -->
+              <div class="container-card-header" style="padding: 16px 20px; background: var(--bg-elevated); border-bottom: 1px solid var(--border-main);">
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <span class="badge badge-primary" style="font-size: 13px; font-weight: 800; padding: 4px 10px; font-family: var(--font-mono);">
+                      ${c.id}
+                    </span>
+                    <strong style="font-size: 14px; color: var(--text-main);">Container & Transport Details</strong>
+                  </div>
+
+                  <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+                    <!-- Container Payload Meter -->
+                    <div class="payload-meter-container" style="min-width: 220px;">
+                      <div style="display: flex; justify-content: space-between; font-size: 11px;">
+                        <span style="color: var(--text-muted);">Payload: <strong>${cGross.toLocaleString()} / ${maxPayload.toLocaleString()} kg</strong></span>
+                        <strong style="color: ${payloadPercent > 90 ? 'var(--warning)' : 'var(--brand-cyan)'}; font-family: var(--font-mono);">${payloadPercent}%</strong>
+                      </div>
+                      <div class="payload-meter-track">
+                        <div class="payload-meter-fill ${payloadPercent > 90 ? 'warning' : ''}" style="width: ${payloadPercent}%;"></div>
+                      </div>
+                    </div>
+
+                    <div style="display: flex; gap: 6px;">
+                      <button type="button" class="btn btn-sm btn-primary" onclick="openLoadingPlanProductModal('${c.id}')" style="font-size: 12px; font-weight: 700; padding: 5px 12px;">
+                        + Add Product
+                      </button>
+                      <button type="button" class="btn btn-sm btn-danger" onclick="removeContainerFromDraft('${c.id}')" title="Delete Container" style="padding: 5px 10px;">
+                        🗑️
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 5 Manual Input Fields: Container No, Line Seal No, LR No, RFID No, Truck No -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; width: 100%; background: var(--bg-card); padding: 12px 14px; border-radius: var(--radius-md); border: 1px solid var(--border-main);">
+                  <div class="form-group" style="margin: 0;">
+                    <label style="font-size: 11px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">Container No.: <span style="color: var(--danger);">*</span></label>
+                    <input type="text" class="form-control" value="${c.containerNo || ''}" placeholder="e.g. MSCU-890123-4" oninput="updateContainerSeal('${c.id}', 'containerNo', this.value)" style="font-size: 12px; padding: 6px 8px; font-weight: 700; font-family: var(--font-mono);">
+                  </div>
+                  <div class="form-group" style="margin: 0;">
+                    <label style="font-size: 11px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">Line Seal No.:</label>
+                    <input type="text" class="form-control" value="${c.lineSealNo || ''}" placeholder="e.g. SEAL-8821" oninput="updateContainerSeal('${c.id}', 'lineSealNo', this.value)" style="font-size: 12px; padding: 6px 8px; font-family: var(--font-mono);">
+                  </div>
+                  <div class="form-group" style="margin: 0;">
+                    <label style="font-size: 11px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">LR No.:</label>
+                    <input type="text" class="form-control" value="${c.lrNo || ''}" placeholder="e.g. LR-4402" oninput="updateContainerSeal('${c.id}', 'lrNo', this.value)" style="font-size: 12px; padding: 6px 8px; font-family: var(--font-mono);">
+                  </div>
+                  <div class="form-group" style="margin: 0;">
+                    <label style="font-size: 11px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">RFID No.:</label>
+                    <input type="text" class="form-control" value="${c.rfidNo || ''}" placeholder="e.g. RF-11" oninput="updateContainerSeal('${c.id}', 'rfidNo', this.value)" style="font-size: 12px; padding: 6px 8px; font-family: var(--font-mono);">
+                  </div>
+                  <div class="form-group" style="margin: 0;">
+                    <label style="font-size: 11px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">Truck No.:</label>
+                    <input type="text" class="form-control" value="${c.truckNo || c.trackNo || ''}" placeholder="e.g. UP-65-BT-9901" oninput="updateContainerSeal('${c.id}', 'truckNo', this.value)" style="font-size: 12px; padding: 6px 8px; font-family: var(--font-mono);">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product Name, Weight Details & Action Table -->
+              <div class="table-responsive">
+                <table class="data-table" style="margin: 0;">
+                  <thead>
+                    <tr style="background: var(--bg-card);">
+                      <th style="width: 45px; text-align: center;">#</th>
+                      <th>Product Name</th>
+                      <th style="width: 170px;">Quantity (Units / Rolls)</th>
+                      <th>Weight Details</th>
+                      <th style="width: 90px; text-align: center;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${(c.items || []).length === 0 ? `
+                      <tr>
+                        <td colspan="5" style="text-align: center; padding: 24px; color: var(--text-muted);">
+                          No products assigned to this container. Click <strong>+ Add Product</strong> to select from the SKU catalog.
+                        </td>
+                      </tr>
+                    ` : (c.items || []).map((it, itIdx) => `
+                      <tr>
+                        <td style="text-align: center; font-family: var(--font-mono); color: var(--text-dim); font-size: 12px;">
+                          ${itIdx + 1}
+                        </td>
+                        <td>
+                          <div style="display: flex; flex-direction: column; gap: 2px;">
+                            <strong style="color: var(--brand-cyan); font-family: var(--font-mono); font-size: 12px;">${it.sku}</strong>
+                            <strong style="color: var(--text-main); font-size: 13px;">${it.title || 'Handcrafted Artisan Rug'}</strong>
+                            <div style="font-size: 11px; color: var(--text-muted);">${it.size || '8x10 ft'}</div>
+                          </div>
+                        </td>
+                        <td>
+                          <div style="display: flex; align-items: center; gap: 8px;">
+                            <input type="number" min="1" max="9999" class="form-control" value="${it.qty || 1}" style="width: 85px; font-size: 13px; padding: 5px 8px; font-weight: 700; text-align: center; font-family: var(--font-mono);" onchange="updateProductQtyInContainer('${c.id}', ${itIdx}, this.value)" title="Edit product quantity in container">
+                            <span style="font-size: 12px; font-weight: 600; color: var(--text-main);">Units</span>
+                          </div>
+                          <div style="font-size: 11px; color: var(--text-dim); margin-top: 3px;">
+                            ${it.notes || 'Staged'}
+                          </div>
+                        </td>
+                        <td>
+                          <div class="weight-detail-badge-group">
+                            <span class="weight-detail-chip">Unit: <strong>${it.unitWeightKg || 28.5} kg</strong></span>
+                            <span class="weight-detail-chip net">Net: <strong>${(it.netWeightKg || 0).toLocaleString()} kg</strong></span>
+                            <span class="weight-detail-chip tare">Tare: <strong>${(it.tareWeightKg || 0).toLocaleString()} kg</strong></span>
+                            <span class="weight-detail-chip gross">Gross: <strong>${(it.grossWeightKg || 0).toLocaleString()} kg</strong></span>
+                          </div>
+                        </td>
+                        <td style="text-align: center;">
+                          <button type="button" class="btn btn-sm btn-danger" onclick="removeProductFromContainer('${c.id}', ${itIdx})" title="Remove item line" style="padding: 4px 8px; font-size: 11px;">
+                            🗑️
+                          </button>
+                        </td>
+                      </tr>
+                    `).join('')}
+                  </tbody>
+                  <tfoot>
+                    <tr style="background: var(--bg-elevated); font-weight: 700; border-top: 1px solid var(--border-main);">
+                      <td colspan="2" style="font-size: 12px; color: var(--text-main);">
+                        Container ${c.containerNo || c.id} Subtotal
+                      </td>
+                      <td style="font-size: 12px;">
+                        <span class="badge badge-primary" style="font-size: 12px;">${cUnits} Units / Rolls</span>
+                      </td>
+                      <td colspan="2">
+                        <div style="display: flex; gap: 14px; font-size: 12px;">
+                          <span>Net Weight: <strong style="color: var(--brand-cyan); font-family: var(--font-mono);">${cNet.toLocaleString()} kg</strong></span>
+                          <span>Gross Weight: <strong style="color: var(--success); font-family: var(--font-mono);">${cGross.toLocaleString()} kg</strong></span>
+                        </div>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+
+      <!-- Grand Totals Summary Card -->
+      <div class="card" style="padding: 20px 24px; background: var(--bg-elevated); border: 1px solid var(--border-main); border-radius: var(--radius-lg); margin-bottom: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <span style="font-size: 11px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; color: var(--text-dim);">Shipment Totals Summary</span>
+            <div style="display: flex; gap: 20px; align-items: center; margin-top: 6px; flex-wrap: wrap;">
+              <div>
+                <span style="font-size: 12px; color: var(--text-muted);">Containers:</span>
+                <strong style="font-size: 15px; color: var(--text-main); margin-left: 4px;">${containers.length}</strong>
+              </div>
+              <div>
+                <span style="font-size: 12px; color: var(--text-muted);">Total Quantity:</span>
+                <strong style="font-size: 15px; color: var(--brand-purple); margin-left: 4px;">${grandUnits} Units / Rolls</strong>
+              </div>
+              <div>
+                <span style="font-size: 12px; color: var(--text-muted);">Certified Net Weight:</span>
+                <strong style="font-size: 15px; color: var(--brand-cyan); font-family: var(--font-mono); margin-left: 4px;">${grandNetKg.toLocaleString()} kg</strong>
+              </div>
+              <div>
+                <span style="font-size: 12px; color: var(--text-muted);">Total Gross Mass:</span>
+                <strong style="font-size: 16px; color: var(--success); font-family: var(--font-mono); margin-left: 4px;">${grandGrossKg.toLocaleString()} kg</strong>
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <button class="btn btn-secondary" onclick="backToListView('mod5-ship')">Cancel</button>
+            <button class="btn btn-primary" onclick="saveLoadingPlanDraft()" style="font-weight: 800; padding: 10px 24px; font-size: 14px;">
+              💾 Save Loading Plan
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function updateDraftField(field, value) {
+  if (!AppState.activeLoadingPlanDraft) return;
+  AppState.activeLoadingPlanDraft[field] = value;
+}
+
+function updateContainerSeal(containerId, sealField, value) {
+  if (!AppState.activeLoadingPlanDraft || !AppState.activeLoadingPlanDraft.containers) return;
+  const c = AppState.activeLoadingPlanDraft.containers.find(item => item.id === containerId);
+  if (c) {
+    c[sealField] = value;
+  }
+}
+
+function promptContainerCountDialog() {
   const modal = document.getElementById("crudModal");
   const title = document.getElementById("crudModalTitle");
   const badge = document.getElementById("crudBadge");
   const body = document.getElementById("crudModalBody");
   const footer = document.getElementById("crudModalFooter");
 
-  badge.textContent = "Loading & Staging Desk";
-  title.textContent = "Create New Consignment Loading Plan (Module 5)";
+  badge.textContent = "New Container";
+  title.textContent = "📦 Add Shipping Container / Trailer (Manual Entry)";
+
   body.innerHTML = `
-    <div class="form-grid-2">
-      <div class="form-group">
-        <label>Consignment Destination:</label>
-        <input type="text" class="form-control" id="lpDest" value="USA 3PL Center, Edison, NJ, USA">
-      </div>
-      <div class="form-group">
-        <label>Consignee / Client Name:</label>
-        <input type="text" class="form-control" id="lpConsignee" value="USA 3PL Fulfillment Partner">
-      </div>
-    </div>
-    <div class="form-grid-2">
-      <div class="form-group">
-        <label>Transport Mode & Carrier:</label>
-        <select class="form-control" id="lpCarrier">
-          <option value="FedEx International Priority">FedEx International Priority (Air)</option>
-          <option value="FedEx Freight LTL">FedEx Freight LTL (Road)</option>
-          <option value="MSC Mediterranean Shipping">MSC Mediterranean Shipping (Ocean FCL)</option>
-          <option value="DHL Express Worldwide">DHL Express Worldwide DDP</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Container / Flight / Vehicle No:</label>
-        <input type="text" class="form-control" id="lpVehicle" value="Trailer #TL-5520 / Air Cargo Unit">
-      </div>
-    </div>
+    <div style="padding: 6px 0;">
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+        Enter the container and vehicle numbers manually below:
+      </p>
 
-    <!-- Interactive SKU Selector & Quantities to Send -->
-    <div style="margin: 14px 0; padding: 14px; background: var(--bg-elevated); border-radius: var(--radius-md); border: 1px solid var(--border-main);">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
-        <div>
-          <strong style="font-size: 13px; color: var(--text-main);">🧶 SKU Line Items & Quantities to Send:</strong>
-          <div style="font-size: 11px; color: var(--text-muted);">Choose which rug SKUs and how many rolls/pieces are being stuffed into this shipment.</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+        <div class="form-group">
+          <label style="font-size: 12px; font-weight: 700;">Container No.: <span style="color: var(--danger);">*</span></label>
+          <input type="text" id="manualContainerNo" class="form-control" placeholder="e.g. MSCU-890123-4" style="font-weight: 700; font-family: var(--font-mono); margin-top: 4px;">
         </div>
-        <button type="button" class="btn btn-sm btn-secondary" onclick="addLpSkuRow()">+ Add Another SKU Line</button>
-      </div>
-      
-      <div id="lpSkuRowsContainer" style="display: flex; flex-direction: column; gap: 8px;">
-        <!-- Rows populated dynamically -->
-      </div>
-
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--border-main); font-size: 12px; flex-wrap: wrap; gap: 8px;">
-        <span style="color: var(--text-muted); font-weight: 600;">Consignment Manifest Totals:</span>
-        <div>
-          <span style="margin-right: 14px;">Total SKUs: <strong id="lpTotalSkusDisplay" style="color: var(--brand-cyan); font-family: var(--font-mono);">1</strong></span>
-          <span style="margin-right: 14px;">Total Rolls: <strong id="lpTotalRollsDisplay" style="color: var(--brand-purple); font-family: var(--font-mono);">5 Rolls</strong></span>
-          <span>Digital Scale Mass: <strong id="lpTotalWeightDisplay" style="color: var(--success); font-family: var(--font-mono);">142.5 Kg</strong></span>
+        <div class="form-group">
+          <label style="font-size: 12px; font-weight: 700;">Line Seal No.:</label>
+          <input type="text" id="manualLineSealNo" class="form-control" placeholder="e.g. SEAL-8821" style="font-family: var(--font-mono); margin-top: 4px;">
         </div>
-      </div>
-    </div>
-
-    <div class="form-grid-2">
-      <div class="form-group">
-        <label>Consignment Packaging Dimensions:</label>
-        <input type="text" class="form-control" id="lpDims" value="5 Rolls (Standard Export Wraps)">
-      </div>
-      <div class="form-group">
-        <label>Estimated Freight Tariff USD ($):</label>
-        <input type="number" class="form-control" id="lpCost" value="215.00">
+        <div class="form-group">
+          <label style="font-size: 12px; font-weight: 700;">LR No.:</label>
+          <input type="text" id="manualLrNo" class="form-control" placeholder="e.g. LR-4402" style="font-family: var(--font-mono); margin-top: 4px;">
+        </div>
+        <div class="form-group">
+          <label style="font-size: 12px; font-weight: 700;">RFID No.:</label>
+          <input type="text" id="manualRfidNo" class="form-control" placeholder="e.g. RF-11" style="font-family: var(--font-mono); margin-top: 4px;">
+        </div>
+        <div class="form-group" style="grid-column: span 2;">
+          <label style="font-size: 12px; font-weight: 700;">Truck / Vehicle No.:</label>
+          <input type="text" id="manualTruckNo" class="form-control" placeholder="e.g. UP-65-BT-9901" style="font-family: var(--font-mono); margin-top: 4px;">
+        </div>
       </div>
     </div>
   `;
+
   footer.innerHTML = `
     <button class="btn btn-secondary" onclick="closeModal('crudModal')">Cancel</button>
-    <button class="btn btn-primary" onclick="saveNewLoadingPlan()">Create Loading Plan & Generate Labels</button>
+    <button class="btn btn-primary" onclick="confirmAddContainerManual()" style="font-weight: 700;">+ Add Container</button>
   `;
 
   modal.style.display = "flex";
-
-  // Initialize with one default SKU row
-  const container = document.getElementById("lpSkuRowsContainer");
-  if (container) {
-    container.innerHTML = "";
-    addLpSkuRow("SKU-RUG-HT-0810-IVR", 5);
-  }
 }
 
-function addLpSkuRow(selectedSku = null, defaultQty = 1) {
-  const container = document.getElementById("lpSkuRowsContainer");
-  if (!container) return;
+function confirmAddContainerManual() {
+  const cNo = document.getElementById("manualContainerNo") ? document.getElementById("manualContainerNo").value.trim() : "";
+  const sealNo = document.getElementById("manualLineSealNo") ? document.getElementById("manualLineSealNo").value.trim() : "";
+  const lrNo = document.getElementById("manualLrNo") ? document.getElementById("manualLrNo").value.trim() : "";
+  const rfidNo = document.getElementById("manualRfidNo") ? document.getElementById("manualRfidNo").value.trim() : "";
+  const truckNo = document.getElementById("manualTruckNo") ? document.getElementById("manualTruckNo").value.trim() : "";
 
-  const skuList = (AppState.skus && AppState.skus.length) ? AppState.skus : (typeof INITIAL_SKUS !== 'undefined' ? INITIAL_SKUS : [
-    { sku: "SKU-RUG-HT-0810-IVR", title: "Jungle Tiger Hand-Tufted Wool Rug (8x10 ft)", weightKg: 28.5, size: "8x10 ft" },
-    { sku: "SKU-RUG-HK-0912-NVY", title: "Unique Jaguar Hand-Tufted Wool Rug (9x12 ft)", weightKg: 36.0, size: "9x12 ft" },
-    { sku: "SKU-RUG-RUN-0212-BGE", title: "Oushak Transitional Wool Runner (2.5x12 ft)", weightKg: 14.2, size: "2.5x12 ft" },
-    { sku: "SKU-RUG-FLW-0508-JUT", title: "Natural Jute Flatweave Eco Rug (5x8 ft)", weightKg: 18.0, size: "5x8 ft" }
-  ]);
+  if (!AppState.activeLoadingPlanDraft) return;
+  if (!AppState.activeLoadingPlanDraft.containers) AppState.activeLoadingPlanDraft.containers = [];
 
-  const rowDiv = document.createElement("div");
-  rowDiv.className = "lp-sku-row";
-  rowDiv.style = "display: grid; grid-template-columns: 2.5fr 1fr 1fr 34px; gap: 8px; align-items: center;";
-  
-  rowDiv.innerHTML = `
-    <div>
-      <select class="form-control lp-sku-select" onchange="calculateLpTotals()" style="font-size: 12px; padding: 6px 10px;">
-        ${skuList.map(s => `
-          <option value="${s.sku}" data-weight="${s.weightKg || 28.5}" data-title="${s.title}" data-size="${s.size || 'Standard'}" ${(selectedSku === s.sku || (!selectedSku && s.sku === skuList[0].sku)) ? 'selected' : ''}>
-            ${s.sku} — ${s.title.split('(')[0]} (${s.size || 'Std'}) • ${s.weightKg || 28.5}kg
-          </option>
-        `).join('')}
-      </select>
-    </div>
-    <div>
-      <div style="display: flex; align-items: center; gap: 4px;">
-        <input type="number" class="form-control lp-sku-qty" value="${defaultQty}" min="1" oninput="calculateLpTotals()" placeholder="Qty" style="font-size: 12px; padding: 6px 8px;">
-        <span style="font-size: 11px; color: var(--text-dim); font-weight: 600;">Rolls</span>
-      </div>
-    </div>
-    <div style="text-align: right;">
-      <span class="lp-row-weight-display" style="font-size: 11px; font-weight: 700; color: var(--success); font-family: var(--font-mono);">-- Kg</span>
-    </div>
-    <div>
-      <button type="button" class="btn btn-sm btn-danger" onclick="removeLpSkuRow(this)" style="padding: 4px 8px; font-size: 11px;" title="Remove SKU Line">✕</button>
-    </div>
-  `;
+  const idx = AppState.activeLoadingPlanDraft.containers.length + 1;
+  const newContainer = {
+    id: `CNT-${idx}`,
+    containerNo: cNo || `CNT-${idx}`,
+    lineSealNo: sealNo,
+    lrNo: lrNo,
+    rfidNo: rfidNo,
+    truckNo: truckNo,
+    trackNo: truckNo,
+    maxPayloadKg: 28000,
+    items: []
+  };
 
-  container.appendChild(rowDiv);
-  calculateLpTotals();
-}
-
-function removeLpSkuRow(btn) {
-  const container = document.getElementById("lpSkuRowsContainer");
-  const rows = container ? container.querySelectorAll(".lp-sku-row") : [];
-  if (rows.length <= 1) {
-    showToast("At least 1 SKU line is required in the loading plan.", "warning");
-    return;
-  }
-  const row = btn.closest(".lp-sku-row");
-  if (row) row.remove();
-  calculateLpTotals();
-}
-
-function calculateLpTotals() {
-  const rows = document.querySelectorAll(".lp-sku-row");
-  let totalRolls = 0;
-  let totalWeight = 0;
-
-  rows.forEach(r => {
-    const sel = r.querySelector(".lp-sku-select");
-    const qtyInput = r.querySelector(".lp-sku-qty");
-    const weightDisplay = r.querySelector(".lp-row-weight-display");
-    if (!sel || !qtyInput) return;
-
-    const opt = sel.options[sel.selectedIndex];
-    const unitWeight = parseFloat(opt ? opt.getAttribute("data-weight") : 28.5) || 28.5;
-    const qty = Math.max(1, parseInt(qtyInput.value) || 1);
-
-    const lineWeight = parseFloat((unitWeight * qty).toFixed(1));
-    totalRolls += qty;
-    totalWeight += lineWeight;
-
-    if (weightDisplay) {
-      weightDisplay.textContent = `${lineWeight.toFixed(1)} Kg`;
-    }
-  });
-
-  const skusDisplay = document.getElementById("lpTotalSkusDisplay");
-  const rollsDisplay = document.getElementById("lpTotalRollsDisplay");
-  const weightDisplay = document.getElementById("lpTotalWeightDisplay");
-  const dimsInput = document.getElementById("lpDims");
-
-  if (skusDisplay) skusDisplay.textContent = rows.length;
-  if (rollsDisplay) rollsDisplay.textContent = `${totalRolls} Rolls`;
-  if (weightDisplay) weightDisplay.textContent = `${totalWeight.toFixed(1)} Kg`;
-  if (dimsInput && (!dimsInput.dataset || !dimsInput.dataset.manual)) {
-    dimsInput.value = `${totalRolls} Rolls (${rows.length} SKU Types)`;
-  }
-}
-
-function saveNewLoadingPlan() {
-  const dest = document.getElementById("lpDest").value.trim() || "International Client Hub";
-  const consignee = document.getElementById("lpConsignee").value.trim() || "Consignee Buyer";
-  const carrier = document.getElementById("lpCarrier").value;
-  const vehicle = document.getElementById("lpVehicle").value.trim() || "Container / Pallet";
-  const dimensions = document.getElementById("lpDims").value.trim() || "Standard Export Rolls";
-  const freightUSD = parseFloat(document.getElementById("lpCost").value) || 215.00;
-
-  // Extract all SKU line items from rows
-  const rows = document.querySelectorAll(".lp-sku-row");
-  let items = [];
-  let totalRolls = 0;
-  let totalWeightKg = 0;
-
-  rows.forEach(r => {
-    const sel = r.querySelector(".lp-sku-select");
-    const qtyInput = r.querySelector(".lp-sku-qty");
-    if (!sel || !qtyInput) return;
-
-    const skuCode = sel.value;
-    const qty = Math.max(1, parseInt(qtyInput.value) || 1);
-    const opt = sel.options[sel.selectedIndex];
-    const unitWeight = parseFloat(opt ? opt.getAttribute("data-weight") : 28.5) || 28.5;
-    const title = opt ? opt.getAttribute("data-title") : "Jungle Tiger Hand-Tufted Wool Rug";
-    const size = opt ? opt.getAttribute("data-size") : "8x10 ft";
-    const skuObj = (AppState.skus || []).find(s => s.sku === skuCode) || {};
-
-    const lineMass = parseFloat((unitWeight * qty).toFixed(1));
-    totalRolls += qty;
-    totalWeightKg += lineMass;
-
-    items.push({
-      sku: skuCode,
-      title: title,
-      size: size,
-      qty: qty,
-      unitWeightKg: unitWeight,
-      totalWeightKg: lineMass,
-      barcode: skuObj.barcode || `8904321${Math.floor(100000 + Math.random() * 900000)}`,
-      status: "Packed & Tagged"
-    });
-  });
-
-  if (items.length === 0) {
-    items = [{
-      sku: "SKU-RUG-HT-0810-IVR",
-      title: "Jungle Tiger Hand-Tufted Wool Rug",
-      size: "8x10 ft",
-      qty: 5,
-      unitWeightKg: 28.5,
-      totalWeightKg: 142.5,
-      barcode: "8904321908129",
-      status: "Packed & Tagged"
-    }];
-    totalRolls = 5;
-    totalWeightKg = 142.5;
-  }
-
-  const nextId = Math.floor(10 + Math.random() * 90);
-  const planId = `LP-2026-0${nextId}`;
-  const awb = `7894-3324-${Math.floor(100 + Math.random() * 900)}`;
-  const orderIds = items.map(it => `${it.sku} (${it.qty} Rolls)`);
-
-  if (!AppState.loadingPlans) AppState.loadingPlans = [];
-  AppState.loadingPlans.unshift({
-    planId,
-    carrier,
-    mode: carrier.includes("Ocean") ? "🚢 Ocean FCL Container" : carrier.includes("Road") || carrier.includes("Freight") ? "🚚 Road Express" : "✈️ Air Cargo Express",
-    awb,
-    vehicleContainer: vehicle,
-    originWh: "India Central WH (Bhadohi)",
-    destination: dest,
-    consignee,
-    items,
-    orderIds,
-    totalRolls,
-    actualWeightKg: parseFloat(totalWeightKg.toFixed(1)),
-    volumetricWeightKg: Math.round(totalWeightKg * 0.95),
-    dimensions,
-    freightUSD,
-    status: "Planning & Staging",
-    isExported: false,
-    exportInvoiceNo: null,
-    shippingBillNo: null,
-    date: new Date().toISOString().split('T')[0],
-    milestones: [
-      { time: new Date().toISOString().replace('T', ' ').substring(0, 16), event: `Loading Plan Created with ${items.length} SKUs (${totalRolls} Rolls). Ready for Staging & Thermal Labeling`, location: "Warehouse Staging Bay" }
-    ]
-  });
-
+  AppState.activeLoadingPlanDraft.containers.push(newContainer);
   closeModal("crudModal");
-  showToast(`Loading Plan ${planId} created with ${items.length} SKUs (${totalRolls} Rolls, ${totalWeightKg.toFixed(1)} Kg)!`, "success");
+  showToast(`Added Container ${newContainer.containerNo} to loading plan!`, "success");
   renderCurrentView();
 }
 
-function exportLoadingPlansCSV() {
-  let csv = "Plan ID,Mode,Vehicle/Container,Destination,Consignee,Carrier,AWB,Total Rolls,Actual Weight Kg,Freight USD,Status,Exported,Invoice No\n";
-  (AppState.loadingPlans || []).forEach(p => {
-    csv += `"${p.planId}","${p.mode}","${p.vehicleContainer}","${p.destination}","${p.consignee}","${p.carrier}","${p.awb}",${p.totalRolls},${p.actualWeightKg},${p.freightUSD},"${p.status}","${p.isExported ? 'YES' : 'NO'}","${p.exportInvoiceNo || 'N/A'}"\n`;
+function addContainersToActiveDraft(count = 1) {
+  if (!AppState.activeLoadingPlanDraft) return;
+  if (!AppState.activeLoadingPlanDraft.containers) AppState.activeLoadingPlanDraft.containers = [];
+
+  const existingCount = AppState.activeLoadingPlanDraft.containers.length;
+  for (let i = 1; i <= count; i++) {
+    const idx = existingCount + i;
+    AppState.activeLoadingPlanDraft.containers.push({
+      id: `CNT-${idx}`,
+      containerNo: "",
+      lineSealNo: "",
+      rfidNo: "",
+      lrNo: "",
+      truckNo: "",
+      trackNo: "",
+      maxPayloadKg: 28000,
+      items: []
+    });
+  }
+
+  showToast(`Added container row. Please enter Container No, Seals, LR & Truck No.`, "info");
+  renderCurrentView();
+}
+
+function removeContainerFromDraft(containerId) {
+  if (!AppState.activeLoadingPlanDraft || !AppState.activeLoadingPlanDraft.containers) return;
+  AppState.activeLoadingPlanDraft.containers = AppState.activeLoadingPlanDraft.containers.filter(c => c.id !== containerId);
+  showToast(`Removed container ${containerId}.`, "info");
+  renderCurrentView();
+}
+
+function openLoadingPlanProductModal(containerId) {
+  const modal = document.getElementById("crudModal");
+  const title = document.getElementById("crudModalTitle");
+  const badge = document.getElementById("crudBadge");
+  const body = document.getElementById("crudModalBody");
+  const footer = document.getElementById("crudModalFooter");
+
+  badge.textContent = `Target: ${containerId}`;
+  title.textContent = `Select Products to Load (${containerId})`;
+
+  const catalog = (AppState.skus && AppState.skus.length) ? AppState.skus : [
+    { sku: "SKU-RUG-HT-0810-IVR", title: "Jungle Tiger Hand-Tufted Wool Rug (8x10 ft / 244x305 cm)", weightKg: 28.5, size: "8x10 ft", category: "Hand-Tufted" },
+    { sku: "SKU-RUG-HK-0912-NVY", title: "Unique Jaguar Hand-Tufted Wool Rug (9x12 ft / 274x366 cm)", weightKg: 36.0, size: "9x12 ft", category: "Hand-Knotted" },
+    { sku: "SKU-RUG-RUN-0212-BGE", title: "Oushak Transitional Wool Runner (2.5x12 ft / 76x366 cm)", weightKg: 14.2, size: "2.5x12 ft", category: "Runners" },
+    { sku: "SKU-RUG-FLW-0508-JUT", title: "Natural Jute Flatweave Eco Rug (5x8 ft / 152x244 cm)", weightKg: 18.0, size: "5x8 ft", category: "Flatweave" },
+    { sku: "SKU-RUG-MTO-1014-CHR", title: "Heritage Moroccan Wool Rug (10x14 ft / 305x427 cm)", weightKg: 44.0, size: "10x14 ft", category: "Hand-Knotted" }
+  ];
+
+  body.innerHTML = `
+    <!-- Top Filter Bar -->
+    <div style="display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 10px; margin-bottom: 14px;">
+      <input type="text" id="modalProductSearch" class="form-control" placeholder="Search Rug SKU or title..." oninput="filterLoadingPlanModalProducts()">
+      <select id="modalProductCategory" class="form-control" onchange="filterLoadingPlanModalProducts()">
+        <option value="all">All Collections</option>
+        <option value="Hand-Tufted">Hand-Tufted</option>
+        <option value="Hand-Knotted">Hand-Knotted</option>
+        <option value="Runners">Runners</option>
+        <option value="Flatweave">Flatweave</option>
+      </select>
+      <select id="modalProductSize" class="form-control" onchange="filterLoadingPlanModalProducts()">
+        <option value="all">All Sizes</option>
+        <option value="8x10 ft">8x10 ft</option>
+        <option value="9x12 ft">9x12 ft</option>
+        <option value="5x8 ft">5x8 ft</option>
+        <option value="2.5x12 ft">2.5x12 ft</option>
+      </select>
+      <button class="btn btn-secondary" onclick="document.getElementById('modalProductSearch').value=''; document.getElementById('modalProductCategory').value='all'; document.getElementById('modalProductSize').value='all'; filterLoadingPlanModalProducts();">Clear</button>
+    </div>
+
+    <!-- Product Selection Table -->
+    <div class="table-responsive" style="max-height: 360px; overflow-y: auto; border: 1px solid var(--border-main); border-radius: var(--radius-md);">
+      <table class="data-table" id="modalProductsCatalogTable">
+        <thead>
+          <tr style="background: var(--bg-elevated);">
+            <th style="width: 40px; text-align: center;">Select</th>
+            <th>Product Name</th>
+            <th>Unit Wt</th>
+            <th>Available Stock</th>
+            <th>Quantity (Units)</th>
+            <th>Calculated Net Wt</th>
+            <th>Gross Wt</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${catalog.map((s, idx) => {
+            const stockQty = s.stock ? (s.stock.indiaAvailable || 45) : 50;
+            const defaultQty = 10;
+            const unitWt = s.weightKg || 28.5;
+            const netKg = Math.round(unitWt * defaultQty * 10) / 10;
+            const tareKg = Math.round(defaultQty * 1.2 * 10) / 10;
+            const grossKg = Math.round((netKg + tareKg) * 10) / 10;
+
+            return `
+              <tr class="modal-product-row" data-sku="${s.sku}" data-title="${s.title}" data-size="${s.size || '8x10 ft'}" data-unit-wt="${unitWt}" data-category="${s.category || 'Standard'}">
+                <td style="text-align: center;">
+                  <input type="checkbox" class="product-modal-chk" id="modalChk_${idx}" style="cursor: pointer; width: 16px; height: 16px;">
+                </td>
+                <td>
+                  <strong style="color: var(--brand-cyan); font-family: var(--font-mono); font-size: 12px;">${s.sku}</strong>
+                  <div style="font-size: 12px; font-weight: 600; color: var(--text-main);">${s.title}</div>
+                </td>
+                <td>
+                  <span style="font-size: 11px; font-family: var(--font-mono);">${unitWt} kg</span>
+                </td>
+                <td>
+                  <span class="badge badge-success" style="font-size: 11px;">${stockQty} Units</span>
+                </td>
+                <td>
+                  <input type="number" min="1" max="9999" value="${defaultQty}" class="form-control product-modal-qty" oninput="updateModalRowMath(this)" style="width: 75px; font-size: 12px; padding: 4px 6px; font-weight: 700; text-align: center;">
+                </td>
+                <td>
+                  <strong class="modal-row-net" style="color: var(--brand-cyan); font-family: var(--font-mono); font-size: 12px;">
+                    ${netKg.toLocaleString()} kg
+                  </strong>
+                </td>
+                <td>
+                  <strong class="modal-row-gross" style="color: var(--success); font-family: var(--font-mono); font-size: 12px;">
+                    ${grossKg.toLocaleString()} kg
+                  </strong>
+                </td>
+              </tr>
+            `;
+          }).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+
+  footer.innerHTML = `
+    <button class="btn btn-secondary" onclick="closeModal('crudModal')">Cancel</button>
+    <button class="btn btn-primary" onclick="saveSelectedProductsToContainer('${containerId}')" style="font-weight: 700;">
+      ✓ Save to container
+    </button>
+  `;
+
+  modal.style.display = "flex";
+}
+
+function updateModalRowMath(qtyInput) {
+  const row = qtyInput.closest("tr");
+  if (!row) return;
+  const unitWt = parseFloat(row.getAttribute("data-unit-wt")) || 28.5;
+  const qty = Math.max(1, parseInt(qtyInput.value) || 1);
+  const netKg = Math.round(unitWt * qty * 10) / 10;
+  const tareKg = Math.round(qty * 1.2 * 10) / 10;
+  const grossKg = Math.round((netKg + tareKg) * 10) / 10;
+
+  const netDisplay = row.querySelector(".modal-row-net");
+  const grossDisplay = row.querySelector(".modal-row-gross");
+
+  if (netDisplay) netDisplay.textContent = `${netKg.toLocaleString()} kg`;
+  if (grossDisplay) grossDisplay.textContent = `${grossKg.toLocaleString()} kg`;
+}
+
+function filterLoadingPlanModalProducts() {
+  const q = (document.getElementById("modalProductSearch").value || "").toLowerCase();
+  const cat = document.getElementById("modalProductCategory").value;
+  const size = document.getElementById("modalProductSize").value;
+
+  const rows = document.querySelectorAll(".modal-product-row");
+  rows.forEach(r => {
+    const sku = (r.getAttribute("data-sku") || "").toLowerCase();
+    const title = (r.getAttribute("data-title") || "").toLowerCase();
+    const rCat = r.getAttribute("data-category") || "";
+    const rSize = r.getAttribute("data-size") || "";
+
+    const matchesSearch = !q || sku.includes(q) || title.includes(q);
+    const matchesCat = cat === "all" || rCat.includes(cat);
+    const matchesSize = size === "all" || rSize.includes(size);
+
+    r.style.display = (matchesSearch && matchesCat && matchesSize) ? "" : "none";
   });
-  triggerDownload("RugOS_Loading_Plans_Registry.csv", csv, "text/csv");
+}
+
+function saveSelectedProductsToContainer(containerId) {
+  if (!AppState.activeLoadingPlanDraft || !AppState.activeLoadingPlanDraft.containers) return;
+  const container = AppState.activeLoadingPlanDraft.containers.find(c => c.id === containerId);
+  if (!container) return;
+  if (!container.items) container.items = [];
+
+  const rows = document.querySelectorAll(".modal-product-row");
+  let addedCount = 0;
+  let mergedCount = 0;
+
+  rows.forEach(r => {
+    const chk = r.querySelector(".product-modal-chk");
+    if (chk && chk.checked) {
+      const sku = r.getAttribute("data-sku");
+      const title = r.getAttribute("data-title");
+      const size = r.getAttribute("data-size");
+      const unitWt = parseFloat(r.getAttribute("data-unit-wt")) || 28.5;
+      const qtyInput = r.querySelector(".product-modal-qty");
+      const addedQty = Math.max(1, parseInt(qtyInput ? qtyInput.value : 1) || 1);
+
+      // Check if product already exists in this container (prevent duplicates, merge qty)
+      const existingItem = container.items.find(it => it.sku === sku);
+      if (existingItem) {
+        existingItem.qty = (existingItem.qty || 0) + addedQty;
+        existingItem.netWeightKg = Math.round((existingItem.unitWeightKg || unitWt) * existingItem.qty * 10) / 10;
+        existingItem.tareWeightKg = Math.round(existingItem.qty * 1.2 * 10) / 10;
+        existingItem.grossWeightKg = Math.round((existingItem.netWeightKg + existingItem.tareWeightKg) * 10) / 10;
+        existingItem.notes = `Staged (${existingItem.qty} Units)`;
+        mergedCount++;
+      } else {
+        const netKg = Math.round(unitWt * addedQty * 10) / 10;
+        const tareKg = Math.round(addedQty * 1.2 * 10) / 10;
+        const grossKg = Math.round((netKg + tareKg) * 10) / 10;
+
+        container.items.push({
+          sku,
+          title,
+          size,
+          qty: addedQty,
+          unitWeightKg: unitWt,
+          netWeightKg: netKg,
+          tareWeightKg: tareKg,
+          grossWeightKg: grossKg,
+          notes: `Staged (${addedQty} Units)`
+        });
+        addedCount++;
+      }
+    }
+  });
+
+  if (addedCount === 0 && mergedCount === 0) {
+    showToast("Please check at least one product to add.", "warning");
+    return;
+  }
+
+  closeModal("crudModal");
+  if (mergedCount > 0 && addedCount > 0) {
+    showToast(`Added ${addedCount} new product(s) & updated existing quantity for ${mergedCount} product(s) in container ${containerId}!`, "success");
+  } else if (mergedCount > 0) {
+    showToast(`Increased existing quantity for ${mergedCount} product(s) in container ${containerId}! (No duplicate created)`, "success");
+  } else {
+    showToast(`Added ${addedCount} product line${addedCount > 1 ? 's' : ''} to container ${containerId}!`, "success");
+  }
+  renderCurrentView();
+}
+
+function removeProductFromContainer(containerId, itemIndex) {
+  if (!AppState.activeLoadingPlanDraft || !AppState.activeLoadingPlanDraft.containers) return;
+  const container = AppState.activeLoadingPlanDraft.containers.find(c => c.id === containerId);
+  if (container && container.items) {
+    container.items.splice(itemIndex, 1);
+    showToast("Removed product line from container.", "info");
+    renderCurrentView();
+  }
+}
+
+function updateProductQtyInContainer(containerId, itemIndex, newQty) {
+  if (!AppState.activeLoadingPlanDraft || !AppState.activeLoadingPlanDraft.containers) return;
+  const container = AppState.activeLoadingPlanDraft.containers.find(c => c.id === containerId);
+  if (container && container.items && container.items[itemIndex]) {
+    const it = container.items[itemIndex];
+    const qty = Math.max(1, parseInt(newQty) || 1);
+    it.qty = qty;
+    it.netWeightKg = Math.round((it.unitWeightKg || 28.5) * it.qty * 10) / 10;
+    it.tareWeightKg = Math.round(it.qty * 1.2 * 10) / 10;
+    it.grossWeightKg = Math.round((it.netWeightKg + it.tareWeightKg) * 10) / 10;
+    it.notes = `Staged (${it.qty} Units)`;
+    renderCurrentView();
+  }
+}
+
+function saveLoadingPlanDraft() {
+  const draft = AppState.activeLoadingPlanDraft;
+  if (!draft) return;
+
+  // Validate Required Fields with Red Outline
+  const invInput = document.getElementById("draftInvoiceNo");
+  let hasError = false;
+
+  if (!draft.invoiceNo || !draft.invoiceNo.trim()) {
+    if (invInput) invInput.classList.add("input-error");
+    hasError = true;
+  } else {
+    if (invInput) invInput.classList.remove("input-error");
+  }
+
+  if (hasError) {
+    showToast("Please fill all required fields (Invoice No, Transporter, Consignee)!", "error");
+    return;
+  }
+
+  // Calculate totals
+  let grandRolls = 0;
+  let grandNet = 0;
+  let grandGross = 0;
+  let allItems = [];
+
+  (draft.containers || []).forEach(c => {
+    (c.items || []).forEach(it => {
+      grandRolls += (it.qty || 0);
+      grandNet += (it.netWeightKg || 0);
+      grandGross += (it.grossWeightKg || 0);
+      allItems.push(it);
+    });
+  });
+
+  draft.totalRolls = grandRolls || 5;
+  draft.actualWeightKg = grandNet || 142.5;
+  draft.grossWeightKg = grandGross || 155.0;
+  draft.status = draft.status || "Planning & Staging";
+  draft.items = allItems;
+  draft.exportInvoiceNo = draft.invoiceNo;
+
+  if (!AppState.loadingPlans) AppState.loadingPlans = [];
+  const existingIdx = AppState.loadingPlans.findIndex(p => p.planId === draft.planId);
+  if (existingIdx >= 0) {
+    AppState.loadingPlans[existingIdx] = draft;
+  } else {
+    AppState.loadingPlans.unshift(draft);
+  }
+
+  showToast(`🎉 Loading Plan ${draft.planId} saved successfully with ${draft.containers ? draft.containers.length : 0} containers!`, "success");
+  AppState.activeDetail = null;
+  switchView("mod5-ship");
+}
+
+function deleteLoadingPlan(planId) {
+  if (confirm(`Are you sure you want to delete Loading Plan ${planId}?`)) {
+    AppState.loadingPlans = (AppState.loadingPlans || []).filter(p => p.planId !== planId);
+    showToast(`Deleted Loading Plan ${planId}.`, "info");
+    renderCurrentView();
+  }
+}
+
+function openLoadingPlanPDFPreview(planId) {
+  const p = (AppState.loadingPlans || []).find(item => item.planId === planId) || (AppState.loadingPlans && AppState.loadingPlans[0]);
+  if (!p) {
+    showToast("Loading plan not found.", "error");
+    return;
+  }
+
+  const modal = document.getElementById("crudModal");
+  const title = document.getElementById("crudModalTitle");
+  const badge = document.getElementById("crudBadge");
+  const body = document.getElementById("crudModalBody");
+  const footer = document.getElementById("crudModalFooter");
+
+  badge.textContent = "Official Document";
+  title.textContent = `Loading Plan Document Preview — ${p.exportInvoiceNo || p.planId}`;
+
+  const containers = p.containers || [
+    {
+      id: "CNT-1",
+      containerNo: p.vehicleContainer || "CNT-1",
+      lineSealNo: "SEAL-8821",
+      rfidNo: "RF-11",
+      lrNo: "LR-4402",
+      items: p.items || []
+    }
+  ];
+
+  let totalUnits = 0;
+  let totalNet = 0;
+  let totalGross = 0;
+
+  containers.forEach(c => {
+    (c.items || []).forEach(it => {
+      totalUnits += (it.qty || 1);
+      totalNet += (it.netWeightKg || it.totalWeightKg || ((it.unitWeightKg || 28.5) * (it.qty || 10)));
+      totalGross += (it.grossWeightKg || ((it.netWeightKg || it.totalWeightKg || 0) + ((it.qty || 10) * 1.2)));
+    });
+  });
+
+  body.innerHTML = `
+    <div class="pdf-document-paper" style="background: #ffffff; color: #0f172a; padding: 24px; border: 1px solid #cbd5e1;">
+      <!-- Header -->
+      <div class="doc-header" style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #0f172a; padding-bottom: 12px; margin-bottom: 14px;">
+        <div>
+          <h2 style="margin: 0; font-size: 20px; font-weight: 900; color: #0f172a; letter-spacing: 0.5px;">ODETTE RUGS EXPORT OS</h2>
+          <div style="font-size: 11px; color: #475569;">Export Division &bull; Bhadohi Artisan Weaving Center &bull; GSTIN: 09AAAFO1234F1Z5</div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-size: 18px; font-weight: 800; color: #0891b2; font-family: monospace;">LOADING PLAN MANIFEST</div>
+          <div style="font-size: 11px; color: #475569;">Plan ID: <strong>${p.planId}</strong></div>
+        </div>
+      </div>
+
+      <!-- Meta Grid -->
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; background: #f8fafc; padding: 10px; border: 1px solid #e2e8f0; margin-bottom: 16px; font-size: 11px;">
+        <div><span style="color: #64748b;">EXP INVOICE NO:</span><br><strong>${p.exportInvoiceNo || p.planId}</strong></div>
+        <div><span style="color: #64748b;">TRANSPORTER:</span><br><strong>${p.carrier || p.transporter || 'MSC Ocean'}</strong></div>
+        <div><span style="color: #64748b;">DATE:</span><br><strong>${p.date || '2026-09-17'}</strong></div>
+        <div><span style="color: #64748b;">CONSIGNEE:</span><br><strong>${p.consignee || 'International Hub'}</strong></div>
+      </div>
+
+      <!-- Document Table: Product Name & Weight Details -->
+      <table style="width: 100%; border-collapse: collapse; margin-bottom: 14px; font-size: 11px;">
+        <thead>
+          <tr style="background: #f1f5f9;">
+            <th style="padding: 6px; border: 1px solid #cbd5e1; width: 30px; text-align: center;">#</th>
+            <th style="padding: 6px; border: 1px solid #cbd5e1;">Container & Seal</th>
+            <th style="padding: 6px; border: 1px solid #cbd5e1;">Product Name</th>
+            <th style="padding: 6px; border: 1px solid #cbd5e1;">Quantity (Units)</th>
+            <th style="padding: 6px; border: 1px solid #cbd5e1;">Weight Details</th>
+            <th style="padding: 6px; border: 1px solid #cbd5e1;">Staging / Remarks</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${containers.map((c, cIdx) => {
+            const items = (c.items && c.items.length) ? c.items : [];
+            const rowSpan = items.length || 1;
+
+            if (items.length === 0) {
+              return `
+                <tr>
+                  <td style="padding: 6px; border: 1px solid #cbd5e1; text-align: center; font-family: monospace; vertical-align: middle;">
+                    ${cIdx + 1}
+                  </td>
+                  <td style="padding: 6px; border: 1px solid #cbd5e1; vertical-align: middle;">
+                    <strong>${c.containerNo || c.id}</strong>
+                    <div style="font-size: 10px; color: #64748b; margin-top: 2px;">
+                      ${c.lineSealNo ? `Seal: <strong>${c.lineSealNo}</strong> &bull; ` : ''}
+                      ${c.lrNo ? `LR: <strong>${c.lrNo}</strong> &bull; ` : ''}
+                      ${c.rfidNo ? `RFID: <strong>${c.rfidNo}</strong> &bull; ` : ''}
+                      ${c.truckNo ? `Truck: <strong>${c.truckNo}</strong>` : ''}
+                    </div>
+                  </td>
+                  <td colspan="4" style="padding: 6px; border: 1px solid #cbd5e1; color: #94a3b8; text-align: center;">
+                    No items in container
+                  </td>
+                </tr>
+              `;
+            }
+
+            return items.map((it, itIdx) => `
+              <tr>
+                ${itIdx === 0 ? `
+                  <td rowspan="${rowSpan}" style="padding: 6px; border: 1px solid #cbd5e1; text-align: center; font-family: monospace; vertical-align: middle; background: #ffffff;">
+                    ${cIdx + 1}
+                  </td>
+                  <td rowspan="${rowSpan}" style="padding: 6px; border: 1px solid #cbd5e1; vertical-align: middle; background: #ffffff;">
+                    <strong>${c.containerNo || c.id}</strong>
+                    <div style="font-size: 10px; color: #64748b; margin-top: 2px;">
+                      ${c.lineSealNo ? `Seal: <strong>${c.lineSealNo}</strong> &bull; ` : ''}
+                      ${c.lrNo ? `LR: <strong>${c.lrNo}</strong> &bull; ` : ''}
+                      ${c.rfidNo ? `RFID: <strong>${c.rfidNo}</strong> &bull; ` : ''}
+                      ${c.truckNo ? `Truck: <strong>${c.truckNo}</strong>` : ''}
+                    </div>
+                  </td>
+                ` : ''}
+                <td style="padding: 6px; border: 1px solid #cbd5e1;">
+                  <strong style="color: #0891b2; font-family: monospace;">${it.sku}</strong><br>
+                  <strong>${it.title || 'Handcrafted Artisan Rug'}</strong> (${it.size || '8x10 ft'})
+                </td>
+                <td style="padding: 6px; border: 1px solid #cbd5e1;">
+                  <strong>${it.qty || 20} Units / Rolls</strong>
+                </td>
+                <td style="padding: 6px; border: 1px solid #cbd5e1;">
+                  Unit: ${it.unitWeightKg || 28.5} kg &bull; Net: <strong>${(it.netWeightKg || ((it.unitWeightKg || 28.5) * (it.qty || 10))).toLocaleString()} kg</strong><br>
+                  Gross Mass: <strong style="color: #059669;">${(it.grossWeightKg || (((it.netWeightKg || 0) + ((it.qty || 10) * 1.2)))).toLocaleString()} kg</strong>
+                </td>
+                <td style="padding: 6px; border: 1px solid #cbd5e1; color: #475569;">
+                  ${it.notes || 'Warehouse Bay #A-12'}
+                </td>
+              </tr>
+            `).join('');
+          }).join('')}
+        </tbody>
+        <tfoot>
+          <tr style="background: #f8fafc; font-weight: 700;">
+            <td colspan="3" style="padding: 8px; border: 1px solid #cbd5e1;">Grand Total Manifest Summary</td>
+            <td style="padding: 8px; border: 1px solid #cbd5e1;">${totalUnits} Units / Rolls</td>
+            <td colspan="2" style="padding: 8px; border: 1px solid #cbd5e1;">
+              Net: <strong>${totalNet.toLocaleString()} kg</strong> &bull; Certified Gross: <strong style="color: #059669;">${totalGross.toLocaleString()} kg</strong>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <!-- Footer Info & Sign-offs -->
+      <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 14px; border-top: 1px solid #cbd5e1; padding-top: 12px; font-size: 11px;">
+        <div>
+          <strong>Loading & Stuffing Notes:</strong>
+          <div style="color: #475569; margin-top: 4px;">
+            ${p.notes || 'Handcrafted wool rugs. Moisture barrier wrapped and sealed. Compliant with international export shipping standard.'}
+          </div>
+        </div>
+        <div>
+          <span style="color: #64748b;">Prepared By:</span><br>
+          <strong>${p.preparedBy || 'Rajesh Kumar (Lead)'}</strong><br>
+          <div style="font-size: 9px; color: #94a3b8; margin-top: 12px;">Digital Signature Verified</div>
+        </div>
+        <div>
+          <span style="color: #64748b;">Loading Supervisor:</span><br>
+          <strong>Amitabh Sen (WH Head)</strong><br>
+          <div style="font-size: 9px; color: #94a3b8; margin-top: 12px;">Carrier Handover Sign</div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  footer.innerHTML = `
+    <button class="btn btn-secondary" onclick="closeModal('crudModal')">✕ Close</button>
+    <button class="btn btn-secondary" onclick="window.print()">🖨️ Print Document</button>
+    <button class="btn btn-primary" onclick="downloadLoadingPlanPDF('${p.planId}'); closeModal('crudModal');">📥 Download PDF</button>
+  `;
+
+  modal.style.display = "flex";
+}
+
+function generateLoadingPlanPDFContent(p) {
+  const containers = p.containers || [
+    {
+      id: "CNT-1",
+      containerNo: p.vehicleContainer || "CNT-1",
+      lineSealNo: "SEAL-8821",
+      rfidNo: "RF-11",
+      lrNo: "LR-4402",
+      truckNo: "UP-65-BT-9821",
+      items: p.items || []
+    }
+  ];
+
+  let totalUnits = 0;
+  let totalNet = 0;
+  let totalGross = 0;
+
+  let itemRows = [];
+  containers.forEach((c, cIdx) => {
+    (c.items || []).forEach((it, itIdx) => {
+      const uQty = Number(it.qty || 1);
+      const uNet = Number(it.netWeightKg || ((it.unitWeightKg || 28.5) * uQty));
+      const uGross = Number(it.grossWeightKg || (uNet + (uQty * 1.2)));
+      totalUnits += uQty;
+      totalNet += uNet;
+      totalGross += uGross;
+
+      itemRows.push(`- [Container: ${c.containerNo || c.id}] Seal: ${c.lineSealNo || 'N/A'} | LR: ${c.lrNo || 'N/A'} | RFID: ${c.rfidNo || 'N/A'} | Truck: ${c.truckNo || 'N/A'} | SKU: ${it.sku} (${it.title || 'Handcrafted Rug'}, ${it.size || '8x10'}) | Qty: ${uQty} Units | Net Wt: ${uNet.toFixed(1)} kg | Gross Wt: ${uGross.toFixed(1)} kg`);
+    });
+  });
+
+  return `%PDF-1.4
+% ODETTE RUGS EXPORT OS - OFFICIAL LOADING PLAN & CUSTOMS CONTAINER MANIFEST
+% Generated: ${new Date().toISOString()}
+================================================================================
+LOADING PLAN MANIFEST & CUSTOMS STAGING CERTIFICATE
+================================================================================
+Plan ID:                ${p.planId}
+Export Invoice No:      ${p.exportInvoiceNo || p.invoiceNo || p.planId}
+Dispatch Date:          ${p.date || new Date().toISOString().split('T')[0]}
+Consignee / Buyer:      ${p.consignee || 'International Hub'}
+Transporter / Carrier:  ${p.carrier || p.transporter || 'MSC Mediterranean Shipping'}
+Origin Facility / MFG:  ${p.originFacility || 'Bhadohi Central Weaving Unit #1'}
+Packaging Sticker Ref:  ${p.palletSticker || 'ODT-PLT-STK-01'}
+Box / Packaging Brand:  ${p.boxBrand || 'ODETTE EXPORT PREMIUM'}
+Prepared By:            ${p.preparedBy || 'Rajesh Kumar (Logistics Lead)'}
+Total Containers:       ${containers.length}
+Total Quantity:         ${totalUnits} Units / Rolls
+Total Net Weight:       ${totalNet.toFixed(2)} kg
+Total Gross Weight:     ${totalGross.toFixed(2)} kg
+Customs Port of Exit:   INVTZ1 (ICD Babatpur / Varanasi)
+Export Compliance:      Supply meant for export under Letter of Undertaking (LUT/2026/08912) without payment of IGST.
+
+--------------------------------------------------------------------------------
+CONTAINER & PRODUCT ALLOCATION BREAKDOWN:
+--------------------------------------------------------------------------------
+${itemRows.length > 0 ? itemRows.join('\n') : '- No product items attached.'}
+
+--------------------------------------------------------------------------------
+LOADING & STUFFING REMARKS:
+--------------------------------------------------------------------------------
+${p.notes || 'Fragile handcrafted rugs. Wrap with moisture-barrier film and corner protectors. Compliant with ocean & air freight standards.'}
+
+--------------------------------------------------------------------------------
+OFFICIAL CERTIFICATION & SIGN-OFF:
+--------------------------------------------------------------------------------
+Logistics Officer: ${p.preparedBy || 'Rajesh Kumar (Logistics Lead)'} [Digitally Verified]
+Warehouse Head:    Amitabh Sen (Central Hub) [Handover Verified]
+Carrier Rep:       MSC Marine Cargo Inspector [Seal Certified]
+================================================================================
+Verified & Transmitted by Customs EDI Gateway & Antigravity Rug-OS Engine.`;
+}
+
+function downloadLoadingPlanPDF(planId) {
+  const p = (AppState.loadingPlans || []).find(item => item.planId === planId) || (AppState.loadingPlans && AppState.loadingPlans[0]);
+  if (!p) {
+    showToast("Loading plan not found.", "error");
+    return;
+  }
+  const filename = `LOADING_PLAN_CUSTOMS_MANIFEST_${p.exportInvoiceNo || p.planId}.pdf`;
+  const content = generateLoadingPlanPDFContent(p);
+  triggerDownload(filename, content, "application/pdf");
+  showToast(`Downloaded ${filename} successfully!`, "success");
+}
+
+function exportLoadingPlanToCustoms(planId) {
+  const p = (AppState.loadingPlans || []).find(item => item.planId === planId) || (AppState.loadingPlans && AppState.loadingPlans[0]);
+  if (!p) {
+    showToast("Loading plan not found.", "error");
+    return;
+  }
+
+  // Update Plan Status & Export Flag
+  p.isExported = true;
+  p.status = "Exported / In Transit";
+
+  // Trigger actual file download
+  const filename = `CUSTOMS_EXPORT_MANIFEST_${p.exportInvoiceNo || p.planId}.pdf`;
+  const content = generateLoadingPlanPDFContent(p);
+  triggerDownload(filename, content, "application/pdf");
+
+  showToast(`🚀 Exported to Customs! Downloaded ${filename}`, "success");
+  renderCurrentView();
+}
+
+function openWeightCalculatorDialog() {
+  const modal = document.getElementById("crudModal");
+  const title = document.getElementById("crudModalTitle");
+  const badge = document.getElementById("crudBadge");
+  const body = document.getElementById("crudModalBody");
+  const footer = document.getElementById("crudModalFooter");
+
+  badge.textContent = "Weight & Balance";
+  title.textContent = "🧮 Rug Consignment Weight & Container Calculator";
+
+  body.innerHTML = `
+    <div style="padding: 10px 0;">
+      <div class="form-grid-2" style="margin-bottom: 14px;">
+        <div class="form-group">
+          <label>Rug Size & Type:</label>
+          <select class="form-control" id="calcRugType" onchange="runCalcWeight()">
+            <option value="28.5" data-sqm="7.43">8x10 ft Hand-Tufted Wool (28.5 kg • 7.43 SQM)</option>
+            <option value="36.0" data-sqm="10.03">9x12 ft Hand-Knotted Wool (36.0 kg • 10.03 SQM)</option>
+            <option value="18.0" data-sqm="3.71">5x8 ft Jute Flatweave (18.0 kg • 3.71 SQM)</option>
+            <option value="14.2" data-sqm="2.78">2.5x12 ft Wool Runner (14.2 kg • 2.78 SQM)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Total Pallets:</label>
+          <input type="number" id="calcPallets" class="form-control" value="8" min="1" oninput="runCalcWeight()">
+        </div>
+      </div>
+
+      <div class="form-grid-2" style="margin-bottom: 14px;">
+        <div class="form-group">
+          <label>Pieces per Pallet:</label>
+          <input type="number" id="calcPcsPerPallet" class="form-control" value="20" min="1" oninput="runCalcWeight()">
+        </div>
+        <div class="form-group">
+          <label>Tare Weight per Wooden Pallet (kg):</label>
+          <input type="number" id="calcPalletTare" class="form-control" value="22" min="0" oninput="runCalcWeight()">
+        </div>
+      </div>
+
+      <div style="background: var(--bg-elevated); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-main);">
+        <strong style="color: var(--brand-cyan); font-size: 13px;">Calculated Weight Output:</strong>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px;">
+          <div>
+            <span style="font-size: 11px; color: var(--text-dim);">Total Pieces:</span><br>
+            <strong id="calcOutPcs" style="font-size: 16px; color: var(--text-main);">160 pcs</strong>
+          </div>
+          <div>
+            <span style="font-size: 11px; color: var(--text-dim);">Net Weight:</span><br>
+            <strong id="calcOutNet" style="font-size: 16px; color: var(--brand-cyan); font-family: var(--font-mono);">4,560.0 kg</strong>
+          </div>
+          <div>
+            <span style="font-size: 11px; color: var(--text-dim);">Gross Mass:</span><br>
+            <strong id="calcOutGross" style="font-size: 16px; color: var(--success); font-family: var(--font-mono);">4,736.0 kg</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  footer.innerHTML = `
+    <button class="btn btn-secondary" onclick="closeModal('crudModal')">Close</button>
+  `;
+
+  modal.style.display = "flex";
+}
+
+function runCalcWeight() {
+  const typeSel = document.getElementById("calcRugType");
+  const unitWt = parseFloat(typeSel ? typeSel.value : 28.5) || 28.5;
+  const pallets = Math.max(1, parseInt(document.getElementById("calcPallets").value) || 1);
+  const pcsPerPallet = Math.max(1, parseInt(document.getElementById("calcPcsPerPallet").value) || 20);
+  const tarePerPallet = parseFloat(document.getElementById("calcPalletTare").value) || 22;
+
+  const totalPcs = pallets * pcsPerPallet;
+  const netKg = unitWt * totalPcs;
+  const grossKg = netKg + (pallets * tarePerPallet);
+
+  const outPcs = document.getElementById("calcOutPcs");
+  const outNet = document.getElementById("calcOutNet");
+  const outGross = document.getElementById("calcOutGross");
+
+  if (outPcs) outPcs.textContent = `${totalPcs} pcs`;
+  if (outNet) outNet.textContent = `${netKg.toLocaleString()} kg`;
+  if (outGross) outGross.textContent = `${grossKg.toLocaleString()} kg`;
+}
+
+function quickAddConsignee() {
+  const name = prompt("Enter new Consignee / Buyer name & destination:");
+  if (name && name.trim()) {
+    const sel = document.getElementById("draftConsignee");
+    if (sel) {
+      const opt = document.createElement("option");
+      opt.value = name.trim();
+      opt.textContent = name.trim();
+      opt.selected = true;
+      sel.appendChild(opt);
+      updateDraftField("consignee", name.trim());
+      showToast(`Added consignee "${name.trim()}".`, "success");
+    }
+  }
+}
+
+function quickAddTransporter() {
+  const name = prompt("Enter new Transporter / Carrier name:");
+  if (name && name.trim()) {
+    const sel = document.getElementById("draftTransporter");
+    if (sel) {
+      const opt = document.createElement("option");
+      opt.value = name.trim();
+      opt.textContent = name.trim();
+      opt.selected = true;
+      sel.appendChild(opt);
+      updateDraftField("transporter", name.trim());
+      showToast(`Added transporter "${name.trim()}".`, "success");
+    }
+  }
+}
+
+function quickAddFacility() {
+  const name = prompt("Enter new Origin Facility / Manufacturing Loom cluster:");
+  if (name && name.trim()) {
+    const sel = document.getElementById("draftFacility");
+    if (sel) {
+      const opt = document.createElement("option");
+      opt.value = name.trim();
+      opt.textContent = name.trim();
+      opt.selected = true;
+      sel.appendChild(opt);
+      updateDraftField("originFacility", name.trim());
+      showToast(`Added facility "${name.trim()}".`, "success");
+    }
+  }
+}
+
+function exportLoadingPlansCSV() {
+  let csv = "Invoice No,Plan ID,Destination,Consignee,Transporter,Containers,Total Rolls,Actual Weight Kg,Status,Exported\n";
+  (AppState.loadingPlans || []).forEach(p => {
+    csv += `"${p.exportInvoiceNo || ''}","${p.planId}","${p.destination || ''}","${p.consignee || ''}","${p.carrier || p.transporter || ''}",${(p.containers || []).length || 1},${p.totalRolls || 0},${p.actualWeightKg || 0},"${p.status}",${p.isExported ? 'Yes' : 'No'}\n`;
+  });
+  downloadCSV("Loading_Plans_Registry.csv", csv);
+  showToast("Exported Loading Plans CSV successfully!", "success");
 }
 
 function renderLoadingPlanDetailPage(planId) {
   const p = (AppState.loadingPlans || []).find(item => item.planId === planId) || AppState.loadingPlans[0];
-  const billableWt = Math.max(p.actualWeightKg, p.volumetricWeightKg);
+  const billableWt = Math.max(p.actualWeightKg, p.volumetricWeightKg || Math.round(p.actualWeightKg * 0.95));
+  const containers = p.containers || [
+    {
+      id: "CNT-1",
+      containerNo: p.vehicleContainer || "CNT-1",
+      lineSealNo: "SEAL-8821",
+      rfidNo: "RF-11",
+      lrNo: "LR-4402",
+      items: p.items || []
+    }
+  ];
 
   return `
     <div class="full-detail-page">
@@ -12352,11 +15695,13 @@ function renderLoadingPlanDetailPage(planId) {
             ← Back to Loading Plans
           </button>
           <span style="color: var(--text-dim);">/</span>
-          <span style="color: var(--text-muted); font-size: 13px;">${p.mode}</span>
+          <span style="color: var(--text-muted); font-size: 13px;">${p.mode || '🚢 Ocean / Road Logistics'}</span>
           <span style="color: var(--text-dim);">/</span>
           <strong style="color: var(--text-main); font-family: var(--font-mono); font-size: 13px;">${p.planId}</strong>
         </div>
         <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button class="btn btn-sm btn-secondary" onclick="openLoadingPlanPDFPreview('${p.planId}')">📄 Preview PDF</button>
+          <button class="btn btn-sm btn-secondary" onclick="openLoadingPlanEditor('${p.planId}')">✏️ Edit Loading Plan</button>
           ${!p.isExported ? `
             <button class="btn btn-sm btn-primary" onclick="exportLoadingPlanToCustoms('${p.planId}')" style="font-weight: 700;">
               🚀 Export to Customs (Generate Docs)
@@ -12366,8 +15711,7 @@ function renderLoadingPlanDetailPage(planId) {
               ✓ Exported: View ${p.exportInvoiceNo}
             </button>
           `}
-          <button class="btn btn-sm btn-secondary" onclick="printShippingLabel('${p.awb}')">🏷️ Print 4x6 Thermal Labels</button>
-          <button class="btn btn-sm btn-secondary" onclick="window.print()">🖨️ Print Staging Manifest</button>
+          <button class="btn btn-sm btn-secondary" onclick="printShippingLabel('${p.awb || p.planId}')">🏷️ Print 4x6 Thermal Labels</button>
         </div>
       </div>
 
@@ -12397,56 +15741,56 @@ function renderLoadingPlanDetailPage(planId) {
           <div>
             <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap;">
               <h1 style="font-size: 24px; font-weight: 800; margin: 0; color: var(--text-main); font-family: var(--font-mono);">${p.planId}</h1>
-              <span class="badge badge-primary">${p.carrier}</span>
+              <span class="badge badge-primary">${p.carrier || p.transporter || 'MSC Ocean'}</span>
               <span class="badge ${p.status.includes('Delivered') ? 'badge-success' : p.isExported ? 'badge-success' : 'badge-warning'}">${p.status}</span>
               ${p.isExported ? `<span class="badge badge-success">✓ Customs Exported</span>` : `<span class="badge badge-warning">Awaiting Export</span>`}
             </div>
             <div style="font-size: 14px; font-weight: 600; color: var(--text-main); margin-bottom: 4px;">
-              ${p.originWh} <span style="color: var(--brand-cyan);">➔</span> ${p.destination}
+              ${p.originWh || 'India Central WH (Bhadohi)'} <span style="color: var(--brand-cyan);">➔</span> ${p.destination || 'International Destination'}
             </div>
             <p style="color: var(--text-muted); font-size: 12px; margin: 0;">
-              Vehicle/Container: <strong>${p.vehicleContainer}</strong> &bull; Tracking AWB: <code style="color: var(--brand-cyan);">${p.awb}</code> &bull; Consignee: <strong>${p.consignee}</strong>
+              Containers: <strong>${containers.length} Container${containers.length > 1 ? 's' : ''}</strong> &bull; Tracking Ref: <code style="color: var(--brand-cyan);">${p.awb || p.planId}</code> &bull; Consignee: <strong>${p.consignee}</strong>
             </p>
           </div>
           <div style="text-align: right; min-width: 180px; background: var(--bg-elevated); padding: 12px 20px; border-radius: var(--radius-md); border: 1px solid var(--border-main);">
-            <div style="font-size: 11px; color: var(--text-dim); text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;">Freight Tariff</div>
-            <div style="font-size: 26px; font-weight: 900; color: var(--success); font-family: var(--font-mono);">$${p.freightUSD.toLocaleString(undefined, { minimumFractionDigits: 2 })} USD</div>
-            <div style="font-size: 11px; color: var(--text-muted);">${p.totalRolls} Rug Rolls &bull; <strong>${p.actualWeightKg} Kg</strong></div>
+            <div style="font-size: 11px; color: var(--text-dim); text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;">Certified Gross Weight</div>
+            <div style="font-size: 26px; font-weight: 900; color: var(--success); font-family: var(--font-mono);">${(p.grossWeightKg || (p.actualWeightKg * 1.06 + 80)).toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} kg</div>
+            <div style="font-size: 11px; color: var(--text-muted);">${p.totalRolls || 20} Rug Units &bull; <strong>${(p.actualWeightKg || 0).toLocaleString()} kg Net</strong></div>
           </div>
         </div>
       </div>
 
-      <!-- 4 Clean Bento KPI Cards -->
+      <!-- 4 Bento KPI Cards -->
       <div class="bento-metrics-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 0; gap: 16px;">
         <div class="metric-card">
           <div class="metric-header"><span class="metric-label">Actual Scale Mass</span><span>⚖️</span></div>
-          <div class="metric-value" style="font-size: 20px; font-weight: 800; color: var(--success);">${p.actualWeightKg} Kg</div>
-          <div class="metric-sub">Calibrated Avery Weigh-Tronix</div>
+          <div class="metric-value" style="font-size: 20px; font-weight: 800; color: var(--brand-cyan);">${(p.actualWeightKg || 0).toLocaleString()} Kg</div>
+          <div class="metric-sub">Calibrated Electronic Scale</div>
         </div>
         <div class="metric-card">
-          <div class="metric-header"><span class="metric-label">Volumetric Weight</span><span>📐</span></div>
-          <div class="metric-value" style="font-size: 20px; font-weight: 800; color: var(--brand-cyan);">${p.volumetricWeightKg} Kg</div>
-          <div class="metric-sub">Dimensions: ${p.dimensions}</div>
+          <div class="metric-header"><span class="metric-label">Gross Mass (With Pallets)</span><span>📐</span></div>
+          <div class="metric-value" style="font-size: 20px; font-weight: 800; color: var(--success);">${(p.grossWeightKg || Math.round(p.actualWeightKg * 1.06 + 80)).toLocaleString()} Kg</div>
+          <div class="metric-sub">Packaging & Pallet Tare Included</div>
         </div>
         <div class="metric-card">
-          <div class="metric-header"><span class="metric-label">SKUs & Total Rolls</span><span>🧶</span></div>
-          <div class="metric-value" style="font-size: 20px; font-weight: 800; color: var(--brand-purple);">${(p.items && p.items.length) || 1} SKUs &bull; ${p.totalRolls} Rolls</div>
-          <div class="metric-sub">${(p.items || []).map(it => `${it.qty}x ${it.sku.split('-').slice(2).join('-')}`).join(', ') || 'Consignment Staging'}</div>
+          <div class="metric-header"><span class="metric-label">Containers & Units</span><span>🧶</span></div>
+          <div class="metric-value" style="font-size: 20px; font-weight: 800; color: var(--brand-purple);">${containers.length} CNT &bull; ${p.totalRolls || 20} Units</div>
+          <div class="metric-sub">${containers.map(c => c.containerNo || c.id).join(', ')}</div>
         </div>
         <div class="metric-card">
           <div class="metric-header"><span class="metric-label">Customs Documentation</span><span>📜</span></div>
           <div class="metric-value" style="font-size: 16px; font-weight: 800; color: ${p.isExported ? 'var(--success)' : 'var(--warning)'}; font-family: var(--font-mono);">
             ${p.isExported ? p.exportInvoiceNo : 'Pending Export'}
           </div>
-          <div class="metric-sub">${p.isExported ? 'Shipping Bill: ' + p.shippingBillNo : 'Click Export to generate'}</div>
+          <div class="metric-sub">${p.isExported ? 'Shipping Bill: ' + (p.shippingBillNo || 'SB-90814') : 'Click Export to generate'}</div>
         </div>
       </div>
 
-      <!-- Executive 3-Tab Navigation (Clean & Full-Width) -->
+      <!-- 3-Tab Navigation -->
       <div class="detail-tabs-nav" style="margin-bottom: 0;">
         <button class="detail-tab-btn active" onclick="switchDetailTab('lp-tab-manifest', this)">
-          <span>📦 Staged Rug Rolls & Packing Manifest</span>
-          <span class="detail-tab-badge">${p.totalRolls} Rolls</span>
+          <span>📦 Staged Product Manifest & Containers</span>
+          <span class="detail-tab-badge">${containers.length} Containers</span>
         </button>
         <button class="detail-tab-btn" onclick="switchDetailTab('lp-tab-tracking', this)">
           <span>🚚 Live Carrier Tracking & Telemetry</span>
@@ -12458,65 +15802,77 @@ function renderLoadingPlanDetailPage(planId) {
         </button>
       </div>
 
-      <!-- TAB 1: MANIFEST -->
+      <!-- TAB 1: MANIFEST (Product Name, Quantity, Weight Details) -->
       <div class="detail-tab-pane active" id="lp-tab-manifest">
         <div class="card" style="border-top: none; border-radius: 0 0 var(--radius-lg) var(--radius-lg); padding: 24px; margin-bottom: 24px;">
           <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 14px; color: var(--brand-cyan); display: flex; align-items: center; gap: 8px;">
-            <span>📦 Loaded Consignment SKU Manifest & Staged Rug Rolls</span>
+            <span>📦 Loaded Consignment SKU Manifest & Container Weight Distribution</span>
           </h3>
-          <div class="table-responsive" style="border: 1px solid var(--border-main); border-radius: var(--radius-md); overflow: hidden; margin-bottom: 20px;">
-            <table class="data-table">
-              <thead>
-                <tr style="background: var(--bg-elevated);">
-                  <th>SKU Code & Collection</th>
-                  <th>Rug Description & Size</th>
-                  <th>Quantity (Rolls to Send)</th>
-                  <th>Unit Weight & Total Mass</th>
-                  <th>4x6 Barcode Label Tag</th>
-                  <th>Staging Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${(p.items || [
-                  { sku: "SKU-RUG-HT-0810-IVR", title: "Jungle Tiger Hand-Tufted Wool Rug", size: p.dimensions || "8x10 ft", qty: p.totalRolls || 1, unitWeightKg: (p.actualWeightKg / (p.totalRolls || 1)), totalWeightKg: p.actualWeightKg, barcode: "8904321908129", status: "Packed & Tagged" }
-                ]).map(it => `
-                  <tr>
-                    <td>
-                      <strong style="font-family: var(--font-mono); color: var(--brand-cyan); font-size: 13px;">${it.sku}</strong>
-                      <div style="font-size: 11px; color: var(--text-dim);">Product Catalog SKU</div>
-                    </td>
-                    <td>
-                      <strong>${it.title || 'Handcrafted Artisan Rug'}</strong>
-                      <div style="font-size: 11px; color: var(--text-muted);">${it.size || p.dimensions}</div>
-                    </td>
-                    <td>
-                      <span class="badge badge-primary" style="font-size: 13px; font-weight: 800; padding: 4px 10px;">${it.qty} Rolls</span>
-                    </td>
-                    <td>
-                      <div><strong>${it.totalWeightKg ? it.totalWeightKg.toFixed(1) : (it.unitWeightKg * it.qty).toFixed(1)} Kg</strong></div>
-                      <div style="font-size: 10px; color: var(--text-dim); font-family: var(--font-mono);">${it.unitWeightKg} Kg / roll</div>
-                    </td>
-                    <td>
-                      <code style="color: var(--brand-cyan); font-size: 12px;">${it.barcode || 'EAN-8904321908129'}</code>
-                    </td>
-                    <td>
-                      <span class="badge badge-success">✓ 4x6 Thermal Tag Printed</span>
-                    </td>
-                  </tr>
-                `).join('')}
-              </tbody>
-              <tfoot>
-                <tr style="background: var(--bg-elevated); font-weight: 700;">
-                  <td colspan="2">Consignment Total Manifest Summary</td>
-                  <td><span class="badge badge-primary" style="font-size: 13px; font-weight: 800;">${p.totalRolls} Total Rolls</span></td>
-                  <td><strong style="color: var(--success); font-family: var(--font-mono); font-size: 14px;">${p.actualWeightKg} Kg Certified Mass</strong></td>
-                  <td colspan="2"><span class="badge badge-success">✓ All SKU Rolls Weighed & Tagged</span></td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-          <div style="display: flex; gap: 10px;">
-            <button class="btn btn-sm btn-primary" onclick="printShippingLabel('${p.awb}')">🏷️ Print Thermal Barcode Labels</button>
+
+          ${containers.map((c, cIdx) => `
+            <div style="margin-bottom: 20px; border: 1px solid var(--border-main); border-radius: var(--radius-md); overflow: hidden;">
+              <div style="background: var(--bg-elevated); padding: 10px 16px; border-bottom: 1px solid var(--border-main); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                  <strong style="color: var(--text-main); font-size: 13px; font-family: var(--font-mono);">${c.containerNo || c.id}</strong>
+                  ${c.lineSealNo ? `<span class="badge badge-primary" style="font-size: 10px;">Line Seal: ${c.lineSealNo}</span>` : ''}
+                  ${c.lrNo ? `<span class="badge badge-secondary" style="font-size: 10px;">LR: ${c.lrNo}</span>` : ''}
+                  ${c.rfidNo ? `<span class="badge badge-secondary" style="font-size: 10px;">RFID: ${c.rfidNo}</span>` : ''}
+                  ${c.truckNo ? `<span class="badge badge-secondary" style="font-size: 10px;">Truck: ${c.truckNo}</span>` : ''}
+                </div>
+              </div>
+
+              <div class="table-responsive">
+                <table class="data-table" style="margin: 0;">
+                  <thead>
+                    <tr style="background: var(--bg-card);">
+                      <th style="width: 45px; text-align: center;">#</th>
+                      <th>Product Name</th>
+                      <th>Quantity (Units)</th>
+                      <th>Weight Details</th>
+                      <th>Staging Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${(c.items || [
+                      { sku: "SKU-RUG-HT-0810-IVR", title: "Jungle Tiger Hand-Tufted Wool Rug", size: "8x10 ft", qty: 160, unitWeightKg: 28.5, netWeightKg: 4560, tareWeightKg: 192, grossWeightKg: 4752, barcode: "8904321908129", status: "Packed & Tagged" }
+                    ]).map((it, itIdx) => `
+                      <tr>
+                        <td style="text-align: center; font-family: var(--font-mono); color: var(--text-dim); font-size: 12px;">
+                          ${itIdx + 1}
+                        </td>
+                        <td>
+                          <div style="display: flex; flex-direction: column; gap: 2px;">
+                            <strong style="font-family: var(--font-mono); color: var(--brand-cyan); font-size: 12px;">${it.sku}</strong>
+                            <strong style="color: var(--text-main); font-size: 13px;">${it.title || 'Handcrafted Artisan Rug'}</strong>
+                            <div style="font-size: 11px; color: var(--text-muted);">${it.size || '8x10 ft'}</div>
+                          </div>
+                        </td>
+                        <td>
+                          <span class="badge badge-primary" style="font-size: 12px; font-weight: 700; padding: 4px 10px;">
+                            ${it.qty || 20} Units / Rolls
+                          </span>
+                        </td>
+                        <td>
+                          <div class="weight-detail-badge-group">
+                            <span class="weight-detail-chip">Unit: <strong>${it.unitWeightKg || 28.5} kg</strong></span>
+                            <span class="weight-detail-chip net">Net: <strong>${(it.netWeightKg || ((it.unitWeightKg || 28.5) * (it.qty || 10))).toLocaleString()} kg</strong></span>
+                            <span class="weight-detail-chip gross">Gross: <strong>${(it.grossWeightKg || (((it.netWeightKg || 0) + ((it.qty || 10) * 1.2)))).toLocaleString()} kg</strong></span>
+                          </div>
+                        </td>
+                        <td>
+                          <span class="badge badge-success">✓ Weighed & Tagged</span>
+                        </td>
+                      </tr>
+                    `).join('')}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          `).join('')}
+
+          <div style="display: flex; gap: 10px; margin-top: 16px;">
+            <button class="btn btn-sm btn-primary" onclick="openLoadingPlanPDFPreview('${p.planId}')">📄 View Official PDF Manifest</button>
+            <button class="btn btn-sm btn-secondary" onclick="printShippingLabel('${p.awb || p.planId}')">🏷️ Print Thermal Barcode Labels</button>
             <button class="btn btn-sm btn-secondary" onclick="window.print()">🖨️ Print Staging Sheet</button>
           </div>
         </div>
@@ -12740,59 +16096,1654 @@ function printShippingLabel(awb) {
   showToast(`Printing 4x6 Thermal Barcode Label for AWB ${awb} on Zebra ZT411...`, "info");
 }
 
-function downloadDocumentPDF(invoiceNo, docType) {
-  const doc = (AppState.exportDocs || []).find(d => d.invoiceNo === invoiceNo) || (AppState.exportDocs && AppState.exportDocs[0]) || { invoiceNo, valueUSD: 736.10, orderId: "ORD-AMZ-99214", consignee: "Customer", destination: "USA" };
+// ============================================================================
+// REAL PDF & EXCEL GENERATORS FOR EXPORT SUITE
+// ============================================================================
 
-  let filename = "";
-  let content = "";
+function escapePdfText(text) {
+  if (!text) return "";
+  return String(text).replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
+}
 
-  if (docType === "invoice") {
-    filename = `COMMERCIAL_INVOICE_${doc.invoiceNo}.pdf`;
-    content = `%PDF-1.4\n% RugOS Export Commercial Invoice\nInvoice No: ${doc.invoiceNo}\nDate: ${doc.date || '2026-09-14'}\nExporter: ODETTE RUGS LLC / EXPORT WING (IEC: 0514029108, GSTIN: 09AAACR8821N1ZM, Sheridan WY / Bhadohi UP)\nConsignee: ${doc.consignee}\nDestination: ${doc.destination}\nIncoterms: ${doc.incoterms || 'CIF'}\nHSN: 57011000 Handcrafted Rugs\nTotal FOB/CIF Value: $${(doc.valueUSD || 736.10).toFixed(2)} USD (₹${(doc.valueINR || 61317).toLocaleString()} INR)\nDeclaration: Supply meant for export under Letter of Undertaking (LUT/2026/08912) without payment of integrated tax.`;
-  } else if (docType === "packing") {
-    filename = `EXPORT_PACKING_LIST_${doc.invoiceNo}.pdf`;
-    content = `%PDF-1.4\n% RugOS Export Packing List\nInvoice Ref: ${doc.invoiceNo}\nConsignee: ${doc.consignee}\nBale/Roll Count: 1-140 Rolls\nPackaging: High-density polyethylene wrap with internal waterproof corrugated core\nNet Weight: 28.50 Kg\nGross Weight: 30.00 Kg\nContainer/Flight: Sealed and Verified.`;
-  } else if (docType === "shippingbill") {
-    filename = `ICEGATE_SHIPPING_BILL_${doc.invoiceNo}.pdf`;
-    content = `%PDF-1.4\n% Indian Customs ICEGATE Shipping Bill (Rule 8)\nShipping Bill No: ${doc.shippingBill || 'SB-6789123'}\nPort of Export: INVTZ1 (ICD Babatpur / Varanasi)\nExporter IEC: 0516908124\nCountry of Destination: United States / Europe\nFOB Currency: USD\nLEO (Let Export Order): Granted & Transmitted via ICEGATE EDI.`;
-  } else if (docType === "origin") {
-    filename = `CERTIFICATE_OF_ORIGIN_${doc.invoiceNo}.pdf`;
-    content = `%PDF-1.4\n% Certificate of Origin (Textile Committee / EPCH)\nCertificate Ref: COO-IN-2026-89124\nInvoice No: ${doc.invoiceNo}\nCountry of Origin: INDIA\nGoods: 100% Indian Handmade Carpets & Floor Coverings\nIssued by: Carpet Export Promotion Council (CEPC).`;
+function generateValidPDFBlob(title, docType, doc) {
+  const invNo = doc.invoiceNo || "EXP-INV-2026-101";
+  const dateStr = doc.date || "2026-09-14";
+  const consignee = doc.consignee || "ALTAGAMMA RUGS LLC";
+  const destination = doc.destination || "USA";
+  const valUSD = Number(doc.valueUSD || 45210).toFixed(2);
+  const valINR = Number(doc.valueINR || 3793119).toLocaleString('en-IN');
+  const lutNo = doc.lutNo || "AD090326089140U";
+  const iecNo = doc.iec || "0514029108";
+  const gstin = doc.gstin || "09AAACR8821N1ZM";
+
+  let streamText = "BT\n";
+  streamText += "/F1 15 Tf\n50 780 Td\n(" + escapePdfText(title) + ") Tj\n";
+  streamText += "/F1 9 Tf\n0 -18 Td\n(EXPORTER: ODETTE RUGS LLC | IEC: " + iecNo + " | GSTIN: " + gstin + ") Tj\n";
+  streamText += "0 -13 Td\n(NH-19 CARPET HUB, MARYADPATTI, BHADOHI - 221401, UTTAR PRADESH, INDIA) Tj\n";
+  streamText += "0 -12 Td\n(------------------------------------------------------------------------------------------------------------------------) Tj\n";
+  
+  streamText += "/F1 10 Tf\n";
+  streamText += "0 -16 Td\n(Invoice Number : " + escapePdfText(invNo) + "          Date : " + dateStr + ") Tj\n";
+  
+  if (docType.includes("no_consignee")) {
+    streamText += "0 -14 Td\n(Consignee      : [CONSIGNEE REDACTED FOR CUSTOMS ROUTING]) Tj\n";
   } else {
-    filename = `COMPLETE_EXPORT_BUNDLE_${doc.invoiceNo}.zip`;
-    content = `PK (RugOS Export Documentation Suite Bundle for ${doc.invoiceNo})\nIncludes: Commercial Invoice, Packing List, Certificate of Origin, Shipping Bill, and Airway Bill Receipt.`;
+    streamText += "0 -14 Td\n(Consignee      : " + escapePdfText(consignee) + ") Tj\n";
+  }
+  
+  streamText += "0 -14 Td\n(Destination    : " + escapePdfText(destination) + "          Port of Loading: MUNDRA / ICD BABATPUR) Tj\n";
+  streamText += "0 -14 Td\n(LUT / Tax Ref  : " + lutNo + " (Supply for export without payment of IGST)) Tj\n";
+  streamText += "0 -14 Td\n(HSN / Tariff   : 57011000 - Handcrafted Artisan Woolen Rugs & Carpets) Tj\n";
+  streamText += "0 -14 Td\n(Commercial Val : $" + valUSD + " USD (Rs. " + valINR + " INR)) Tj\n";
+  
+  streamText += "0 -16 Td\n(------------------------------------------------------------------------------------------------------------------------) Tj\n";
+  streamText += "/F1 9 Tf\n";
+  streamText += "0 -14 Td\n(ITEM PARTICULARS & SHIPMENT SPECIFICATIONS:) Tj\n";
+  streamText += "0 -13 Td\n(1. Handcrafted Woolen Area Rugs - 8x10 ft (Qty: 80 Rolls, Net Wt: 2,280 Kg, Gross Wt: 2,400 Kg)) Tj\n";
+  streamText += "0 -13 Td\n(2. Master Loom Hand-Knotted Silk-Wool Rugs - 9x12 ft (Qty: 60 Rolls, Net Wt: 2,040 Kg, Gross Wt: 2,160 Kg)) Tj\n";
+  streamText += "0 -13 Td\n(Packaging: High-Density Polyethylene wrap with internal waterproof corrugated roll core) Tj\n";
+  streamText += "0 -13 Td\n(Container / Seal: MSCU-821940-2 / LINE SEAL #SEAL-882190) Tj\n";
+
+  streamText += "0 -22 Td\n(------------------------------------------------------------------------------------------------------------------------) Tj\n";
+  streamText += "/F1 8 Tf\n";
+  streamText += "0 -14 Td\n(Declaration: We declare that this invoice shows the actual price of goods described and particulars are true.) Tj\n";
+  streamText += "0 -16 Td\n(Authorized Signatory: Rajesh Kumar (Logistics Lead)       Commercial Signatory: Amitabh Sen (VP Operations)) Tj\n";
+  streamText += "0 -14 Td\n(Digitally signed via Odette RugOS Customs Suite on " + (new Date().toISOString().split('T')[0]) + ") Tj\n";
+  streamText += "ET\n";
+
+  const streamLen = streamText.length;
+  
+  let pdf = "%PDF-1.4\n";
+  const offsets = [];
+  
+  offsets.push(pdf.length);
+  pdf += "1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n";
+  
+  offsets.push(pdf.length);
+  pdf += "2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n";
+  
+  offsets.push(pdf.length);
+  pdf += "3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>\nendobj\n";
+  
+  offsets.push(pdf.length);
+  pdf += `4 0 obj\n<< /Length ${streamLen} >>\nstream\n${streamText}\nendstream\nendobj\n`;
+  
+  offsets.push(pdf.length);
+  pdf += "5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n";
+  
+  const xrefOffset = pdf.length;
+  pdf += "xref\n0 6\n0000000000 65535 f \n";
+  for (const off of offsets) {
+    pdf += String(off).padStart(10, '0') + " 00000 n \n";
+  }
+  pdf += "trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n" + xrefOffset + "\n%%EOF\n";
+  
+  return pdf;
+}
+
+function generateExcelSpreadsheetHTML(title, rows) {
+  let html = `
+    <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+    <head>
+      <!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>Export_Sheet</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->
+      <meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8"/>
+      <style>
+        body { font-family: 'Calibri', 'Segoe UI', Arial, sans-serif; font-size: 11pt; color: #1e293b; }
+        table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+        th, td { border: 1px solid #cbd5e1; padding: 7px 12px; text-align: left; }
+        .excel-title { background: #d97706; color: #ffffff; font-size: 14pt; font-weight: bold; text-align: center; border: 1px solid #b45309; }
+        .excel-header { background: #f1f5f9; font-weight: bold; color: #0f172a; border: 1px solid #94a3b8; }
+        .excel-meta-key { background: #f8fafc; font-weight: bold; color: #475569; width: 15%; }
+        .excel-total { background: #ecfdf5; font-weight: bold; color: #065f46; font-size: 12pt; border: 2px solid #059669; }
+      </style>
+    </head>
+    <body>
+      <table>
+  `;
+
+  rows.forEach((row, idx) => {
+    if (!row || row.length === 0) {
+      html += `<tr><td colspan="10" style="border: none; height: 10px;"></td></tr>`;
+      return;
+    }
+    html += `<tr>`;
+    if (idx === 0) {
+      html += `<td colspan="10" class="excel-title">${row[0] || title}</td>`;
+    } else {
+      const isTableHeader = row.some(cell => String(cell).includes("SKU Code") || String(cell).includes("Description") || String(cell).includes("Roll No") || String(cell).includes("Pallet No") || String(cell).includes("Marks & Numbers"));
+      const isTotalRow = row.some(cell => String(cell).includes("TOTAL") || String(cell).includes("VALUATION"));
+
+      row.forEach((cell, cIdx) => {
+        const val = cell === undefined || cell === null ? "" : String(cell);
+        if (isTableHeader) {
+          html += `<th class="excel-header">${val}</th>`;
+        } else if (isTotalRow) {
+          html += `<td class="excel-total">${val}</td>`;
+        } else if (cIdx === 0 && !isTableHeader) {
+          html += `<td class="excel-meta-key">${val}</td>`;
+        } else {
+          html += `<td>${val}</td>`;
+        }
+      });
+    }
+    html += `</tr>`;
+  });
+
+  html += `
+      </table>
+    </body>
+    </html>
+  `;
+  return html;
+}
+
+function downloadExcelFile(filename, rows) {
+  const xlsFilename = filename.endsWith(".xls") ? filename : filename.replace(/\.csv$/, '') + ".xls";
+  const htmlContent = generateExcelSpreadsheetHTML(xlsFilename, rows);
+  const blob = new Blob([htmlContent], { type: "application/vnd.ms-excel;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = xlsFilename;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 200);
+}
+
+function downloadDocumentPDF(invoiceNo, docType) {
+  const doc = (AppState.exportDocs || []).find(d => d.invoiceNo === invoiceNo) || (AppState.exportDocs && AppState.exportDocs[0]) || { invoiceNo, valueUSD: 45210, valueINR: 3793119, orderId: "ORD-AMZ-99214", consignee: "ALTAGAMMA", destination: "USA" };
+
+  let title = "COMMERCIAL EXPORT INVOICE";
+  let filename = `COMMERCIAL_EXPORT_INVOICE_${doc.invoiceNo}.pdf`;
+
+  switch (docType) {
+    case "invoice_no_consignee":
+      title = "EXPORT COMMERCIAL INVOICE (WITHOUT CONSIGNEE)";
+      filename = `EXPORT_INVOICE_NO_CONSIGNEE_${doc.invoiceNo}.pdf`;
+      break;
+    case "packing_no_consignee":
+      title = "ROLL-WISE PACKING INVOICE (WITHOUT CONSIGNEE)";
+      filename = `PACKING_INVOICE_NO_CONSIGNEE_${doc.invoiceNo}.pdf`;
+      break;
+    case "annexure":
+      title = "INDIAN CUSTOMS ANNEXURE-A SELF-SEALING INVOICE";
+      filename = `CUSTOMS_ANNEXURE_A_${doc.invoiceNo}.pdf`;
+      break;
+    case "vgm":
+      title = "SOLAS VERIFIED GROSS MASS (VGM) CERTIFICATE";
+      filename = `SOLAS_VGM_CERTIFICATE_${doc.invoiceNo}.pdf`;
+      break;
+    case "export_invoice":
+    case "invoice":
+      title = "STATUTORY COMMERCIAL EXPORT INVOICE";
+      filename = `COMMERCIAL_EXPORT_INVOICE_${doc.invoiceNo}.pdf`;
+      break;
+    case "packing_invoice_list":
+    case "packing":
+      title = "ROLL-WISE EXPORT PACKING LIST INVOICE";
+      filename = `ROLL_WISE_PACKING_LIST_${doc.invoiceNo}.pdf`;
+      break;
+    case "invoice_with_consignee":
+      title = "EXPORT COMMERCIAL INVOICE (WITH CONSIGNEE)";
+      filename = `EXPORT_INVOICE_WITH_CONSIGNEE_${doc.invoiceNo}.pdf`;
+      break;
+    case "packing_with_consignee":
+      title = "ROLL-WISE PACKING INVOICE (WITH CONSIGNEE)";
+      filename = `PACKING_INVOICE_WITH_CONSIGNEE_${doc.invoiceNo}.pdf`;
+      break;
+    case "bundle":
+    default:
+      title = "COMPLETE 15-DOCUMENT MASTER EXPORT SUITE";
+      filename = `COMPLETE_15_DOCUMENTS_MASTER_SUITE_${doc.invoiceNo}.pdf`;
+      break;
   }
 
-  triggerDownload(filename, content, "application/pdf");
-  showToast(`Downloaded ${filename} successfully!`, "success");
+  const pdfContent = generateValidPDFBlob(title, docType, doc);
+  triggerDownload(filename, pdfContent, "application/pdf");
+  showToast(`✓ Downloaded PDF: ${filename}`, "success");
+}
+
+function downloadCommercialInvoice(invoiceId, isOriginal, format) {
+  const inv = (AppState.exportDocs || []).find(d => d.invoiceNo === invoiceId || d.id === invoiceId) || { invoiceNo: invoiceId || 'EXP-INV-2026-101', valueUSD: 45210, valueINR: 3793119, date: '2026-09-14', consignee: 'ALTAGAMMA', destination: 'USA' };
+  
+  if (isOriginal === false) {
+    // Real Styled Excel (.xls) Download
+    const excelRows = [
+      ["ODETTE RUGS LLC - COMMERCIAL EXPORT INVOICE"],
+      ["Exporter", "ODETTE RUGS LLC", "IEC No", "0514029108", "GSTIN", "09AAACR8821N1ZM"],
+      ["Address", "NH-19 Carpet Hub, Maryadpatti, Bhadohi - 221401, UP, India"],
+      ["Invoice No", inv.invoiceNo, "Invoice Date", inv.date || "2026-09-14", "LUT No", "AD090326089140U"],
+      ["Consignee", inv.consignee || "ALTAGAMMA", "Destination", inv.destination || "USA", "Port of Loading", "MUNDRA / ICD BABATPUR"],
+      [],
+      ["Sr No", "SKU Code", "Description of Handcrafted Goods", "HSN Code", "Size (ft)", "Quantity (Rolls)", "Unit Price ($ USD)", "Total FOB ($ USD)", "Total (INR)"],
+      ["1", "SKU-HER-8X10", "Heritage Kashan Hand-Knotted Wool Rug", "57011000", "8x10", "80", "295.00", "23600.00", "1980040.00"],
+      ["2", "SKU-MOD-9X12", "Modern Loom Artisan Wool Silk Rug", "57011000", "9x12", "60", "360.16", "21610.00", "1813079.00"],
+      [],
+      ["", "", "TOTAL SHIPMENT VALUATION", "", "", "140 Rolls", "", `$${(inv.valueUSD || 45210).toFixed(2)} USD`, `Rs. ${(inv.valueINR || 3793119).toLocaleString()} INR`],
+      [],
+      ["Authorized Signatory", "Rajesh Kumar (Logistics Lead)", "Commercial Signatory", "Amitabh Sen (VP Operations)"]
+    ];
+    downloadExcelFile(`COMMERCIAL_INVOICE_EXCEL_${inv.invoiceNo}.xls`, excelRows);
+    showToast(`✓ Downloaded Commercial Excel (.xls) for ${inv.invoiceNo}`, "success");
+  } else {
+    // Real PDF Download
+    downloadDocumentPDF(inv.invoiceNo, 'export_invoice');
+  }
+}
+
+function downloadPackingInvoice(invoiceId, withConsignee) {
+  const inv = (AppState.exportDocs || []).find(d => d.invoiceNo === invoiceId || d.id === invoiceId) || { invoiceNo: invoiceId || 'EXP-INV-2026-101' };
+  downloadDocumentPDF(inv.invoiceNo, withConsignee ? 'packing_with_consignee' : 'packing_no_consignee');
+}
+
+function downloadAnnexureInvoice(invoiceId) {
+  const inv = (AppState.exportDocs || []).find(d => d.invoiceNo === invoiceId || d.id === invoiceId) || { invoiceNo: invoiceId || 'EXP-INV-2026-101' };
+  downloadDocumentPDF(inv.invoiceNo, 'annexure');
+}
+
+function downloadVGMInvoice(invoiceId) {
+  const inv = (AppState.exportDocs || []).find(d => d.invoiceNo === invoiceId || d.id === invoiceId) || { invoiceNo: invoiceId || 'EXP-INV-2026-101' };
+  downloadDocumentPDF(inv.invoiceNo, 'vgm');
+}
+
+function downloadPackingInvoiceList(invoiceId, isOriginal, format) {
+  const inv = (AppState.exportDocs || []).find(d => d.invoiceNo === invoiceId || d.id === invoiceId) || { invoiceNo: invoiceId || 'EXP-INV-2026-101', date: '2026-09-14', consignee: 'ALTAGAMMA', destination: 'USA' };
+  
+  if (isOriginal === false) {
+    // Real Styled Excel (.xls) Download
+    const excelRows = [
+      ["ODETTE RUGS LLC - ROLL-WISE EXPORT PACKING LIST"],
+      ["Invoice Ref", inv.invoiceNo, "Date", inv.date || "2026-09-14", "Consignee", inv.consignee || "ALTAGAMMA"],
+      ["Container No", "MSCU-821940-2", "Line Seal", "SEAL-882190", "Total Rolls", "140", "Total Net Wt", "4,320.00 Kg", "Total Gross Wt", "4,560.00 Kg"],
+      [],
+      ["Roll No", "Container No", "SKU Code", "Weave / Quality", "Color / Design", "Size (ft)", "Roll Qty", "Net Wt (Kg)", "Gross Wt (Kg)", "Pallet No"],
+      ["1 - 40", "MSCU-821940-2", "SKU-HER-8X10", "Hand-Knotted 100% Wool", "Heritage Indigo", "8x10", "40", "1140.00", "1200.00", "PLT-01"],
+      ["41 - 80", "MSCU-821940-2", "SKU-HER-8X10", "Hand-Knotted 100% Wool", "Heritage Crimson", "8x10", "40", "1140.00", "1200.00", "PLT-02"],
+      ["81 - 110", "MSCU-821940-2", "SKU-MOD-9X12", "Master Loom Wool-Silk", "Nordic Grey", "9x12", "30", "1020.00", "1080.00", "PLT-03"],
+      ["111 - 140", "MSCU-821940-2", "SKU-MOD-9X12", "Master Loom Wool-Silk", "Ochre Gold", "9x12", "30", "1020.00", "1080.00", "PLT-04"],
+      [],
+      ["TOTALS", "MSCU-821940-2", "4 Pallets", "", "", "", "140 Rolls", "4320.00 Kg", "4560.00 Kg", "4 Pallets"]
+    ];
+    downloadExcelFile(`PACKING_LIST_EXCEL_${inv.invoiceNo}.xls`, excelRows);
+    showToast(`✓ Downloaded Packing-list Excel (.xls) for ${inv.invoiceNo}`, "success");
+  } else {
+    // Real PDF Download
+    downloadDocumentPDF(inv.invoiceNo, 'packing_invoice_list');
+  }
+}
+
+function downloadExcelForBLDraft(invoiceId, type) {
+  const inv = (AppState.exportDocs || []).find(d => d.invoiceNo === invoiceId || d.id === invoiceId) || { invoiceNo: invoiceId || 'EXP-INV-2026-101', consignee: 'ALTAGAMMA', destination: 'USA' };
+  
+  let docTitle = "BL_Draft";
+  let filename = `BL_DRAFT_${inv.invoiceNo}.xls`;
+  let excelRows = [];
+
+  if (type === 1) {
+    docTitle = "BILL OF LADING (BL) DRAFT MANIFEST";
+    filename = `BL_DRAFT_${inv.invoiceNo}.xls`;
+    excelRows = [
+      ["ODETTE RUGS LLC - BILL OF LADING (BL) EXPORT DRAFT"],
+      ["Invoice Ref", inv.invoiceNo, "Shipper", "ODETTE RUGS LLC (IEC: 0514029108, Bhadohi UP)"],
+      ["Consignee", inv.consignee || "ALTAGAMMA", "Notify Party", "SAME AS CONSIGNEE"],
+      ["Port of Loading", "MUNDRA PORT / ICD BABATPUR", "Port of Discharge", inv.destination || "USA"],
+      ["Vessel / Voyage", "MSC MEDITERRANEAN CARGO V.204", "Carrier", "MSC Mediterranean Shipping Company"],
+      [],
+      ["Container No", "Seal No", "Marks & Numbers", "No of Packages", "Description of Goods", "Gross Weight (Kg)", "Measurement (CBM)"],
+      ["MSCU-821940-2", "SEAL-882190", "ODETTE / SEALED", "140 ROLLS", "100% Handcrafted Indian Artisan Woolen Rugs (HSN 57011000)", "4560.00 Kg", "64.20 CBM"],
+      [],
+      ["Freight Condition", "FREIGHT PREPAID", "Original BLs Issued", "3 (THREE)"]
+    ];
+  } else if (type === 2) {
+    docTitle = "PALLETIZED BILL OF LADING (BL) DRAFT";
+    filename = `BL_DRAFT_PALLETS_${inv.invoiceNo}.xls`;
+    excelRows = [
+      ["ODETTE RUGS LLC - PALLETIZED BILL OF LADING (BL) DRAFT"],
+      ["Invoice Ref", inv.invoiceNo, "Shipper", "ODETTE RUGS LLC"],
+      ["Consignee", inv.consignee || "ALTAGAMMA", "Port of Loading", "MUNDRA / ICD BABATPUR"],
+      [],
+      ["Pallet No", "Container No", "Seal No", "Rolls Count", "Net Weight (Kg)", "Gross Weight (Kg)", "Pallet Dimensions"],
+      ["PLT-01", "MSCU-821940-2", "SEAL-882190", "35 Rolls", "1080.00", "1140.00", "120x100x160 cm"],
+      ["PLT-02", "MSCU-821940-2", "SEAL-882190", "35 Rolls", "1080.00", "1140.00", "120x100x160 cm"],
+      ["PLT-03", "MSCU-821940-2", "SEAL-882190", "35 Rolls", "1080.00", "1140.00", "120x100x160 cm"],
+      ["PLT-04", "MSCU-821940-2", "SEAL-882190", "35 Rolls", "1080.00", "1140.00", "120x100x160 cm"],
+      [],
+      ["Total Pallets", "4 Pallets", "Total Gross Wt", "4,560.00 Kg"]
+    ];
+  } else if (type === 3) {
+    docTitle = "CERTIFICATE OF ORIGIN (COO) DRAFT [PLTs]";
+    filename = `COO_DRAFT_PALLETS_${inv.invoiceNo}.xls`;
+    excelRows = [
+      ["CERTIFICATE OF ORIGIN (CEPC) PALLETIZED EXPORT DRAFT"],
+      ["Issuing Authority", "Carpet Export Promotion Council (CEPC), Ministry of Textiles, Govt of India"],
+      ["RCMC No", "CEPC/RCMC/2020/88192", "Exporter", "ODETTE RUGS LLC, Bhadohi UP (IEC: 0514029108)"],
+      ["Invoice Ref", inv.invoiceNo, "Consignee", inv.consignee || "ALTAGAMMA"],
+      [],
+      ["Pallet No", "Item Description", "Origin Criteria", "Rolls", "Gross Mass (Kg)", "FOB Value ($ USD)"],
+      ["PLT-01 - PLT-04", "100% Indian Handmade Artisan Woolen Rugs (HSN 57011000)", "Wholly Obtained in India (WO)", "140", "4560.00 Kg", "$45,210.00 USD"]
+    ];
+  } else {
+    docTitle = "CERTIFICATE OF ORIGIN (COO) DRAFT";
+    filename = `COO_DRAFT_${inv.invoiceNo}.xls`;
+    excelRows = [
+      ["CERTIFICATE OF ORIGIN (CEPC) EXPORT DRAFT"],
+      ["Certificate Ref", "CEPC/COO/2026/88192", "Exporter", "ODETTE RUGS LLC (IEC: 0514029108)"],
+      ["Consignee", inv.consignee || "ALTAGAMMA", "Country of Origin", "INDIA"],
+      ["Port of Loading", "MUNDRA / ICD BABATPUR", "Final Destination", inv.destination || "USA"],
+      [],
+      ["Marks & Nos", "Package Details", "HS Code", "Net Mass (Kg)", "Gross Mass (Kg)", "FOB USD"],
+      ["ODETTE / SEALED", "140 Rolls of Handmade Carpets", "57011000", "4320.00 Kg", "4560.00 Kg", "$45,210.00 USD"]
+    ];
+  }
+
+  downloadExcelFile(filename, excelRows);
+  showToast(`✓ Downloaded ${docTitle} Excel (.xls) for ${inv.invoiceNo}`, "success");
+}
+
+// ============================================================================
+// ZIP ARCHIVE GENERATOR (PURE JAVASCRIPT - 100% STANDARDS COMPLIANT)
+// ============================================================================
+
+function makeCrcTable() {
+  let c;
+  const crcTable = [];
+  for (let n = 0; n < 256; n++) {
+    c = n;
+    for (let k = 0; k < 8; k++) {
+      c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+    }
+    crcTable[n] = c;
+  }
+  return crcTable;
+}
+
+const crcTable = makeCrcTable();
+
+function calculateCrc32(bytes) {
+  let crc = 0 ^ (-1);
+  for (let i = 0; i < bytes.length; i++) {
+    crc = (crc >>> 8) ^ crcTable[(crc ^ bytes[i]) & 0xFF];
+  }
+  return (crc ^ (-1)) >>> 0;
+}
+
+function createZipArchive(fileList) {
+  const encoder = new TextEncoder();
+  const fileRecords = [];
+
+  fileList.forEach(file => {
+    const nameBytes = encoder.encode(file.name);
+    const dataBytes = (typeof file.content === "string") ? encoder.encode(file.content) : (file.content instanceof Uint8Array ? file.content : encoder.encode(String(file.content)));
+    const crc = calculateCrc32(dataBytes);
+    fileRecords.push({
+      name: file.name,
+      nameBytes: nameBytes,
+      data: dataBytes,
+      crc: crc,
+      size: dataBytes.length,
+      offset: 0
+    });
+  });
+
+  const localChunks = [];
+  let currentOffset = 0;
+
+  fileRecords.forEach(rec => {
+    rec.offset = currentOffset;
+    
+    // Local File Header (30 bytes + name length)
+    const header = new Uint8Array(30 + rec.nameBytes.length);
+    const view = new DataView(header.buffer);
+    
+    view.setUint32(0, 0x04034b50, true); // signature
+    view.setUint16(4, 20, true);         // version needed (2.0)
+    view.setUint16(6, 0, true);          // flags
+    view.setUint16(8, 0, true);          // compression (0 = store)
+    view.setUint16(10, 0x4800, true);    // mod time (09:00)
+    view.setUint16(12, 0x5D32, true);    // mod date (2026-09-18)
+    view.setUint32(14, rec.crc, true);   // crc32
+    view.setUint32(18, rec.size, true);  // compressed size
+    view.setUint32(22, rec.size, true);  // uncompressed size
+    view.setUint16(26, rec.nameBytes.length, true); // name length
+    view.setUint16(28, 0, true);         // extra length
+    header.set(rec.nameBytes, 30);
+
+    localChunks.push(header);
+    localChunks.push(rec.data);
+    currentOffset += header.length + rec.data.length;
+  });
+
+  const centralDirStart = currentOffset;
+  const centralChunks = [];
+
+  fileRecords.forEach(rec => {
+    const cdHeader = new Uint8Array(46 + rec.nameBytes.length);
+    const view = new DataView(cdHeader.buffer);
+
+    view.setUint32(0, 0x02014b50, true); // signature
+    view.setUint16(4, 20, true);         // version made by
+    view.setUint16(6, 20, true);         // version needed
+    view.setUint16(8, 0, true);          // flags
+    view.setUint16(10, 0, true);         // compression
+    view.setUint16(12, 0x4800, true);    // mod time
+    view.setUint16(14, 0x5D32, true);    // mod date
+    view.setUint32(16, rec.crc, true);   // crc32
+    view.setUint32(20, rec.size, true);  // compressed size
+    view.setUint32(24, rec.size, true);  // uncompressed size
+    view.setUint16(28, rec.nameBytes.length, true); // name length
+    view.setUint16(30, 0, true);         // extra length
+    view.setUint16(32, 0, true);         // comment length
+    view.setUint16(34, 0, true);         // disk start
+    view.setUint16(36, 0, true);         // internal attrs
+    view.setUint32(38, 0, true);         // external attrs
+    view.setUint32(42, rec.offset, true); // relative offset of local header
+    cdHeader.set(rec.nameBytes, 46);
+
+    centralChunks.push(cdHeader);
+    currentOffset += cdHeader.length;
+  });
+
+  const centralDirSize = currentOffset - centralDirStart;
+
+  // End of Central Directory Record (22 bytes)
+  const eocd = new Uint8Array(22);
+  const eocdView = new DataView(eocd.buffer);
+  eocdView.setUint32(0, 0x06054b50, true); // signature
+  eocdView.setUint16(4, 0, true);          // disk number
+  eocdView.setUint16(6, 0, true);          // cd start disk
+  eocdView.setUint16(8, fileRecords.length, true);  // records on disk
+  eocdView.setUint16(10, fileRecords.length, true); // total records
+  eocdView.setUint32(12, centralDirSize, true);     // size of central directory
+  eocdView.setUint32(16, centralDirStart, true);    // offset of start of cd
+  eocdView.setUint16(20, 0, true);         // comment length
+
+  return new Blob([...localChunks, ...centralChunks, eocd], { type: "application/zip" });
+}
+
+function downloadAllInOne(invoiceId, flag) {
+  const inv = (AppState.exportDocs || []).find(d => d.invoiceNo === invoiceId || d.id === invoiceId) || { invoiceNo: invoiceId || 'EXP-INV-2026-101', valueUSD: 45210, valueINR: 3793119, date: '2026-09-14', consignee: 'ALTAGAMMA', destination: 'USA' };
+
+  showToast(`Packaging all 14 export documents into a single ZIP archive for ${inv.invoiceNo}...`, "info");
+
+  // The 14 individual documents
+  const files = [
+    {
+      name: `01_Export_Invoice_Without_Consignee_${inv.invoiceNo}.pdf`,
+      content: generateValidPDFBlob("EXPORT COMMERCIAL INVOICE (WITHOUT CONSIGNEE)", "invoice_no_consignee", inv)
+    },
+    {
+      name: `02_Packing_Invoice_Without_Consignee_${inv.invoiceNo}.pdf`,
+      content: generateValidPDFBlob("ROLL-WISE PACKING INVOICE (WITHOUT CONSIGNEE)", "packing_no_consignee", inv)
+    },
+    {
+      name: `03_Customs_Annexure_A_Invoice_${inv.invoiceNo}.pdf`,
+      content: generateValidPDFBlob("INDIAN CUSTOMS ANNEXURE-A SELF-SEALING INVOICE", "annexure", inv)
+    },
+    {
+      name: `04_SOLAS_VGM_Certificate_${inv.invoiceNo}.pdf`,
+      content: generateValidPDFBlob("SOLAS VERIFIED GROSS MASS (VGM) CERTIFICATE", "vgm", inv)
+    },
+    {
+      name: `05_Commercial_Export_Invoice_${inv.invoiceNo}.pdf`,
+      content: generateValidPDFBlob("STATUTORY COMMERCIAL EXPORT INVOICE", "export_invoice", inv)
+    },
+    {
+      name: `06_Commercial_Export_Invoice_${inv.invoiceNo}.xls`,
+      content: generateExcelSpreadsheetHTML(`Commercial_Invoice_${inv.invoiceNo}`, [
+        ["ODETTE RUGS LLC - COMMERCIAL EXPORT INVOICE"],
+        ["Exporter", "ODETTE RUGS LLC", "IEC No", "0514029108", "GSTIN", "09AAACR8821N1ZM"],
+        ["Invoice No", inv.invoiceNo, "Invoice Date", inv.date || "2026-09-14"],
+        ["Consignee", inv.consignee || "ALTAGAMMA", "Destination", inv.destination || "USA"],
+        [],
+        ["Sr No", "SKU Code", "Description of Goods", "HSN", "Size", "Qty (Rolls)", "Price USD", "Total USD", "Total INR"],
+        ["1", "SKU-HER-8X10", "Heritage Kashan Hand-Knotted Wool Rug", "57011000", "8x10", "80", "295.00", "23600.00", "1980040.00"],
+        ["2", "SKU-MOD-9X12", "Modern Loom Artisan Wool Silk Rug", "57011000", "9x12", "60", "360.16", "21610.00", "1813079.00"],
+        [],
+        ["", "", "TOTAL SHIPMENT VALUATION", "", "", "140 Rolls", "", `$${(inv.valueUSD || 45210).toFixed(2)} USD`, `Rs. ${(inv.valueINR || 3793119).toLocaleString()} INR`]
+      ])
+    },
+    {
+      name: `07_Roll_Wise_Packing_List_${inv.invoiceNo}.pdf`,
+      content: generateValidPDFBlob("ROLL-WISE EXPORT PACKING LIST INVOICE", "packing_invoice_list", inv)
+    },
+    {
+      name: `08_Packing_List_Detailed_${inv.invoiceNo}.xls`,
+      content: generateExcelSpreadsheetHTML(`Packing_List_${inv.invoiceNo}`, [
+        ["ODETTE RUGS LLC - ROLL-WISE PACKING LIST"],
+        ["Invoice Ref", inv.invoiceNo, "Date", inv.date || "2026-09-14"],
+        ["Roll No", "Container No", "SKU Code", "Size (ft)", "Net Wt Kg", "Gross Wt Kg"],
+        ["1 - 80", "MSCU-821940-2", "SKU-HER-8X10", "8x10", "2280.00", "2400.00"],
+        ["81 - 140", "MSCU-821940-2", "SKU-MOD-9X12", "9x12", "2040.00", "2160.00"]
+      ])
+    },
+    {
+      name: `09_BL_Draft_Manifest_${inv.invoiceNo}.xls`,
+      content: generateExcelSpreadsheetHTML(`BL_Draft_${inv.invoiceNo}`, [
+        ["ODETTE RUGS LLC - BILL OF LADING (BL) DRAFT"],
+        ["Invoice Ref", inv.invoiceNo, "Carrier", "MSC Mediterranean Shipping Company"],
+        ["Container No", "MSCU-821940-2", "Seal No", "SEAL-882190", "Gross Wt", "4560.00 Kg"]
+      ])
+    },
+    {
+      name: `10_BL_Draft_Pallets_${inv.invoiceNo}.xls`,
+      content: generateExcelSpreadsheetHTML(`BL_Pallets_${inv.invoiceNo}`, [
+        ["ODETTE RUGS LLC - PALLETIZED BL DRAFT"],
+        ["Invoice Ref", inv.invoiceNo, "Pallets", "4 Pallets", "Total Gross Wt", "4560.00 Kg"]
+      ])
+    },
+    {
+      name: `11_Certificate_of_Origin_Draft_${inv.invoiceNo}.xls`,
+      content: generateExcelSpreadsheetHTML(`COO_Draft_${inv.invoiceNo}`, [
+        ["CARPET EXPORT PROMOTION COUNCIL (CEPC) - COO DRAFT"],
+        ["RCMC No", "CEPC/RCMC/2020/88192", "Country of Origin", "INDIA", "HSN Code", "57011000"]
+      ])
+    },
+    {
+      name: `12_Certificate_of_Origin_Pallets_${inv.invoiceNo}.xls`,
+      content: generateExcelSpreadsheetHTML(`COO_Pallets_${inv.invoiceNo}`, [
+        ["CEPC PALLETIZED COO DRAFT"],
+        ["Invoice Ref", inv.invoiceNo, "Origin Criteria", "Wholly Obtained in India (WO)"]
+      ])
+    },
+    {
+      name: `13_Export_Invoice_With_Consignee_${inv.invoiceNo}.pdf`,
+      content: generateValidPDFBlob("EXPORT COMMERCIAL INVOICE (WITH CONSIGNEE)", "invoice_with_consignee", inv)
+    },
+    {
+      name: `14_Packing_Invoice_With_Consignee_${inv.invoiceNo}.pdf`,
+      content: generateValidPDFBlob("ROLL-WISE PACKING INVOICE (WITH CONSIGNEE)", "packing_with_consignee", inv)
+    }
+  ];
+
+  const zipBlob = createZipArchive(files);
+  const zipFilename = `ALL_14_EXPORT_DOCUMENTS_${inv.invoiceNo}.zip`;
+  const url = URL.createObjectURL(zipBlob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = zipFilename;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 200);
+
+  showToast(`✓ Downloaded Complete ZIP: ${zipFilename} (14 Documents Included)!`, "success");
+}
+
+function renderRichSignatorySelect(fieldId, selectedValue, comp) {
+  const signatories = (comp && comp.signatories && comp.signatories.length > 0)
+    ? comp.signatories
+    : [
+        { id: "SIG-01", name: "Rajesh Kumar", signatureText: "Rajesh Kumar", designation: "Logistics Lead" },
+        { id: "SIG-02", name: "Amitabh Sen", signatureText: "Amitabh Sen", designation: "VP Operations" }
+      ];
+
+  const current = signatories.find(s => s.name === selectedValue || (selectedValue && selectedValue.includes(s.name.split(' ')[0]))) || signatories[0];
+  const currentName = current ? current.name : (selectedValue || "Select Signatory");
+  const currentSign = current ? (current.signatureText || current.name.split(' ')[0]) : "Sign";
+
+  return `
+    <div class="rich-sign-select-wrap" id="wrap_${fieldId}">
+      <input type="hidden" id="${fieldId}" value="${currentName}">
+      <button type="button" class="rich-sign-select-btn" onclick="toggleRichSignMenu('${fieldId}')" id="btn_${fieldId}">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span class="rich-sign-thumb">${currentSign}</span>
+          <span id="label_${fieldId}" style="font-weight: 600;">${currentName}</span>
+        </div>
+        <span style="color: #d97706; font-size: 12px;">▾</span>
+      </button>
+      <div class="rich-sign-menu" id="menu_${fieldId}">
+        ${signatories.map(s => {
+          const isSelected = (current && (current.name === s.name || current.id === s.id));
+          return `
+            <div class="rich-sign-item ${isSelected ? 'selected' : ''}" onclick="selectRichSignatory('${fieldId}', '${s.name.replace(/'/g, "\\'")}', '${(s.signatureText || s.name).replace(/'/g, "\\'")}')">
+              <div class="rich-sign-item-left">
+                <span class="rich-sign-thumb">${s.signatureText || s.name.split(' ')[0]}</span>
+                <span style="font-weight: 600; font-size: 13px; color: ${isSelected ? '#d97706' : 'var(--text-main)'};">${s.name}</span>
+              </div>
+              ${isSelected ? '<span style="color: #d97706; font-size: 15px; font-weight: 800;">✓</span>' : ''}
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function toggleRichSignMenu(fieldId) {
+  const menu = document.getElementById(`menu_${fieldId}`);
+  const wrap = document.getElementById(`wrap_${fieldId}`);
+  if (!menu) return;
+  const isOpen = menu.classList.contains('open');
+  document.querySelectorAll('.rich-sign-menu').forEach(m => m.classList.remove('open'));
+  if (!isOpen) {
+    if (wrap) {
+      const rect = wrap.getBoundingClientRect();
+      const spaceBelow = window.innerHeight - rect.bottom;
+      if (spaceBelow < 230) {
+        wrap.classList.remove('drop-down'); // opens upward
+      } else {
+        wrap.classList.add('drop-down'); // opens downward
+      }
+    }
+    menu.classList.add('open');
+  }
+}
+
+function selectRichSignatory(fieldId, name, signText) {
+  const input = document.getElementById(fieldId);
+  const label = document.getElementById(`label_${fieldId}`);
+  const btn = document.getElementById(`btn_${fieldId}`);
+  if (input) input.value = name;
+  if (label) label.textContent = name;
+  if (btn) {
+    const thumb = btn.querySelector('.rich-sign-thumb');
+    if (thumb) thumb.textContent = signText || name.split(' ')[0];
+  }
+  document.querySelectorAll('.rich-sign-menu').forEach(m => m.classList.remove('open'));
+  if (AppState.activeExportWizard) {
+    if (fieldId === "wizSignatory") AppState.activeExportWizard.authorisedSignatory = name;
+    if (fieldId === "wizCommSignatory") AppState.activeExportWizard.commercialSignatory = name;
+  }
+}
+
+// Global click to close signatory dropdowns when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.rich-sign-select-wrap')) {
+    document.querySelectorAll('.rich-sign-menu').forEach(m => m.classList.remove('open'));
+  }
+});
+
+function openExportInvoiceForm(planId, invoiceNo, isEdit, returnRoute) {
+  let doc = null;
+  let plan = null;
+
+  if (invoiceNo) {
+    doc = (AppState.exportDocs || []).find(d => d.invoiceNo === invoiceNo);
+  }
+  if (!planId && doc && doc.loadingPlanId) {
+    planId = doc.loadingPlanId;
+  }
+  if (planId) {
+    plan = (AppState.loadingPlans || []).find(p => p.planId === planId);
+  }
+
+  const comp = (AppState.companies && AppState.companies[0]) || AppState.companySettings || {};
+  const nextNum = Math.floor(100 + Math.random() * 900);
+  const exporterAddressStr = comp.postalAddress || comp.address || "NH-19 CARPET HUB, MARYADPATTI, BHADOHI - 221401, UTTAR PRADESH, INDIA";
+  const defaultExporterStr = `${comp.legalName || 'ODETTE RUGS LLC'}\n${exporterAddressStr}`;
+
+  const activeData = {
+    isEdit: Boolean(isEdit || doc),
+    returnRoute: returnRoute || (AppState.activeModule === 'mod5-ship' ? 'mod5-ship' : 'mod5-docs'),
+    step: 1,
+    subStep: 1,
+    planId: planId || (doc ? doc.loadingPlanId : null),
+    invoiceNo: doc ? doc.invoiceNo : (plan ? (plan.exportInvoiceNo || plan.invoiceNo || `EXP-INV-2026-${nextNum}`) : `EXP-INV-2026-${nextNum}`),
+    proformaNo: plan ? plan.planId : (doc && doc.loadingPlanId ? doc.loadingPlanId : `LP-2026-0${Math.floor(10 + Math.random() * 80)}`),
+    exporter: doc ? (doc.exporter || defaultExporterStr) : defaultExporterStr,
+    gstin: comp.gstin || "09AAACR8821N1ZM",
+    iec: comp.iec || "0514029108",
+    pan: comp.pan || "AAACR8821N",
+    date: doc ? (doc.date || '2026-09-17') : (plan ? (plan.date || new Date().toISOString().split('T')[0]) : new Date().toISOString().split('T')[0]),
+    dbk: comp.taxDecLine3 || comp.defaultLUT || "SUPPLY MEANT FOR EXPORT UNDER LUT WITHOUT PAYMENT OF INTEGRATED TAX (IGST)",
+    consignee: doc ? doc.consignee : (plan ? (plan.consignee || "Dallas Design Center, TX, USA") : "Dallas Design Center, TX, USA"),
+    contactPerson: plan ? (plan.contactPerson || "") : "",
+    buyer: doc ? (doc.buyer || doc.consignee) : (plan ? (plan.consignee || "Dallas Design Center, TX, USA") : "Dallas Design Center, TX, USA"),
+    buyerOrderNo: doc ? doc.orderId : (plan ? (plan.orderId || "ORD-AMZ-99214") : "ORD-AMZ-99214"),
+    originCountry: comp.country || comp.defaultCountryOrigin || "INDIA",
+    portLoading: comp.defaultPortLoading || "MUNDRA PORT, INDIA / ICD BABATPUR",
+    portDischarge: doc ? (doc.destination || "DALLAS / HOUSTON PORT (USA)") : (plan ? (plan.destination || "DALLAS / HOUSTON PORT (USA)") : "DALLAS / HOUSTON PORT (USA)"),
+    finalDestination: "UNITED STATES OF AMERICA",
+    vessel: "MSC MEDITERRANEAN CARGO V.204",
+    marksNos: plan ? (plan.palletSticker || "ODETTE / CONTAINER SEALED") : "ODETTE / CONTAINER SEALED",
+    noOfPackages: plan ? (plan.totalRolls || 140) : 140,
+    preCarriageBy: plan ? (plan.originFacility || (comp.address ? `BY TRUCK, ${comp.address.split(',')[1] || 'BHADOHI'}` : "BY TRUCK, BHADOHI CENTRAL HUB")) : "BY TRUCK, BHADOHI CENTRAL HUB",
+    etdDate: "2026-09-21",
+    etaDate: "2026-10-18",
+    incoterms: doc ? (doc.incoterms || "CIF DALLAS") : "CIF DALLAS",
+    bank: comp.defaultBank || "HDFC BANK LTD (EEFC A/C #502000881290 / IFSC: HDFC0000128)",
+    cha: comp.defaultCha || "JEENA & COMPANY CUSTOMS HOUSE AGENT",
+    forwarder: plan ? (plan.transporter || plan.carrier || "MSC Mediterranean Shipping") : "MSC Mediterranean Shipping",
+    termsDelivery: "CIF DESTINATION PORT",
+    termsPayment: "90 DAYS FROM THE DATE OF B/L",
+    authorisedSignatory: comp.authorisedSignatory || "Rajesh Kumar (Logistics Lead)",
+    commercialSignatory: comp.commercialSignatory || "Amitabh Sen (VP Operations & Customs)",
+    remarks: plan ? (plan.notes || "Fragile handcrafted rugs. Moisture barrier wrapped.") : "Handcrafted artisan wool rugs.",
+    declarationTitle: "Declaration in regard to draw back claim under RODTEP SCHEME made in this shipping bill or bill of exports.",
+    descLine1: "Declaration Under RODTEP Scheme - Supply without IGST",
+    descLine2: "EXPORT UNDER DRAWBACK SCHEME",
+    descLine3: "EXPORT WITHOUT TAX DEDUCTION",
+    // Step 2 Annexure
+    branchCode: comp.branchCode || (comp.iec ? `${comp.iec}001A` : "0514029108001A"),
+    stuffingPlace: plan ? (plan.originFacility || "Bhadohi Central Weaving Unit #1") : "Bhadohi Central Weaving Unit #1",
+    dicTaluka: "BHADOHI (SANT RAVIDAS NAGAR, U.P.)",
+    examDate: new Date().toISOString().split('T')[0],
+    appraiserDivision: comp.division || comp.appraiserDivision || "CUSTOMS DIVISION ICD BABATPUR / VARANASI",
+    locationCode: comp.locationCode || "INVTZ1",
+    // Step 3 VGM
+    bookingNo: "MSC-BK-2026-881924",
+    shipperName: comp.shipperName || comp.legalName || "ODETTE RUGS LLC",
+    shipperRegNo: `IEC: ${comp.iec || '0514029108'}`,
+    weighbridgeReg: comp.weighbridgeReg || "WB-UP65-9921 / BHADOHI CENTRAL WEIGHBRIDGE",
+    maxPermissibleKg: 30480,
+    rexNo: comp.rexNo || "INREX0514029108",
+    rexStatement: comp.rexStatement || "INREX0514029108 - EU Registered Exporter Scheme Statement",
+    containers: (plan && plan.containers && plan.containers.length > 0) ? plan.containers : [
+      {
+        id: "CNT-1",
+        containerNo: "MSCU-821940-2",
+        lineSealNo: "SEAL-88210",
+        rfidNo: "RFID-10091",
+        truckNo: "UP-65-BT-8821",
+        lrNo: "LR-99214",
+        cargoWeightKg: 18450,
+        tareWeightKg: 3800,
+        vgmWeightKg: 22250,
+        slipNo: "SLIP-4401",
+        items: (plan && plan.items) || [
+          { sku: "SKU-HER-8X10-01", title: "Heritage Kashan Persian Rug", size: "8x10 ft", qty: 40, unitWeightKg: 28.5, priceUSD: 310.00 }
+        ]
+      }
+    ],
+    valueUSD: doc ? (doc.valueUSD || 45210.00) : 45210.00,
+    valueINR: doc ? (doc.valueINR || 3793119) : 3793119,
+    status: doc ? (doc.status || "Customs Passed") : "Customs Passed",
+    lutStatus: "LUT Compliant"
+  };
+
+  AppState.activeExportWizard = activeData;
+  AppState.activeDetail = {
+    type: "export_invoice_form",
+    planId: planId,
+    invoiceNo: activeData.invoiceNo,
+    isEdit: activeData.isEdit
+  };
+  renderCurrentView();
+}
+
+function switchExportInvoiceStep(step, subStep) {
+  if (!AppState.activeExportWizard) return;
+  if (step !== undefined) AppState.activeExportWizard.step = step;
+  if (subStep !== undefined) AppState.activeExportWizard.subStep = subStep;
+  renderCurrentView();
+}
+
+function renderExportInvoiceWizardPage(invoiceNo, planId, isEdit) {
+  const comp = (AppState.companies && AppState.companies[0]) || AppState.companySettings || {};
+  const wiz = AppState.activeExportWizard || {
+    isEdit: Boolean(isEdit),
+    step: 1,
+    subStep: 1,
+    invoiceNo: invoiceNo || "EXP-INV-2026-101",
+    proformaNo: planId || "LP-2026-001",
+    consignee: "Dallas Design Center, TX, USA",
+    containers: []
+  };
+
+  const step = wiz.step || 1;
+  const subStep = wiz.subStep || 1;
+  const containers = wiz.containers || [];
+
+  // Calculate Product Roll Totals directly from Loading Plan items
+  let totalRolls = 0;
+  let totalNetKg = 0;
+  let totalGrossKg = 0;
+  let totalFobUSD = 0;
+  containers.forEach(c => {
+    (c.items || []).forEach(it => {
+      const q = Number(it.qty || 1);
+      const wt = Number(it.netWeightKg || ((it.unitWeightKg || 28.5) * q));
+      const gwt = Number(it.grossWeightKg || (wt + (q * 1.2)));
+      const price = Number(it.priceUSD || 295.0);
+      totalRolls += q;
+      totalNetKg += wt;
+      totalGrossKg += gwt;
+      totalFobUSD += (price * q);
+    });
+  });
+  if (totalFobUSD === 0) totalFobUSD = wiz.valueUSD || 45210.00;
+  const totalFobINR = Math.round(totalFobUSD * 83.9);
+
+  return `
+    <div class="full-detail-page" style="width: 100%; max-width: 100%; margin: 0; padding-bottom: 60px;">
+      <!-- Theme-Aware Header Banner -->
+      <div class="export-wizard-header">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 20px;">📦</span>
+            <h2 style="margin: 0; font-size: 18px; font-weight: 800; color: var(--text-main); letter-spacing: 0.5px;">Export Commercial Invoice & Customs Suite</h2>
+            <span class="badge badge-primary" style="font-size: 11px; font-weight: 700;">
+              ${wiz.isEdit ? 'EDIT MODE' : 'ADD MODE'}
+            </span>
+          </div>
+          <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">
+            Synced from Loading Plan: <strong style="color: var(--brand-primary); font-family: var(--font-mono);">${wiz.proformaNo || 'LP-2026'}</strong>
+            ${wiz.consignee ? ` • Consignee: <strong>${wiz.consignee}</strong>` : ''}
+            ${wiz.forwarder ? ` • Carrier: <strong>${wiz.forwarder}</strong>` : ''}
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <button class="btn btn-sm btn-secondary" onclick="backToListView('${wiz.returnRoute || 'mod5-docs'}')">
+            ← Back
+          </button>
+          <button class="btn btn-sm btn-primary" onclick="saveExportInvoiceWizard(${wiz.isEdit ? 'true' : 'false'})" style="font-weight: 700;">
+            💾 Save Export Invoice
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Step Stepper Bar -->
+      <div class="export-wizard-stepper-bar">
+        <div class="export-wizard-main-steps">
+          <div class="export-wizard-step-node ${step === 1 ? 'active' : step > 1 ? 'completed' : ''}" onclick="switchExportInvoiceStep(1, 1)">
+            <div class="export-wizard-step-circle">${step > 1 ? '✓' : '1'}</div>
+            <span>1. Export Invoice</span>
+          </div>
+          <div class="export-wizard-step-node ${step === 2 ? 'active' : step > 2 ? 'completed' : ''}" onclick="switchExportInvoiceStep(2, 1)">
+            <div class="export-wizard-step-circle">${step > 2 ? '✓' : '2'}</div>
+            <span>2. Annexure</span>
+          </div>
+          <div class="export-wizard-step-node ${step === 3 ? 'active' : step > 3 ? 'completed' : ''}" onclick="switchExportInvoiceStep(3, 1)">
+            <div class="export-wizard-step-circle">${step > 3 ? '✓' : '3'}</div>
+            <span>3. VGM</span>
+          </div>
+          <div class="export-wizard-step-node ${step === 4 ? 'active' : step > 4 ? 'completed' : ''}" onclick="switchExportInvoiceStep(4, 1)">
+            <div class="export-wizard-step-circle">${step > 4 ? '✓' : '4'}</div>
+            <span>4. Commercial</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Substep Tabs -->
+      <div class="export-wizard-substeps">
+        ${step === 1 ? `
+          <button class="export-wizard-substep-btn ${subStep === 1 ? 'active' : ''}" onclick="switchExportInvoiceStep(1, 1)">1. Basic Information</button>
+          <button class="export-wizard-substep-btn ${subStep === 2 ? 'active' : ''}" onclick="switchExportInvoiceStep(1, 2)">2. Product & Weight Details</button>
+        ` : step === 2 ? `
+          <button class="export-wizard-substep-btn ${subStep === 1 ? 'active' : ''}" onclick="switchExportInvoiceStep(2, 1)">1. Customs Inspection & Annexure</button>
+          <button class="export-wizard-substep-btn ${subStep === 2 ? 'active' : ''}" onclick="switchExportInvoiceStep(2, 2)">2. Container Packaging Details</button>
+        ` : step === 3 ? `
+          <button class="export-wizard-substep-btn ${subStep === 1 ? 'active' : ''}" onclick="switchExportInvoiceStep(3, 1)">1. VGM Shipper Information</button>
+          <button class="export-wizard-substep-btn ${subStep === 2 ? 'active' : ''}" onclick="switchExportInvoiceStep(3, 2)">2. Container Weighbridge Details</button>
+        ` : `
+          <button class="export-wizard-substep-btn active" onclick="switchExportInvoiceStep(4, 1)">1. Commercial Declaration, Samples & Marketing</button>
+        `}
+      </div>
+
+      <!-- Wizard Form Body -->
+      <div class="card" style="padding: 24px; border: 1px solid var(--border-main); border-top: none; border-radius: 0 0 var(--radius-lg) var(--radius-lg); background: var(--bg-card); margin-bottom: 20px;">
+        ${(step === 1 && subStep === 1) ? `
+          <!-- STEP 1.1: BASIC INFORMATION -->
+          <div style="font-size: 13px; font-weight: 800; color: var(--brand-primary); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">
+            📄 Invoice Information & Statutory Identifiers
+          </div>
+
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 14px; margin-bottom: 14px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Exporter *</label>
+              <input type="text" id="wizExporter" class="form-control" value="${wiz.exporter || 'ODETTE RUGS LLC / EXPORT WING, BHADOHI (U.P) INDIA'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Loading Plan / Proforma Ref</label>
+              <input type="text" id="wizProformaNo" class="form-control" value="${wiz.proformaNo || 'LP-2026-001'} (Date: ${wiz.date || '2026-09-17'})" style="width: 100%; font-family: var(--font-mono);">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 14px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Export GSTIN No. *</label>
+              <input type="text" id="wizGstin" class="form-control" value="${wiz.gstin || '09AAACR8821N1ZM'}" style="width: 100%; font-family: var(--font-mono);">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Export IEC No. *</label>
+              <input type="text" id="wizIec" class="form-control" value="${wiz.iec || '0514029108'}" style="width: 100%; font-family: var(--font-mono);">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Export PAN No. *</label>
+              <input type="text" id="wizPan" class="form-control" value="${wiz.pan || 'AAACR8821N'}" style="width: 100%; font-family: var(--font-mono);">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Invoice Date *</label>
+              <input type="date" id="wizDate" class="form-control" value="${wiz.date || '2026-09-17'}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 14px;">
+            <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">LUT / Drawback Declaration *</label>
+            <input type="text" id="wizDbk" class="form-control" value="${wiz.dbk || 'SUPPLY MEANT FOR EXPORT UNDER LUT WITHOUT PAYMENT OF INTEGRATED TAX (IGST)'}" style="width: 100%;">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Consignee * (Synced from Plan)</label>
+              <textarea id="wizConsignee" class="form-control" rows="2" style="width: 100%;">${wiz.consignee || 'Dallas Design Center, TX, USA'}</textarea>
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Buyer (if other than consignee)</label>
+              <textarea id="wizBuyer" class="form-control" rows="2" placeholder="Buyer if other than consignee..." style="width: 100%;">${wiz.buyer || wiz.consignee || ''}</textarea>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Buyer Order No. / Date</label>
+              <input type="text" id="wizBuyerOrder" class="form-control" value="${wiz.buyerOrderNo || 'ORD-AMZ-99214'} / ${wiz.date || '2026-09-17'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Country of Origin of Goods *</label>
+              <input type="text" id="wizOriginCountry" class="form-control" value="${wiz.originCountry || 'INDIA'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Port of Loading *</label>
+              <input type="text" id="wizPortLoading" class="form-control" value="${wiz.portLoading || 'MUNDRA PORT INDIA / ICD BABATPUR'}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Port of Discharge *</label>
+              <input type="text" id="wizPortDischarge" class="form-control" value="${wiz.portDischarge || 'DALLAS / HOUSTON PORT (USA)'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Country of Final Destination *</label>
+              <input type="text" id="wizFinalDest" class="form-control" value="${wiz.finalDestination || 'UNITED STATES OF AMERICA'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Vessel / Flight No.</label>
+              <input type="text" id="wizVessel" class="form-control" value="${wiz.vessel || 'MSC MEDITERRANEAN CARGO V.204'}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 14px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Marks & Nos. *</label>
+              <input type="text" id="wizMarks" class="form-control" value="${wiz.marksNos || 'ODETTE / CONTAINER SEALED'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">No Of Packages *</label>
+              <input type="number" id="wizPackages" class="form-control" value="${totalRolls || wiz.noOfPackages || 140}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Pre-Carriage Origin *</label>
+              <input type="text" id="wizPreCarriage" class="form-control" value="${wiz.preCarriageBy || 'BY TRUCK, BHADOHI HUB'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">ETD Date *</label>
+              <input type="date" id="wizEtd" class="form-control" value="${wiz.etdDate || '2026-09-21'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">ETA Date *</label>
+              <input type="date" id="wizEta" class="form-control" value="${wiz.etaDate || '2026-10-18'}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 14px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Incoterms *</label>
+              <select id="wizIncotermSelect" class="form-control" style="width: 100%;">
+                <option value="CIF DALLAS" selected>CIF (Cost, Insurance, Freight)</option>
+                <option value="FOB MUNDRA">FOB (Free On Board)</option>
+                <option value="DDP LOS ANGELES">DDP (Delivered Duty Paid)</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Designated EEFC Bank *</label>
+              <input type="text" id="wizBank" class="form-control" value="${wiz.bank || 'HDFC BANK LTD (EEFC A/C #502000881290)'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Customs House Agent (C.H.A) *</label>
+              <input type="text" id="wizCha" class="form-control" value="${wiz.cha || 'JEENA & COMPANY CUSTOMS HOUSE AGENT'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Transporter / Forwarder *</label>
+              <input type="text" id="wizForwarder" class="form-control" value="${wiz.forwarder || 'MSC Mediterranean Shipping'}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Terms Of Delivery *</label>
+              <input type="text" id="wizTermsDelivery" class="form-control" value="${wiz.termsDelivery || 'CIF DESTINATION PORT'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Terms Of Payment *</label>
+              <input type="text" id="wizTermsPayment" class="form-control" value="${wiz.termsPayment || '90 DAYS FROM THE DATE OF B/L'}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Authorized Signatory *</label>
+              ${renderRichSignatorySelect("wizSignatory", wiz.authorisedSignatory, comp)}
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Commercial Authorized Signatory *</label>
+              ${renderRichSignatorySelect("wizCommSignatory", wiz.commercialSignatory, comp)}
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; align-items: center; gap: 12px; margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--border-main);">
+            <button type="button" class="btn btn-secondary" onclick="backToListView('${(wiz && wiz.returnRoute) || 'mod5-ship'}')">Cancel</button>
+            <button type="button" class="btn btn-primary" onclick="switchExportInvoiceStep(1, 2)" style="font-weight: 700; padding: 9px 22px;">Next: Product Allocations & Valuation ➔</button>
+          </div>
+        ` : (step === 1 && subStep === 2) ? `
+          <!-- STEP 1.2: PRODUCT & FINANCIAL DETAILS -->
+          <div style="font-size: 13px; font-weight: 800; color: var(--brand-primary); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">
+            📦 Product Allocations & Commercial Valuation (Synced from Containers)
+          </div>
+
+          <div style="display: grid; grid-template-columns: 360px 1fr; gap: 18px; align-items: start;">
+            <!-- Left Side: Container Seal List -->
+            <div style="border: 1px solid var(--border-main); border-radius: var(--radius-md); background: var(--bg-elevated); padding: 14px;">
+              <div style="font-size: 12px; font-weight: 800; margin-bottom: 10px; color: var(--text-main);">CONTAINER TRANSPORT & SEAL REGISTRY</div>
+              <table style="width: 100%; font-size: 11px; border-collapse: collapse;">
+                <thead>
+                  <tr style="border-bottom: 1px solid var(--border-main); color: var(--text-muted);">
+                    <th style="padding: 4px 0; text-align: left;">Container No.</th>
+                    <th style="padding: 4px 0; text-align: left;">Line Seal</th>
+                    <th style="padding: 4px 0; text-align: left;">LR No.</th>
+                    <th style="padding: 4px 0; text-align: left;">Truck No.</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${containers.map(c => `
+                    <tr style="border-bottom: 1px solid var(--border-subtle);">
+                      <td style="padding: 6px 0; font-family: var(--font-mono); font-weight: 700; color: var(--brand-primary);">${c.containerNo || c.id || 'Pending'}</td>
+                      <td style="padding: 6px 0; font-family: var(--font-mono);">${c.lineSealNo || 'SEAL-8821'}</td>
+                      <td style="padding: 6px 0; font-family: var(--font-mono); color: var(--text-muted);">${c.lrNo || 'LR-01'}</td>
+                      <td style="padding: 6px 0; font-family: var(--font-mono); font-size: 10px;">${c.truckNo || 'UP-65'}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Right Side: Goods Table and Financial FOB Calculator -->
+            <div>
+              <div style="border: 1px solid var(--border-main); border-radius: var(--radius-md); overflow: hidden; margin-bottom: 16px;">
+                <table class="data-table" style="margin: 0; font-size: 12px;">
+                  <thead>
+                    <tr style="background: var(--bg-elevated);">
+                      <th>SKU & Description</th>
+                      <th>Size</th>
+                      <th>Qty in Rolls</th>
+                      <th>Net Mass</th>
+                      <th>Gross Mass</th>
+                      <th>Price ($ USD)</th>
+                      <th>Amount ($ USD)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${containers.flatMap((c, cIdx) => (c.items || []).map((it, itIdx) => {
+                      const q = it.qty || 1;
+                      const nwt = it.netWeightKg || ((it.unitWeightKg || 28.5) * q);
+                      const gwt = it.grossWeightKg || (nwt + (q * 1.2));
+                      const price = it.priceUSD || 295.00;
+                      return `
+                        <tr>
+                          <td>
+                            <strong style="color: var(--brand-primary); font-family: var(--font-mono);">${it.sku}</strong>
+                            <div style="font-size: 11px; color: var(--text-muted);">${it.title || 'Handcrafted Artisan Wool Rug'}</div>
+                          </td>
+                          <td>${it.size || '8x10 ft'}</td>
+                          <td><strong>${q} Rolls</strong></td>
+                          <td>${nwt.toLocaleString(undefined, { minimumFractionDigits: 1 })} kg</td>
+                          <td>${gwt.toLocaleString(undefined, { minimumFractionDigits: 1 })} kg</td>
+                          <td>$${price.toFixed(2)}</td>
+                          <td><strong style="color: var(--text-main);">$${(price * q).toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong></td>
+                        </tr>
+                      `;
+                    })).join('')}
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Financial Valuation Summary -->
+              <div style="background: var(--bg-elevated); border: 1px solid var(--border-main); border-radius: var(--radius-md); padding: 16px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; font-size: 12px;">
+                <div>
+                  <label style="font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">TOTAL FOB AMOUNT ($ USD)</label>
+                  <input type="number" id="wizFobUSD" class="form-control" value="${totalFobUSD.toFixed(2)}" style="font-weight: 800; font-family: var(--font-mono); font-size: 14px;">
+                </div>
+                <div>
+                  <label style="font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">EXCHANGE RATE (INR/USD)</label>
+                  <input type="number" id="wizExRate" class="form-control" value="83.90" step="0.01" oninput="document.getElementById('wizFobINR').value = Math.round(Number(document.getElementById('wizFobUSD').value || 0) * Number(this.value || 83.9))">
+                </div>
+                <div>
+                  <label style="font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">TOTAL VALUATION (₹ INR)</label>
+                  <input type="number" id="wizFobINR" class="form-control" value="${totalFobINR}" style="font-weight: 800; font-family: var(--font-mono); font-size: 14px; color: var(--success);">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 24px;">
+            <button class="btn btn-secondary" onclick="switchExportInvoiceStep(1, 1)">← Back to Basic Information</button>
+            <button class="btn btn-primary" onclick="switchExportInvoiceStep(2, 1)">Next: Step 2 (Annexure) ➔</button>
+          </div>
+        ` : (step === 2 && subStep === 1) ? `
+          <!-- STEP 2.1: ANNEXURE / CUSTOMS INSPECTION -->
+          <div style="font-size: 13px; font-weight: 800; color: var(--brand-primary); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">
+            🏛️ Customs Annexure & Examination Declaration
+          </div>
+
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Exporter *</label>
+              <input type="text" class="form-control" value="${wiz.exporter}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">IEC No. *</label>
+              <input type="text" class="form-control" value="${wiz.iec}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Branch Code *</label>
+              <input type="text" class="form-control" value="${wiz.branchCode || '0514029108001A'}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Stuffing Place * (From Facility)</label>
+              <input type="text" class="form-control" value="${wiz.stuffingPlace || 'Bhadohi Central Weaving Unit #1'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">D.I.C / Taluka *</label>
+              <input type="text" class="form-control" value="${wiz.dicTaluka || 'BHADOHI (U.P)'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Date of Examination *</label>
+              <input type="date" class="form-control" value="${wiz.examDate || '2026-09-17'}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 14px; margin-bottom: 16px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Customs Appraiser Division / Range *</label>
+              <input type="text" class="form-control" value="${wiz.appraiserDivision || 'CUSTOMS DIVISION ICD BABATPUR'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Location Code *</label>
+              <input type="text" class="form-control" value="${wiz.locationCode || 'INVTZ1'}" style="width: 100%; font-family: var(--font-mono);">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Authorized Signatory</label>
+              <input type="text" class="form-control" value="${wiz.authorisedSignatory}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="background: var(--bg-elevated); border: 1px solid var(--border-main); border-radius: var(--radius-md); padding: 14px; margin-bottom: 16px; font-size: 12px;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: var(--text-main);">Compliance Examination Verification Checklist:</div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+              <span>1. Is the description of the goods, quantity and value as per export invoice?</span>
+              <strong style="color: var(--success);">✓ 1. YES</strong>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span>2. Whether sample is drawn for being forwarded to Port of Export?</span>
+              <strong style="color: var(--text-muted);">2. NO (Full Container Load Verified)</strong>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 24px;">
+            <button class="btn btn-secondary" onclick="switchExportInvoiceStep(1, 2)">← Back</button>
+            <button class="btn btn-primary" onclick="switchExportInvoiceStep(2, 2)">Next: Container Details ➔</button>
+          </div>
+        ` : (step === 2 && subStep === 2) ? `
+          <!-- STEP 2.2: CONTAINER PACKAGING DETAILS -->
+          <div style="font-size: 13px; font-weight: 800; color: var(--brand-primary); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">
+            📦 Containerised Cargo & Seal Verification
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+            <input type="checkbox" id="wizIsContainerised" checked style="width: 16px; height: 16px;">
+            <label for="wizIsContainerised" style="font-size: 13px; font-weight: 700; margin: 0;">Is Containerised Cargo?</label>
+          </div>
+
+          <div style="border: 1px solid var(--border-main); border-radius: var(--radius-md); overflow: hidden; margin-bottom: 20px;">
+            <table class="data-table" style="margin: 0; font-size: 12px;">
+              <thead>
+                <tr style="background: var(--bg-elevated);">
+                  <th>Container No.</th>
+                  <th>Line Seal No.</th>
+                  <th>RFID Seal No.</th>
+                  <th>LR No.</th>
+                  <th>Truck No.</th>
+                  <th>Total Packages / Rolls</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${containers.map(c => {
+                  const pCount = (c.items || []).reduce((sum, it) => sum + (it.qty || 1), 0);
+                  return `
+                    <tr>
+                      <td><strong style="font-family: var(--font-mono); color: var(--brand-primary);">${c.containerNo || c.id}</strong></td>
+                      <td><code style="font-weight: 700;">${c.lineSealNo || 'SEAL-8821'}</code></td>
+                      <td><code>${c.rfidNo || 'RF-01'}</code></td>
+                      <td><code>${c.lrNo || 'LR-01'}</code></td>
+                      <td>${c.truckNo || 'UP-65'}</td>
+                      <td><strong>${pCount} Rolls / Units</strong></td>
+                    </tr>
+                  `;
+                }).join('')}
+              </tbody>
+            </table>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <button class="btn btn-secondary" onclick="switchExportInvoiceStep(2, 1)">← Back</button>
+            <button class="btn btn-primary" onclick="switchExportInvoiceStep(3, 1)">Next: Step 3 (VGM Declaration) ➔</button>
+          </div>
+        ` : (step === 3 && subStep === 1) ? `
+          <!-- STEP 3.1: VGM (VERIFIED GROSS MASS) -->
+          <div style="font-size: 13px; font-weight: 800; color: var(--brand-primary); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">
+            ⚖️ Verified Gross Mass (VGM) & CSC Plate Weight Compliance
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Booking No. *</label>
+              <input type="text" class="form-control" value="${wiz.bookingNo || 'MSC-BK-2026-881924'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Shipper Name *</label>
+              <input type="text" class="form-control" value="${wiz.shipperName || 'ODETTE RUGS LLC'}" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Shipper Reg. / Licence No. *</label>
+              <input type="text" class="form-control" value="${wiz.shipperRegNo || 'IEC: 0514029108'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Authorized 24x7 Contact *</label>
+              <input type="text" class="form-control" value="${wiz.authorisedSignatory} (+91 98391 22001)" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Container Size (TEU/FEU) *</label>
+              <select class="form-control" style="width: 100%;">
+                <option selected>40ft High Cube (FEU)</option>
+                <option>20ft Standard (TEU)</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 14px; margin-bottom: 18px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Weighbridge Reg. No. & Address *</label>
+              <input type="text" class="form-control" value="${wiz.weighbridgeReg || 'WB-UP65-9921 / BHADOHI CENTRAL WEIGHBRIDGE'}" style="width: 100%;">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Max Permissible CSC Weight *</label>
+              <input type="number" class="form-control" value="30480" style="width: 100%;">
+            </div>
+          </div>
+
+          <!-- Container Weight Table -->
+          <div style="border: 1px solid var(--border-main); border-radius: var(--radius-md); overflow: hidden; margin-bottom: 24px;">
+            <table class="data-table" style="margin: 0; font-size: 12px;">
+              <thead>
+                <tr style="background: var(--bg-elevated);">
+                  <th>No.</th>
+                  <th>Container No.</th>
+                  <th>CSC Max (kg)</th>
+                  <th>Cargo Net Wt (kg)</th>
+                  <th>Container Tare (kg)</th>
+                  <th>Total VGM Mass (kg)</th>
+                  <th>Weighing Slip #</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${containers.map((c, idx) => {
+                  const cargoWt = (c.items || []).reduce((sum, it) => sum + (it.netWeightKg || ((it.unitWeightKg || 28.5) * (it.qty || 1))), 0) || 18450;
+                  const tareWt = 3800;
+                  const vgm = cargoWt + tareWt;
+                  return `
+                    <tr>
+                      <td>${idx + 1}</td>
+                      <td><strong style="font-family: var(--font-mono); color: var(--brand-primary);">${c.containerNo || c.id}</strong></td>
+                      <td>30,480 kg</td>
+                      <td><strong>${cargoWt.toLocaleString()} kg</strong></td>
+                      <td>${tareWt.toLocaleString()} kg</td>
+                      <td><strong style="color: var(--success); font-family: var(--font-mono); font-size: 13px;">${vgm.toLocaleString()} kg</strong></td>
+                      <td><code>SLIP-${4401 + idx}</code></td>
+                      <td>2026-09-17</td>
+                    </tr>
+                  `;
+                }).join('')}
+              </tbody>
+            </table>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <button class="btn btn-secondary" onclick="switchExportInvoiceStep(2, 2)">← Back</button>
+            <button class="btn btn-primary" onclick="switchExportInvoiceStep(4, 1)">Next: Step 4 (Commercial) ➔</button>
+          </div>
+        ` : `
+          <!-- STEP 4: COMMERCIAL DECLARATION, SAMPLES & MARKETING -->
+          <div style="font-size: 13px; font-weight: 800; color: var(--brand-primary); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">
+            💼 Commercial Invoice, REX Statement, Samples & Marketing Materials
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+            <div class="form-group" style="margin: 0;">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                <input type="checkbox" id="wizRexCheck" checked style="width: 16px; height: 16px;">
+                <label for="wizRexCheck" style="font-size: 11px; font-weight: 700; margin: 0;">REX STATEMNT?</label>
+              </div>
+              <select id="wizRexStatement" class="form-control" style="width: 100%;">
+                <option selected>INREX0514029108 - EU Registered Exporter Scheme Statement</option>
+                <option>Standard GSP / Non-Preferential Origin Statement</option>
+                <option>US-India CEPA / Generalized Preference Scheme</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">PDF Document Type</label>
+              <select id="wizPdfType" class="form-control" style="width: 100%;">
+                <option selected>Regular Export Commercial Invoice</option>
+                <option>Detailed Customs & Inspection Docket</option>
+                <option>EU REX Certified Invoice-Declaration</option>
+                <option>Consular Commercial Invoice</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px;">
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Description Of Goods</label>
+              <textarea id="wizCommercialDesc" class="form-control" rows="3" style="width: 100%; font-family: var(--font-mono); font-size: 12px;">1. HANDMADE ARTISAN WOOL RUGS (HSN Code - 57011000)
+8X10 FT / 9X12 FT - 100% INDIAN ARTISAN HAND-TUFTED WOOL (2 PCS / BALE)</textarea>
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px;">Remarks</label>
+              <textarea id="wizCommercialRemarks" class="form-control" rows="3" placeholder="Add Remarks" style="width: 100%;">Commercial shipment under LUT 2026/08912. Verified against ICEGATE Port INVTZ1.</textarea>
+            </div>
+          </div>
+
+          <!-- 2-Column Grid: Sample Details & Marketing Material Details -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+            <!-- Left Column: Sample Details -->
+            <div style="border: 1px solid var(--border-main); border-radius: var(--radius-md); padding: 14px; background: var(--bg-elevated);">
+              <div style="font-size: 12px; font-weight: 800; color: var(--text-main); margin-bottom: 10px;">Sample Details</div>
+              
+              <!-- Header Row -->
+              <div style="display: grid; grid-template-columns: 20px 2fr 100px 1fr 1fr; gap: 8px; font-size: 10px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px;">
+                <span></span>
+                <span>Design</span>
+                <span></span>
+                <span>Price</span>
+                <span>Amount</span>
+              </div>
+
+              <!-- Row 1: Red -->
+              <div style="display: grid; grid-template-columns: 20px 2fr 100px 1fr 1fr; gap: 8px; align-items: center; margin-bottom: 8px;">
+                <span style="display: inline-block; width: 12px; height: 12px; border-radius: 2px; background: #ef4444;"></span>
+                <input type="text" class="form-control" placeholder="Design" value="Kashan Red Swatch">
+                <label style="font-size: 10px; display: flex; align-items: center; gap: 4px; margin: 0;"><input type="checkbox"> Apply Discount</label>
+                <input type="number" class="form-control" placeholder="Price" value="15.00">
+                <input type="number" class="form-control" placeholder="Amount" value="15.00">
+              </div>
+
+              <!-- Row 2: Yellow -->
+              <div style="display: grid; grid-template-columns: 20px 2fr 100px 1fr 1fr; gap: 8px; align-items: center; margin-bottom: 8px;">
+                <span style="display: inline-block; width: 12px; height: 12px; border-radius: 2px; background: #eab308;"></span>
+                <input type="text" class="form-control" placeholder="Design" value="Tabriz Gold Weft">
+                <label style="font-size: 10px; display: flex; align-items: center; gap: 4px; margin: 0;"><input type="checkbox"> Apply Discount</label>
+                <input type="number" class="form-control" placeholder="Price" value="20.00">
+                <input type="number" class="form-control" placeholder="Amount" value="20.00">
+              </div>
+
+              <!-- Row 3: Green -->
+              <div style="display: grid; grid-template-columns: 20px 2fr 100px 1fr 1fr; gap: 8px; align-items: center;">
+                <span style="display: inline-block; width: 12px; height: 12px; border-radius: 2px; background: #22c55e;"></span>
+                <input type="text" class="form-control" placeholder="Design" value="Herat Emerald Yarn">
+                <label style="font-size: 10px; display: flex; align-items: center; gap: 4px; margin: 0;"><input type="checkbox"> Apply Discount</label>
+                <input type="number" class="form-control" placeholder="Price" value="18.00">
+                <input type="number" class="form-control" placeholder="Amount" value="18.00">
+              </div>
+            </div>
+
+            <!-- Right Column: Marketing Material Details -->
+            <div style="border: 1px solid var(--border-main); border-radius: var(--radius-md); padding: 14px; background: var(--bg-elevated);">
+              <div style="font-size: 12px; font-weight: 800; color: var(--text-main); margin-bottom: 10px;">Marketing Material Details</div>
+              
+              <!-- Header Row -->
+              <div style="display: grid; grid-template-columns: 20px 2fr 100px 1fr 1fr; gap: 8px; font-size: 10px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px;">
+                <span></span>
+                <span>Design</span>
+                <span></span>
+                <span>Price</span>
+                <span>Amount</span>
+              </div>
+
+              <!-- Row 1: Red -->
+              <div style="display: grid; grid-template-columns: 20px 2fr 100px 1fr 1fr; gap: 8px; align-items: center; margin-bottom: 8px;">
+                <span style="display: inline-block; width: 12px; height: 12px; border-radius: 2px; background: #ef4444;"></span>
+                <input type="text" class="form-control" placeholder="Design" value="Odette 2026 Lookbook">
+                <label style="font-size: 10px; display: flex; align-items: center; gap: 4px; margin: 0;"><input type="checkbox"> Apply Discount</label>
+                <input type="number" class="form-control" placeholder="Price" value="0.00">
+                <input type="number" class="form-control" placeholder="Amount" value="0.00">
+              </div>
+
+              <!-- Row 2: Yellow -->
+              <div style="display: grid; grid-template-columns: 20px 2fr 100px 1fr 1fr; gap: 8px; align-items: center; margin-bottom: 8px;">
+                <span style="display: inline-block; width: 12px; height: 12px; border-radius: 2px; background: #eab308;"></span>
+                <input type="text" class="form-control" placeholder="Design" value="Care Booklets (50 Pcs)">
+                <label style="font-size: 10px; display: flex; align-items: center; gap: 4px; margin: 0;"><input type="checkbox"> Apply Discount</label>
+                <input type="number" class="form-control" placeholder="Price" value="0.00">
+                <input type="number" class="form-control" placeholder="Amount" value="0.00">
+              </div>
+
+              <!-- Row 3: Green -->
+              <div style="display: grid; grid-template-columns: 20px 2fr 100px 1fr 1fr; gap: 8px; align-items: center;">
+                <span style="display: inline-block; width: 12px; height: 12px; border-radius: 2px; background: #22c55e;"></span>
+                <input type="text" class="form-control" placeholder="Design" value="Artisan Origin Signage">
+                <label style="font-size: 10px; display: flex; align-items: center; gap: 4px; margin: 0;"><input type="checkbox"> Apply Discount</label>
+                <input type="number" class="form-control" placeholder="Price" value="0.00">
+                <input type="number" class="form-control" placeholder="Amount" value="0.00">
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Product Specification Ribbon (Matching Screenshot) -->
+          <div style="background: var(--bg-elevated); border: 1px solid var(--border-main); border-radius: var(--radius-md); padding: 14px 16px; margin-bottom: 24px; display: grid; grid-template-columns: 1.5fr 1fr 2fr 1fr; gap: 14px; font-size: 12px; align-items: center;">
+            <div>
+              <label style="font-size: 10px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 2px;">Size</label>
+              <input type="text" class="form-control" value="8X10 FT / 240X300 CM" style="font-weight: 700; font-family: var(--font-mono); font-size: 12px;">
+            </div>
+            <div>
+              <label style="font-size: 10px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 2px;">Thickness</label>
+              <input type="text" class="form-control" value="8.7 mm" style="font-weight: 700; font-family: var(--font-mono); font-size: 12px;">
+            </div>
+            <div>
+              <label style="font-size: 10px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 2px;">Product Name</label>
+              <input type="text" class="form-control" value="HANDCRAFTED ARTISAN WOOL RUGS" style="font-weight: 700; font-size: 12px;">
+            </div>
+            <div>
+              <label style="font-size: 10px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 2px;">HS Code</label>
+              <input type="text" class="form-control" value="57011000" style="font-weight: 700; color: var(--brand-primary); font-family: var(--font-mono); font-size: 12px;">
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <button class="btn btn-secondary" onclick="switchExportInvoiceStep(3, 1)">← Back to Step 3 (VGM)</button>
+            <button class="btn btn-primary" onclick="saveExportInvoiceWizard(${wiz.isEdit ? 'true' : 'false'})" style="font-weight: 800; font-size: 14px; padding: 10px 24px;">
+              💾 Save Commercial Amount & Finish Export Invoice
+            </button>
+          </div>
+        `}
+      </div>
+    </div>
+  `;
+}
+
+function saveExportInvoiceWizard(isEdit) {
+  const wiz = AppState.activeExportWizard;
+  if (!wiz) return;
+
+  const invNo = (document.getElementById("wizProformaNo") ? (document.getElementById("wizExporter") ? wiz.invoiceNo : "EXP-INV-2026-101") : wiz.invoiceNo) || `EXP-INV-2026-${Math.floor(100 + Math.random() * 900)}`;
+  const planId = wiz.planId || wiz.proformaNo;
+
+  const newDoc = {
+    invoiceNo: wiz.invoiceNo,
+    loadingPlanId: planId || null,
+    date: wiz.date || new Date().toISOString().split('T')[0],
+    orderId: wiz.buyerOrderNo || "ORD-AMZ-99214",
+    consignee: wiz.consignee || "Dallas Design Center, USA",
+    destination: wiz.portDischarge || "Dallas, TX (USA)",
+    incoterms: wiz.incoterms || "CIF Dallas",
+    hsn: "57011000",
+    shippingBill: `SB-${Math.floor(1000000 + Math.random() * 9000000)} / ${new Date().toLocaleDateString('en-GB')}`,
+    valueUSD: wiz.valueUSD || 45210.00,
+    valueINR: wiz.valueINR || 3793119,
+    status: "Customs Passed",
+    lutStatus: "LUT Compliant"
+  };
+
+  if (!AppState.exportDocs) AppState.exportDocs = [];
+  const existingIdx = AppState.exportDocs.findIndex(d => d.invoiceNo === wiz.invoiceNo);
+  if (existingIdx >= 0) {
+    AppState.exportDocs[existingIdx] = newDoc;
+  } else {
+    AppState.exportDocs.unshift(newDoc);
+  }
+
+  // Update Loading Plan status and exportInvoiceNo
+  if (planId) {
+    const plan = (AppState.loadingPlans || []).find(p => p.planId === planId);
+    if (plan) {
+      plan.isExported = true;
+      plan.exportInvoiceNo = wiz.invoiceNo;
+      plan.status = "Exported & Dispatched";
+    }
+  }
+
+  showToast(`✓ Export Invoice ${wiz.invoiceNo} saved & registered successfully!`, "success");
+  
+  // Clear active wizard state and redirect directly to Export Invoices List (mod5-docs)
+  AppState.activeExportWizard = null;
+  AppState.activeDetail = null;
+  switchView('mod5-docs');
+}
+
+function getInvoiceAgeDays(invoice) {
+  if (!invoice) return 0;
+  const dateStr = invoice.date || invoice;
+  if (!dateStr || typeof dateStr !== 'string') return 0;
+  
+  let invoiceDate = null;
+  const cleanStr = String(dateStr).trim();
+  
+  if (cleanStr.includes("/")) {
+    const parts = cleanStr.split("/");
+    if (parts[2] && parts[2].length === 4) {
+      invoiceDate = new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0]));
+    } else if (parts[0] && parts[0].length === 4) {
+      invoiceDate = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+    }
+  } else if (cleanStr.includes("-")) {
+    const parts = cleanStr.split("-");
+    if (parts[0] && parts[0].length === 4) {
+      invoiceDate = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+    } else if (parts[2] && parts[2].length === 4) {
+      invoiceDate = new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0]));
+    }
+  } else {
+    invoiceDate = new Date(cleanStr);
+  }
+
+  if (!invoiceDate || isNaN(invoiceDate.getTime())) return 0;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  invoiceDate.setHours(0, 0, 0, 0);
+
+  const diffMs = today.getTime() - invoiceDate.getTime();
+  return Math.max(0, Math.floor(diffMs / (1000 * 60 * 60 * 24)));
+}
+
+function getRowClass(invoice) {
+  const base = "listing-page__row";
+  const days = getInvoiceAgeDays(invoice);
+  if (days >= 30) {
+    return `${base} listing-page__row--age-urgent`;
+  }
+  if (days >= 14) {
+    return `${base} listing-page__row--age-warning`;
+  }
+  if (days >= 7) {
+    return `${base} listing-page__row--age-caution`;
+  }
+  if (days <= 5) {
+    return `${base} listing-page__row--age-fresh`;
+  }
+  return base;
+}
+
+function getAgeBadge(invoice) {
+  const days = getInvoiceAgeDays(invoice);
+  if (days >= 30) {
+    return `<span class="age-badge age-urgent">${days}d</span>`;
+  }
+  if (days >= 14) {
+    return `<span class="age-badge age-warning">${days}d</span>`;
+  }
+  if (days >= 7) {
+    return `<span class="age-badge age-caution">${days}d</span>`;
+  }
+  if (days <= 5) {
+    return `<span class="age-badge age-fresh">${days}d</span>`;
+  }
+  return `<span class="age-badge age-normal">${days}d</span>`;
+}
+
+function calculateInvoiceAge(dateStr) {
+  const days = getInvoiceAgeDays({ date: dateStr });
+  return `${days}d`;
+}
+
+function deleteExportDoc(invoiceNo) {
+  if (!confirm(`Are you sure you want to delete Export Invoice ${invoiceNo}?`)) return;
+  AppState.exportDocs = (AppState.exportDocs || []).filter(d => d.invoiceNo !== invoiceNo);
+  renderCurrentView();
+  showToast(`✓ Export Invoice ${invoiceNo} deleted successfully.`, "info");
+}
+
+function refreshExportDocs() {
+  if (AppState.tableFilters && AppState.tableFilters.exportDocs) {
+    AppState.tableFilters.exportDocs.search = "";
+    AppState.tableFilters.exportDocs.status = "all";
+    AppState.tableFilters.exportDocs.page = 1;
+  }
+  renderCurrentView();
 }
 
 function renderExportDocsView() {
-  const f = AppState.tableFilters.exportDocs || (AppState.tableFilters.exportDocs = { search: "", status: "all", page: 1, pageSize: 5 });
+  const f = AppState.tableFilters.exportDocs || (AppState.tableFilters.exportDocs = { search: "", status: "all", page: 1, pageSize: 10 });
   let filtered = (AppState.exportDocs || []).filter(doc => {
-    const s = f.search ? f.search.toLowerCase() : "";
+    const s = (f.search || "").trim().toLowerCase();
+    
     const matchesSearch = !s || 
-      doc.invoiceNo.toLowerCase().includes(s) || 
-      (doc.consignee && doc.consignee.toLowerCase().includes(s)) ||
-      (doc.destination && doc.destination.toLowerCase().includes(s)) ||
+      (doc.invoiceNo && doc.invoiceNo.toLowerCase().includes(s)) || 
+      (doc.loadingPlanId && doc.loadingPlanId.toLowerCase().includes(s)) ||
+      (doc.shippingBill && doc.shippingBill.toLowerCase().includes(s)) ||
       (doc.orderId && doc.orderId.toLowerCase().includes(s)) ||
-      (doc.shippingBill && doc.shippingBill.toLowerCase().includes(s));
+      (doc.destination && doc.destination.toLowerCase().includes(s)) ||
+      (doc.consignee && doc.consignee.toLowerCase().includes(s)) ||
+      (doc.buyer && doc.buyer.toLowerCase().includes(s)) ||
+      (doc.date && doc.date.toLowerCase().includes(s));
 
     let matchesStatus = true;
     if (f.status && f.status !== "all") {
+      const st = (doc.status || "").toLowerCase();
       const target = f.status.toLowerCase();
-      const docSt = (doc.status || "").toLowerCase();
-      const lutSt = (doc.lutStatus || "").toLowerCase();
       if (target === "customs passed" || target === "customs") {
-        matchesStatus = docSt.includes("passed") || docSt.includes("cleared");
-      } else if (target === "cleared" || target === "icegate") {
-        matchesStatus = docSt.includes("cleared") || (doc.shippingBill && doc.shippingBill.length > 0);
-      } else if (target === "under assessment" || target === "assessment") {
-        matchesStatus = docSt.includes("assess") || docSt.includes("pending");
-      } else if (target === "lut compliant" || target === "lut") {
-        matchesStatus = lutSt.includes("compliant") || lutSt.includes("lut");
+        matchesStatus = st.includes("customs") || st.includes("passed");
+      } else if (target === "icegate transmitted" || target === "transmitted") {
+        matchesStatus = st.includes("icegate") || st.includes("transmitted");
+      } else if (target === "draft") {
+        matchesStatus = st.includes("draft");
       } else {
-        matchesStatus = docSt.includes(target) || lutSt.includes(target);
+        matchesStatus = st.includes(target);
       }
     }
     return matchesSearch && matchesStatus;
@@ -12803,128 +17754,201 @@ function renderExportDocsView() {
   return `
     <div class="page-header" style="margin-bottom: 16px;">
       <div class="page-title-wrap">
-        <h1 style="margin: 0; font-size: 20px;">📜 Export Document Suite</h1>
-        <p style="margin: 4px 0 0 0; font-size: 12px; color: var(--text-muted);">Official Indian Customs ICEGATE Invoices, Packing Lists, LUT and CEPC Certificates.</p>
+        <h1 style="margin: 0; font-size: 20px;">📜 Export Commercial Invoices & Customs Suite</h1>
+        <p style="margin: 4px 0 0 0; font-size: 12px; color: var(--text-muted);">Manage statutory export commercial invoices, packing lists, CEPC CoO, ICEGATE shipping bills, and statutory customs documentation.</p>
       </div>
       <div class="page-actions" style="display: flex; gap: 8px;">
-        <button class="btn btn-sm btn-secondary" onclick="showToast('Refreshing ICEGATE Shipping Bill statuses...', 'info')">🔄 Sync ICEGATE API</button>
+        <button class="btn btn-sm btn-secondary" onclick="showToast('Exporting invoices CSV registry...', 'info')">📥 Export Registry CSV</button>
+        <button class="btn btn-sm btn-primary" onclick="switchView('mod5-ship')">🚚 Go to Loading Plans</button>
       </div>
     </div>
 
-    <!-- Document Compliance & Status Tabs -->
-    <div class="status-filter-pills" style="margin-bottom: 14px;">
-      <button class="filter-pill-btn ${f.status === 'all' ? 'active' : ''}" onclick="setTableFilter('exportDocs', 'status', 'all')">All Export Invoices (${AppState.exportDocs ? AppState.exportDocs.length : 0})</button>
-      <button class="filter-pill-btn ${f.status === 'Customs Passed' ? 'active' : ''}" onclick="setTableFilter('exportDocs', 'status', 'Customs Passed')">✅ Customs Passed</button>
-      <button class="filter-pill-btn ${f.status === 'Cleared' ? 'active' : ''}" onclick="setTableFilter('exportDocs', 'status', 'Cleared')">🏛️ ICEGATE Cleared</button>
-      <button class="filter-pill-btn ${f.status === 'Under Assessment' ? 'active' : ''}" onclick="setTableFilter('exportDocs', 'status', 'Under Assessment')">⏳ Under Assessment</button>
-      <button class="filter-pill-btn ${f.status === 'LUT Compliant' ? 'active' : ''}" onclick="setTableFilter('exportDocs', 'status', 'LUT Compliant')">📜 LUT Compliant</button>
-    </div>
-
-    <div class="table-toolbar-box">
+    <!-- Table Toolbar Box -->
+    <div class="table-toolbar-box" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
       <div class="table-toolbar-left">
-        <div class="table-search-input-wrap">
-          <span class="table-search-icon">🔍</span>
-          <input type="text" placeholder="Search by Invoice #, Loading Plan, Consignee, Destination, Order..." value="${f.search}" oninput="setTableSearch('exportDocs', this.value)">
-        </div>
-        <select class="table-filter-select" onchange="setTableFilter('exportDocs', 'status', this.value)">
-          <option value="all">All Export Statuses</option>
-          <option value="Customs Passed" ${f.status === 'Customs Passed' ? 'selected' : ''}>Customs Passed</option>
-          <option value="Cleared" ${f.status === 'Cleared' ? 'selected' : ''}>ICEGATE Cleared</option>
-          <option value="Under Assessment" ${f.status === 'Under Assessment' ? 'selected' : ''}>Under Assessment</option>
-          <option value="LUT Compliant" ${f.status === 'LUT Compliant' ? 'selected' : ''}>LUT Compliant</option>
-        </select>
+        <!-- Left spacer -->
       </div>
-      <div class="table-toolbar-right">
+      <div class="table-toolbar-right" style="display: flex; gap: 8px; align-items: center; margin-left: auto; flex-wrap: wrap;">
+        <div class="table-search-input-wrap" style="min-width: 320px;">
+          <span class="table-search-icon">🔍</span>
+          <input type="text" placeholder="Search by Invoice No, Loading Plan, Client, Destination, Order ID..." value="${f.search || ''}" oninput="setTableSearch('exportDocs', this.value)">
+        </div>
+        <button class="btn btn-sm btn-secondary" onclick="refreshExportDocs()">🔄 Refresh</button>
       </div>
     </div>
 
-    <!-- Data Table -->
+    <!-- Data Table Card -->
     <div class="card">
-      <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-        <div class="card-title-group">
-          <h3>Official Export Invoices & Shipping Bills Registry</h3>
-          <p>Click any document to open full suite, or use direct 1-click PDF download buttons.</p>
-        </div>
-      </div>
       <div class="table-responsive">
         <table class="data-table">
           <thead>
             <tr>
-              <th>Export Invoice # & Date</th>
-              <th>Origin Loading Plan</th>
-              <th>Linked Order & Consignee</th>
-              <th>Destination Port & Country</th>
-              <th>Incoterms & HSN</th>
-              <th>Shipping Bill Reference</th>
-              <th>Invoice Value</th>
-              <th>Direct PDF Downloads</th>
-              <th>Actions</th>
+              <th style="width: 130px;">DATE</th>
+              <th style="width: 170px;">#INVOICE</th>
+              <th style="min-width: 220px;">CLIENT & DESTINATION</th>
+              <th style="text-align: center; width: 70px;">AGE</th>
+              <th style="text-align: center; min-width: 440px;">DOCUMENTS</th>
+              <th style="text-align: center; width: 90px;">ACTIONS</th>
             </tr>
           </thead>
           <tbody>
-            ${pagination.items.map(doc => `
-              <tr style="cursor: pointer;" onclick="openExportDocSuiteFullPage('${doc.invoiceNo}')">
-                <td>
-                  <strong style="font-family: var(--font-mono); color: var(--brand-cyan); font-size: 13px;">${doc.invoiceNo}</strong>
-                  <div style="font-size: 11px; color: var(--text-dim); margin-top: 2px;">${doc.date}</div>
-                </td>
-                <td onclick="event.stopPropagation()">
-                  ${doc.loadingPlanId ? `
-                    <button class="btn btn-sm btn-secondary" onclick="openLoadingPlanDetail('${doc.loadingPlanId}')" style="font-family: var(--font-mono); font-size: 11px;">
-                      📋 ${doc.loadingPlanId} ➔
-                    </button>
-                  ` : '<span style="color: var(--text-dim);">Direct Order</span>'}
-                </td>
-                <td>
-                  <strong>${doc.orderId}</strong>
-                  <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">${doc.consignee}</div>
-                </td>
-                <td>
-                  <div style="font-weight: 600; color: var(--text-main); font-size: 12px;">${doc.destination}</div>
-                  <div style="font-size: 10px; color: var(--text-dim);">Port of Discharge</div>
-                </td>
-                <td>
-                  <span class="badge badge-primary" style="font-size: 11px;">${doc.incoterms}</span>
-                  <div style="font-size: 10px; color: var(--text-muted); font-family: var(--font-mono); margin-top: 2px;">HSN: ${doc.hsn}</div>
-                </td>
-                <td>
-                  <div style="font-family: var(--font-mono); font-size: 12px; color: var(--text-main);">${doc.shippingBill}</div>
-                  <div style="font-size: 10px; color: var(--success); font-weight: 600;">${doc.lutStatus}</div>
-                </td>
-                <td>
-                  <strong style="font-family: var(--font-mono); font-size: 13px; color: var(--text-main);">$${doc.valueUSD.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong>
-                  <div style="font-size: 10px; color: var(--text-dim);">₹${doc.valueINR.toLocaleString()} INR</div>
-                </td>
-                <td onclick="event.stopPropagation()">
-                  <div style="display: flex; gap: 4px; flex-wrap: wrap;">
-                    <button class="btn btn-sm btn-secondary" onclick="downloadDocumentPDF('${doc.invoiceNo}', 'invoice')" title="Download Commercial Invoice PDF" style="font-size: 11px; padding: 3px 6px;">📄 Invoice</button>
-                    <button class="btn btn-sm btn-secondary" onclick="downloadDocumentPDF('${doc.invoiceNo}', 'packing')" title="Download Packing List PDF" style="font-size: 11px; padding: 3px 6px;">📦 Packing</button>
-                    <button class="btn btn-sm btn-secondary" onclick="downloadDocumentPDF('${doc.invoiceNo}', 'shippingbill')" title="Download Shipping Bill PDF" style="font-size: 11px; padding: 3px 6px;">📜 Bill</button>
-                    <button class="btn btn-sm btn-secondary" onclick="downloadDocumentPDF('${doc.invoiceNo}', 'origin')" title="Download Certificate of Origin PDF" style="font-size: 11px; padding: 3px 6px;">🏛️ CoO</button>
-                  </div>
-                </td>
-                <td onclick="event.stopPropagation()">
-                  <div style="display: flex; gap: 6px; align-items: center;">
-                    <button class="btn btn-sm btn-primary" onclick="openExportDocSuiteFullPage('${doc.invoiceNo}')" title="View Full 4-Document Suite">👁️ View</button>
-                    <button class="btn btn-sm btn-secondary" onclick="downloadDocumentPDF('${doc.invoiceNo}', 'bundle')" title="Download All In One ZIP/Bundle">📑 Bundle</button>
-                  </div>
+            ${pagination.items.length === 0 ? `
+              <tr>
+                <td colspan="6" style="text-align: center; padding: 36px; color: var(--text-muted);">
+                  No export invoices found matching filter criteria.
                 </td>
               </tr>
-            `).join('')}
-          </tbody>
-        </table>
+            ` : pagination.items.map((doc, idx) => {
+              const rowClass = getRowClass(doc);
+              const ageBadgeHtml = getAgeBadge(doc);
+              return `
+                <tr class="${rowClass}">
+                  
+                  <!-- Date Column -->
+                  <td style="font-weight: 700; font-size: 12.5px; color: var(--text-main); white-space: nowrap;">
+                    ${doc.date || '14/09/2026'}
+                  </td>
+
+                  <!-- Invoice No Column (Display only - No edit on click) -->
+                  <td style="font-family: var(--font-mono); font-weight: 700; font-size: 12.5px; color: var(--text-main); white-space: nowrap;">
+                    ${doc.invoiceNo}
+                  </td>
+
+                  <!-- Client Column -->
+                  <td style="font-weight: 700; font-size: 12.5px; color: var(--text-main);">
+                    ${(doc.consignee || 'ALTAGAMMA').toUpperCase()}
+                    <div style="font-size: 10px; font-weight: 500; color: var(--text-muted); font-family: var(--font-mono);">${doc.orderId || ''} • ${doc.destination || 'USA'}</div>
+                  </td>
+
+                  <!-- Age Badge (with Angular age-tier color badges) -->
+                  <td style="text-align: center;">
+                    ${ageBadgeHtml}
+                  </td>
+
+                  <!-- Exact Reference Documents Column (ei-col--documents) -->
+                  <td style="text-align: center; padding: 6px 10px; white-space: nowrap;">
+                    <div class="ei-col--documents">
+                      
+                      <!-- Group 1: 4 Standalone Icons (gray-500, red-500, yellow-500, blue-500) -->
+                      <div style="display: flex; align-items: center; gap: 1px;">
+                        <!-- Export Invoice Without Consignee -->
+                        <button type="button" class="ei-doc-btn" onclick="downloadDocumentPDF('${doc.invoiceNo}', 'invoice_no_consignee')" title="Export Invoice Without Consignee">
+                          <svg class="icon-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        </button>
+
+                        <!-- Packing Invoice Without Consignee -->
+                        <button type="button" class="ei-doc-btn" onclick="downloadPackingInvoice('${doc.invoiceNo}', false)" title="Packing Invoice Without Consignee">
+                          <svg class="icon-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                        </button>
+
+                        <!-- Annexure Invoice -->
+                        <button type="button" class="ei-doc-btn" onclick="downloadAnnexureInvoice('${doc.invoiceNo}')" title="Annexure Invoice">
+                          <svg class="icon-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 10-4.243-4.242 3 3 0 004.243 4.242z"/></svg>
+                        </button>
+
+                        <!-- VGM Invoice -->
+                        <button type="button" class="ei-doc-btn" onclick="downloadVGMInvoice('${doc.invoiceNo}')" title="VGM Invoice">
+                          <svg class="icon-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                        </button>
+                      </div>
+
+                      <!-- Group 2: Gray Pill (Export Invoice + Commercial Excel) -->
+                      <div class="ei-doc-pill pill-gray">
+                        <!-- Export Invoice (Inbox) -->
+                        <button type="button" class="ei-doc-btn" onclick="downloadCommercialInvoice('${doc.invoiceNo}', true, 'system')" title="Export Invoice">
+                          <svg class="icon-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/></svg>
+                        </button>
+                        <!-- Download Commercial Excel -->
+                        <button type="button" class="ei-doc-btn" onclick="downloadCommercialInvoice('${doc.invoiceNo}', false)" title="Download Commercial Excel">
+                          <svg class="icon-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"/></svg>
+                        </button>
+                      </div>
+
+                      <!-- Group 3: Pink Pill (Packing-list Invoice + Packing-list Excel) -->
+                      <div class="ei-doc-pill pill-pink">
+                        <!-- Packing-list Invoice -->
+                        <button type="button" class="ei-doc-btn" onclick="downloadPackingInvoiceList('${doc.invoiceNo}', true, 'system')" title="Packing-list Invoice">
+                          <svg class="icon-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
+                        </button>
+                        <!-- Download Packing-list Excel -->
+                        <button type="button" class="ei-doc-btn" onclick="downloadPackingInvoiceList('${doc.invoiceNo}', false)" title="Download Packing-list Excel">
+                          <svg class="icon-amber-800" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"/></svg>
+                        </button>
+                      </div>
+
+                      <!-- Group 4: Gray Pill (BL Draft + BL Draft PLTs) -->
+                      <div class="ei-doc-pill pill-gray">
+                        <!-- BL Draft -->
+                        <button type="button" class="ei-doc-btn" onclick="downloadExcelForBLDraft('${doc.invoiceNo}', 1)" title="BL Draft">
+                          <svg class="icon-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                        </button>
+                        <!-- BL Draft [PLTs] -->
+                        <button type="button" class="ei-doc-btn" onclick="downloadExcelForBLDraft('${doc.invoiceNo}', 2)" title="BL Draft [PLTs]">
+                          <svg class="icon-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        </button>
+                      </div>
+
+                      <!-- Group 5: Gray Pill (Coo Draft + Coo Draft PLTs) -->
+                      <div class="ei-doc-pill pill-gray">
+                        <!-- Coo Draft -->
+                        <button type="button" class="ei-doc-btn" onclick="downloadExcelForBLDraft('${doc.invoiceNo}', '')" title="Coo Draft">
+                          <svg class="icon-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        </button>
+                        <!-- Coo Draft [PLTs] -->
+                        <button type="button" class="ei-doc-btn" onclick="downloadExcelForBLDraft('${doc.invoiceNo}', 3)" title="Coo Draft [PLTs]">
+                          <svg class="icon-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/></svg>
+                        </button>
+                      </div>
+
+                      <!-- Group 6: Orange Pill (Export Invoice With Consignee + Packing Invoice With Consignee) -->
+                      <div class="ei-doc-pill pill-orange">
+                        <!-- Export Invoice With Consignee -->
+                        <button type="button" class="ei-doc-btn" onclick="downloadDocumentPDF('${doc.invoiceNo}', 'invoice_with_consignee')" title="Export Invoice With Consignee">
+                          <svg class="icon-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        </button>
+                        <!-- Packing Invoice With Consignee -->
+                        <button type="button" class="ei-doc-btn" onclick="downloadPackingInvoice('${doc.invoiceNo}', true)" title="Packing Invoice With Consignee">
+                          <svg class="icon-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                        </button>
+                      </div>
+
+                      <!-- Group 7: Gray Pill (Download All Invoices) -->
+                      <div class="ei-doc-pill pill-gray">
+                        <!-- Download All Invoices -->
+                        <button type="button" class="ei-doc-btn" onclick="downloadAllInOne('${doc.invoiceNo}', true)" title="Download All Invoices">
+                          <svg class="icon-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+                        </button>
+                      </div>
+
+                    </div>
+                  </td>
+
+                  <!-- Actions Column (Edit & Delete using standard btn-icon-action) -->
+                  <td style="text-align: center; white-space: nowrap; padding: 10px 14px;" onclick="event.stopPropagation()">
+                    <div class="row-actions-group" style="justify-content: center; display: inline-flex; gap: 6px;">
+                      <button type="button" class="btn-icon-action" onclick="openExportInvoiceForm('${doc.loadingPlanId || ''}', '${doc.invoiceNo}', true, 'mod5-docs')" title="Edit Export Invoice">✏️</button>
+                      <button type="button" class="btn-icon-action delete" onclick="deleteExportDoc('${doc.invoiceNo}')" title="Delete Export Invoice">🗑️</button>
+                    </div>
+                  </td>
+
+                </tr>
+              `;
+            }).join('')}
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      <!-- Pagination Footer -->
-      <div class="table-pagination-footer">
+      <!-- Table Pagination Footer -->
+      <div class="table-pagination-footer" style="margin-top: 14px;">
         <div class="pagination-info">
           Showing <strong>${pagination.items.length ? pagination.start : 0}</strong> to <strong>${pagination.end}</strong> of <strong>${pagination.total}</strong> export invoices
         </div>
         <div class="pagination-controls">
           <select class="rows-per-page-select" onchange="setTablePageSize('exportDocs', this.value)">
-            <option value="5" ${(f.pageSize || 5) === 5 ? 'selected' : ''}>5 per page</option>
-            <option value="10" ${(f.pageSize || 5) === 10 ? 'selected' : ''}>10 per page</option>
-            <option value="25" ${(f.pageSize || 5) === 25 ? 'selected' : ''}>25 per page</option>
+            <option value="5" ${(f.pageSize || 10) === 5 ? 'selected' : ''}>5 per page</option>
+            <option value="10" ${(f.pageSize || 10) === 10 ? 'selected' : ''}>10 per page</option>
+            <option value="25" ${(f.pageSize || 10) === 25 ? 'selected' : ''}>25 per page</option>
           </select>
           <button class="page-btn" ${pagination.currentPage === 1 ? 'disabled' : ''} onclick="setTablePage('exportDocs', ${pagination.currentPage - 1})">◀</button>
           ${Array.from({ length: pagination.totalPages }, (_, i) => i + 1).map(p => `
@@ -12933,127 +17957,330 @@ function renderExportDocsView() {
           <button class="page-btn" ${pagination.currentPage === pagination.totalPages ? 'disabled' : ''} onclick="setTablePage('exportDocs', ${pagination.currentPage + 1})">▶</button>
         </div>
       </div>
+
     </div>
   `;
 }
 
+// ============================================================================
+// MODULE 6.0: RETURNS, REFUNDS & CLAIMS (COMPLETE REVERSE LOGISTICS LIFECYCLE)
+// ============================================================================
+
+function getReturnById(id) {
+  if (!id) return (AppState.returns && AppState.returns[0]) || null;
+  return (AppState.returns || []).find(r => r.returnId === id || r.rmaNo === id || r.orderId === id) || AppState.returns[0];
+}
+
+function switchReturnsSubView(subViewKey) {
+  if (!AppState.tableFilters.returns) {
+    AppState.tableFilters.returns = { search: "", subView: "returns_list", returnType: "all", status: "all", condition: "all", refundStatus: "all", claimStatus: "all", channel: "all", page: 1, pageSize: 10 };
+  }
+  AppState.tableFilters.returns.subView = subViewKey;
+  AppState.tableFilters.returns.page = 1;
+  renderCurrentView();
+}
+
 function renderReturnsView() {
-  const f = AppState.tableFilters.returns || { search: "", grade: "all", page: 1, pageSize: 5 };
-  let filtered = (AppState.returns || []).filter(r => {
-    const matchesSearch = !f.search || r.rmaNo.toLowerCase().includes(f.search.toLowerCase()) || r.customerName.toLowerCase().includes(f.search.toLowerCase());
-    return matchesSearch;
+  const f = AppState.tableFilters.returns || (AppState.tableFilters.returns = {
+    search: "",
+    subView: "returns_list",
+    returnType: "all",
+    status: "all",
+    condition: "all",
+    refundStatus: "all",
+    claimStatus: "all",
+    channel: "all",
+    page: 1,
+    pageSize: 10
   });
 
-  const pagination = paginateArray(filtered, f.page, f.pageSize);
+  const activeSubView = f.subView || "returns_list";
+  const returns = AppState.returns || [];
+
+  const totalRefundsCount = returns.filter(r => r.refund && (r.refund.refundRequired || r.refund.refundStatus === "Completed")).length;
+  const totalReplacementsCount = returns.filter(r => r.replacement && (r.replacement.replacementRequired || r.replacement.replacementStatus !== "N/A")).length;
+  const totalClaimsCount = returns.filter(r => r.claim && (r.claim.claimRequired || r.claim.claimStatus !== "No Claim")).length;
+  const totalRecoveriesCount = returns.filter(r => r.claim && (r.claim.recoveredAmount > 0 || r.claim.recoveryStatus === "Fully Recovered" || r.claim.recoveryStatus === "Partially Recovered")).length;
+
+  let contentHtml = "";
+  if (activeSubView === "returns_list") {
+    contentHtml = renderReturnsListView(f, returns);
+  } else if (activeSubView === "refunds_list") {
+    contentHtml = renderRefundsSubView(f, returns);
+  } else if (activeSubView === "replacements_list") {
+    contentHtml = renderReplacementsSubView(f, returns);
+  } else if (activeSubView === "claims_list") {
+    contentHtml = renderClaimsSubView(f, returns);
+  } else if (activeSubView === "recovery_list") {
+    contentHtml = renderRecoverySubView(f, returns);
+  } else if (activeSubView === "financial_impact") {
+    contentHtml = renderReturnsFinancialImpactView(returns);
+  }
 
   return `
-    <div class="page-header" style="margin-bottom: 16px;">
+    <div class="page-header" style="margin-bottom: 14px;">
       <div class="page-title-wrap">
-        <h1 style="margin: 0; font-size: 20px;">🔄 Returns & Damage Claims</h1>
+        <h1 style="margin: 0; font-size: 20px;">🔄 Returns, Refunds & Claims</h1>
+        <p style="margin: 4px 0 0; font-size: 12px; color: var(--text-muted);">
+          End-to-end Reverse Logistics: Order Return Registration &bull; Condition Inspection &bull; Refunds & Replacements &bull; Carrier Claims &bull; Recovery &bull; Profitability Impact
+        </p>
       </div>
       <div class="page-actions" style="display: flex; gap: 8px;">
-        <button class="btn btn-sm btn-primary" onclick="openCreateReturnModal()">+ Log New Return</button>
+        <button class="btn btn-sm btn-secondary" onclick="exportReturnsCSV()">📥 Export Returns CSV</button>
+        <button class="btn btn-sm btn-secondary" onclick="switchView('mod3-orders')">🛍️ Open Order Pipeline</button>
       </div>
     </div>
 
-    <!-- Return Claim Filter Tabs -->
-    <div class="status-filter-pills">
-      <button class="filter-pill-btn ${f.grade === 'all' ? 'active' : ''}" onclick="setTableFilter('returns', 'grade', 'all')">All Return Claims (${AppState.returns ? AppState.returns.length : 0})</button>
-      <button class="filter-pill-btn ${f.grade === 'Inspection Pending' ? 'active' : ''}" onclick="setTableFilter('returns', 'grade', 'Inspection Pending')">⚠️ Inspection Pending</button>
-      <button class="filter-pill-btn ${f.grade === 'Restocked' ? 'active' : ''}" onclick="setTableFilter('returns', 'grade', 'Restocked')">🔄 Restocked to USA 3PL</button>
-      <button class="filter-pill-btn ${f.grade === 'Refunded' ? 'active' : ''}" onclick="setTableFilter('returns', 'grade', 'Refunded')">💸 Refunded</button>
+    <!-- Complete Module 6 Sub-Navigation -->
+    <div class="returns-subnav-bar">
+      <button class="returns-subnav-btn ${activeSubView === 'returns_list' ? 'active' : ''}" onclick="switchReturnsSubView('returns_list')">
+        <span>📦 Returns & RTO List</span>
+        <span class="returns-badge-pill">${returns.length}</span>
+      </button>
+      <button class="returns-subnav-btn ${activeSubView === 'refunds_list' ? 'active' : ''}" onclick="switchReturnsSubView('refunds_list')">
+        <span>💸 Refunds</span>
+        <span class="returns-badge-pill">${totalRefundsCount}</span>
+      </button>
+      <button class="returns-subnav-btn ${activeSubView === 'replacements_list' ? 'active' : ''}" onclick="switchReturnsSubView('replacements_list')">
+        <span>🔄 Replacements</span>
+        <span class="returns-badge-pill">${totalReplacementsCount}</span>
+      </button>
+      <button class="returns-subnav-btn ${activeSubView === 'claims_list' ? 'active' : ''}" onclick="switchReturnsSubView('claims_list')">
+        <span>⚖️ Claims</span>
+        <span class="returns-badge-pill">${totalClaimsCount}</span>
+      </button>
+      <button class="returns-subnav-btn ${activeSubView === 'recovery_list' ? 'active' : ''}" onclick="switchReturnsSubView('recovery_list')">
+        <span>💵 Recovery Tracking</span>
+        <span class="returns-badge-pill">${totalRecoveriesCount}</span>
+      </button>
+      <button class="returns-subnav-btn ${activeSubView === 'financial_impact' ? 'active' : ''}" onclick="switchReturnsSubView('financial_impact')">
+        <span>📊 Financial Impact & Profitability</span>
+      </button>
     </div>
 
-    <div class="table-toolbar-box">
+    ${contentHtml}
+  `;
+}
+
+// ----------------------------------------------------------------------------
+// SUB-VIEW 1: RETURNS & RTO LIST
+// ----------------------------------------------------------------------------
+function renderReturnsListView(f, returns) {
+  let filtered = returns.filter(r => {
+    const s = (f.search || "").trim().toLowerCase();
+    const searchMatch = !s ||
+      (r.returnId && r.returnId.toLowerCase().includes(s)) ||
+      (r.rmaNo && r.rmaNo.toLowerCase().includes(s)) ||
+      (r.orderId && r.orderId.toLowerCase().includes(s)) ||
+      (r.customer && r.customer.toLowerCase().includes(s)) ||
+      (r.sku && r.sku.toLowerCase().includes(s)) ||
+      (r.trackingNo && r.trackingNo.toLowerCase().includes(s)) ||
+      (r.returnTrackingNo && r.returnTrackingNo.toLowerCase().includes(s));
+
+    const typeMatch = !f.returnType || f.returnType === "all" || (r.returnType && r.returnType === f.returnType);
+    const statusMatch = !f.status || f.status === "all" || (r.returnStatus && r.returnStatus === f.status);
+    const condMatch = !f.condition || f.condition === "all" || (r.itemCondition && r.itemCondition === f.condition);
+    const refMatch = !f.refundStatus || f.refundStatus === "all" || (r.refund && r.refund.refundStatus === f.refundStatus);
+    const claimMatch = !f.claimStatus || f.claimStatus === "all" || (r.claim && r.claim.claimStatus === f.claimStatus);
+    const chanMatch = !f.channel || f.channel === "all" || (r.channel && r.channel.toLowerCase().includes(f.channel.toLowerCase()));
+
+    return searchMatch && typeMatch && statusMatch && condMatch && refMatch && claimMatch && chanMatch;
+  });
+
+  const pagination = paginateArray(filtered, f.page || 1, f.pageSize || 10);
+
+  return `
+    <!-- Functional Rule Notification Banner -->
+    <div style="background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: var(--radius-md); padding: 10px 16px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="font-size: 16px;">ℹ️</span>
+        <span style="font-size: 12px; color: var(--text-main);">
+          <strong>Return Registration Rule:</strong> Returns are created from the <strong>Order List</strong> (Actions &rarr; <em>Create Return</em>). The Returns List is dedicated to managing reverse transit, inspection grading, claims, and recovery.
+        </span>
+      </div>
+      <button class="btn btn-sm btn-primary" onclick="switchView('mod3-orders')" style="font-size: 11px; padding: 4px 10px;">
+        🛍️ Go to Order List to Create Return
+      </button>
+    </div>
+
+    <!-- Filter Pills for Return Status -->
+    <div class="status-filter-pills" style="margin-bottom: 14px;">
+      <button class="filter-pill-btn ${f.status === 'all' ? 'active' : ''}" onclick="setTableFilter('returns', 'status', 'all')">
+        All Records (${returns.length})
+      </button>
+      <button class="filter-pill-btn ${f.status === 'Return Initiated' ? 'active' : ''}" onclick="setTableFilter('returns', 'status', 'Return Initiated')">
+        ⏳ Return Initiated
+      </button>
+      <button class="filter-pill-btn ${f.status === 'RTO In Transit' ? 'active' : ''}" onclick="setTableFilter('returns', 'status', 'RTO In Transit')">
+        🚚 RTO In Transit
+      </button>
+      <button class="filter-pill-btn ${f.status === 'Under Inspection' ? 'active' : ''}" onclick="setTableFilter('returns', 'status', 'Under Inspection')">
+        🔍 Under Inspection
+      </button>
+      <button class="filter-pill-btn ${f.status === 'Refund / Replacement Processing' ? 'active' : ''}" onclick="setTableFilter('returns', 'status', 'Refund / Replacement Processing')">
+        💸 Refund / Replacement
+      </button>
+      <button class="filter-pill-btn ${f.status === 'Completed' ? 'active' : ''}" onclick="setTableFilter('returns', 'status', 'Completed')">
+        ✅ Completed
+      </button>
+    </div>
+
+    <!-- Multi-Column Toolbar Filters -->
+    <div class="table-toolbar-box" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
       <div class="table-toolbar-left">
+        <span style="font-size: 12px; color: var(--text-dim);">${filtered.length} matching returns</span>
+      </div>
+      <div class="table-toolbar-right" style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-left: auto;">
+        <select class="table-filter-select" onchange="setTableFilter('returns', 'returnType', this.value)">
+          <option value="all" ${f.returnType === 'all' ? 'selected' : ''}>All Return Types</option>
+          <option value="Customer Return" ${f.returnType === 'Customer Return' ? 'selected' : ''}>Customer Return</option>
+          <option value="RTO" ${f.returnType === 'RTO' ? 'selected' : ''}>RTO (Failed Delivery)</option>
+        </select>
+
+        <select class="table-filter-select" onchange="setTableFilter('returns', 'condition', this.value)">
+          <option value="all" ${f.condition === 'all' ? 'selected' : ''}>All Item Conditions</option>
+          <option value="Pending Inspection" ${f.condition === 'Pending Inspection' ? 'selected' : ''}>⚠️ Pending Inspection</option>
+          <option value="Resalable" ${f.condition === 'Resalable' ? 'selected' : ''}>✅ Resalable (Restocked)</option>
+          <option value="Repairable" ${f.condition === 'Repairable' ? 'selected' : ''}>🔧 Repairable (Loom Station)</option>
+          <option value="Damaged" ${f.condition === 'Damaged' ? 'selected' : ''}>🚨 Damaged / Total Loss</option>
+        </select>
+
+        <select class="table-filter-select" onchange="setTableFilter('returns', 'refundStatus', this.value)">
+          <option value="all" ${f.refundStatus === 'all' ? 'selected' : ''}>All Refund Statuses</option>
+          <option value="Completed" ${f.refundStatus === 'Completed' ? 'selected' : ''}>Refund Completed</option>
+          <option value="Pending" ${f.refundStatus === 'Pending' ? 'selected' : ''}>Refund Pending</option>
+          <option value="Not Required" ${f.refundStatus === 'Not Required' ? 'selected' : ''}>Not Required / Replacement</option>
+        </select>
+
+        <select class="table-filter-select" onchange="setTableFilter('returns', 'claimStatus', this.value)">
+          <option value="all" ${f.claimStatus === 'all' ? 'selected' : ''}>All Claim Statuses</option>
+          <option value="No Claim" ${f.claimStatus === 'No Claim' ? 'selected' : ''}>No Claim (Resalable)</option>
+          <option value="Under Review" ${f.claimStatus === 'Under Review' ? 'selected' : ''}>Under Carrier Review</option>
+          <option value="Approved" ${f.claimStatus === 'Approved' ? 'selected' : ''}>Claim Approved</option>
+          <option value="Recovered" ${f.claimStatus === 'Recovered' ? 'selected' : ''}>Funds Recovered</option>
+          <option value="Rejected" ${f.claimStatus === 'Rejected' ? 'selected' : ''}>Claim Rejected</option>
+        </select>
+
+        <select class="table-filter-select" onchange="setTableFilter('returns', 'channel', this.value)">
+          <option value="all" ${f.channel === 'all' ? 'selected' : ''}>All Channels</option>
+          <option value="Amazon" ${f.channel === 'Amazon' ? 'selected' : ''}>Amazon US</option>
+          <option value="Etsy" ${f.channel === 'Etsy' ? 'selected' : ''}>Etsy Direct</option>
+          <option value="Walmart" ${f.channel === 'Walmart' ? 'selected' : ''}>Walmart US</option>
+          <option value="Wayfair" ${f.channel === 'Wayfair' ? 'selected' : ''}>Wayfair US</option>
+          <option value="B2B" ${f.channel === 'B2B' ? 'selected' : ''}>B2B Wholesale</option>
+        </select>
+
         <div class="table-search-input-wrap">
           <span class="table-search-icon">🔍</span>
-          <input type="text" placeholder="Search RMA #, Order ID, Customer, SKU..." value="${f.search}" oninput="setTableSearch('returns', this.value)">
+          <input type="text" placeholder="Search Return ID, Order ID, Customer, SKU..." value="${f.search || ''}" oninput="setTableSearch('returns', this.value)">
         </div>
-        <select class="table-filter-select" onchange="setTableFilter('returns', 'grade', this.value)">
-          <option value="all">All Inspection Grades</option>
-          <option value="Grade A" ${f.grade === 'Grade A' ? 'selected' : ''}>Grade A (Resalable Full Price)</option>
-          <option value="Grade B" ${f.grade === 'Grade B' ? 'selected' : ''}>Grade B (Distressed / Sample Sale)</option>
-          <option value="Grade C" ${f.grade === 'Grade C' ? 'selected' : ''}>Grade C (Total Loss / Claim)</option>
-        </select>
-      </div>
-      <div class="table-toolbar-right">
+
+        <button class="btn btn-sm btn-secondary" onclick="refreshTableFilters('returns', 'Returns & RTO')">🔄 Refresh</button>
       </div>
     </div>
 
-    <!-- Data Table -->
+    <!-- Returns & RTO Data Table -->
     <div class="card">
       <div class="table-responsive">
         <table class="data-table">
           <thead>
             <tr>
-              <th>RMA # & Date</th>
-              <th>Order ID & Channel</th>
-              <th>Customer Name</th>
-              <th>SKU Returned</th>
-              <th>Return Reason</th>
-              <th>Condition Grade</th>
-              <th>Workflow Status</th>
-              <th>Restock / Claim Action</th>
-              <th>Actions</th>
+              <th style="min-width: 140px; white-space: nowrap;">Return ID & Date</th>
+              <th style="min-width: 140px; white-space: nowrap;">Order ID & Channel</th>
+              <th style="min-width: 150px; white-space: nowrap;">Shipment ID & Courier</th>
+              <th style="min-width: 140px; white-space: nowrap;">Customer Name</th>
+              <th style="min-width: 160px; white-space: nowrap;">Product & SKU</th>
+              <th style="min-width: 140px; white-space: nowrap;">Return Type</th>
+              <th style="min-width: 220px; white-space: nowrap;">Return Reason</th>
+              <th style="min-width: 140px; text-align: center; white-space: nowrap;">Return Status</th>
+              <th style="min-width: 130px; text-align: center; white-space: nowrap;">Item Condition</th>
+              <th style="min-width: 120px; text-align: center; white-space: nowrap;">Refund Status</th>
+              <th style="min-width: 120px; text-align: center; white-space: nowrap;">Claim Status</th>
+              <th style="min-width: 120px; text-align: right; white-space: nowrap;">Return Value ($)</th>
+              <th style="min-width: 160px; text-align: center; white-space: nowrap;">Actions</th>
             </tr>
           </thead>
           <tbody>
-            ${pagination.items.map(r => `
-              <tr style="cursor: pointer;" onclick="openReturnDetail('${r.rmaNo}')">
-                <td>
-                  <strong style="font-family: var(--font-mono); color: var(--brand-cyan); font-size: 13px;">${r.rmaNo}</strong>
-                  <div style="font-size: 11px; color: var(--text-dim); margin-top: 2px;">${r.returnDate}</div>
-                </td>
-                <td>
-                  <strong>${r.orderId}</strong>
-                  <div style="font-size: 10px; color: var(--brand-cyan); font-weight: 600;">${r.channel}</div>
-                </td>
-                <td>
-                  <div style="font-weight: 600; color: var(--text-main); font-size: 12px;">${r.customer}</div>
-                  <div style="font-size: 10px; color: var(--text-muted);">$${r.refundAmountUSD.toFixed(2)} Refund</div>
-                </td>
-                <td>
-                  <code style="color: var(--brand-cyan); font-size: 11px;">${r.sku}</code>
-                </td>
-                <td>
-                  <span style="font-size: 11px; color: var(--text-muted);">${r.reason}</span>
-                </td>
-                <td>
-                  <span class="badge ${r.grade.includes('Grade A') ? 'badge-success' : r.grade.includes('Grade B') ? 'badge-warning' : 'badge-danger'}" style="font-size: 11px; font-weight: 700;">
-                    ${r.grade.split('(')[0]}
-                  </span>
-                </td>
-                <td onclick="event.stopPropagation()">
-                  <select class="table-status-select" data-status="${r.status}" onchange="changeReturnStatus('${r.rmaNo}', this.value)">
-                    <option value="Return Received" ${r.status === 'Return Received' ? 'selected' : ''}>Return Received</option>
-                    <option value="Inspected & Graded" ${r.status === 'Inspected & Graded' ? 'selected' : ''}>Inspected & Graded</option>
-                    <option value="Restocked to Inventory" ${r.status.includes('Restocked') ? 'selected' : ''}>Restocked to Inventory</option>
-                    <option value="Claim Filed with Carrier" ${r.status.includes('Claim') ? 'selected' : ''}>Claim Filed with Carrier</option>
-                    <option value="Refund Settled" ${r.status.includes('Refund') ? 'selected' : ''}>Refund Settled</option>
-                  </select>
-                </td>
-                <td onclick="event.stopPropagation()">
-                  ${r.grade.includes('Grade A') ? `
-                    <button class="btn btn-sm btn-success" onclick="restockRmaToInventory('${r.rmaNo}')" style="font-size: 11px; padding: 4px 8px; font-weight: 700;">
-                      ♻️ Restock (+1)
-                    </button>
-                  ` : r.grade.includes('Grade C') ? `
-                    <button class="btn btn-sm btn-danger" onclick="fileCarrierClaim('${r.rmaNo}')" style="font-size: 11px; padding: 4px 8px; font-weight: 700;">
-                      🚨 Claim ($${r.carrierClaimUSD || 195})
-                    </button>
-                  ` : `
-                    <span class="badge badge-warning" style="font-size: 11px;">Sample Sale</span>
-                  `}
-                </td>
-                <td onclick="event.stopPropagation()">
-                  <div style="display: flex; gap: 6px; align-items: center;">
-                    <button class="btn btn-sm btn-secondary" onclick="downloadRmaSlip('${r.rmaNo}')" title="Print/Download RMA Inspection Slip">🖨️ Slip</button>
-                    <button class="btn btn-sm btn-primary" onclick="openReturnDetail('${r.rmaNo}')" title="View Full RMA Detail">🔍 View</button>
-                  </div>
-                </td>
-              </tr>
-            `).join('')}
+            ${pagination.items.length === 0 ? `
+              <tr><td colspan="13" style="text-align: center; padding: 32px; color: var(--text-dim);">No returns or RTO records found matching your filters.</td></tr>
+            ` : pagination.items.map(r => {
+              const retId = r.returnId || r.rmaNo;
+              const cond = r.itemCondition || (r.grade ? r.grade.split(' ')[0] : 'Pending');
+              const refStatus = (r.refund && r.refund.refundStatus) || (r.refundAmountUSD > 0 ? 'Completed' : 'N/A');
+              const claimStatus = (r.claim && r.claim.claimStatus) || (r.carrierClaimUSD > 0 ? 'Approved' : 'No Claim');
+              const amount = (r.financialImpact && r.financialImpact.orderRevenue) || r.orderAmount || r.refundAmountUSD || 0;
+
+              return `
+                <tr style="cursor: pointer;" onclick="openReturnDetail('${retId}')">
+                  <td style="min-width: 140px;">
+                    <strong style="font-family: var(--font-mono); color: var(--brand-cyan); font-size: 13px;">${retId}</strong>
+                    <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;">${r.returnDate || '2026-09-14'}</div>
+                  </td>
+                  <td style="min-width: 140px;">
+                    <strong style="font-size: 12px;">${r.orderId}</strong>
+                    <div style="font-size: 10px; color: var(--text-muted);">${r.channel}</div>
+                  </td>
+                  <td style="min-width: 150px;">
+                    <div style="font-family: var(--font-mono); font-size: 11px;">${r.shipmentId || 'SHIP-AUTO'}</div>
+                    <div style="font-size: 10px; color: var(--text-dim);">${r.courier ? r.courier.split(' ')[0] : 'FedEx'} &bull; ${r.trackingNo || 'N/A'}</div>
+                  </td>
+                  <td style="min-width: 140px;">
+                    <strong style="font-size: 12px; color: var(--text-main);">${r.customer}</strong>
+                    <div style="font-size: 10px; color: var(--text-dim);">${r.customerAddress ? r.customerAddress.split(',')[1] || '' : ''}</div>
+                  </td>
+                  <td style="min-width: 160px;">
+                    <code style="color: var(--brand-cyan); font-size: 11px;">${r.sku}</code>
+                    <div style="font-size: 10px; color: var(--text-dim); max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${r.productTitle || getSkuTitle(r.sku)}</div>
+                  </td>
+                  <td style="min-width: 140px;">
+                    <span class="badge ${r.returnType === 'RTO' ? 'badge-warning' : 'badge-primary'}" style="font-size: 10px; font-weight: 700;">
+                      ${r.returnType === 'RTO' ? '🚚 RTO' : '↩️ Customer Return'}
+                    </span>
+                  </td>
+                  <td style="min-width: 220px; white-space: normal;">
+                    <div style="font-size: 11.5px; color: var(--text-muted); line-height: 1.35; word-break: break-word;">
+                      ${r.returnReason || r.reason || 'General Return'}
+                    </div>
+                  </td>
+                  <td style="min-width: 140px; text-align: center;">
+                    <span class="badge ${r.returnStatus === 'Completed' ? 'badge-success' : r.returnStatus.includes('Transit') ? 'badge-warning' : 'badge-primary'}" style="font-size: 10px;">
+                      ${r.returnStatus || r.status}
+                    </span>
+                  </td>
+                  <td style="min-width: 130px; text-align: center;">
+                    <span class="badge ${cond.includes('Resalable') || cond.includes('Grade A') ? 'badge-success' : cond.includes('Repairable') || cond.includes('Grade B') ? 'badge-warning' : cond.includes('Damaged') || cond.includes('Grade C') ? 'badge-danger' : 'badge-secondary'}" style="font-size: 10px; font-weight: 700;">
+                      ${cond.includes('Resalable') ? '✅ Resalable' : cond.includes('Repairable') ? '🔧 Repairable' : cond.includes('Damaged') ? '🚨 Damaged' : '⚠️ Pending'}
+                    </span>
+                  </td>
+                  <td style="min-width: 120px; text-align: center;">
+                    <span class="badge ${refStatus === 'Completed' ? 'badge-success' : refStatus === 'Pending' ? 'badge-warning' : 'badge-secondary'}" style="font-size: 10px;">
+                      ${refStatus}
+                    </span>
+                  </td>
+                  <td style="min-width: 120px; text-align: center;">
+                    <span class="badge ${claimStatus === 'Approved' || claimStatus === 'Recovered' ? 'badge-success' : claimStatus === 'Under Review' || claimStatus === 'Submitted' ? 'badge-warning' : claimStatus === 'Rejected' ? 'badge-danger' : 'badge-secondary'}" style="font-size: 10px;">
+                      ${claimStatus}
+                    </span>
+                  </td>
+                  <td style="min-width: 120px; text-align: right;">
+                    <strong style="font-family: var(--font-mono); font-size: 12px; color: var(--text-main);">$${amount.toFixed(2)}</strong>
+                  </td>
+                  <td style="min-width: 160px;" onclick="event.stopPropagation()">
+                    <div style="display: flex; gap: 4px; align-items: center; justify-content: center;">
+                      <button class="btn btn-sm btn-primary" onclick="openReturnDetail('${retId}')" title="View Full Return Dossier" style="font-size: 11px; padding: 4px 8px;">
+                        👁️ View Details
+                      </button>
+                      <button class="btn btn-sm btn-secondary" onclick="downloadRmaSlip('${retId}')" title="Download RMA QC Slip (PDF)" style="font-size: 11px; padding: 4px 8px;">
+                        📄 PDF
+                      </button>
+                      <button class="btn btn-sm btn-danger" onclick="deleteReturn('${retId}')" title="Delete Return Record" style="font-size: 11px; padding: 4px 8px;">
+                        🗑️
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              `;
+            }).join('')}
           </tbody>
         </table>
       </div>
@@ -13061,13 +18288,13 @@ function renderReturnsView() {
       <!-- Pagination Footer -->
       <div class="table-pagination-footer">
         <div class="pagination-info">
-          Showing <strong>${pagination.items.length ? pagination.start : 0}</strong> to <strong>${pagination.end}</strong> of <strong>${pagination.total}</strong> RMA return records
+          Showing <strong>${pagination.items.length ? pagination.start : 0}</strong> to <strong>${pagination.end}</strong> of <strong>${pagination.total}</strong> returns
         </div>
         <div class="pagination-controls">
           <select class="rows-per-page-select" onchange="setTablePageSize('returns', this.value)">
-            <option value="5" ${(f.pageSize || 5) === 5 ? 'selected' : ''}>5 per page</option>
-            <option value="10" ${(f.pageSize || 5) === 10 ? 'selected' : ''}>10 per page</option>
-            <option value="25" ${(f.pageSize || 5) === 25 ? 'selected' : ''}>25 per page</option>
+            <option value="5" ${(f.pageSize || 10) === 5 ? 'selected' : ''}>5 per page</option>
+            <option value="10" ${(f.pageSize || 10) === 10 ? 'selected' : ''}>10 per page</option>
+            <option value="25" ${(f.pageSize || 10) === 25 ? 'selected' : ''}>25 per page</option>
           </select>
           <button class="page-btn" ${pagination.currentPage === 1 ? 'disabled' : ''} onclick="setTablePage('returns', ${pagination.currentPage - 1})">◀</button>
           ${Array.from({ length: pagination.totalPages }, (_, i) => i + 1).map(p => `
@@ -13080,171 +18307,553 @@ function renderReturnsView() {
   `;
 }
 
-function changeReturnStatus(rmaNo, newStatus) {
-  const r = (AppState.returns || []).find(item => item.rmaNo === rmaNo);
-  if (!r) return;
-  r.status = newStatus;
-  showToast(`RMA ${rmaNo} status updated to: ${newStatus}`, "success");
-  renderCurrentView();
-}
+// ----------------------------------------------------------------------------
+// SUB-VIEW 2: REFUNDS LIST
+// ----------------------------------------------------------------------------
+function renderRefundsSubView(f, returns) {
+  const refundItems = returns.filter(r => r.refund && (r.refund.refundRequired || r.refund.refundStatus === "Completed" || r.refund.refundStatus === "Pending"));
+  const totalRefunded = refundItems.reduce((sum, r) => sum + ((r.refund && r.refund.refundAmount) || r.refundAmountUSD || 0), 0);
+  const pendingRefunds = refundItems.filter(r => r.refund && r.refund.refundStatus === "Pending").length;
 
-function restockRmaToInventory(rmaNo) {
-  const r = (AppState.returns || []).find(item => item.rmaNo === rmaNo);
-  if (!r) return;
-
-  const sku = (AppState.skus || []).find(s => s.sku === r.sku);
-  if (sku && sku.stock) {
-    sku.stock.usaAvailable = (sku.stock.usaAvailable || 0) + 1;
-  }
-  r.status = "Restocked to Inventory";
-  showToast(`RMA ${rmaNo} rug (${r.sku}) restocked to USA 3PL (Edison, NJ)! Stock +1 unit.`, "success");
-  renderCurrentView();
-}
-
-function fileCarrierClaim(rmaNo) {
-  const r = (AppState.returns || []).find(item => item.rmaNo === rmaNo);
-  if (!r) return;
-  r.status = `Claim Filed with Carrier ($${r.carrierClaimUSD || 195})`;
-  showToast(`Transit damage insurance claim filed with carrier for RMA ${rmaNo} ($${r.carrierClaimUSD || 195} USD)!`, "success");
-  renderCurrentView();
-}
-
-function downloadRmaSlip(rmaNo) {
-  const r = (AppState.returns || []).find(item => item.rmaNo === rmaNo) || AppState.returns[0];
-  const filename = `RMA_INSPECTION_SLIP_${r.rmaNo}.pdf`;
-  const content = `%PDF-1.4
-% RugOS RMA Reverse Logistics Inspection Slip
-RMA No: ${r.rmaNo}
-Order Ref: ${r.orderId} (${r.channel})
-Customer: ${r.customer}
-Returned SKU: ${r.sku}
-Condition Grade: ${r.grade}
-Restock Facility: ${r.restockWh} (${r.restockBin})
-Customer Refund: $${r.refundAmountUSD.toFixed(2)} USD
-Carrier Transit Claim: $${(r.carrierClaimUSD || 0).toFixed(2)} USD
-Disposition Status: ${r.status}
-QC Verified By: US 3PL Returns Inspection Desk`;
-  triggerDownload(filename, content, "application/pdf");
-  showToast(`Downloaded ${filename} successfully!`, "success");
-}
-
-function openNewReturnModal() {
-  const modal = document.getElementById("crudModal");
-  const title = document.getElementById("crudModalTitle");
-  const badge = document.getElementById("crudBadge");
-  const body = document.getElementById("crudModalBody");
-  const footer = document.getElementById("crudModalFooter");
-
-  badge.textContent = "Log RMA";
-  title.textContent = "Register Return Merchandise Authorization (Module 6)";
-  body.innerHTML = `
-    <div class="form-grid-2">
-      <div class="form-group">
-        <label>Customer Name:</label>
-        <input type="text" class="form-control" id="rmaCustomer" value="Clara Beauchamp">
+  return `
+    <!-- Top KPI Cards -->
+    <div class="bento-metrics-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 16px; gap: 14px;">
+      <div class="metric-card">
+        <div class="metric-header"><span class="metric-label">Total Refunds Settled</span><span>💸</span></div>
+        <div class="metric-value" style="color: var(--warning); font-family: var(--font-mono); font-size: 22px;">$${totalRefunded.toFixed(2)}</div>
+        <div class="metric-sub">${refundItems.length} return refunds issued</div>
       </div>
-      <div class="form-group">
-        <label>Originating Order ID:</label>
-        <input type="text" class="form-control" id="rmaOrderId" value="ORD-AMZ-99214">
+      <div class="metric-card">
+        <div class="metric-header"><span class="metric-label">Pending Refund Actions</span><span>⏳</span></div>
+        <div class="metric-value" style="color: ${pendingRefunds > 0 ? 'var(--danger)' : 'var(--success)'}; font-size: 22px;">${pendingRefunds}</div>
+        <div class="metric-sub">Awaiting QC inspection sign-off</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-header"><span class="metric-label">Avg Refund Cycle Time</span><span>⏱️</span></div>
+        <div class="metric-value" style="color: var(--brand-cyan); font-size: 22px;">1.4 Days</div>
+        <div class="metric-sub">From hub receipt to gateway payout</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-header"><span class="metric-label">API Auto-Settlement</span><span>⚡</span></div>
+        <div class="metric-value" style="color: var(--success); font-size: 22px;">94.2%</div>
+        <div class="metric-sub">Automated via Amazon / Walmart SP-API</div>
       </div>
     </div>
-    <div class="form-grid-2">
-      <div class="form-group">
-        <label>Marketplace Channel:</label>
-        <select class="form-control" id="rmaChannel">
-          <option value="Amazon US">Amazon US</option>
-          <option value="Wayfair US">Wayfair US</option>
-          <option value="Etsy Direct">Etsy Direct</option>
-          <option value="Walmart US">Walmart US</option>
-          <option value="B2B Wholesale">B2B Wholesale</option>
-        </select>
+
+    <!-- Refunds Table -->
+    <div class="card">
+      <div style="padding: 14px 18px; border-bottom: 1px solid var(--border-main); display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin: 0; font-size: 14px; font-weight: 700; color: var(--text-main);">Disbursed & Pending Customer Refunds</h3>
+        <button class="btn btn-sm btn-secondary" onclick="exportRefundsCSV()">📥 Export Refunds CSV</button>
       </div>
-      <div class="form-group">
-        <label>Returned SKU:</label>
-        <select class="form-control" id="rmaSku">
-          ${(AppState.skus || []).map(s => `<option value="${s.sku}">${s.sku} — ${s.title.split('(')[0]}</option>`).join('')}
-        </select>
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Refund Reference #</th>
+              <th>Return ID & Order ID</th>
+              <th>Customer Name</th>
+              <th>Marketplace Channel</th>
+              <th>Refund Reason</th>
+              <th>Disbursement Method</th>
+              <th>Refund Amount ($)</th>
+              <th>Date Processed</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${refundItems.map(r => {
+              const ref = r.refund || {};
+              const retId = r.returnId || r.rmaNo;
+              const amt = ref.refundAmount || r.refundAmountUSD || 0;
+              return `
+                <tr style="cursor: pointer;" onclick="openReturnDetail('${retId}')">
+                  <td><strong style="font-family: var(--font-mono); color: var(--brand-cyan); font-size: 12px;">${ref.refundRef || 'REF-AUTO-' + retId}</strong></td>
+                  <td>
+                    <strong>${retId}</strong>
+                    <div style="font-size: 10px; color: var(--text-dim);">${r.orderId}</div>
+                  </td>
+                  <td><strong>${r.customer}</strong></td>
+                  <td><span class="marketplace-icon-tag amazon">${r.channel}</span></td>
+                  <td><span style="font-size: 11px; color: var(--text-muted);">${ref.refundReason || r.returnReason || 'Customer Return'}</span></td>
+                  <td><span style="font-size: 11px; font-family: var(--font-mono);">${ref.refundMethod || 'Original Payment Method'}</span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--warning); font-size: 13px;">$${amt.toFixed(2)}</strong></td>
+                  <td><span style="font-size: 11px; color: var(--text-dim);">${ref.refundDate || r.returnDate || '2026-09-14'}</span></td>
+                  <td>
+                    <span class="badge ${ref.refundStatus === 'Completed' ? 'badge-success' : 'badge-warning'}">
+                      ${ref.refundStatus || 'Completed'}
+                    </span>
+                  </td>
+                  <td onclick="event.stopPropagation()">
+                    <button class="btn btn-sm btn-secondary" onclick="openRefundModal('${retId}')" style="font-size: 11px; padding: 4px 8px;">
+                      💸 Edit / Process
+                    </button>
+                  </td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
       </div>
-    </div>
-    <div class="form-grid-2">
-      <div class="form-group">
-        <label>Condition Inspection Grading:</label>
-        <select class="form-control" id="rmaGrade">
-          <option value="Grade A (Resalable Full Price)">Grade A (Resalable Full Price)</option>
-          <option value="Grade B (Distressed / Warehouse Sample Sale)">Grade B (Distressed / Sample Sale)</option>
-          <option value="Grade C (Scrap / Total Loss)">Grade C (Scrap / Transit Damage)</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Customer Refund Amount USD ($):</label>
-        <input type="number" class="form-control" id="rmaRefund" value="385.00">
-      </div>
-    </div>
-    <div class="form-group">
-      <label>Specific Return Reason:</label>
-      <input type="text" class="form-control" id="rmaReason" value="Size mismatch (buyer requested 9x12 ft replacement)">
-    </div>
-    <div class="form-group">
-      <label>Restocking Warehouse & Bin Location:</label>
-      <input type="text" class="form-control" id="rmaWh" value="USA 3PL Distribution Center (Edison, NJ) • Zone A / Bin 14">
     </div>
   `;
-  footer.innerHTML = `
-    <button class="btn btn-secondary" onclick="closeModal('crudModal')">Cancel</button>
-    <button class="btn btn-primary" onclick="saveNewReturnRma()">Log RMA & Issue Return Tag</button>
+}
+
+// ----------------------------------------------------------------------------
+// SUB-VIEW 3: REPLACEMENTS LIST
+// ----------------------------------------------------------------------------
+function renderReplacementsSubView(f, returns) {
+  const replacementItems = returns.filter(r => r.replacement && (r.replacement.replacementRequired || r.replacement.replacementStatus !== "N/A"));
+
+  return `
+    <!-- Top KPI Cards -->
+    <div class="bento-metrics-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 16px; gap: 14px;">
+      <div class="metric-card">
+        <div class="metric-header"><span class="metric-label">Active Replacements</span><span>🔄</span></div>
+        <div class="metric-value" style="color: var(--brand-cyan); font-size: 22px;">${replacementItems.length}</div>
+        <div class="metric-sub">Orders flagged for replacement shipment</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-header"><span class="metric-label">Dispatched Replacements</span><span>🚚</span></div>
+        <div class="metric-value" style="color: var(--success); font-size: 22px;">${replacementItems.filter(r => r.replacement.replacementStatus === 'Dispatched' || r.replacement.replacementStatus === 'Delivered').length}</div>
+        <div class="metric-sub">Shipped via priority courier</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-header"><span class="metric-label">Exchange Fulfillment Rate</span><span>🎯</span></div>
+        <div class="metric-value" style="color: var(--success); font-size: 22px;">100%</div>
+        <div class="metric-sub">Zero cancellation on exchange requests</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-header"><span class="metric-label">Avg Exchange Turnaround</span><span>⚡</span></div>
+        <div class="metric-value" style="color: var(--text-main); font-size: 22px;">24 Hours</div>
+        <div class="metric-sub">Same-day USA 3PL dispatch</div>
+      </div>
+    </div>
+
+    <!-- Replacements Table -->
+    <div class="card">
+      <div style="padding: 14px 18px; border-bottom: 1px solid var(--border-main); display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin: 0; font-size: 14px; font-weight: 700; color: var(--text-main);">Replacement Orders & Reshipments Registry</h3>
+      </div>
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Replacement Order ID</th>
+              <th>Original Return ID & Order ID</th>
+              <th>Customer Name</th>
+              <th>Marketplace Channel</th>
+              <th>Replacement Rug SKU & Product</th>
+              <th>Qty</th>
+              <th>Fulfillment WH</th>
+              <th>Reshipment Courier & Tracking</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${replacementItems.length === 0 ? `
+              <tr><td colspan="10" style="text-align: center; padding: 24px; color: var(--text-dim);">No replacement orders active currently.</td></tr>
+            ` : replacementItems.map(r => {
+              const rep = r.replacement || {};
+              const retId = r.returnId || r.rmaNo;
+              return `
+                <tr style="cursor: pointer;" onclick="openReturnDetail('${retId}')">
+                  <td><strong style="font-family: var(--font-mono); color: var(--brand-cyan); font-size: 12px;">${rep.replacementOrderId || 'ORD-REP-' + retId}</strong></td>
+                  <td>
+                    <strong>${retId}</strong>
+                    <div style="font-size: 10px; color: var(--text-dim);">${r.orderId}</div>
+                  </td>
+                  <td><strong>${r.customer}</strong></td>
+                  <td><span class="marketplace-icon-tag amazon">${r.channel}</span></td>
+                  <td>
+                    <code style="color: var(--brand-cyan); font-size: 11px;">${rep.sku || r.sku}</code>
+                    <div style="font-size: 10px; color: var(--text-dim);">${rep.product || r.productTitle || getSkuTitle(r.sku)}</div>
+                  </td>
+                  <td><strong>${rep.qty || 1}</strong></td>
+                  <td><span class="badge badge-primary">${r.restockWh ? r.restockWh.split(' ')[0] : 'USA 3PL'}</span></td>
+                  <td>
+                    <div style="font-size: 11px; font-weight: 600;">FedEx Express Priority</div>
+                    <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted);">${rep.trackingNo || '7894-3321-999'}</div>
+                  </td>
+                  <td>
+                    <span class="badge ${rep.replacementStatus === 'Delivered' ? 'badge-success' : 'badge-warning'}">
+                      ${rep.replacementStatus || 'Dispatched'}
+                    </span>
+                  </td>
+                  <td onclick="event.stopPropagation()">
+                    <button class="btn btn-sm btn-secondary" onclick="openReplacementModal('${retId}')" style="font-size: 11px; padding: 4px 8px;">
+                      🔄 Manage Reshipment
+                    </button>
+                  </td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
   `;
-  modal.style.display = "flex";
 }
 
-function saveNewReturnRma() {
-  const customer = document.getElementById("rmaCustomer").value.trim() || "Customer Return";
-  const orderId = document.getElementById("rmaOrderId").value.trim() || "ORD-CONSIGN";
-  const channel = document.getElementById("rmaChannel").value;
-  const sku = document.getElementById("rmaSku").value;
-  const grade = document.getElementById("rmaGrade").value;
-  const refundAmountUSD = parseFloat(document.getElementById("rmaRefund").value) || 250.00;
-  const reason = document.getElementById("rmaReason").value.trim() || "Customer return request";
-  const wh = document.getElementById("rmaWh").value.trim() || "USA 3PL Center (Edison, NJ)";
+// ----------------------------------------------------------------------------
+// SUB-VIEW 4: CLAIMS LIST
+// ----------------------------------------------------------------------------
+function renderClaimsSubView(f, returns) {
+  const claimItems = returns.filter(r => r.claim && (r.claim.claimRequired || r.claim.claimStatus !== "No Claim" || r.carrierClaimUSD > 0));
+  const totalClaimAmount = claimItems.reduce((sum, r) => sum + ((r.claim && r.claim.claimAmount) || r.carrierClaimUSD || 0), 0);
+  const totalRecovered = claimItems.reduce((sum, r) => sum + ((r.claim && r.claim.recoveredAmount) || 0), 0);
 
-  const nextId = Math.floor(50 + Math.random() * 50);
-  const rmaNo = `RMA-2026-0${nextId}`;
+  return `
+    <!-- Top KPI Cards -->
+    <div class="bento-metrics-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 16px; gap: 14px;">
+      <div class="metric-card">
+        <div class="metric-header"><span class="metric-label">Total Claims Lodged</span><span>⚖️</span></div>
+        <div class="metric-value" style="color: var(--brand-cyan); font-family: var(--font-mono); font-size: 22px;">$${totalClaimAmount.toFixed(2)}</div>
+        <div class="metric-sub">${claimItems.length} active insurance & carrier claims</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-header"><span class="metric-label">Approved & Recovered</span><span>💵</span></div>
+        <div class="metric-value" style="color: var(--success); font-family: var(--font-mono); font-size: 22px;">$${totalRecovered.toFixed(2)}</div>
+        <div class="metric-sub">Direct cash payouts into bank account</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-header"><span class="metric-label">Claim Recovery Win Rate</span><span>📈</span></div>
+        <div class="metric-value" style="color: var(--success); font-size: 22px;">88.5%</div>
+        <div class="metric-sub">Backed by photographic proof of packing</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-header"><span class="metric-label">Carrier Dispute Aging</span><span>⏳</span></div>
+        <div class="metric-value" style="color: var(--text-main); font-size: 22px;">4.2 Days</div>
+        <div class="metric-sub">Avg FedEx freight adjuster cycle</div>
+      </div>
+    </div>
 
-  const carrierClaimUSD = grade.includes("Grade C") ? refundAmountUSD : grade.includes("Grade B") ? 45.00 : 0.00;
-  const status = grade.includes("Grade A") ? "Return Received" : grade.includes("Grade C") ? "Claim Pending" : "Sample Sale Tagged";
+    <!-- Claims Table -->
+    <div class="card">
+      <div style="padding: 14px 18px; border-bottom: 1px solid var(--border-main); display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin: 0; font-size: 14px; font-weight: 700; color: var(--text-main);">Carrier Insurance & Marketplace Claims Docket</h3>
+        <button class="btn btn-sm btn-secondary" onclick="exportClaimsCSV()">📥 Export Claims CSV</button>
+      </div>
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Claim ID</th>
+              <th>Return ID & Order ID</th>
+              <th>Carrier / Marketplace</th>
+              <th>Claim Reason / Incident</th>
+              <th>Claim Amount ($)</th>
+              <th>Date Filed</th>
+              <th>Claim Status</th>
+              <th>Recovered Amount ($)</th>
+              <th>Recovery Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${claimItems.map(r => {
+              const clm = r.claim || {};
+              const retId = r.returnId || r.rmaNo;
+              const claimAmt = clm.claimAmount || r.carrierClaimUSD || 0;
+              const recAmt = clm.recoveredAmount || 0;
 
-  if (!AppState.returns) AppState.returns = [];
-  AppState.returns.unshift({
-    rmaNo,
-    orderId,
-    customer,
-    channel,
-    sku,
-    returnDate: new Date().toISOString().split('T')[0],
-    reason,
-    grade,
-    restockWh: wh.split('•')[0].trim(),
-    restockBin: wh.split('•')[1] ? wh.split('•')[1].trim() : "Zone A / Rack 01",
-    status,
-    carrierClaimUSD,
-    refundAmountUSD
-  });
-
-  closeModal("crudModal");
-  showToast(`RMA ${rmaNo} logged successfully! Inspection grade: ${grade.split('(')[0]}`, "success");
-  renderCurrentView();
+              return `
+                <tr style="cursor: pointer;" onclick="openReturnDetail('${retId}')">
+                  <td><strong style="font-family: var(--font-mono); color: var(--brand-cyan); font-size: 12px;">${clm.claimId || 'CLM-FDX-' + retId}</strong></td>
+                  <td>
+                    <strong>${retId}</strong>
+                    <div style="font-size: 10px; color: var(--text-dim);">${r.orderId}</div>
+                  </td>
+                  <td><strong>${clm.carrier || 'FedEx Cargo Claims'}</strong></td>
+                  <td><span style="font-size: 11px; color: var(--text-muted);">${clm.claimReason || r.returnReason || 'Transit Cargo Damage'}</span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--text-main); font-size: 13px;">$${claimAmt.toFixed(2)}</strong></td>
+                  <td><span style="font-size: 11px; color: var(--text-dim);">${r.returnDate || '2026-09-14'}</span></td>
+                  <td>
+                    <span class="badge ${clm.claimStatus === 'Approved' || clm.claimStatus === 'Recovered' ? 'badge-success' : clm.claimStatus === 'Under Review' || clm.claimStatus === 'Submitted' ? 'badge-warning' : clm.claimStatus === 'Rejected' ? 'badge-danger' : 'badge-secondary'}">
+                      ${clm.claimStatus || 'Under Review'}
+                    </span>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--success); font-size: 13px;">$${recAmt.toFixed(2)}</strong></td>
+                  <td>
+                    <span class="badge ${clm.recoveryStatus === 'Fully Recovered' ? 'badge-success' : clm.recoveryStatus === 'Partially Recovered' ? 'badge-warning' : 'badge-secondary'}">
+                      ${clm.recoveryStatus || 'Pending'}
+                    </span>
+                  </td>
+                  <td onclick="event.stopPropagation()">
+                    <button class="btn btn-sm btn-secondary" onclick="openClaimModal('${retId}')" style="font-size: 11px; padding: 4px 8px;">
+                      ⚖️ Manage Claim
+                    </button>
+                  </td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
 }
 
-function exportReturnsCSV() {
-  let csv = "RMA No,Order ID,Customer,Channel,SKU,Return Date,Reason,Grade,Restock WH,Status,Refund USD,Carrier Claim USD\n";
-  (AppState.returns || []).forEach(r => {
-    csv += `"${r.rmaNo}","${r.orderId}","${r.customer}","${r.channel}","${r.sku}","${r.returnDate}","${r.reason}","${r.grade}","${r.restockWh}","${r.status}",${r.refundAmountUSD},${r.carrierClaimUSD || 0}\n`;
-  });
-  triggerDownload("RugOS_Returns_RMA_Registry.csv", csv, "text/csv");
+// ----------------------------------------------------------------------------
+// SUB-VIEW 5: RECOVERY TRACKING
+// ----------------------------------------------------------------------------
+function renderRecoverySubView(f, returns) {
+  const claimItems = returns.filter(r => r.claim && (r.claim.claimRequired || r.claim.claimStatus !== "No Claim" || r.carrierClaimUSD > 0));
+
+  return `
+    <!-- Top Recovery KPIs -->
+    <div class="bento-metrics-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 16px; gap: 14px;">
+      <div class="metric-card">
+        <div class="metric-header"><span class="metric-label">Approved Claim Value</span><span>⚖️</span></div>
+        <div class="metric-value" style="color: var(--brand-cyan); font-family: var(--font-mono); font-size: 22px;">$288.50</div>
+        <div class="metric-sub">Total claims recognized by carriers</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-header"><span class="metric-label">Recovered Cash Inflow</span><span>💵</span></div>
+        <div class="metric-value" style="color: var(--success); font-family: var(--font-mono); font-size: 22px;">$195.00</div>
+        <div class="metric-sub">Deposited to commercial bank ledger</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-header"><span class="metric-label">Remaining Recovery Balance</span><span>⏳</span></div>
+        <div class="metric-value" style="color: var(--warning); font-family: var(--font-mono); font-size: 22px;">$93.50</div>
+        <div class="metric-sub">Outstanding settlement advices</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-header"><span class="metric-label">Net Loss Offset Ratio</span><span>🛡️</span></div>
+        <div class="metric-value" style="color: var(--success); font-size: 22px;">67.6%</div>
+        <div class="metric-sub">Reverse logistics damages recovered</div>
+      </div>
+    </div>
+
+    <!-- Recovery Ledger Table -->
+    <div class="card">
+      <div style="padding: 14px 18px; border-bottom: 1px solid var(--border-main); display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h3 style="margin: 0; font-size: 14px; font-weight: 700; color: var(--text-main);">Carrier Damage Payout & Recovery Ledger</h3>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Formula: <code>Claim Amount &minus; Recovered Amount = Remaining Loss</code></div>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Claim ID</th>
+              <th>Return ID</th>
+              <th>Carrier / Payer</th>
+              <th>Claim Amount ($)</th>
+              <th>Approved Amount ($)</th>
+              <th>Recovered Amount ($)</th>
+              <th>Remaining Loss ($)</th>
+              <th>Settlement Reference #</th>
+              <th>Payout Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${claimItems.map(r => {
+              const clm = r.claim || {};
+              const retId = r.returnId || r.rmaNo;
+              const claimAmt = clm.claimAmount || r.carrierClaimUSD || 0;
+              const recAmt = clm.recoveredAmount || (clm.claimStatus === 'Recovered' ? claimAmt : 0);
+              const remaining = Math.max(0, claimAmt - recAmt);
+
+              return `
+                <tr style="cursor: pointer;" onclick="openReturnDetail('${retId}')">
+                  <td><strong style="font-family: var(--font-mono); color: var(--brand-cyan); font-size: 12px;">${clm.claimId || 'CLM-FDX-' + retId}</strong></td>
+                  <td><strong>${retId}</strong></td>
+                  <td><strong>${clm.carrier || 'FedEx Cargo Claims'}</strong></td>
+                  <td><strong style="font-family: var(--font-mono); font-size: 12px;">$${claimAmt.toFixed(2)}</strong></td>
+                  <td><span style="font-family: var(--font-mono); color: var(--brand-cyan); font-size: 12px;">$${claimAmt.toFixed(2)}</span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--success); font-size: 12px;">$${recAmt.toFixed(2)}</strong></td>
+                  <td><strong style="font-family: var(--font-mono); color: ${remaining > 0 ? 'var(--danger)' : 'var(--text-dim)'}; font-size: 12px;">$${remaining.toFixed(2)}</strong></td>
+                  <td><code style="font-size: 11px;">${clm.recoveryRef || 'REC-WIRE-PENDING'}</code></td>
+                  <td><span style="font-size: 11px; color: var(--text-dim);">${clm.recoveryDate || 'Pending Settlement'}</span></td>
+                  <td onclick="event.stopPropagation()">
+                    <button class="btn btn-sm btn-secondary" onclick="openRecoveryModal('${retId}')" style="font-size: 11px; padding: 4px 8px;">
+                      💵 Record Payout
+                    </button>
+                  </td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
 }
 
+// ----------------------------------------------------------------------------
+// SUB-VIEW 6: FINANCIAL IMPACT & PROFITABILITY WATERFALL
+// ----------------------------------------------------------------------------
+function renderReturnsFinancialImpactView(returns) {
+  const totalRevenue = returns.reduce((sum, r) => sum + ((r.financialImpact && r.financialImpact.orderRevenue) || r.orderAmount || 0), 0);
+  const totalRefunds = returns.reduce((sum, r) => sum + ((r.financialImpact && r.financialImpact.refundAmount) || r.refundAmountUSD || 0), 0);
+  const totalReturnFreight = returns.reduce((sum, r) => sum + ((r.financialImpact && r.financialImpact.returnShippingCost) || 0), 0);
+  const totalRtoCosts = returns.reduce((sum, r) => sum + ((r.financialImpact && r.financialImpact.rtoCost) || 0), 0);
+  const totalDamageLoss = returns.reduce((sum, r) => sum + ((r.financialImpact && r.financialImpact.damageLoss) || 0), 0);
+  const totalReplacementCost = returns.reduce((sum, r) => sum + ((r.financialImpact && r.financialImpact.replacementCost) || 0), 0);
+  const totalOtherCosts = returns.reduce((sum, r) => sum + ((r.financialImpact && r.financialImpact.otherCosts) || 0), 0);
+  const totalClaimRecovery = returns.reduce((sum, r) => sum + ((r.financialImpact && r.financialImpact.claimRecovery) || (r.claim && r.claim.recoveredAmount) || 0), 0);
+  const totalOtherRecovery = returns.reduce((sum, r) => sum + ((r.financialImpact && r.financialImpact.otherRecovery) || 0), 0);
+
+  const netImpact = totalRevenue - totalRefunds - totalReturnFreight - totalRtoCosts - totalDamageLoss - totalReplacementCost - totalOtherCosts + totalClaimRecovery + totalOtherRecovery;
+
+  return `
+    <!-- Top 6 Financial KPIs -->
+    <div class="bento-metrics-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 16px; gap: 14px;">
+      <div class="metric-card">
+        <div class="metric-header"><span class="metric-label">Original Order Revenue</span><span>🛍️</span></div>
+        <div class="metric-value" style="color: var(--text-main); font-family: var(--font-mono); font-size: 22px;">$${totalRevenue.toFixed(2)}</div>
+        <div class="metric-sub">Gross billed value of returned orders</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-header"><span class="metric-label">Total Customer Refunds</span><span>💸</span></div>
+        <div class="metric-value" style="color: var(--danger); font-family: var(--font-mono); font-size: 22px;">-$${totalRefunds.toFixed(2)}</div>
+        <div class="metric-sub">Direct buyer refunds disbursed</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-header"><span class="metric-label">Reverse Logistics Freight</span><span>🚚</span></div>
+        <div class="metric-value" style="color: var(--warning); font-family: var(--font-mono); font-size: 22px;">-$${(totalReturnFreight + totalRtoCosts).toFixed(2)}</div>
+        <div class="metric-sub">Return courier + RTO surcharges</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-header"><span class="metric-label">Damage & Scrap Loss</span><span>📉</span></div>
+        <div class="metric-value" style="color: var(--danger); font-family: var(--font-mono); font-size: 22px;">-$${totalDamageLoss.toFixed(2)}</div>
+        <div class="metric-sub">Write-off on unsalable rug inventory</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-header"><span class="metric-label">Carrier & Insurance Recovery</span><span>🛡️</span></div>
+        <div class="metric-value" style="color: var(--success); font-family: var(--font-mono); font-size: 22px;">+$${totalClaimRecovery.toFixed(2)}</div>
+        <div class="metric-sub">Offset from FedEx / insurer payouts</div>
+      </div>
+      <div class="metric-card" style="border: 2px solid ${netImpact >= 0 ? 'var(--success)' : 'var(--danger)'};">
+        <div class="metric-header"><span class="metric-label">Final Net Profitability Impact</span><span>📊</span></div>
+        <div class="metric-value" style="color: ${netImpact >= 0 ? 'var(--success)' : 'var(--danger)'}; font-family: var(--font-mono); font-size: 24px; font-weight: 900;">
+          ${netImpact >= 0 ? '+$' + netImpact.toFixed(2) : '-$' + Math.abs(netImpact).toFixed(2)}
+        </div>
+        <div class="metric-sub">Total financial effect on company ledger</div>
+      </div>
+    </div>
+
+    <!-- Profitability Waterfall Table -->
+    <div class="card">
+      <div style="padding: 14px 18px; border-bottom: 1px solid var(--border-main); display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h3 style="margin: 0; font-size: 14px; font-weight: 700; color: var(--text-main);">Order-by-Order Return Profitability Waterfall</h3>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">
+            <code>Revenue &minus; Refund &minus; Return Cost &minus; RTO Cost &minus; Damage Loss &minus; Replacement + Claim Recovery = Net Profitability</code>
+          </div>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Return ID & Order ID</th>
+              <th>Channel</th>
+              <th>Revenue (+)</th>
+              <th>Refund (-)</th>
+              <th>Return Freight (-)</th>
+              <th>RTO Surcharge (-)</th>
+              <th>Damage Loss (-)</th>
+              <th>Replacement Cost (-)</th>
+              <th>Claim Recovery (+)</th>
+              <th>Net Profitability Impact</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${returns.map(r => {
+              const fi = r.financialImpact || {};
+              const retId = r.returnId || r.rmaNo;
+              const rev = fi.orderRevenue || r.orderAmount || 0;
+              const ref = fi.refundAmount || r.refundAmountUSD || 0;
+              const retF = fi.returnShippingCost || 0;
+              const rtoF = fi.rtoCost || 0;
+              const dam = fi.damageLoss || 0;
+              const rep = fi.replacementCost || 0;
+              const clm = fi.claimRecovery || (r.claim && r.claim.recoveredAmount) || 0;
+              const orderNet = rev - ref - retF - rtoF - dam - rep + clm;
+
+              return `
+                <tr style="cursor: pointer;" onclick="openReturnDetail('${retId}')">
+                  <td>
+                    <strong style="font-family: var(--font-mono); color: var(--brand-cyan); font-size: 12px;">${retId}</strong>
+                    <div style="font-size: 10px; color: var(--text-dim);">${r.orderId}</div>
+                  </td>
+                  <td><span class="marketplace-icon-tag amazon">${r.channel}</span></td>
+                  <td><span class="val-pos">+$${rev.toFixed(2)}</span></td>
+                  <td><span class="${ref > 0 ? 'val-neg' : 'val-neutral'}">-$${ref.toFixed(2)}</span></td>
+                  <td><span class="${retF > 0 ? 'val-neg' : 'val-neutral'}">-$${retF.toFixed(2)}</span></td>
+                  <td><span class="${rtoF > 0 ? 'val-neg' : 'val-neutral'}">-$${rtoF.toFixed(2)}</span></td>
+                  <td><span class="${dam > 0 ? 'val-neg' : 'val-neutral'}">-$${dam.toFixed(2)}</span></td>
+                  <td><span class="${rep > 0 ? 'val-neg' : 'val-neutral'}">-$${rep.toFixed(2)}</span></td>
+                  <td><span class="${clm > 0 ? 'val-pos' : 'val-neutral'}">+$${clm.toFixed(2)}</span></td>
+                  <td>
+                    <strong class="${orderNet >= 0 ? 'val-pos' : 'val-neg'}" style="font-size: 13px;">
+                      ${orderNet >= 0 ? '+$' + orderNet.toFixed(2) : '-$' + Math.abs(orderNet).toFixed(2)}
+                    </strong>
+                  </td>
+                  <td onclick="event.stopPropagation()">
+                    <button class="btn btn-sm btn-secondary" onclick="openReturnDetail('${retId}')" style="font-size: 11px; padding: 4px 8px;">
+                      🔍 Breakdown
+                    </button>
+                  </td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+
+// ----------------------------------------------------------------------------
+// FULL RETURN DOSSIER DETAIL PAGE (9 COMPREHENSIVE SECTIONS)
+// ----------------------------------------------------------------------------
 function renderReturnDetailPage(rmaNo) {
-  const r = (AppState.returns || []).find(item => item.rmaNo === rmaNo) || AppState.returns[0];
+  const r = getReturnById(rmaNo);
+  if (!r) return renderReturnsView();
+
+  const retId = r.returnId || r.rmaNo;
   const skuObj = (AppState.skus || []).find(s => s.sku === r.sku) || {};
+  const orderObj = (AppState.orders || []).find(o => o.orderId === r.orderId) || {};
+  const fi = r.financialImpact || {};
+
+  // Calculate 7 Lifecycle Steps
+  const returnSteps = [
+    { title: "Return Initiated", time: r.returnDate || "2026-09-14" },
+    { title: "In Transit", time: "Carrier Scanned" },
+    { title: "Hub Received", time: (r.inspection && r.inspection.receivedDate) || "Received" },
+    { title: "Inspection", time: (r.inspection && r.inspection.condition) || "In Progress" },
+    { title: "Disposition", time: r.itemCondition || "Graded" },
+    { title: "Refund / Replacement", time: (r.refund && r.refund.refundStatus) || "Processed" },
+    { title: "Claim / Completed", time: (r.claim && r.claim.claimStatus) || "Closed" }
+  ];
+
+  let currentStepIdx = 0;
+  if (r.returnStatus === "Completed") currentStepIdx = 6;
+  else if (r.returnStatus.includes("Claim") || (r.claim && r.claim.claimStatus === "Approved")) currentStepIdx = 5;
+  else if (r.returnStatus.includes("Refund") || r.returnStatus.includes("Replacement")) currentStepIdx = 5;
+  else if (r.itemCondition && r.itemCondition !== "Pending Inspection") currentStepIdx = 4;
+  else if (r.returnStatus === "Under Inspection") currentStepIdx = 3;
+  else if (r.returnStatus === "Return Received" || r.returnStatus === "RTO Received") currentStepIdx = 2;
+  else if (r.returnStatus.includes("Transit")) currentStepIdx = 1;
+
+  const rev = fi.orderRevenue || r.orderAmount || 0;
+  const ref = fi.refundAmount || r.refundAmountUSD || 0;
+  const retF = fi.returnShippingCost || 0;
+  const rtoF = fi.rtoCost || 0;
+  const dam = fi.damageLoss || 0;
+  const rep = fi.replacementCost || 0;
+  const otherC = fi.otherCosts || 0;
+  const clm = fi.claimRecovery || (r.claim && r.claim.recoveredAmount) || 0;
+  const othRec = fi.otherRecovery || 0;
+  const netImpact = rev - ref - retF - rtoF - dam - rep - otherC + clm + othRec;
 
   return `
     <div class="full-detail-page">
@@ -13252,200 +18861,309 @@ function renderReturnDetailPage(rmaNo) {
       <div class="detail-action-bar">
         <div class="detail-breadcrumbs" style="display: flex; align-items: center; gap: 8px;">
           <button class="btn btn-sm btn-secondary" onclick="backToListView('mod6-ret')" style="font-weight: 600;">
-            ← Back to Returns & Claims
+            ← Back to Returns, Refunds & Claims
           </button>
           <span style="color: var(--text-dim);">/</span>
-          <span style="color: var(--text-muted); font-size: 13px;">${r.channel}</span>
+          <span class="marketplace-icon-tag amazon">${r.channel}</span>
           <span style="color: var(--text-dim);">/</span>
-          <strong style="color: var(--text-main); font-family: var(--font-mono); font-size: 13px;">${r.rmaNo}</strong>
+          <strong style="color: var(--text-main); font-family: var(--font-mono); font-size: 13px;">${retId}</strong>
         </div>
         <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-          ${r.grade.includes('Grade A') ? `
-            <button class="btn btn-sm btn-success" onclick="restockRmaToInventory('${r.rmaNo}')" style="font-weight: 700;">
-              ♻️ Restock (+1) to USA 3PL
-            </button>
-          ` : r.grade.includes('Grade C') ? `
-            <button class="btn btn-sm btn-danger" onclick="fileCarrierClaim('${r.rmaNo}')" style="font-weight: 700;">
-              🚨 File Carrier Insurance Claim ($${r.carrierClaimUSD || 195})
-            </button>
-          ` : ''}
-          <button class="btn btn-sm btn-secondary" onclick="downloadRmaSlip('${r.rmaNo}')">🖨️ Download RMA QC Slip (PDF)</button>
+          <button class="btn btn-sm btn-primary" onclick="openInspectionModal('${retId}')">🔍 Record Inspection</button>
+          <button class="btn btn-sm btn-secondary" onclick="openRefundModal('${retId}')">💸 Process Refund</button>
+          <button class="btn btn-sm btn-secondary" onclick="openReplacementModal('${retId}')">🔄 Dispatch Replacement</button>
+          <button class="btn btn-sm btn-secondary" onclick="openClaimModal('${retId}')">⚖️ Manage Claim</button>
+          <button class="btn btn-sm btn-secondary" onclick="downloadRmaSlip('${retId}')">🖨️ RMA QC Slip (PDF)</button>
           <button class="btn btn-sm btn-secondary" onclick="window.print()">🖨️ Print Dossier</button>
+          <button class="btn btn-sm btn-danger" onclick="deleteReturn('${retId}')" style="font-weight: 600;">🗑️ Delete Return</button>
         </div>
       </div>
 
-      <!-- Prominent Status Changer Bar -->
-      <div style="display: flex; align-items: center; justify-content: space-between; background: var(--bg-card); padding: 12px 18px; border-radius: var(--radius-md); border: 1px solid var(--border-main); flex-wrap: wrap; gap: 12px; margin-bottom: 0;">
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <span style="font-size: 18px;">🔄</span>
-          <div>
-            <strong style="font-size: 13px; color: var(--text-main);">RMA Reverse Logistics Status:</strong>
-            <div style="font-size: 11px; color: var(--text-muted);">Manage physical return receipt, condition grading & inventory disposition</div>
-          </div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <span style="font-size: 11px; color: var(--text-dim);">Update Status:</span>
-          <select class="table-status-select" data-status="${r.status}" onchange="changeReturnStatus('${r.rmaNo}', this.value); openReturnDetail('${r.rmaNo}');" style="font-size: 12px; padding: 6px 30px 6px 14px;">
-            <option value="Return Received" ${r.status === 'Return Received' ? 'selected' : ''}>Return Received</option>
-            <option value="Inspected & Graded" ${r.status === 'Inspected & Graded' ? 'selected' : ''}>Inspected & Graded</option>
-            <option value="Restocked to Inventory" ${r.status.includes('Restocked') ? 'selected' : ''}>Restocked to Inventory</option>
-            <option value="Claim Filed with Carrier" ${r.status.includes('Claim') ? 'selected' : ''}>Claim Filed with Carrier</option>
-            <option value="Refund Settled" ${r.status.includes('Refund') ? 'selected' : ''}>Refund Settled</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Hero Header Card -->
-      <div class="card" style="padding: 20px; border: 1px solid var(--border-main); background: var(--bg-card); margin-bottom: 0;">
+      <!-- Return Hero Banner -->
+      <div class="card" style="padding: 20px; border: 1px solid var(--border-main); background: var(--bg-card); margin-bottom: 20px;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
           <div>
             <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap;">
-              <h1 style="font-size: 24px; font-weight: 800; margin: 0; color: var(--text-main); font-family: var(--font-mono);">${r.rmaNo}</h1>
-              <span class="badge badge-primary">${r.channel}</span>
-              <span class="badge ${r.grade.includes('Grade A') ? 'badge-success' : r.grade.includes('Grade B') ? 'badge-warning' : 'badge-danger'}">${r.grade.split('(')[0]}</span>
-              <span class="badge badge-primary">${r.status}</span>
+              <h1 style="font-size: 24px; font-weight: 800; margin: 0; color: var(--text-main); font-family: var(--font-mono);">${retId}</h1>
+              <span class="badge ${r.returnType === 'RTO' ? 'badge-warning' : 'badge-primary'}">${r.returnType || 'Customer Return'}</span>
+              <span class="badge ${r.itemCondition === 'Resalable' ? 'badge-success' : r.itemCondition === 'Repairable' ? 'badge-warning' : r.itemCondition === 'Damaged' ? 'badge-danger' : 'badge-secondary'}">
+                ${r.itemCondition || 'Pending Inspection'}
+              </span>
+              <span class="badge badge-primary">${r.returnStatus || r.status}</span>
             </div>
-            <div style="font-size: 14px; font-weight: 600; color: var(--text-main); margin-bottom: 4px;">
-              Customer: <strong>${r.customer}</strong> &bull; Order Ref: <code style="color: var(--brand-cyan);">${r.orderId}</code>
+            <div style="font-size: 13px; color: var(--text-main); font-weight: 600;">
+              Customer: <strong>${r.customer}</strong> &bull; Originating Order: <code style="color: var(--brand-cyan); font-weight: 700;">${r.orderId}</code> &bull; Channel: <strong>${r.channel}</strong>
             </div>
-            <p style="color: var(--text-muted); font-size: 12px; margin: 0;">
-              Returned SKU: <strong>${r.sku}</strong> &bull; Reason: <em>"${r.reason}"</em> &bull; Received Date: <strong>${r.returnDate}</strong>
+            <p style="color: var(--text-muted); font-size: 12px; margin: 4px 0 0;">
+              Reason: <em>"${r.returnReason || r.reason || 'Customer Return'}"</em> &bull; Registered: <strong>${r.returnDate || '2026-09-14'}</strong> &bull; Destination: <strong>${r.returnDestination || r.restockWh}</strong>
             </p>
           </div>
-          <div style="text-align: right; min-width: 180px; background: var(--bg-elevated); padding: 12px 20px; border-radius: var(--radius-md); border: 1px solid var(--border-main);">
-            <div style="font-size: 11px; color: var(--text-dim); text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;">Customer Refund</div>
-            <div style="font-size: 26px; font-weight: 900; color: var(--warning); font-family: var(--font-mono);">$${r.refundAmountUSD.toLocaleString(undefined, { minimumFractionDigits: 2 })} USD</div>
-            <div style="font-size: 11px; color: var(--text-muted);">Carrier Claim: <strong>$${(r.carrierClaimUSD || 0).toFixed(2)} USD</strong></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4 Clean Bento KPI Cards -->
-      <div class="bento-metrics-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 0; gap: 16px;">
-        <div class="metric-card">
-          <div class="metric-header"><span class="metric-label">Condition Grade</span><span>🔍</span></div>
-          <div class="metric-value" style="font-size: 18px; font-weight: 800; color: ${r.grade.includes('Grade A') ? 'var(--success)' : r.grade.includes('Grade B') ? 'var(--warning)' : 'var(--danger)'};">${r.grade.split('(')[0]}</div>
-          <div class="metric-sub">${r.grade.includes('Grade A') ? 'Resalable full price' : r.grade.includes('Grade B') ? 'Distressed sample' : 'Total loss damage'}</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-header"><span class="metric-label">Restock Facility</span><span>🏬</span></div>
-          <div class="metric-value" style="font-size: 16px; font-weight: 800; color: var(--brand-cyan);">${r.restockWh.split('(')[0]}</div>
-          <div class="metric-sub">Bin: ${r.restockBin}</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-header"><span class="metric-label">Carrier Claim USD</span><span>💵</span></div>
-          <div class="metric-value" style="font-size: 20px; font-weight: 800; color: var(--success); font-family: var(--font-mono);">$${(r.carrierClaimUSD || 0).toFixed(2)}</div>
-          <div class="metric-sub">${r.carrierClaimUSD > 0 ? 'Transit Damage Claim' : 'Zero Claim (Resalable)'}</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-header"><span class="metric-label">Disposition Status</span><span>📋</span></div>
-          <div class="metric-value" style="font-size: 16px; font-weight: 800; color: var(--text-main);">${r.status}</div>
-          <div class="metric-sub">Inventory Audit Synced</div>
-        </div>
-      </div>
-
-      <!-- Executive 3-Tab Navigation -->
-      <div class="detail-tabs-nav" style="margin-bottom: 0;">
-        <button class="detail-tab-btn active" onclick="switchDetailTab('rma-tab-inspection', this)">
-          <span>📸 Quality Inspection & Condition Proof</span>
-          <span class="detail-tab-badge">Grading</span>
-        </button>
-        <button class="detail-tab-btn" onclick="switchDetailTab('rma-tab-restock', this)">
-          <span>♻️ Warehouse Restocking & Inventory Allocation</span>
-          <span class="detail-tab-badge">Stock +1</span>
-        </button>
-        <button class="detail-tab-btn" onclick="switchDetailTab('rma-tab-settlement', this)">
-          <span>⚖️ Carrier Insurance Claim & Refund Settlement</span>
-          <span class="detail-tab-badge">Financials</span>
-        </button>
-      </div>
-
-      <!-- TAB 1: INSPECTION -->
-      <div class="detail-tab-pane active" id="rma-tab-inspection">
-        <div class="card" style="border-top: none; border-radius: 0 0 var(--radius-lg) var(--radius-lg); padding: 24px; margin-bottom: 24px;">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-            <div class="card" style="margin: 0; padding: 20px; background: var(--bg-elevated); border: 1px solid var(--border-main); border-radius: var(--radius-md);">
-              <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 16px; color: var(--brand-cyan);">Carpet Condition Inspection Protocol</h3>
-              <div class="prop-group">
-                <div class="prop-row"><span class="prop-label">Assigned Grade:</span><span class="prop-val"><strong style="color: ${r.grade.includes('Grade A') ? 'var(--success)' : 'var(--warning)'};">${r.grade}</strong></span></div>
-                <div class="prop-row"><span class="prop-label">Wool Pile & Weave:</span><span class="prop-val">${r.grade.includes('Grade A') ? 'Flawless 14mm Plush Cut Pile (Zero Stains)' : 'Minor fringe dirt from courier transit'}</span></div>
-                <div class="prop-row"><span class="prop-label">Latex Canvas Backing:</span><span class="prop-val">Intact, odorless, zero moisture</span></div>
-                <div class="prop-row"><span class="prop-label">Inspection Verdict:</span><span class="prop-val">${r.grade.includes('Grade A') ? 'Approved for full-price resale on Amazon/Wayfair' : 'Quarantined for discount clearance'}</span></div>
-              </div>
+          <div style="text-align: right; min-width: 200px; background: var(--bg-elevated); padding: 14px 20px; border-radius: var(--radius-md); border: 1px solid var(--border-main);">
+            <div style="font-size: 11px; color: var(--text-dim); text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;">Net Profitability Effect</div>
+            <div style="font-size: 26px; font-weight: 900; color: ${netImpact >= 0 ? 'var(--success)' : 'var(--danger)'}; font-family: var(--font-mono);">
+              ${netImpact >= 0 ? '+$' + netImpact.toFixed(2) : '-$' + Math.abs(netImpact).toFixed(2)}
             </div>
-            <div class="card" style="margin: 0; padding: 20px; background: var(--bg-elevated); border: 1px solid var(--border-main); border-radius: var(--radius-md);">
-              <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 16px; color: var(--brand-cyan);">Photographic Evidence Docket</h3>
-              <div style="display: flex; gap: 12px; margin-bottom: 16px;">
-                <div style="background: var(--bg-card); padding: 10px; border-radius: var(--radius-md); border: 1px solid var(--border-main); text-align: center; flex: 1;">
-                  <div style="font-size: 28px; margin-bottom: 6px;">🧶</div>
-                  <strong style="font-size: 12px;">Weave Surface Inspection</strong>
-                  <div style="font-size: 10px; color: var(--success); margin-top: 4px;">✓ Verified No Snags</div>
-                </div>
-                <div style="background: var(--bg-card); padding: 10px; border-radius: var(--radius-md); border: 1px solid var(--border-main); text-align: center; flex: 1;">
-                  <div style="font-size: 28px; margin-bottom: 6px;">🏷️</div>
-                  <strong style="font-size: 12px;">Barcode Label Tag Scan</strong>
-                  <div style="font-size: 10px; color: var(--brand-cyan); margin-top: 4px;">Match: ${r.sku}</div>
-                </div>
-              </div>
-              <button class="btn btn-sm btn-secondary" onclick="showToast('Photographic inspection proof captured with camera.', 'info')">📷 Upload Additional Proof Photo</button>
+            <div style="font-size: 11px; color: var(--text-muted);">
+              Refund: <strong>$${ref.toFixed(2)}</strong> &bull; Recovery: <strong>$${clm.toFixed(2)}</strong>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- TAB 2: RESTOCK -->
-      <div class="detail-tab-pane" id="rma-tab-restock">
-        <div class="card" style="border-top: none; border-radius: 0 0 var(--radius-lg) var(--radius-lg); padding: 24px; margin-bottom: 24px;">
-          <div style="background: rgba(16, 185, 129, 0.08); padding: 18px; border-radius: var(--radius-md); border: 1px solid rgba(16, 185, 129, 0.3); margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-            <div>
-              <strong style="color: var(--success); font-size: 15px;">Warehouse Allocation & Inventory Status</strong>
-              <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">
-                Restock Location: <strong>${r.restockWh}</strong> &bull; Storage Bin: <strong>${r.restockBin}</strong>
+      <!-- 7-Stage Return Lifecycle Stepper -->
+      <div class="return-stepper-wrap">
+        <div class="return-stepper-header">
+          <div style="font-size: 13px; font-weight: 700; color: var(--text-main);">7-Stage Reverse Logistics Workflow Tracker</div>
+          <div style="font-size: 11px; color: var(--brand-cyan); font-family: var(--font-mono);">Current: ${r.returnStatus || r.status}</div>
+        </div>
+        <div class="return-stepper-track">
+          ${returnSteps.map((step, idx) => {
+            const isCompleted = idx < currentStepIdx;
+            const isActive = idx === currentStepIdx;
+            return `
+              <div class="return-step-node ${isCompleted ? 'completed' : isActive ? 'active' : ''}">
+                <div class="return-step-bubble">${isCompleted ? '✓' : idx + 1}</div>
+                <div class="return-step-label">${step.title}</div>
+                <div class="return-step-sub">${isCompleted ? 'Done' : isActive ? 'Active' : 'Pending'}</div>
               </div>
-            </div>
-            ${r.grade.includes('Grade A') ? `
-              <button class="btn btn-sm btn-success" onclick="restockRmaToInventory('${r.rmaNo}')" style="font-weight: 700;">
-                ♻️ Inward Stock to USA 3PL (+1 Unit)
-              </button>
-            ` : '<span class="badge badge-warning">Non-Standard Restock</span>'}
-          </div>
-
-          <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 12px; color: var(--brand-cyan);">Inventory Re-Tagging & Bin Stacking</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
-            Once Grade A rug is inspected, a fresh 4x6 barcode label is printed, and the physical rug roll is stacked in ${r.restockBin} for immediate fulfillment on next Wayfair/Amazon order.
-          </p>
-          <div style="display: flex; gap: 10px;">
-            <button class="btn btn-sm btn-primary" onclick="printBarcodeLabel('${r.sku}')">🏷️ Print Fresh Barcode Label</button>
-            <button class="btn btn-sm btn-secondary" onclick="window.print()">🖨️ Print Bin Transfer Ticket</button>
-          </div>
+            `;
+          }).join('')}
         </div>
       </div>
 
-      <!-- TAB 3: SETTLEMENT -->
-      <div class="detail-tab-pane" id="rma-tab-settlement">
-        <div class="card" style="border-top: none; border-radius: 0 0 var(--radius-lg) var(--radius-lg); padding: 24px; margin-bottom: 24px;">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-            <div class="card" style="margin: 0; padding: 20px; background: var(--bg-elevated); border: 1px solid var(--border-main); border-radius: var(--radius-md);">
-              <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 16px; color: var(--brand-cyan);">Customer Marketplace Refund</h3>
-              <div class="prop-group">
-                <div class="prop-row"><span class="prop-label">Refund Gateway:</span><span class="prop-val">${r.channel} Automated Settlement</span></div>
-                <div class="prop-row"><span class="prop-label">Refund Amount:</span><span class="prop-val" style="font-size: 16px; font-weight: 900; color: var(--warning); font-family: var(--font-mono);">$${r.refundAmountUSD.toFixed(2)} USD</span></div>
-                <div class="prop-row"><span class="prop-label">Refund Settlement:</span><span class="prop-val"><span class="badge badge-success">✓ Processed to Buyer</span></span></div>
-              </div>
+      <!-- 9 SPEC SECTIONS (ORGANIZED IN COMPREHENSIVE DOSSIER GRID) -->
+      <div class="return-dossier-grid">
+
+        <!-- SECTION 1: ORDER INFORMATION -->
+        <div class="return-section-card">
+          <div class="return-section-header">
+            <div class="return-section-title"><span>🛍️</span> 1. Original Order Information</div>
+            <button class="btn btn-sm btn-secondary" onclick="openOrderDetail('${r.orderId}')">View Order</button>
+          </div>
+          <div class="prop-group">
+            <div class="prop-row"><span class="prop-label">Order ID:</span><span class="prop-val"><strong style="font-family: var(--font-mono); color: var(--brand-cyan);">${r.orderId}</strong></span></div>
+            <div class="prop-row"><span class="prop-label">Order Date:</span><span class="prop-val">${r.orderDate || orderObj.orderDate || '2026-09-13'}</span></div>
+            <div class="prop-row"><span class="prop-label">Customer Name:</span><span class="prop-val"><strong>${r.customer}</strong></span></div>
+            <div class="prop-row"><span class="prop-label">Customer Contact:</span><span class="prop-val">${r.customerEmail || 'buyer@dallasdesign.com'} &bull; ${r.customerPhone || '+1 (214) 555-0199'}</span></div>
+            <div class="prop-row"><span class="prop-label">Marketplace Channel:</span><span class="prop-val">${r.channel} (${r.marketplaceOrderId || 'SP-API'})</span></div>
+            <div class="prop-row"><span class="prop-label">Total Order Amount:</span><span class="prop-val"><strong style="font-family: var(--font-mono);">$${(r.orderAmount || orderObj.totalOrderUSD || 736.10).toFixed(2)} USD</strong></span></div>
+          </div>
+        </div>
+
+        <!-- SECTION 2: SHIPMENT INFORMATION -->
+        <div class="return-section-card">
+          <div class="return-section-header">
+            <div class="return-section-title"><span>🚚</span> 2. Outbound Shipment Information</div>
+          </div>
+          <div class="prop-group">
+            <div class="prop-row"><span class="prop-label">Outbound Shipment ID:</span><span class="prop-val"><strong style="font-family: var(--font-mono);">${r.shipmentId || 'SHIP-FEDEX-99214'}</strong></span></div>
+            <div class="prop-row"><span class="prop-label">Courier Partner:</span><span class="prop-val">${r.courier || 'FedEx Home Delivery'}</span></div>
+            <div class="prop-row"><span class="prop-label">AWB Tracking Number:</span><span class="prop-val"><code style="color: var(--brand-cyan); font-weight: 700;">${r.trackingNo || '7894-3321-992'}</code></span></div>
+            <div class="prop-row"><span class="prop-label">Outbound Ship Date:</span><span class="prop-val">${r.shipmentDate || '2026-09-13'}</span></div>
+            <div class="prop-row"><span class="prop-label">Delivery Status:</span><span class="prop-val"><span class="badge badge-success">${r.deliveryStatus || 'Delivered'}</span></span></div>
+            <div class="prop-row"><span class="prop-label">Outbound Freight Cost:</span><span class="prop-val">$${(r.outboundFreightUSD || 42.50).toFixed(2)} USD</span></div>
+          </div>
+        </div>
+
+        <!-- SECTION 3: RETURN INFORMATION -->
+        <div class="return-section-card">
+          <div class="return-section-header">
+            <div class="return-section-title"><span>🔄</span> 3. Return & Reverse Logistics Details</div>
+            <span class="badge ${r.returnType === 'RTO' ? 'badge-warning' : 'badge-primary'}">${r.returnType || 'Customer Return'}</span>
+          </div>
+          <div class="prop-group">
+            <div class="prop-row"><span class="prop-label">Return ID:</span><span class="prop-val"><strong style="font-family: var(--font-mono); color: var(--brand-cyan);">${retId}</strong></span></div>
+            <div class="prop-row"><span class="prop-label">Return Type:</span><span class="prop-val"><strong>${r.returnType || 'Customer Return'}</strong></span></div>
+            <div class="prop-row"><span class="prop-label">Return Reason:</span><span class="prop-val">${r.returnReason || r.reason}</span></div>
+            <div class="prop-row"><span class="prop-label">Return Destination:</span><span class="prop-val">${r.returnDestination || r.restockWh}</span></div>
+            <div class="prop-row"><span class="prop-label">Return Initiated Date:</span><span class="prop-val">${r.returnDate || '2026-09-14'}</span></div>
+            <div class="prop-row"><span class="prop-label">Expected Return Date:</span><span class="prop-val">${r.expectedReturnDate || '2026-09-17'}</span></div>
+            <div class="prop-row"><span class="prop-label">Return Courier & AWB:</span><span class="prop-val">${r.returnCourier || 'FedEx Return'} &bull; <code>${r.returnTrackingNo || 'FX-RET-99210'}</code></span></div>
+            <div class="prop-row"><span class="prop-label">Return Status:</span><span class="prop-val"><span class="badge badge-primary">${r.returnStatus || r.status}</span></span></div>
+          </div>
+        </div>
+
+        <!-- SECTION 4: RETURNED ITEMS -->
+        <div class="return-section-card">
+          <div class="return-section-header">
+            <div class="return-section-title"><span>🧶</span> 4. Returned Rug Line Items</div>
+          </div>
+          <div class="table-responsive" style="margin-bottom: 8px;">
+            <table class="data-table" style="font-size: 11px;">
+              <thead>
+                <tr>
+                  <th>SKU & Product</th>
+                  <th>Ordered</th>
+                  <th>Return Qty</th>
+                  <th>Unit Price</th>
+                  <th>Total Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${(r.items || [
+                  { sku: r.sku, name: r.productTitle || getSkuTitle(r.sku), orderedQty: 1, returnQty: 1, unitPrice: r.orderAmount || 680, itemValue: r.orderAmount || 680 }
+                ]).map(it => `
+                  <tr>
+                    <td>
+                      <strong style="color: var(--brand-cyan); font-family: var(--font-mono);">${it.sku}</strong>
+                      <div style="font-size: 10px; color: var(--text-dim);">${it.name}</div>
+                    </td>
+                    <td>${it.orderedQty || 1}</td>
+                    <td><strong>${it.returnQty || 1}</strong></td>
+                    <td>$${(it.unitPrice || 680).toFixed(2)}</td>
+                    <td><strong style="color: var(--text-main);">$${(it.itemValue || 680).toFixed(2)}</strong></td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+          <div style="font-size: 11px; color: var(--text-muted); background: var(--bg-elevated); padding: 8px 12px; border-radius: var(--radius-sm);">
+            Specs: <strong>${skuObj.construction || 'Hand-Tufted Wool'}</strong> &bull; Size: <strong>${skuObj.size || '8x10 ft'}</strong> &bull; GSM: <strong>${skuObj.gsm || '1850'}</strong>
+          </div>
+        </div>
+
+        <!-- SECTION 5: INSPECTION DETAILS -->
+        <div class="return-section-card">
+          <div class="return-section-header">
+            <div class="return-section-title"><span>🔍</span> 5. Physical QC Inspection & Disposition</div>
+            <button class="btn btn-sm btn-primary" onclick="openInspectionModal('${retId}')">Inspect Item</button>
+          </div>
+          <div class="prop-group">
+            <div class="prop-row"><span class="prop-label">Physical Receipt Date:</span><span class="prop-val">${(r.inspection && r.inspection.receivedDate) || r.returnDate || '2026-09-14'}</span></div>
+            <div class="prop-row"><span class="prop-label">Inspection Date:</span><span class="prop-val">${(r.inspection && r.inspection.inspectionDate) || r.returnDate || '2026-09-14'}</span></div>
+            <div class="prop-row"><span class="prop-label">QC Inspector:</span><span class="prop-val"><strong>${(r.inspection && r.inspection.inspector) || 'Devon Miller (USA 3PL Desk)'}</strong></span></div>
+            <div class="prop-row">
+              <span class="prop-label">Condition Disposition:</span>
+              <span class="prop-val">
+                <span class="badge ${r.itemCondition === 'Resalable' ? 'badge-success' : r.itemCondition === 'Repairable' ? 'badge-warning' : r.itemCondition === 'Damaged' ? 'badge-danger' : 'badge-secondary'}" style="font-weight: 800;">
+                  ${r.itemCondition === 'Resalable' ? '✅ Resalable (Stock +1)' : r.itemCondition === 'Repairable' ? '🔧 Repairable (Loom Unit)' : r.itemCondition === 'Damaged' ? '🚨 Damaged (Total Loss)' : '⚠️ Pending Inspection'}
+                </span>
+              </span>
             </div>
-            <div class="card" style="margin: 0; padding: 20px; background: var(--bg-elevated); border: 1px solid var(--border-main); border-radius: var(--radius-md);">
-              <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 16px; color: var(--brand-cyan);">Carrier Damage Insurance Claim</h3>
-              <div class="prop-group">
-                <div class="prop-row"><span class="prop-label">Claim Status:</span><span class="prop-val"><strong style="color: ${r.carrierClaimUSD > 0 ? 'var(--success)' : 'var(--text-dim)'};">${r.carrierClaimUSD > 0 ? 'Claim Active ($' + r.carrierClaimUSD.toFixed(2) + ')' : 'No Claim Required (Grade A)'}</strong></span></div>
-                <div class="prop-row"><span class="prop-label">Carrier Partner:</span><span class="prop-val">FedEx Express Freight</span></div>
-                <div class="prop-row"><span class="prop-label">Settlement Reference:</span><span class="prop-val">CLM-FDX-2026-901</span></div>
-              </div>
-              ${r.grade.includes('Grade C') ? `
-                <div style="margin-top: 14px;">
-                  <button class="btn btn-sm btn-danger" onclick="fileCarrierClaim('${r.rmaNo}')">🚨 Re-File Claim with Updated Invoice</button>
-                </div>
-              ` : ''}
+            <div class="prop-row"><span class="prop-label">Restock Facility & Bin:</span><span class="prop-val">${r.restockWh} &bull; <code>${r.restockBin || 'Zone A / Rack 04'}</code></span></div>
+            <div class="prop-row"><span class="prop-label">Inspection QC Notes:</span><span class="prop-val">${(r.inspection && r.inspection.notes) || 'Outer wrap opened cleanly; wool pile pristine.'}</span></div>
+          </div>
+          <div style="margin-top: 12px; display: flex; gap: 8px;">
+            <div style="background: var(--bg-elevated); padding: 6px 12px; border-radius: var(--radius-sm); font-size: 11px; color: var(--success);">
+              📷 3 QC Photos Attached
             </div>
+            <div style="background: var(--bg-elevated); padding: 6px 12px; border-radius: var(--radius-sm); font-size: 11px; color: var(--brand-cyan);">
+              🏷️ Barcode Re-scanned
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 6: REFUND DETAILS -->
+        <div class="return-section-card">
+          <div class="return-section-header">
+            <div class="return-section-title"><span>💸</span> 6. Customer Refund Processing</div>
+            <button class="btn btn-sm btn-secondary" onclick="openRefundModal('${retId}')">Process Refund</button>
+          </div>
+          <div class="prop-group">
+            <div class="prop-row"><span class="prop-label">Refund Required:</span><span class="prop-val"><strong>${(r.refund && r.refund.refundRequired) ? 'Yes' : 'No / Replacement'}</strong></span></div>
+            <div class="prop-row"><span class="prop-label">Refund Amount:</span><span class="prop-val"><strong style="font-family: var(--font-mono); color: var(--warning); font-size: 15px;">$${((r.refund && r.refund.refundAmount) || r.refundAmountUSD || 0).toFixed(2)} USD</strong></span></div>
+            <div class="prop-row"><span class="prop-label">Refund Reason:</span><span class="prop-val">${(r.refund && r.refund.refundReason) || r.returnReason}</span></div>
+            <div class="prop-row"><span class="prop-label">Disbursement Method:</span><span class="prop-val">${(r.refund && r.refund.refundMethod) || 'Amazon SP-API Automated Refund'}</span></div>
+            <div class="prop-row"><span class="prop-label">Gateway Reference #:</span><span class="prop-val"><code style="color: var(--brand-cyan);">${(r.refund && r.refund.refundRef) || 'REF-AUTO-' + retId}</code></span></div>
+            <div class="prop-row"><span class="prop-label">Refund Settlement Date:</span><span class="prop-val">${(r.refund && r.refund.refundDate) || r.returnDate || '2026-09-14'}</span></div>
+            <div class="prop-row"><span class="prop-label">Refund Status:</span><span class="prop-val"><span class="badge ${r.refund && r.refund.refundStatus === 'Completed' ? 'badge-success' : 'badge-warning'}">${(r.refund && r.refund.refundStatus) || 'Completed'}</span></span></div>
+          </div>
+        </div>
+
+        <!-- SECTION 7: REPLACEMENT DETAILS -->
+        <div class="return-section-card">
+          <div class="return-section-header">
+            <div class="return-section-title"><span>🔄</span> 7. Replacement & Exchange Order</div>
+            <button class="btn btn-sm btn-secondary" onclick="openReplacementModal('${retId}')">Dispatch Replacement</button>
+          </div>
+          <div class="prop-group">
+            <div class="prop-row"><span class="prop-label">Replacement Required:</span><span class="prop-val"><strong>${(r.replacement && r.replacement.replacementRequired) ? 'Yes' : 'None (Refund Flow)'}</strong></span></div>
+            <div class="prop-row"><span class="prop-label">Replacement Order ID:</span><span class="prop-val"><code style="color: var(--brand-cyan); font-weight: 700;">${(r.replacement && r.replacement.replacementOrderId) || 'N/A'}</code></span></div>
+            <div class="prop-row"><span class="prop-label">Replacement Product SKU:</span><span class="prop-val">${(r.replacement && r.replacement.sku) || r.sku}</span></div>
+            <div class="prop-row"><span class="prop-label">Replacement Quantity:</span><span class="prop-val">${(r.replacement && r.replacement.qty) || 1} Unit</span></div>
+            <div class="prop-row"><span class="prop-label">Reshipment AWB Tracking:</span><span class="prop-val"><code>${(r.replacement && r.replacement.trackingNo) || 'N/A'}</code></span></div>
+            <div class="prop-row"><span class="prop-label">Replacement Status:</span><span class="prop-val"><span class="badge ${r.replacement && r.replacement.replacementStatus === 'Dispatched' ? 'badge-success' : 'badge-secondary'}">${(r.replacement && r.replacement.replacementStatus) || 'N/A'}</span></span></div>
+          </div>
+        </div>
+
+        <!-- SECTION 8: CLAIM & RECOVERY DETAILS -->
+        <div class="return-section-card">
+          <div class="return-section-header">
+            <div class="return-section-title"><span>⚖️</span> 8. Carrier / Marketplace Insurance Claim</div>
+            <button class="btn btn-sm btn-secondary" onclick="openClaimModal('${retId}')">Manage Claim</button>
+          </div>
+          <div class="prop-group">
+            <div class="prop-row"><span class="prop-label">Claim Lodged:</span><span class="prop-val"><strong>${(r.claim && r.claim.claimRequired) || r.carrierClaimUSD > 0 ? 'Yes' : 'No Claim Required'}</strong></span></div>
+            <div class="prop-row"><span class="prop-label">Claim Reference ID:</span><span class="prop-val"><code style="color: var(--brand-cyan); font-weight: 700;">${(r.claim && r.claim.claimId) || 'CLM-FDX-' + retId}</code></span></div>
+            <div class="prop-row"><span class="prop-label">Claim Reason:</span><span class="prop-val">${(r.claim && r.claim.claimReason) || 'Transit Cargo Damage'}</span></div>
+            <div class="prop-row"><span class="prop-label">Claimed Loss Amount:</span><span class="prop-val"><strong style="font-family: var(--font-mono); color: var(--danger);">$${((r.claim && r.claim.claimAmount) || r.carrierClaimUSD || 0).toFixed(2)} USD</strong></span></div>
+            <div class="prop-row"><span class="prop-label">Claim Status:</span><span class="prop-val"><span class="badge ${r.claim && r.claim.claimStatus === 'Recovered' ? 'badge-success' : r.claim && r.claim.claimStatus === 'Under Review' ? 'badge-warning' : 'badge-secondary'}">${(r.claim && r.claim.claimStatus) || 'Under Review'}</span></span></div>
+            <div class="prop-row"><span class="prop-label">Recovered Payout Amount:</span><span class="prop-val"><strong style="font-family: var(--font-mono); color: var(--success); font-size: 14px;">$${((r.claim && r.claim.recoveredAmount) || 0).toFixed(2)} USD</strong></span></div>
+            <div class="prop-row"><span class="prop-label">Bank Settlement Ref:</span><span class="prop-val"><code>${(r.claim && r.claim.recoveryRef) || 'REC-WIRE-PENDING'}</code></span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SECTION 9: FINANCIAL IMPACT & PROFITABILITY WATERFALL CARD (FULL-WIDTH) -->
+      <div class="card" style="padding: 24px; border: 1px solid var(--border-main); margin-bottom: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid var(--border-main); padding-bottom: 12px;">
+          <div>
+            <h3 style="margin: 0; font-size: 16px; font-weight: 800; color: var(--brand-cyan);">📊 9. Return Financial Impact & Profitability Waterfall</h3>
+            <p style="margin: 2px 0 0; font-size: 12px; color: var(--text-muted);">
+              Integrated model connecting order revenue, refunds, freight, scrap write-offs, replacement, and carrier claim recoveries into the executive P&L.
+            </p>
+          </div>
+          <div style="text-align: right;">
+            <span style="font-size: 11px; color: var(--text-dim); text-transform: uppercase; font-weight: 600;">Net Profitability Impact:</span>
+            <div style="font-size: 22px; font-weight: 900; color: ${netImpact >= 0 ? 'var(--success)' : 'var(--danger)'}; font-family: var(--font-mono);">
+              ${netImpact >= 0 ? '+$' + netImpact.toFixed(2) : '-$' + Math.abs(netImpact).toFixed(2)}
+            </div>
+          </div>
+        </div>
+
+        <div class="waterfall-card-box">
+          <div class="waterfall-row">
+            <span><strong>(+) Original Order Billed Revenue:</strong></span>
+            <span class="val-pos">+$${rev.toFixed(2)} USD</span>
+          </div>
+          <div class="waterfall-row">
+            <span><strong>(&minus;) Customer Refund Amount:</strong></span>
+            <span class="${ref > 0 ? 'val-neg' : 'val-neutral'}">-$${ref.toFixed(2)} USD</span>
+          </div>
+          <div class="waterfall-row">
+            <span><strong>(&minus;) Return Courier Shipping Cost:</strong></span>
+            <span class="${retF > 0 ? 'val-neg' : 'val-neutral'}">-$${retF.toFixed(2)} USD</span>
+          </div>
+          <div class="waterfall-row">
+            <span><strong>(&minus;) RTO Surcharge & Failed Delivery Freight:</strong></span>
+            <span class="${rtoF > 0 ? 'val-neg' : 'val-neutral'}">-$${rtoF.toFixed(2)} USD</span>
+          </div>
+          <div class="waterfall-row">
+            <span><strong>(&minus;) Damaged Rug Scrap / Write-Off Loss:</strong></span>
+            <span class="${dam > 0 ? 'val-neg' : 'val-neutral'}">-$${dam.toFixed(2)} USD</span>
+          </div>
+          <div class="waterfall-row">
+            <span><strong>(&minus;) Replacement Rug Manufacturing & Fulfillment:</strong></span>
+            <span class="${rep > 0 ? 'val-neg' : 'val-neutral'}">-$${rep.toFixed(2)} USD</span>
+          </div>
+          <div class="waterfall-row">
+            <span><strong>(&minus;) Restocking & Quality Inspection Handling Fee:</strong></span>
+            <span class="${otherC > 0 ? 'val-neg' : 'val-neutral'}">-$${otherC.toFixed(2)} USD</span>
+          </div>
+          <div class="waterfall-row">
+            <span><strong>(+) Carrier Damage Insurance Claim Recovery:</strong></span>
+            <span class="${clm > 0 ? 'val-pos' : 'val-neutral'}">+$${clm.toFixed(2)} USD</span>
+          </div>
+          <div class="waterfall-row">
+            <span><strong>(+) Other Marketplace Reimbursement / Credit:</strong></span>
+            <span class="${othRec > 0 ? 'val-pos' : 'val-neutral'}">+$${othRec.toFixed(2)} USD</span>
+          </div>
+          <div class="waterfall-row total-row">
+            <span><strong>= FINAL NET PROFITABILITY IMPACT:</strong></span>
+            <span class="${netImpact >= 0 ? 'val-pos' : 'val-neg'}" style="font-size: 16px;">
+              ${netImpact >= 0 ? '+$' + netImpact.toFixed(2) : '-$' + Math.abs(netImpact).toFixed(2)} USD
+            </span>
           </div>
         </div>
       </div>
@@ -13453,10 +19171,948 @@ function renderReturnDetailPage(rmaNo) {
   `;
 }
 
+// ----------------------------------------------------------------------------
+// MODAL: CREATE RETURN FROM ORDER (ORDER LIST INTEGRATION)
+// ----------------------------------------------------------------------------
+function openCreateReturnModal(orderId) {
+  const order = (AppState.orders || []).find(o => o.orderId === orderId) || (AppState.orders && AppState.orders[0]) || {
+    orderId: "ORD-AMZ-99214",
+    orderDate: "2026-09-13",
+    buyerName: "Eleanor Vance",
+    buyerEmail: "e.vance@dallasdesign.com",
+    buyerPhone: "+1 (214) 555-0199",
+    channel: "Amazon US",
+    sku: "SKU-RUG-HT-0810-IVR",
+    qty: 1,
+    unitPriceUSD: 680.00,
+    totalOrderUSD: 736.10,
+    courier: "FedEx Home Delivery",
+    awb: "7894-3321-992",
+    shippingAddress: "4820 Highland Park Blvd, Suite 400, Dallas, TX 75205, United States"
+  };
+
+  const modal = document.getElementById("crudModal");
+  const title = document.getElementById("crudModalTitle");
+  const badge = document.getElementById("crudBadge");
+  const body = document.getElementById("crudModalBody");
+  const footer = document.getElementById("crudModalFooter");
+
+  badge.textContent = "Initiate Return";
+  title.textContent = `Create Return / RTO for Order ${order.orderId}`;
+
+  const todayStr = new Date().toISOString().split('T')[0];
+  const expectedDate = new Date(Date.now() + 3 * 86400000).toISOString().split('T')[0];
+
+  body.innerHTML = `
+    <!-- Auto-populated Order Information -->
+    <div style="background: var(--bg-elevated); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-main); margin-bottom: 16px;">
+      <h4 style="margin: 0 0 10px; font-size: 13px; color: var(--brand-cyan);">Original Order & Shipment Details (Auto-Populated)</h4>
+      <div class="return-order-info-grid">
+        <div><span style="color: var(--text-dim);">Order ID:</span> <strong>${order.orderId}</strong></div>
+        <div><span style="color: var(--text-dim);">Order Date:</span> <strong>${order.orderDate || '2026-09-13'}</strong></div>
+        <div><span style="color: var(--text-dim);">Marketplace:</span> <strong>${order.channel}</strong></div>
+        <div><span style="color: var(--text-dim);">Customer:</span> <strong>${order.buyerName}</strong></div>
+        <div><span style="color: var(--text-dim);">Contact:</span> <strong>${order.buyerPhone || '+1 555-0199'}</strong></div>
+        <div><span style="color: var(--text-dim);">Total Amount:</span> <strong>$${(order.totalOrderUSD || 736.10).toFixed(2)}</strong></div>
+        <div><span style="color: var(--text-dim);">Shipment ID:</span> <strong>${order.shipmentId || 'SHIP-FEDEX-' + order.orderId.replace('ORD-', '')}</strong></div>
+        <div><span style="color: var(--text-dim);">Tracking AWB:</span> <code>${order.awb || '7894-3321-992'}</code></div>
+        <div><span style="color: var(--text-dim);">Outbound Courier:</span> <strong>${order.courier || 'FedEx Express'}</strong></div>
+      </div>
+    </div>
+
+    <!-- Item Selection -->
+    <div style="margin-bottom: 16px;">
+      <h4 style="margin: 0 0 8px; font-size: 13px; color: var(--text-main);">Select Items to Return:</h4>
+      <div class="return-item-select-row">
+        <div class="return-item-header">
+          <input type="checkbox" id="retItemCheck1" checked style="width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;">
+          <div style="min-width: 0; flex: 1;">
+            <div style="font-weight: 700; color: var(--brand-cyan); font-family: var(--font-mono); word-break: break-all; font-size: 13px;">${order.sku}</div>
+            <div style="font-size: 11px; color: var(--text-dim); margin-top: 2px; line-height: 1.35;">${getSkuTitle(order.sku)}</div>
+          </div>
+        </div>
+        <div class="return-item-controls">
+          <div style="font-size: 12px; color: var(--text-dim);">Ordered: <strong>${order.qty || 1}</strong></div>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <label style="font-size: 12px; margin: 0; white-space: nowrap;">Return Qty:</label>
+            <input type="number" id="retItemQty1" value="${order.qty || 1}" min="1" max="${order.qty || 1}" class="form-control" style="width: 60px; padding: 4px 8px; text-align: center;">
+          </div>
+          <div style="font-size: 13px; font-weight: 700; color: var(--text-main); font-family: var(--font-mono);">
+            $${(order.subtotalUSD || order.totalOrderUSD || 680).toFixed(2)}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Return Type, Reason, Destination -->
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>Return Type:</label>
+        <select class="form-control" id="retTypeSelect" onchange="toggleRtoFields(this.value)">
+          <option value="Customer Return">↩️ Customer Return (Buyer Initiated)</option>
+          <option value="RTO">🚚 RTO (Failed Delivery / Refused by Buyer)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Return Reason:</label>
+        <select class="form-control" id="retReasonSelect">
+          <option value="Size / Dimension Mismatch in Room">Size / Dimension Mismatch in Room</option>
+          <option value="Color Shade Variation under Natural Light">Color Shade Variation under Natural Light</option>
+          <option value="Transit Packaging Tear / Soiled Fringe">Transit Packaging Tear / Soiled Fringe</option>
+          <option value="Water Ingress / Courier Liquid Damage">Water Ingress / Courier Liquid Damage</option>
+          <option value="Delivery Refused / Incomplete Buyer Address">Delivery Refused / Incomplete Buyer Address</option>
+          <option value="Buyer Remorse / Cancelled Order">Buyer Remorse / Cancelled Order</option>
+          <option value="Commercial Specification Change">Commercial Specification Change</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>Return Destination Facility:</label>
+        <select class="form-control" id="retDestSelect">
+          <option value="USA 3PL Distribution Center (Edison, NJ)">USA 3PL Distribution Center (Edison, NJ)</option>
+          <option value="USA 3PL Distribution Center (Dallas, TX)">USA 3PL Distribution Center (Dallas, TX)</option>
+          <option value="India Central WH (Bhadohi, UP)">India Central Export WH (Bhadohi, UP)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Return Courier Partner:</label>
+        <select class="form-control" id="retCourierSelect">
+          <option value="FedEx Ground Return">FedEx Ground Return</option>
+          <option value="FedEx Freight Priority">FedEx Freight Priority</option>
+          <option value="DHL Express Reverse">DHL Express Reverse</option>
+          <option value="UPS Ground Return">UPS Ground Return</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>Return Initiated Date:</label>
+        <input type="date" class="form-control" id="retInitDate" value="${todayStr}">
+      </div>
+      <div class="form-group">
+        <label>Expected Delivery Date:</label>
+        <input type="date" class="form-control" id="retExpDate" value="${expectedDate}">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Customer / Courier Notes:</label>
+      <input type="text" class="form-control" id="retNotes" placeholder="e.g. Buyer requested 9x12 ft exchange; packaging intact.">
+    </div>
+
+    <!-- Attachments Simulator -->
+    <div class="form-group">
+      <label>Attachments & Proof Documents:</label>
+      <div style="border: 2px dashed var(--border-main); border-radius: var(--radius-md); padding: 14px; text-align: center; background: var(--bg-card); cursor: pointer;" onclick="showToast('Uploaded 2 return documents & proof images.', 'success')">
+        <div style="font-size: 24px; margin-bottom: 4px;">📎</div>
+        <div style="font-size: 12px; font-weight: 600; color: var(--text-main);">Drag & Drop return images, courier slips or buyer photos</div>
+        <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;">PNG, JPG, PDF up to 25MB</div>
+      </div>
+    </div>
+  `;
+
+  footer.innerHTML = `
+    <button class="btn btn-secondary" onclick="closeModal('crudModal')">Cancel</button>
+    <button class="btn btn-primary" onclick="saveNewReturnFromOrder('${order.orderId}')">Submit Return & Register RMA</button>
+  `;
+
+  modal.style.display = "flex";
+}
+
+function saveNewReturnFromOrder(orderId) {
+  const order = (AppState.orders || []).find(o => o.orderId === orderId) || (AppState.orders && AppState.orders[0]);
+  const retType = document.getElementById("retTypeSelect").value;
+  const retReason = document.getElementById("retReasonSelect").value;
+  const retDest = document.getElementById("retDestSelect").value;
+  const retCourier = document.getElementById("retCourierSelect").value;
+  const retInitDate = document.getElementById("retInitDate").value;
+  const retExpDate = document.getElementById("retExpDate").value;
+  const retNotes = document.getElementById("retNotes").value.trim() || "Return registered from order pipeline.";
+  const retQty = parseInt(document.getElementById("retItemQty1").value) || 1;
+
+  const nextNum = Math.floor(85 + Math.random() * 50);
+  const prefix = retType === "RTO" ? "RTO-2026-0" : "RET-2026-0";
+  const returnId = `${prefix}${nextNum}`;
+  const trackingNo = `FX-RET-${Math.floor(1000 + Math.random() * 9000)}`;
+
+  const itemPrice = order.unitPriceUSD || (order.totalOrderUSD / (order.qty || 1));
+  const totalItemVal = itemPrice * retQty;
+
+  const newReturn = {
+    returnId,
+    rmaNo: returnId,
+    orderId: order.orderId,
+    orderDate: order.orderDate || retInitDate,
+    customer: order.buyerName,
+    customerEmail: order.buyerEmail || "buyer@marketplace.com",
+    customerPhone: order.buyerPhone || "+1 555-0199",
+    customerAddress: order.shippingAddress || "USA Destination",
+    channel: order.channel,
+    marketplaceOrderId: order.marketplaceOrderId || "MP-ORD-AUTO",
+    orderAmount: order.totalOrderUSD || totalItemVal,
+    sku: order.sku,
+    productTitle: getSkuTitle(order.sku),
+    shipmentId: order.shipmentId || "SHIP-AUTO",
+    trackingNo: order.awb || "7894-3321-992",
+    courier: order.courier || "FedEx Home Delivery",
+    shipmentDate: order.orderDate || retInitDate,
+    deliveryStatus: retType === "RTO" ? "Delivery Failed" : "Delivered",
+    outboundFreightUSD: 38.00,
+    returnType: retType,
+    returnReason: retReason,
+    returnDestination: retDest,
+    returnDate: retInitDate,
+    expectedReturnDate: retExpDate,
+    returnCourier: retCourier,
+    returnTrackingNo: trackingNo,
+    returnStatus: retType === "RTO" ? "RTO In Transit" : "Return Initiated",
+    itemCondition: "Pending Inspection",
+    grade: "Inspection Pending",
+    restockWh: retDest,
+    restockBin: "Inbound Staging Bay 01",
+    items: [
+      {
+        sku: order.sku,
+        name: getSkuTitle(order.sku),
+        productId: "PRD-" + order.sku.replace("SKU-", ""),
+        orderedQty: order.qty || 1,
+        returnQty: retQty,
+        unitPrice: itemPrice,
+        itemValue: totalItemVal
+      }
+    ],
+    inspection: {
+      receivedDate: "",
+      inspectionDate: "",
+      inspector: "Pending Receipt",
+      condition: "Pending Inspection",
+      disposition: "Pending Physical Check-In",
+      restockWh: retDest,
+      restockBin: "Inbound Staging Bay 01",
+      notes: retNotes,
+      evidence: []
+    },
+    refund: {
+      refundRequired: retType !== "RTO",
+      refundAmount: totalItemVal,
+      refundReason: retReason,
+      refundMethod: `${order.channel} Automated Refund`,
+      refundRef: `REF-${returnId}`,
+      refundDate: "",
+      refundStatus: "Pending"
+    },
+    replacement: {
+      replacementRequired: false,
+      replacementOrderId: "",
+      product: "",
+      sku: "",
+      qty: 0,
+      shipmentId: "",
+      trackingNo: "",
+      replacementStatus: "N/A"
+    },
+    claim: {
+      claimRequired: retReason.includes("Damage") || retReason.includes("Water"),
+      claimId: retReason.includes("Damage") ? `CLM-FDX-${nextNum}` : "",
+      claimReason: retReason,
+      claimAmount: retReason.includes("Damage") ? totalItemVal : 0.00,
+      claimStatus: retReason.includes("Damage") ? "Draft" : "No Claim",
+      carrier: "FedEx Cargo Claims",
+      evidence: [],
+      recoveredAmount: 0.00,
+      recoveryStatus: "Pending",
+      rejectionReason: ""
+    },
+    financialImpact: {
+      orderRevenue: order.totalOrderUSD || totalItemVal,
+      refundAmount: totalItemVal,
+      returnShippingCost: 28.00,
+      rtoCost: retType === "RTO" ? 35.00 : 0.00,
+      damageLoss: 0.00,
+      replacementCost: 0.00,
+      otherCosts: 5.00,
+      claimRecovery: 0.00,
+      otherRecovery: 0.00,
+      netLoss: 33.00,
+      netProfitabilityImpact: -33.00
+    },
+    refundAmountUSD: totalItemVal,
+    carrierClaimUSD: 0.00,
+    status: retType === "RTO" ? "RTO In Transit" : "Return Initiated",
+    notes: retNotes
+  };
+
+  if (!AppState.returns) AppState.returns = [];
+  AppState.returns.unshift(newReturn);
+
+  // Add history event to order
+  if (order && order.history) {
+    order.history.unshift({
+      time: `${retInitDate} 12:00:00`,
+      action: `Return Registered (${returnId})`,
+      detail: `${retType} registered. Reason: ${retReason}. Return AWB: ${trackingNo}.`
+    });
+  }
+
+  closeModal("crudModal");
+  showToast(`Return ${returnId} registered successfully for Order ${order.orderId}!`, "success");
+
+  // Switch to Returns view
+  switchView("mod6-ret");
+}
+
+// ----------------------------------------------------------------------------
+// INTERACTIVE WORKFLOW MODALS: INSPECTION, REFUND, REPLACEMENT, CLAIM, RECOVERY
+// ----------------------------------------------------------------------------
+
+function openInspectionModal(returnId) {
+  const r = getReturnById(returnId);
+  if (!r) return;
+
+  const modal = document.getElementById("crudModal");
+  const title = document.getElementById("crudModalTitle");
+  const badge = document.getElementById("crudBadge");
+  const body = document.getElementById("crudModalBody");
+  const footer = document.getElementById("crudModalFooter");
+
+  badge.textContent = "QC Inspection";
+  title.textContent = `Record Physical Inspection: ${r.returnId || r.rmaNo}`;
+
+  const currentCond = r.itemCondition || "Resalable";
+
+  body.innerHTML = `
+    <div style="background: var(--bg-elevated); padding: 12px 16px; border-radius: var(--radius-md); border: 1px solid var(--border-main); margin-bottom: 16px;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <strong style="color: var(--brand-cyan); font-family: var(--font-mono);">${r.sku}</strong>
+          <div style="font-size: 12px; color: var(--text-main); font-weight: 600;">${r.productTitle || getSkuTitle(r.sku)}</div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-size: 11px; color: var(--text-dim);">Originating Order:</div>
+          <strong style="font-size: 12px;">${r.orderId} (${r.channel})</strong>
+        </div>
+      </div>
+    </div>
+
+    <label style="font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; display: block;">
+      Classify Item Condition & Disposition:
+    </label>
+    <div class="disposition-options-grid">
+      <div class="disposition-option-card ${currentCond === 'Resalable' ? 'selected resalable' : ''}" id="dispOptResalable" onclick="selectDispositionOption('Resalable')">
+        <div style="font-size: 28px; margin-bottom: 6px;">✅</div>
+        <strong style="font-size: 13px; color: var(--success); display: block; margin-bottom: 4px;">Option 1: Resalable</strong>
+        <p style="font-size: 11px; color: var(--text-muted); margin: 0;">Rug is pristine & clean. Auto-restocks +1 unit to primary warehouse inventory for sale.</p>
+      </div>
+      <div class="disposition-option-card ${currentCond === 'Repairable' ? 'selected repairable' : ''}" id="dispOptRepairable" onclick="selectDispositionOption('Repairable')">
+        <div style="font-size: 28px; margin-bottom: 6px;">🔧</div>
+        <strong style="font-size: 13px; color: var(--warning); display: block; margin-bottom: 4px;">Option 2: Repairable</strong>
+        <p style="font-size: 11px; color: var(--text-muted); margin: 0;">Minor fringe/edge damage. Send to loom finishing station for restoration.</p>
+      </div>
+      <div class="disposition-option-card ${currentCond === 'Damaged' ? 'selected damaged' : ''}" id="dispOptDamaged" onclick="selectDispositionOption('Damaged')">
+        <div style="font-size: 28px; margin-bottom: 6px;">🚨</div>
+        <strong style="font-size: 13px; color: var(--danger); display: block; margin-bottom: 4px;">Option 3: Damaged / Scrap</strong>
+        <p style="font-size: 11px; color: var(--text-muted); margin: 0;">Severe transit damage/water ingress. Record write-off loss & file carrier claim.</p>
+      </div>
+    </div>
+    <input type="hidden" id="selectedCondInput" value="${currentCond}">
+
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>Receipt Date:</label>
+        <input type="date" class="form-control" id="inspRecDate" value="${(r.inspection && r.inspection.receivedDate) || new Date().toISOString().split('T')[0]}">
+      </div>
+      <div class="form-group">
+        <label>Inspector Name:</label>
+        <input type="text" class="form-control" id="inspInspector" value="${(r.inspection && r.inspection.inspector) || 'Devon Miller (USA 3PL QC)'}">
+      </div>
+    </div>
+
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>Restock Facility:</label>
+        <input type="text" class="form-control" id="inspWh" value="${r.restockWh || 'USA 3PL Distribution Center (Edison, NJ)'}">
+      </div>
+      <div class="form-group">
+        <label>Assigned Storage Bin:</label>
+        <input type="text" class="form-control" id="inspBin" value="${r.restockBin || 'Zone A / Rack 04 / Bin 12'}">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Inspection Notes & Condition Observations:</label>
+      <textarea class="form-control" id="inspNotes" rows="2">${(r.inspection && r.inspection.notes) || 'Outer packaging intact; rug pile density verified flawless.'}</textarea>
+    </div>
+  `;
+
+  footer.innerHTML = `
+    <button class="btn btn-secondary" onclick="closeModal('crudModal')">Cancel</button>
+    <button class="btn btn-primary" onclick="saveInspectionResult('${r.returnId || r.rmaNo}')">Save Inspection & Update Inventory</button>
+  `;
+
+  modal.style.display = "flex";
+}
+
+function selectDispositionOption(cond) {
+  document.getElementById("selectedCondInput").value = cond;
+  document.getElementById("dispOptResalable").className = "disposition-option-card " + (cond === 'Resalable' ? 'selected resalable' : '');
+  document.getElementById("dispOptRepairable").className = "disposition-option-card " + (cond === 'Repairable' ? 'selected repairable' : '');
+  document.getElementById("dispOptDamaged").className = "disposition-option-card " + (cond === 'Damaged' ? 'selected damaged' : '');
+}
+
+function saveInspectionResult(returnId) {
+  const r = getReturnById(returnId);
+  if (!r) return;
+
+  const cond = document.getElementById("selectedCondInput").value;
+  const recDate = document.getElementById("inspRecDate").value;
+  const inspector = document.getElementById("inspInspector").value;
+  const wh = document.getElementById("inspWh").value;
+  const bin = document.getElementById("inspBin").value;
+  const notes = document.getElementById("inspNotes").value;
+
+  r.itemCondition = cond;
+  r.restockWh = wh;
+  r.restockBin = bin;
+  r.returnStatus = cond === "Damaged" ? "Claim / Recovery" : cond === "Repairable" ? "Under Inspection" : "Inspection Completed";
+
+  if (!r.inspection) r.inspection = {};
+  r.inspection.receivedDate = recDate;
+  r.inspection.inspectionDate = new Date().toISOString().split('T')[0];
+  r.inspection.inspector = inspector;
+  r.inspection.condition = cond;
+  r.inspection.notes = notes;
+  r.inspection.disposition = cond === "Resalable" ? "Restocked to Inventory (Available for Sale)" : cond === "Repairable" ? "Sent to Loom Repair Station" : "Scrapped / Total Write-Off";
+
+  if (cond === "Resalable") {
+    r.grade = "Grade A (Resalable Full Price)";
+    r.status = "Restocked to Inventory";
+    const sku = (AppState.skus || []).find(s => s.sku === r.sku);
+    if (sku && sku.stock) {
+      sku.stock.usaAvailable = (sku.stock.usaAvailable || 0) + 1;
+    }
+    showToast(`Inspection saved: Resalable! +1 unit restocked to ${wh}.`, "success");
+  } else if (cond === "Repairable") {
+    r.grade = "Grade B (Distressed / Sample Sale)";
+    r.status = "Repair In Progress";
+    showToast(`Inspection saved: Repairable! Rug routed to Loom Repair Station.`, "warning");
+  } else {
+    r.grade = "Grade C (Scrap / Total Loss)";
+    r.status = "Damaged / Claim Pending";
+    if (r.financialImpact) {
+      r.financialImpact.damageLoss = r.orderAmount || 150.00;
+    }
+    showToast(`Inspection saved: Total Loss! Carrier insurance claim docket initialized.`, "error");
+  }
+
+  closeModal("crudModal");
+  renderCurrentView();
+}
+
+function openRefundModal(returnId) {
+  const r = getReturnById(returnId);
+  if (!r) return;
+
+  const modal = document.getElementById("crudModal");
+  const title = document.getElementById("crudModalTitle");
+  const badge = document.getElementById("crudBadge");
+  const body = document.getElementById("crudModalBody");
+  const footer = document.getElementById("crudModalFooter");
+
+  badge.textContent = "Process Refund";
+  title.textContent = `Process Customer Refund for ${r.returnId || r.rmaNo}`;
+
+  const currentAmt = (r.refund && r.refund.refundAmount) || r.refundAmountUSD || r.orderAmount || 250.00;
+
+  body.innerHTML = `
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>Refund Amount USD ($):</label>
+        <input type="number" step="0.01" class="form-control" id="refAmountInput" value="${currentAmt.toFixed(2)}">
+      </div>
+      <div class="form-group">
+        <label>Disbursement Gateway / Method:</label>
+        <select class="form-control" id="refMethodSelect">
+          <option value="${r.channel} Automated SP-API Refund">${r.channel} Automated SP-API Refund</option>
+          <option value="Direct Merchant Credit Card Reversal">Direct Merchant Credit Card Reversal</option>
+          <option value="B2B Commercial Credit Note">B2B Commercial Credit Note</option>
+          <option value="Store Credit Voucher">Store Credit Voucher</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>Gateway Transaction Reference #:</label>
+        <input type="text" class="form-control" id="refRefInput" value="${(r.refund && r.refund.refundRef) || 'REF-' + (r.returnId || r.rmaNo)}">
+      </div>
+      <div class="form-group">
+        <label>Settlement Date:</label>
+        <input type="date" class="form-control" id="refDateInput" value="${new Date().toISOString().split('T')[0]}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Refund Reason Notes:</label>
+      <input type="text" class="form-control" id="refReasonInput" value="${(r.refund && r.refund.refundReason) || r.returnReason || 'Customer Return Settled'}">
+    </div>
+  `;
+
+  footer.innerHTML = `
+    <button class="btn btn-secondary" onclick="closeModal('crudModal')">Cancel</button>
+    <button class="btn btn-primary" onclick="saveRefundResult('${r.returnId || r.rmaNo}')">Confirm & Disburse Refund</button>
+  `;
+
+  modal.style.display = "flex";
+}
+
+function saveRefundResult(returnId) {
+  const r = getReturnById(returnId);
+  if (!r) return;
+
+  const amt = parseFloat(document.getElementById("refAmountInput").value) || 0;
+  const method = document.getElementById("refMethodSelect").value;
+  const ref = document.getElementById("refRefInput").value;
+  const date = document.getElementById("refDateInput").value;
+  const reason = document.getElementById("refReasonInput").value;
+
+  if (!r.refund) r.refund = {};
+  r.refund.refundRequired = true;
+  r.refund.refundAmount = amt;
+  r.refund.refundMethod = method;
+  r.refund.refundRef = ref;
+  r.refund.refundDate = date;
+  r.refund.refundReason = reason;
+  r.refund.refundStatus = "Completed";
+
+  r.refundAmountUSD = amt;
+  if (r.financialImpact) {
+    r.financialImpact.refundAmount = amt;
+  }
+
+  if (r.returnStatus === "Inspection Completed" || r.returnStatus === "Under Inspection") {
+    r.returnStatus = "Refund / Replacement Processing";
+  }
+
+  closeModal("crudModal");
+  showToast(`Refund of $${amt.toFixed(2)} USD processed successfully (Ref: ${ref})!`, "success");
+  renderCurrentView();
+}
+
+function openReplacementModal(returnId) {
+  const r = getReturnById(returnId);
+  if (!r) return;
+
+  const modal = document.getElementById("crudModal");
+  const title = document.getElementById("crudModalTitle");
+  const badge = document.getElementById("crudBadge");
+  const body = document.getElementById("crudModalBody");
+  const footer = document.getElementById("crudModalFooter");
+
+  badge.textContent = "Dispatch Replacement";
+  title.textContent = `Create Replacement Shipment for ${r.returnId || r.rmaNo}`;
+
+  body.innerHTML = `
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>Replacement SKU:</label>
+        <select class="form-control" id="repSkuSelect">
+          ${(AppState.skus || []).map(s => `
+            <option value="${s.sku}" ${s.sku === r.sku ? 'selected' : ''}>${s.sku} &bull; ${s.title.split('(')[0]}</option>
+          `).join('')}
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Quantity:</label>
+        <input type="number" class="form-control" id="repQtyInput" value="1" min="1">
+      </div>
+    </div>
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>Dispatch Warehouse:</label>
+        <select class="form-control" id="repWhSelect">
+          <option value="USA 3PL Distribution Center (Edison, NJ)">USA 3PL Distribution Center (Edison, NJ)</option>
+          <option value="USA 3PL Distribution Center (Dallas, TX)">USA 3PL Distribution Center (Dallas, TX)</option>
+          <option value="India Central WH (Bhadohi)">India Central WH (Bhadohi)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Courier & Priority:</label>
+        <select class="form-control" id="repCourierSelect">
+          <option value="FedEx Express Priority">FedEx Express Priority (Next-Day)</option>
+          <option value="FedEx Home Delivery">FedEx Home Delivery (2-Day)</option>
+          <option value="DHL Express Express">DHL Express Express</option>
+        </select>
+      </div>
+    </div>
+  `;
+
+  footer.innerHTML = `
+    <button class="btn btn-secondary" onclick="closeModal('crudModal')">Cancel</button>
+    <button class="btn btn-primary" onclick="saveReplacementResult('${r.returnId || r.rmaNo}')">Dispatch Replacement Rug</button>
+  `;
+
+  modal.style.display = "flex";
+}
+
+function saveReplacementResult(returnId) {
+  const r = getReturnById(returnId);
+  if (!r) return;
+
+  const sku = document.getElementById("repSkuSelect").value;
+  const qty = parseInt(document.getElementById("repQtyInput").value) || 1;
+  const tracking = `7894-3321-${Math.floor(100 + Math.random() * 900)}`;
+  const repOrderId = `ORD-REP-${r.orderId.replace('ORD-', '')}`;
+
+  if (!r.replacement) r.replacement = {};
+  r.replacement.replacementRequired = true;
+  r.replacement.replacementOrderId = repOrderId;
+  r.replacement.sku = sku;
+  r.replacement.product = getSkuTitle(sku);
+  r.replacement.qty = qty;
+  r.replacement.trackingNo = tracking;
+  r.replacement.replacementStatus = "Dispatched";
+
+  if (r.financialImpact) {
+    r.financialImpact.replacementCost = 110.00 * qty;
+  }
+
+  r.returnStatus = "Refund / Replacement Processing";
+
+  closeModal("crudModal");
+  showToast(`Replacement order ${repOrderId} dispatched! AWB #${tracking}.`, "success");
+  renderCurrentView();
+}
+
+function openClaimModal(returnId) {
+  const r = getReturnById(returnId);
+  if (!r) return;
+
+  const modal = document.getElementById("crudModal");
+  const title = document.getElementById("crudModalTitle");
+  const badge = document.getElementById("crudBadge");
+  const body = document.getElementById("crudModalBody");
+  const footer = document.getElementById("crudModalFooter");
+
+  badge.textContent = "Manage Claim";
+  title.textContent = `Carrier / Insurance Claim Docket for ${r.returnId || r.rmaNo}`;
+
+  const clm = r.claim || {};
+  const currentAmt = clm.claimAmount || r.carrierClaimUSD || r.orderAmount || 195.00;
+
+  body.innerHTML = `
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>Claim Reference ID:</label>
+        <input type="text" class="form-control" id="clmIdInput" value="${clm.claimId || 'CLM-FDX-' + (r.returnId || r.rmaNo)}">
+      </div>
+      <div class="form-group">
+        <label>Claimed Loss Amount USD ($):</label>
+        <input type="number" step="0.01" class="form-control" id="clmAmountInput" value="${currentAmt.toFixed(2)}">
+      </div>
+    </div>
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>Carrier / Insurance Partner:</label>
+        <select class="form-control" id="clmCarrierSelect">
+          <option value="FedEx Freight Insurance">FedEx Freight Insurance</option>
+          <option value="FedEx Ground Cargo Claims">FedEx Ground Cargo Claims</option>
+          <option value="Lloyds Transit Cargo Policy">Lloyds Transit Cargo Policy</option>
+          <option value="Amazon Safe-T Claim Desk">Amazon Safe-T Claim Desk</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Claim Status Decision:</label>
+        <select class="form-control" id="clmStatusSelect">
+          <option value="Submitted" ${clm.claimStatus === 'Submitted' ? 'selected' : ''}>Submitted & Under Review</option>
+          <option value="Approved" ${clm.claimStatus === 'Approved' ? 'selected' : ''}>Approved by Carrier</option>
+          <option value="Partially Approved" ${clm.claimStatus === 'Partially Approved' ? 'selected' : ''}>Partially Approved</option>
+          <option value="Recovered" ${clm.claimStatus === 'Recovered' ? 'selected' : ''}>Fully Recovered / Paid Out</option>
+          <option value="Rejected" ${clm.claimStatus === 'Rejected' ? 'selected' : ''}>Claim Rejected</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Specific Incident / Loss Justification:</label>
+      <input type="text" class="form-control" id="clmReasonInput" value="${clm.claimReason || r.returnReason || 'Transit Cargo Damage'}">
+    </div>
+  `;
+
+  footer.innerHTML = `
+    <button class="btn btn-secondary" onclick="closeModal('crudModal')">Cancel</button>
+    <button class="btn btn-primary" onclick="saveClaimResult('${r.returnId || r.rmaNo}')">Update Claim Docket</button>
+  `;
+
+  modal.style.display = "flex";
+}
+
+function saveClaimResult(returnId) {
+  const r = getReturnById(returnId);
+  if (!r) return;
+
+  const clmId = document.getElementById("clmIdInput").value;
+  const amt = parseFloat(document.getElementById("clmAmountInput").value) || 0;
+  const carrier = document.getElementById("clmCarrierSelect").value;
+  const status = document.getElementById("clmStatusSelect").value;
+  const reason = document.getElementById("clmReasonInput").value;
+
+  if (!r.claim) r.claim = {};
+  r.claim.claimRequired = true;
+  r.claim.claimId = clmId;
+  r.claim.claimAmount = amt;
+  r.claim.carrier = carrier;
+  r.claim.claimStatus = status;
+  r.claim.claimReason = reason;
+
+  r.carrierClaimUSD = amt;
+
+  if (status === "Approved" || status === "Recovered") {
+    r.claim.recoveredAmount = amt;
+    r.claim.recoveryStatus = "Fully Recovered";
+    r.claim.recoveryRef = `REC-WIRE-${Math.floor(10000 + Math.random() * 90000)}`;
+    r.claim.recoveryDate = new Date().toISOString().split('T')[0];
+    if (r.financialImpact) {
+      r.financialImpact.claimRecovery = amt;
+    }
+  }
+
+  closeModal("crudModal");
+  showToast(`Claim ${clmId} updated: Status is ${status}!`, "success");
+  renderCurrentView();
+}
+
+function openRecoveryModal(returnId) {
+  const r = getReturnById(returnId);
+  if (!r) return;
+
+  const modal = document.getElementById("crudModal");
+  const title = document.getElementById("crudModalTitle");
+  const badge = document.getElementById("crudBadge");
+  const body = document.getElementById("crudModalBody");
+  const footer = document.getElementById("crudModalFooter");
+
+  badge.textContent = "Record Recovery";
+  title.textContent = `Record Carrier Cash Payout: ${r.returnId || r.rmaNo}`;
+
+  const clm = r.claim || {};
+  const currentClaim = clm.claimAmount || r.carrierClaimUSD || 195.00;
+
+  body.innerHTML = `
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>Total Recognized Claim Amount:</label>
+        <input type="text" class="form-control" value="$${currentClaim.toFixed(2)} USD" disabled>
+      </div>
+      <div class="form-group">
+        <label>Actual Recovered Cash Amount ($):</label>
+        <input type="number" step="0.01" class="form-control" id="recAmountInput" value="${currentClaim.toFixed(2)}">
+      </div>
+    </div>
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>Carrier Wire / Settlement Reference #:</label>
+        <input type="text" class="form-control" id="recRefInput" value="${clm.recoveryRef || 'REC-FDX-WIRE-' + Math.floor(10000 + Math.random() * 90000)}">
+      </div>
+      <div class="form-group">
+        <label>Deposit Date:</label>
+        <input type="date" class="form-control" id="recDateInput" value="${new Date().toISOString().split('T')[0]}">
+      </div>
+    </div>
+  `;
+
+  footer.innerHTML = `
+    <button class="btn btn-secondary" onclick="closeModal('crudModal')">Cancel</button>
+    <button class="btn btn-primary" onclick="saveRecoveryResult('${r.returnId || r.rmaNo}')">Post Recovery to Ledger</button>
+  `;
+
+  modal.style.display = "flex";
+}
+
+function saveRecoveryResult(returnId) {
+  const r = getReturnById(returnId);
+  if (!r) return;
+
+  const recAmt = parseFloat(document.getElementById("recAmountInput").value) || 0;
+  const ref = document.getElementById("recRefInput").value;
+  const date = document.getElementById("recDateInput").value;
+
+  if (!r.claim) r.claim = {};
+  r.claim.recoveredAmount = recAmt;
+  r.claim.recoveryRef = ref;
+  r.claim.recoveryDate = date;
+  r.claim.claimStatus = "Recovered";
+  r.claim.recoveryStatus = recAmt >= (r.claim.claimAmount || r.carrierClaimUSD) ? "Fully Recovered" : "Partially Recovered";
+
+  if (r.financialImpact) {
+    r.financialImpact.claimRecovery = recAmt;
+  }
+
+  closeModal("crudModal");
+  showToast(`Recovery payout of $${recAmt.toFixed(2)} posted against ${ref}!`, "success");
+  renderCurrentView();
+}
+
+function changeReturnStatus(rmaNo, newStatus) {
+  const r = getReturnById(rmaNo);
+  if (!r) return;
+  r.returnStatus = newStatus;
+  r.status = newStatus;
+  showToast(`Return ${r.returnId || r.rmaNo} status updated to: ${newStatus}`, "success");
+  renderCurrentView();
+}
+
+function restockRmaToInventory(rmaNo) {
+  const r = getReturnById(rmaNo);
+  if (!r) return;
+
+  const sku = (AppState.skus || []).find(s => s.sku === r.sku);
+  if (sku && sku.stock) {
+    sku.stock.usaAvailable = (sku.stock.usaAvailable || 0) + 1;
+  }
+  r.itemCondition = "Resalable";
+  r.grade = "Grade A (Resalable Full Price)";
+  r.returnStatus = "Completed";
+  r.status = "Restocked to Inventory";
+  showToast(`Return ${r.returnId || r.rmaNo} (${r.sku}) restocked to USA 3PL (Edison, NJ)! Stock +1 unit.`, "success");
+  renderCurrentView();
+}
+
+function fileCarrierClaim(rmaNo) {
+  openClaimModal(rmaNo);
+}
+
+function deleteReturn(retId) {
+  if (!confirm(`Are you sure you want to permanently delete return record ${retId}? This will remove it from reverse logistics tracking and restore the original order status.`)) {
+    return;
+  }
+
+  const retObj = getReturnById(retId);
+  const orderId = retObj ? retObj.orderId : null;
+
+  // Filter out from AppState.returns
+  AppState.returns = (AppState.returns || []).filter(r => (r.returnId !== retId && r.rmaNo !== retId));
+
+  // If order exists, update order status back if needed
+  if (orderId) {
+    const order = (AppState.orders || []).find(o => o.orderId === orderId);
+    if (order && (order.status === "Returned" || order.status === "Return Initiated" || order.status === "RTO In Transit")) {
+      order.status = "Delivered";
+    }
+  }
+
+  showToast(`Return record ${retId} deleted successfully.`, "success");
+  
+  if (AppState.activeView === "mod6-ret-detail" || AppState.activeView === "mod6-returns") {
+    backToListView('mod6-ret');
+  } else {
+    render();
+  }
+}
+
+function downloadRmaSlip(rmaNo) {
+  const r = getReturnById(rmaNo);
+  if (!r) {
+    showToast("Return record not found.", "error");
+    return;
+  }
+  const retId = r.returnId || r.rmaNo;
+  const skuObj = (AppState.skus || []).find(s => s.sku === r.sku) || {};
+  const fi = r.financialImpact || {};
+  const filename = `RMA_QC_INSPECTION_SLIP_${retId}.pdf`;
+
+  const content = `%PDF-1.4
+% ODETTE RUGS EXPORT OS - OFFICIAL RMA QC INSPECTION & RETURN DOSSIER
+% Generated: ${new Date().toISOString()}
+================================================================================
+REVERSE LOGISTICS & RMA INSPECTION CERTIFICATE
+================================================================================
+RMA / Return ID:        ${retId}
+Original Order ID:      ${r.orderId}
+Sales Channel:          ${r.channel || 'Amazon US'}
+Return Registered Date: ${r.returnDate || '2026-09-14'}
+Return Type:            ${r.returnType || 'Customer Return'}
+Return Status:          ${r.returnStatus || r.status || 'Under Inspection'}
+
+--------------------------------------------------------------------------------
+CUSTOMER & REVERSE TRANSIT DETAILS:
+--------------------------------------------------------------------------------
+Customer Name:          ${r.customer}
+Customer Address:       ${r.customerAddress || 'USA Customer Delivery Point'}
+Reverse Courier:        ${r.courier || 'FedEx Reverse Logistics'}
+Return Tracking Ref:    ${r.returnTrackingNo || r.trackingNo || 'TRK-RET-99214'}
+Inward Receipt Date:    ${(r.inspection && r.inspection.receivedDate) || r.returnDate || '2026-09-15'}
+Restock Facility:       ${r.returnDestination || r.restockWh || 'Edison NJ 3PL'}
+
+--------------------------------------------------------------------------------
+RETURNED PRODUCT SPECIFICATION:
+--------------------------------------------------------------------------------
+SKU:                    ${r.sku}
+Product Title:          ${r.productTitle || skuObj.title || 'Handcrafted Artisan Rug'}
+Dimensions / Size:      ${r.size || skuObj.size || '8x10 ft'}
+Return Reason:          ${r.returnReason || r.reason || 'Customer preference / size mismatch'}
+
+--------------------------------------------------------------------------------
+QC PHYSICAL INSPECTION & GRADING:
+--------------------------------------------------------------------------------
+Inspector Name:         ${(r.inspection && r.inspection.inspector) || 'Devon Miller (USA 3PL QC Desk)'}
+Condition Grade:        ${r.itemCondition || r.grade || 'Resalable (Grade A)'}
+Restock Destination:    ${r.returnDestination || r.restockWh || 'USA 3PL'} (Bin: ${r.restockBin || 'Zone A / Rack 04'})
+Inspection Remarks:     ${(r.inspection && r.inspection.remarks) || 'Physical roll inspected. Moisture seal intact. Zero structural defect. Restocked to Available inventory.'}
+
+--------------------------------------------------------------------------------
+FINANCIAL SETTLEMENT & PROFITABILITY IMPACT:
+--------------------------------------------------------------------------------
+Original Order Revenue: $${((fi.orderRevenue) || r.orderAmount || 0).toFixed(2)} USD
+Customer Refund:        $${((r.refund && r.refund.refundAmount) || r.refundAmountUSD || 0).toFixed(2)} USD [Status: ${(r.refund && r.refund.refundStatus) || 'Completed'}]
+Carrier Claim Recovery: $${((r.claim && r.claim.recoveredAmount) || (r.claim && r.claim.claimAmount) || r.carrierClaimUSD || 0).toFixed(2)} USD [Status: ${(r.claim && r.claim.claimStatus) || 'Closed'}]
+Return Shipping Fee:    $${(fi.returnShippingCost || 0).toFixed(2)} USD
+Net Profitability Effect: $${((fi.netProfitabilityImpact) || -37).toFixed(2)} USD
+
+================================================================================
+Digitally certified by Odette Rugs Global Reverse Logistics OS.`;
+
+  triggerDownload(filename, content, "application/pdf");
+  showToast(`Downloaded ${filename} successfully!`, "success");
+}
+
+function exportReturnsCSV() {
+  let csv = "Return ID,Order ID,Customer,Channel,SKU,Return Type,Reason,Item Condition,Status,Refund USD,Claim USD,Net Impact USD\n";
+  (AppState.returns || []).forEach(r => {
+    const retId = r.returnId || r.rmaNo;
+    const ref = (r.refund && r.refund.refundAmount) || r.refundAmountUSD || 0;
+    const clm = (r.claim && r.claim.claimAmount) || r.carrierClaimUSD || 0;
+    const net = (r.financialImpact && r.financialImpact.netProfitabilityImpact) || 0;
+    csv += `"${retId}","${r.orderId}","${r.customer}","${r.channel}","${r.sku}","${r.returnType || 'Customer Return'}","${r.returnReason || r.reason}","${r.itemCondition || r.grade}","${r.returnStatus || r.status}",${ref},${clm},${net}\n`;
+  });
+  triggerDownload("RugOS_Returns_Registry.csv", csv, "text/csv");
+}
+
+function exportRefundsCSV() {
+  let csv = "Refund Ref,Return ID,Order ID,Customer,Channel,Refund Amount USD,Method,Date,Status\n";
+  (AppState.returns || []).forEach(r => {
+    if (r.refund) {
+      csv += `"${r.refund.refundRef || 'REF-' + r.returnId}","${r.returnId || r.rmaNo}","${r.orderId}","${r.customer}","${r.channel}",${r.refund.refundAmount || r.refundAmountUSD || 0},"${r.refund.refundMethod || 'SP-API'}","${r.refund.refundDate || r.returnDate}","${r.refund.refundStatus || 'Completed'}"\n`;
+    }
+  });
+  triggerDownload("RugOS_Refunds_Report.csv", csv, "text/csv");
+}
+
+function exportClaimsCSV() {
+  let csv = "Claim ID,Return ID,Order ID,Carrier,Claim Reason,Claim Amount USD,Recovered Amount USD,Status\n";
+  (AppState.returns || []).forEach(r => {
+    if (r.claim) {
+      csv += `"${r.claim.claimId || 'CLM-' + r.returnId}","${r.returnId || r.rmaNo}","${r.orderId}","${r.claim.carrier || 'FedEx'}","${r.claim.claimReason || r.returnReason}",${r.claim.claimAmount || r.carrierClaimUSD || 0},${r.claim.recoveredAmount || 0},"${r.claim.claimStatus || 'Under Review'}"\n`;
+    }
+  });
+  triggerDownload("RugOS_Carrier_Claims_Docket.csv", csv, "text/csv");
+}
+
+
 function renderCourierAuditView() {
   const f = AppState.tableFilters.courierAudit || { search: "", status: "all", page: 1, pageSize: 5 };
   let filtered = (AppState.courierAudit || []).filter(a => {
-    const matchesSearch = !f.search || a.awb.toLowerCase().includes(f.search.toLowerCase()) || a.orderId.toLowerCase().includes(f.search.toLowerCase());
+    const s = (f.search || "").trim().toLowerCase();
+    const matchesSearch = !s || a.awb.toLowerCase().includes(s) || a.orderId.toLowerCase().includes(s);
     const matchesStatus = f.status === "all" || a.status.toLowerCase().includes(f.status.toLowerCase());
     return matchesSearch && matchesStatus;
   });
@@ -13480,20 +20136,22 @@ function renderCourierAuditView() {
       <button class="filter-pill-btn ${f.status === 'Disputed' ? 'active' : ''}" onclick="setTableFilter('courierAudit', 'status', 'Disputed')">⚠️ Weight Discrepancy / Overcharge</button>
     </div>
 
-    <div class="table-toolbar-box">
+    <div class="table-toolbar-box" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
       <div class="table-toolbar-left">
-        <div class="table-search-input-wrap">
-          <span class="table-search-icon">🔍</span>
-          <input type="text" placeholder="Search by AWB, Order ID, Carrier, SKU..." value="${f.search}" oninput="setTableSearch('courierAudit', this.value)">
-        </div>
+        <!-- Left spacer -->
+      </div>
+      <div class="table-toolbar-right" style="display: flex; gap: 8px; align-items: center; margin-left: auto; flex-wrap: wrap;">
         <select class="table-filter-select" onchange="setTableFilter('courierAudit', 'status', this.value)">
           <option value="all">All Audit Statuses</option>
           <option value="Disputed" ${f.status === 'Disputed' ? 'selected' : ''}>Disputed with Carrier</option>
           <option value="Approved" ${f.status === 'Approved' ? 'selected' : ''}>Dispute Approved / Credit Note</option>
           <option value="Payment" ${f.status === 'Payment' ? 'selected' : ''}>Audit Passed (No Overcharge)</option>
         </select>
-      </div>
-      <div class="table-toolbar-right">
+        <div class="table-search-input-wrap">
+          <span class="table-search-icon">🔍</span>
+          <input type="text" placeholder="Search by AWB, Order ID, Carrier, SKU..." value="${f.search}" oninput="setTableSearch('courierAudit', this.value)">
+        </div>
+        <button class="btn btn-sm btn-secondary" onclick="refreshTableFilters('courierAudit', 'Courier Audit')">🔄 Refresh</button>
       </div>
     </div>
 
@@ -13503,59 +20161,61 @@ function renderCourierAuditView() {
         <table class="data-table">
           <thead>
             <tr>
-              <th>Carrier & AWB #</th>
-              <th>Order ID & SKU</th>
-              <th>System Scale Weight</th>
-              <th>Courier Billed Weight</th>
-              <th>Weight Variance</th>
-              <th>Overcharge Dollar Variance</th>
-              <th>Audit Status (Change)</th>
-              <th>Actions</th>
+              <th style="min-width: 160px; white-space: nowrap;">Carrier & AWB #</th>
+              <th style="min-width: 150px; white-space: nowrap;">Order ID & SKU</th>
+              <th style="min-width: 140px; white-space: nowrap;">System Scale Weight</th>
+              <th style="min-width: 140px; white-space: nowrap;">Courier Billed Weight</th>
+              <th style="min-width: 120px; text-align: center; white-space: nowrap;">Weight Variance</th>
+              <th style="min-width: 160px; text-align: right; white-space: nowrap;">Overcharge Dollar Variance</th>
+              <th style="min-width: 210px; white-space: nowrap;">Audit Status (Change)</th>
+              <th style="min-width: 180px; text-align: center; white-space: nowrap;">Actions</th>
             </tr>
           </thead>
           <tbody>
             ${pagination.items.map(a => `
               <tr style="cursor: pointer;" onclick="openCourierAuditDetail('${a.awb}')">
-                <td>
+                <td style="min-width: 160px;">
                   <strong style="font-family: var(--font-mono); color: var(--brand-cyan); font-size: 13px;">${a.awb}</strong>
                   <div style="font-size: 11px; color: var(--text-dim); margin-top: 2px;">${a.carrier}</div>
                 </td>
-                <td>
+                <td style="min-width: 150px;">
                   <strong>${a.orderRef}</strong>
                   <div style="font-size: 10px; color: var(--text-muted); font-family: var(--font-mono);">${a.sku}</div>
                 </td>
-                <td>
+                <td style="min-width: 140px;">
                   <strong style="font-family: var(--font-mono); color: var(--success);">${a.systemWeightKg} Kg</strong>
                   <div style="font-size: 10px; color: var(--text-dim);">${a.systemDimensions}</div>
                 </td>
-                <td>
+                <td style="min-width: 140px;">
                   <strong style="font-family: var(--font-mono); color: var(--danger);">${a.carrierBilledWeightKg} Kg</strong>
                   <div style="font-size: 10px; color: var(--text-dim);">${a.billedDimensions}</div>
                 </td>
-                <td>
+                <td style="min-width: 120px; text-align: center;">
                   <span class="badge ${a.varianceUSD > 0 ? 'badge-danger' : 'badge-success'}" style="font-size: 11px;">
                     ${(a.carrierBilledWeightKg - a.systemWeightKg) > 0 ? '+' : ''}${(a.carrierBilledWeightKg - a.systemWeightKg).toFixed(1)} Kg
                   </span>
                 </td>
-                <td>
+                <td style="min-width: 160px; text-align: right;">
                   <strong style="font-family: var(--font-mono); font-size: 13px; color: ${a.varianceUSD > 0 ? 'var(--danger)' : 'var(--success)'};">
                     ${a.varianceUSD > 0 ? '+' : ''}$${a.varianceUSD.toFixed(2)} USD
                   </strong>
                   <div style="font-size: 10px; color: var(--text-dim);">Tariff: $${a.systemExpectedRateUSD.toFixed(2)}</div>
                 </td>
-                <td onclick="event.stopPropagation()">
-                  <select class="table-status-select" data-status="${a.status}" onchange="changeCourierAuditStatus('${a.awb}', this.value)">
+                <td style="min-width: 210px;" onclick="event.stopPropagation()">
+                  <select class="table-status-select" style="width: 100%; min-width: 190px;" data-status="${a.status}" onchange="changeCourierAuditStatus('${a.awb}', this.value)">
                     <option value="Disputed with FedEx" ${a.status.includes('Disputed') ? 'selected' : ''}>Disputed with Carrier</option>
                     <option value="Dispute Approved" ${a.status.includes('Approved') && !a.status.includes('Payment') ? 'selected' : ''}>Dispute Approved (Credit Note)</option>
                     <option value="Approved for Payment" ${a.status.includes('Payment') ? 'selected' : ''}>Approved for Payment</option>
                   </select>
                 </td>
-                <td onclick="event.stopPropagation()">
-                  <div style="display: flex; gap: 6px; align-items: center;">
+                <td style="min-width: 180px;" onclick="event.stopPropagation()">
+                  <div style="display: flex; gap: 6px; align-items: center; justify-content: center;">
                     ${a.varianceUSD > 0 ? `
-                      <button class="btn btn-sm btn-secondary" onclick="downloadAuditDisputePDF('${a.awb}')" title="Download Dispute Dossier PDF">📑 Dispute</button>
-                    ` : ''}
-                    <button class="btn btn-sm btn-primary" onclick="openCourierAuditDetail('${a.awb}')" title="View Full Audit Breakdown">🔍 View</button>
+                      <button class="btn btn-sm btn-secondary" onclick="downloadAuditDisputePDF('${a.awb}')" title="Download Dispute Dossier PDF" style="font-size: 11px; padding: 4px 8px;">📑 Dispute</button>
+                    ` : `
+                      <button class="btn btn-sm btn-secondary" onclick="approveCourierAuditPayment('${a.awb}')" title="Approve Clean Rate" style="font-size: 11px; padding: 4px 8px;">✅ Matched</button>
+                    `}
+                    <button class="btn btn-sm btn-primary" onclick="openCourierAuditDetail('${a.awb}')" title="View Full Audit Breakdown" style="font-size: 11px; padding: 4px 8px;">🔍 View</button>
                   </div>
                 </td>
               </tr>
@@ -13623,7 +20283,8 @@ function downloadAuditDisputePDF(awb) {
 function renderReceivablesView() {
   const f = AppState.tableFilters.receivables || { search: "", status: "all", page: 1, pageSize: 5 };
   let filtered = (AppState.receivables || []).filter(r => {
-    const matchesSearch = !f.search || r.invoiceNo.toLowerCase().includes(f.search.toLowerCase()) || r.clientName.toLowerCase().includes(f.search.toLowerCase());
+    const s = (f.search || "").trim().toLowerCase();
+    const matchesSearch = !s || r.invoiceNo.toLowerCase().includes(s) || r.clientName.toLowerCase().includes(s);
     const matchesStatus = f.status === "all" || r.status.toLowerCase().includes(f.status.toLowerCase());
     return matchesSearch && matchesStatus;
   });
@@ -13648,12 +20309,11 @@ function renderReceivablesView() {
       <button class="filter-pill-btn ${f.status === 'e-BRC Issued' ? 'active' : ''}" onclick="setTableFilter('receivables', 'status', 'e-BRC Issued')">📜 e-BRC Issued</button>
     </div>
 
-    <div class="table-toolbar-box">
+    <div class="table-toolbar-box" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
       <div class="table-toolbar-left">
-        <div class="table-search-input-wrap">
-          <span class="table-search-icon">🔍</span>
-          <input type="text" placeholder="Search by Invoice, Client, Shipping Bill, Order..." value="${f.search}" oninput="setTableSearch('receivables', this.value)">
-        </div>
+        <!-- Left spacer -->
+      </div>
+      <div class="table-toolbar-right" style="display: flex; gap: 8px; align-items: center; margin-left: auto; flex-wrap: wrap;">
         <select class="table-filter-select" onchange="setTableFilter('receivables', 'status', this.value)">
           <option value="all">All Realization Statuses</option>
           <option value="Paid" ${f.status === 'Paid' ? 'selected' : ''}>Paid & Realized (e-BRC Closed)</option>
@@ -13661,8 +20321,11 @@ function renderReceivablesView() {
           <option value="Pending" ${f.status === 'Pending' ? 'selected' : ''}>Pending Realization</option>
           <option value="Overdue" ${f.status === 'Overdue' ? 'selected' : ''}>Overdue Notice</option>
         </select>
-      </div>
-      <div class="table-toolbar-right">
+        <div class="table-search-input-wrap">
+          <span class="table-search-icon">🔍</span>
+          <input type="text" placeholder="Search by Invoice, Client, Shipping Bill, Order..." value="${f.search}" oninput="setTableSearch('receivables', this.value)">
+        </div>
+        <button class="btn btn-sm btn-secondary" onclick="refreshTableFilters('receivables', 'Receivables & Invoices')">🔄 Refresh</button>
       </div>
     </div>
 
@@ -13761,7 +20424,7 @@ function changeReceivableStatus(invoiceNo, newStatus) {
 function downloadFiraPDF(invoiceNo) {
   const rec = (AppState.receivables || []).find(r => r.invoiceNo === invoiceNo) || AppState.receivables[0];
   const filename = `BANK_FIRA_ADVICE_${rec.invoiceNo}.pdf`;
-  const content = `%PDF-1.4\n% Foreign Inward Remittance Advice (FIRA) / IRM\nAuthorised Dealer Bank: ${rec.bankRef || 'HDFC Bank Ltd, Bhadohi'}\nAD Code: 0510024\nInvoice Ref: ${rec.invoiceNo}\nBeneficiary: RUGS GLOBAL LLP (IEC: 0516908124)\nRemitter: ${rec.client}\nInward Foreign Currency: $${rec.amountUSD.toFixed(2)} USD\nRealized Exchange Rate: ₹${rec.exchangeRateINR || 83.92} INR\nNet Realized INR: ₹${(rec.realizedINR || Math.round(rec.amountUSD * 83.92)).toLocaleString()} INR\nFEMA Purpose Code: ${rec.femaPurpose || 'P0102 (Export of Handcrafted Floor Coverings)'}\nEDPMS Status: Settled via RBI Gateway.`;
+  const content = `%PDF-1.4\n% Foreign Inward Remittance Advice (FIRA) / IRM\nAuthorised Dealer Bank: ${rec.bankRef || 'HDFC Bank Ltd, Bhadohi'}\nAD Code: 0510024\nInvoice Ref: ${rec.invoiceNo}\nBeneficiary: CTAS RUGS GLOBAL LLP (IEC: 0516908124)\nRemitter: ${rec.client}\nInward Foreign Currency: $${rec.amountUSD.toFixed(2)} USD\nRealized Exchange Rate: ₹${rec.exchangeRateINR || 83.92} INR\nNet Realized INR: ₹${(rec.realizedINR || Math.round(rec.amountUSD * 83.92)).toLocaleString()} INR\nFEMA Purpose Code: ${rec.femaPurpose || 'P0102 (Export of Handcrafted Floor Coverings)'}\nEDPMS Status: Settled via RBI Gateway.`;
   triggerDownload(filename, content, "application/pdf");
   showToast(`Downloaded ${filename} successfully!`, "success");
 }
@@ -13769,7 +20432,7 @@ function downloadFiraPDF(invoiceNo) {
 function downloadEbrcPDF(invoiceNo) {
   const rec = (AppState.receivables || []).find(r => r.invoiceNo === invoiceNo) || AppState.receivables[0];
   const filename = `DGFT_EBRC_CERTIFICATE_${rec.invoiceNo}.pdf`;
-  const content = `%PDF-1.4\n% Directorate General of Foreign Trade (DGFT) Electronic Bank Realisation Certificate (e-BRC)\ne-BRC No: ${rec.ebrcNo && !rec.ebrcNo.includes('Pending') ? rec.ebrcNo : 'EBRC-HDFC-2026-098122'}\nExporter IEC: 0516908124\nExporter Name: RUGS GLOBAL LLP\nShipping Bill Ref: ${rec.shippingBillNo}\nPort of Export: INVTZ1 (ICD Babatpur)\nInvoice No & Date: ${rec.invoiceNo} / ${rec.invoiceDate}\nRealized FOB Foreign Currency: $${rec.amountUSD.toFixed(2)} USD\nBank AD Code: 0510024\nFEMA Declaration: Realization verified under Foreign Exchange Management Act 1999 for GST LUT & RoDTEP Claim.`;
+  const content = `%PDF-1.4\n% Directorate General of Foreign Trade (DGFT) Electronic Bank Realisation Certificate (e-BRC)\ne-BRC No: ${rec.ebrcNo && !rec.ebrcNo.includes('Pending') ? rec.ebrcNo : 'EBRC-HDFC-2026-098122'}\nExporter IEC: 0516908124\nExporter Name: CTAS RUGS GLOBAL LLP\nShipping Bill Ref: ${rec.shippingBillNo}\nPort of Export: INVTZ1 (ICD Babatpur)\nInvoice No & Date: ${rec.invoiceNo} / ${rec.invoiceDate}\nRealized FOB Foreign Currency: $${rec.amountUSD.toFixed(2)} USD\nBank AD Code: 0510024\nFEMA Declaration: Realization verified under Foreign Exchange Management Act 1999 for GST LUT & RoDTEP Claim.`;
   triggerDownload(filename, content, "application/pdf");
   showToast(`Downloaded ${filename} successfully!`, "success");
 }
@@ -13997,7 +20660,7 @@ function renderProfitabilityView() {
 
   // Filtered orders for table
   let filteredOrders = allOrders.filter(o => {
-    const q = f.search.toLowerCase();
+    const q = (f.search || "").trim().toLowerCase();
     const matchesSearch = !q || o.orderId.toLowerCase().includes(q) ||
                           o.sku.toLowerCase().includes(q) ||
                           (o.buyerName && o.buyerName.toLowerCase().includes(q)) ||
@@ -14458,12 +21121,11 @@ function renderProfitabilityView() {
       </div>
 
       <!-- Table Toolbar Box -->
-      <div class="table-toolbar-box" style="margin: 16px 20px 0 20px;">
+      <div class="table-toolbar-box" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 16px 20px 0 20px; flex-wrap: wrap;">
         <div class="table-toolbar-left">
-          <div class="table-search-input-wrap">
-            <span class="table-search-icon">🔍</span>
-            <input type="text" placeholder="Search by Order ID, SKU, Buyer, Channel..." value="${f.search}" oninput="setTableSearch('profitability', this.value)">
-          </div>
+          <!-- Left spacer -->
+        </div>
+        <div class="table-toolbar-right" style="display: flex; gap: 8px; align-items: center; margin-left: auto; flex-wrap: wrap;">
           <select class="table-filter-select" onchange="setTableFilter('profitability', 'channel', this.value)">
             <option value="all">All Channels</option>
             <option value="Amazon" ${f.channel === 'Amazon' ? 'selected' : ''}>Amazon US</option>
@@ -14472,8 +21134,11 @@ function renderProfitabilityView() {
             <option value="Walmart" ${f.channel === 'Walmart' ? 'selected' : ''}>Walmart US</option>
             <option value="B2B" ${f.channel === 'B2B' ? 'selected' : ''}>B2B Wholesale</option>
           </select>
-        </div>
-        <div class="table-toolbar-right">
+          <div class="table-search-input-wrap">
+            <span class="table-search-icon">🔍</span>
+            <input type="text" placeholder="Search by Order ID, SKU, Buyer, Channel..." value="${f.search}" oninput="setTableSearch('profitability', this.value)">
+          </div>
+          <button class="btn btn-sm btn-secondary" onclick="refreshTableFilters('profitability', 'Profitability Analytics')">🔄 Refresh</button>
           <button class="btn btn-xs btn-secondary" onclick="setProfitabilitySimOrder('OVERALL')">🌐 Simulate Overall Portfolio</button>
         </div>
       </div>
@@ -15285,7 +21950,7 @@ function exportActiveReportPDF(key) {
 % RugOS Financial & Operational Reporting Engine
 % Report: ${reportTitles[key] || key.toUpperCase()}
 Generated on: ${new Date().toISOString()}
-Organization: RUGS GLOBAL LLP (IEC: 0516908124)
+Organization: CTAS RUGS GLOBAL LLP (IEC: 0516908124)
 Audit Period: Q3 / FY 2026-27
 Compliance Standard: DGFT, FEMA 1999, RBI EDPMS, ICEGATE Rule 8
 Status: 100% Verified and Certified by RugOS Financial Intelligence Engine.`;
@@ -15307,8 +21972,15 @@ function renderSkuHistoryView() {
   const allMovementTypes = Array.from(new Set((AppState.skuHistory || []).map(i => i.changeType || i.type || "Movement")));
 
   let filtered = (AppState.skuHistory || []).filter(item => {
-    const matchesSearch = !f.search || item.sku.toLowerCase().includes(f.search) || item.refNo.toLowerCase().includes(f.search);
-    const matchesType = f.type === "all" || item.changeType.toLowerCase() === f.type.toLowerCase();
+    const s = (f.search || "").trim().toLowerCase();
+    const matchesSearch = !s || 
+      (item.sku && item.sku.toLowerCase().includes(s)) || 
+      (item.refNo && item.refNo.toLowerCase().includes(s)) ||
+      (item.user && item.user.toLowerCase().includes(s)) ||
+      (item.source && item.source.toLowerCase().includes(s)) ||
+      (item.dest && item.dest.toLowerCase().includes(s)) ||
+      (item.notes && item.notes.toLowerCase().includes(s));
+    const matchesType = f.type === "all" || (item.changeType && item.changeType.toLowerCase() === f.type.toLowerCase()) || (item.type && item.type.toLowerCase() === f.type.toLowerCase());
     return matchesSearch && matchesType;
   });
 
@@ -15332,29 +22004,31 @@ function renderSkuHistoryView() {
       <button class="filter-pill-btn ${f.type === 'Transfer' ? 'active' : ''}" onclick="setTableFilter('skuHistory', 'type', 'Transfer')">⇆ Warehouse Transfer</button>
     </div>
 
-    <div class="table-toolbar-box">
-      <div class="table-toolbar-left" style="flex-wrap: wrap; gap: 10px;">
-        <!-- Search Input -->
-        <div class="table-search-input-wrap" style="min-width: 320px;">
-          <span class="table-search-icon">🔍</span>
-          <input type="text" id="skuHistorySearchInput" placeholder="Search SKU, reference, user, or location..." value="${f.search}" oninput="setTableSearch('skuHistory', this.value)">
-        </div>
+    <div class="table-toolbar-box" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
+      <div class="table-toolbar-left">
+        <span style="font-size: 11px; color: var(--text-dim);">${filtered.length} matching transaction records</span>
+      </div>
 
+      <div class="table-toolbar-right" style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-left: auto;">
         <!-- Comprehensive Movement Type Filter Dropdown -->
         <select class="table-filter-select" onchange="setTableFilter('skuHistory', 'type', this.value)" style="font-weight: 600; color: var(--brand-cyan); max-width: 280px;">
           <option value="all" ${f.type === 'all' ? 'selected' : ''}>🏷️ Filter by Movement Type (All)</option>
           ${allMovementTypes.map(t => `<option value="${t}" ${f.type === t ? 'selected' : ''}>${t}</option>`).join('')}
         </select>
 
+        <!-- Search Input -->
+        <div class="table-search-input-wrap" style="min-width: 300px;">
+          <span class="table-search-icon">🔍</span>
+          <input type="text" id="skuHistorySearchInput" placeholder="Search SKU, reference, user, or location..." value="${f.search}" oninput="setTableSearch('skuHistory', this.value)">
+        </div>
+
+        <button class="btn btn-sm btn-secondary" onclick="refreshTableFilters('skuHistory', 'SKU Transaction History')">🔄 Refresh</button>
+
         ${(f.search || f.sku !== 'all' || f.type !== 'all') ? `
           <button class="btn btn-xs btn-secondary" onclick="AppState.tableFilters.skuHistory = { search: '', sku: 'all', type: 'all', sortBy: 'timestamp', sortOrder: 'desc', page: 1, pageSize: 10 }; renderCurrentView();">
             ✕ Clear Filters
           </button>
         ` : ''}
-      </div>
-
-      <div class="table-toolbar-right" style="display: flex; align-items: center; gap: 10px;">
-        <span style="font-size: 11px; color: var(--text-dim);">${filtered.length} matching transaction records</span>
       </div>
     </div>
 
@@ -17509,7 +24183,7 @@ window.triggerCronJob = triggerCronJob;
 
 function renderSOWDocView() {
   return `
-    <div class="page-header"><div class="page-title-wrap"><h1>📖 Full SOW Document & Traceability Explorer</h1><p>Scope of Work & Deliverable Verification Matrix (1,645 Engineering Hours).</p></div></div>
+    <div class="page-header"><div class="page-title-wrap"><h1>📖 Full SOW Document & Traceability Explorer</h1><p>Ctas Info Services LLP — Scope of Work & Deliverable Verification Matrix (1,645 Engineering Hours).</p></div></div>
     <div class="card">
       <div class="card-header"><h3>SOW Enterprise Architecture Breakdown</h3></div>
       <div class="card-body">
@@ -17664,7 +24338,8 @@ function renderInventoryDetailPage(skuCode) {
 // ============================================================================
 
 function renderUserProfilePage() {
-  const adminUser = AppState.users.find(u => u.email === "admin@info.com") || AppState.users[0];
+  const currentAuth = AppState.auth && AppState.auth.currentUser;
+  const adminUser = currentAuth || AppState.users.find(u => u.email === "admin@ctasinfo.com") || AppState.users[0];
 
   return `
     <div class="full-detail-page">
@@ -17679,19 +24354,20 @@ function renderUserProfilePage() {
         <div style="display: flex; gap: 8px;">
           <button class="btn btn-sm btn-secondary" onclick="generateNewApiKey()">🔑 Generate New API Token</button>
           <button class="btn btn-sm btn-primary" onclick="showToast('Profile security settings saved.', 'success')">💾 Save Preferences</button>
+          <button class="btn btn-sm btn-danger" onclick="logoutUser()">🚪 Sign Out</button>
         </div>
       </div>
 
       <!-- Profile Hero Banner -->
       <div class="profile-hero-card">
         <div style="display: flex; align-items: center; gap: 20px;">
-          <div class="profile-avatar-large">CT</div>
+          <div class="profile-avatar-large">${adminUser.initials || "CT"}</div>
           <div class="profile-identity-info">
             <h2>${adminUser.name}</h2>
             <div class="profile-identity-meta">
               <span>📧 <strong>${adminUser.email}</strong></span>
               <span>•</span>
-              <span>🏢 <strong>(Operations)</strong></span>
+              <span>🏢 <strong>Ctas Info Services LLP (Operations)</strong></span>
               <span>•</span>
               <span>🌐 <strong>Asia/Kolkata (IST +05:30)</strong></span>
             </div>
@@ -17831,11 +24507,11 @@ function renderUserProfilePage() {
             <div class="form-grid-2">
               <div class="form-group">
                 <label>First & Last Name:</label>
-                <input type="text" class="form-control" value="Admin">
+                <input type="text" class="form-control" value="Ctas Admin">
               </div>
               <div class="form-group">
                 <label>Work Email Address:</label>
-                <input type="email" class="form-control" value="admin@info.com" readonly>
+                <input type="email" class="form-control" value="admin@ctasinfo.com" readonly>
               </div>
             </div>
             <div class="form-grid-2">
@@ -17956,7 +24632,8 @@ function generateNewApiKey() {
 function renderBuyersMasterView() {
   const f = AppState.tableFilters.buyers || { search: "", tier: "all", sortBy: "name", sortOrder: "asc", page: 1, pageSize: 5 };
   let filtered = AppState.buyers.filter(b => {
-    const matchesSearch = !f.search || b.name.toLowerCase().includes(f.search) || b.code.toLowerCase().includes(f.search) || b.country.toLowerCase().includes(f.search);
+    const s = (f.search || "").trim().toLowerCase();
+    const matchesSearch = !s || b.name.toLowerCase().includes(s) || b.code.toLowerCase().includes(s) || b.country.toLowerCase().includes(s);
     const matchesTier = f.tier === "all" || b.tier.toLowerCase().includes(f.tier.toLowerCase());
     return matchesSearch && matchesTier;
   });
@@ -18014,12 +24691,11 @@ function renderBuyersMasterView() {
     </div>
 
     <!-- Table Toolbar -->
-    <div class="table-toolbar-box">
+    <div class="table-toolbar-box" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
       <div class="table-toolbar-left">
-        <div class="table-search-input-wrap">
-          <span class="table-search-icon">🔍</span>
-          <input type="text" placeholder="Search by Buyer Code, Name, Country..." value="${f.search}" oninput="setTableSearch('buyers', this.value)">
-        </div>
+        <!-- Left spacer -->
+      </div>
+      <div class="table-toolbar-right" style="display: flex; gap: 8px; align-items: center; margin-left: auto; flex-wrap: wrap;">
         <select class="table-filter-select" onchange="setTableFilter('buyers', 'tier', this.value)">
           <option value="all">All Buyer Tiers</option>
           <option value="Enterprise">Tier 1 Enterprise Retailer</option>
@@ -18027,8 +24703,11 @@ function renderBuyersMasterView() {
           <option value="Architectural">Architectural / Interior Trade</option>
           <option value="Wholesaler">European Wholesaler</option>
         </select>
-      </div>
-      <div class="table-toolbar-right">
+        <div class="table-search-input-wrap">
+          <span class="table-search-icon">🔍</span>
+          <input type="text" placeholder="Search by Buyer Code, Name, Country..." value="${f.search}" oninput="setTableSearch('buyers', this.value)">
+        </div>
+        <button class="btn btn-sm btn-secondary" onclick="refreshTableFilters('buyers', 'Buyers registry')">🔄 Refresh</button>
         <button class="btn btn-sm btn-primary" onclick="openAddBuyerModal()">+ Add Buyer</button>
       </div>
     </div>
@@ -18271,7 +24950,8 @@ function exportBuyersCSV() {
 function renderLoomsMasterView() {
   const f = AppState.tableFilters.looms || { search: "", type: "all", sortBy: "loomId", sortOrder: "asc", page: 1, pageSize: 5 };
   let filtered = AppState.looms.filter(l => {
-    const matchesSearch = !f.search || l.loomId.toLowerCase().includes(f.search) || l.masterWeaver.toLowerCase().includes(f.search) || l.facility.toLowerCase().includes(f.search);
+    const s = (f.search || "").trim().toLowerCase();
+    const matchesSearch = !s || l.loomId.toLowerCase().includes(s) || l.masterWeaver.toLowerCase().includes(s) || l.facility.toLowerCase().includes(s);
     const matchesType = f.type === "all" || l.loomType.toLowerCase().includes(f.type.toLowerCase());
     return matchesSearch && matchesType;
   });
@@ -18294,7 +24974,7 @@ function renderLoomsMasterView() {
     
     <!-- Linked Raw Materials Inventory Section -->
     <div class="card" style="margin-bottom: 20px;">
-      <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+      <div class="card-header">
         <div class="card-title-group">
           <h3>🧶 Loom Raw Materials & Dye Lots In-Stock</h3>
           <p>Real-time spool inventory available for BOM issuance across Bhadohi, Mirzapur & Jaipur looms</p>
@@ -18349,12 +25029,11 @@ function renderLoomsMasterView() {
     </div>
 
     <!-- Table Toolbar -->
-    <div class="table-toolbar-box">
+    <div class="table-toolbar-box" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
       <div class="table-toolbar-left">
-        <div class="table-search-input-wrap">
-          <span class="table-search-icon">🔍</span>
-          <input type="text" placeholder="Search by Loom ID, Master Weaver, Cluster..." value="${f.search}" oninput="setTableSearch('looms', this.value)">
-        </div>
+        <!-- Left spacer -->
+      </div>
+      <div class="table-toolbar-right" style="display: flex; gap: 8px; align-items: center; margin-left: auto; flex-wrap: wrap;">
         <select class="table-filter-select" onchange="setTableFilter('looms', 'type', this.value)">
           <option value="all">All Loom Types</option>
           <option value="Knotted">Hand-Knotted Pit Loom</option>
@@ -18362,8 +25041,11 @@ function renderLoomsMasterView() {
           <option value="Flatweave">Flatweave Dhurrie Loom</option>
           <option value="Braid">Jute Braiding & Stitch Table</option>
         </select>
-      </div>
-      <div class="table-toolbar-right">
+        <div class="table-search-input-wrap">
+          <span class="table-search-icon">🔍</span>
+          <input type="text" placeholder="Search by Loom ID, Master Weaver, Cluster..." value="${f.search}" oninput="setTableSearch('looms', this.value)">
+        </div>
+        <button class="btn btn-sm btn-secondary" onclick="refreshTableFilters('looms', 'Looms registry')">🔄 Refresh</button>
         <button class="btn btn-sm btn-primary" onclick="openAddLoomModal()">+ Add Loom Station</button>
       </div>
     </div>
@@ -18593,7 +25275,8 @@ function exportLoomsCSV() {
 function renderCarriersMasterView() {
   const f = AppState.tableFilters.carriers || { search: "", mode: "all", sortBy: "name", sortOrder: "asc", page: 1, pageSize: 5 };
   let filtered = AppState.carriers.filter(c => {
-    const matchesSearch = !f.search || c.name.toLowerCase().includes(f.search) || c.code.toLowerCase().includes(f.search) || c.accountNo.toLowerCase().includes(f.search);
+    const s = (f.search || "").trim().toLowerCase();
+    const matchesSearch = !s || c.name.toLowerCase().includes(s) || c.code.toLowerCase().includes(s) || c.accountNo.toLowerCase().includes(s);
     const matchesMode = f.mode === "all" || c.mode.toLowerCase().includes(f.mode.toLowerCase());
     return matchesSearch && matchesMode;
   });
@@ -18615,20 +25298,22 @@ function renderCarriersMasterView() {
     ${renderBlueprintSpec("Module 2 — Global Logistics Carrier Governance (35 hrs)", "Defines dimensional catch-weight rules across air express (FedEx/DHL) and ocean freight (Maersk/MSC) with automated 3-way invoice matching.")}
 
     <!-- Table Toolbar -->
-    <div class="table-toolbar-box">
+    <div class="table-toolbar-box" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
       <div class="table-toolbar-left">
-        <div class="table-search-input-wrap">
-          <span class="table-search-icon">🔍</span>
-          <input type="text" placeholder="Search carrier name, code, account #..." value="${f.search}" oninput="setTableSearch('carriers', this.value)">
-        </div>
+        <!-- Left spacer -->
+      </div>
+      <div class="table-toolbar-right" style="display: flex; gap: 8px; align-items: center; margin-left: auto; flex-wrap: wrap;">
         <select class="table-filter-select" onchange="setTableFilter('carriers', 'mode', this.value)">
           <option value="all">All Transit Modes</option>
           <option value="Air">International Air Courier</option>
           <option value="Ocean">Ocean FCL & LCL Freight</option>
           <option value="Rail">Bonded ICD Rail Link</option>
         </select>
-      </div>
-      <div class="table-toolbar-right">
+        <div class="table-search-input-wrap">
+          <span class="table-search-icon">🔍</span>
+          <input type="text" placeholder="Search carrier name, code, account #..." value="${f.search}" oninput="setTableSearch('carriers', this.value)">
+        </div>
+        <button class="btn btn-sm btn-secondary" onclick="refreshTableFilters('carriers', 'Carriers registry')">🔄 Refresh</button>
         <button class="btn btn-sm btn-primary" onclick="openAddCarrierModal()">+ Add Carrier</button>
       </div>
     </div>
@@ -19033,7 +25718,7 @@ function openDocPaperPreviewModal(docType, id) {
         <div style="font-size: 13px; line-height: 1.8;">
           <p>We hereby certify that the following foreign inward remittance has been received and credited to the exporter's account:</p>
           <table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 12px;">
-            <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0; width: 40%;"><strong>1. Beneficiary Exporter:</strong></td><td>(RugOS Export Hub), Bhadohi (UP)</td></tr>
+            <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0; width: 40%;"><strong>1. Beneficiary Exporter:</strong></td><td>Ctas Info Services LLP (RugOS Export Hub), Bhadohi (UP)</td></tr>
             <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>2. Importer / Remitter:</strong></td><td>${r.client}</td></tr>
             <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>3. SWIFT MT103 Wire Ref:</strong></td><td><code>SWIFT/DANSKE/9901428</code></td></tr>
             <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>4. Commercial Invoice Ref:</strong></td><td><strong>${r.invoiceNo}</strong></td></tr>
@@ -19076,7 +25761,7 @@ function openDocPaperPreviewModal(docType, id) {
         <div style="font-size: 13px; line-height: 1.8;">
           <table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 12px;">
             <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0; width: 40%;"><strong>e-BRC Identification Number:</strong></td><td><strong style="color: #059669 !important;">${r.ebrcNo}</strong></td></tr>
-            <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>Exporter IEC Number:</strong></td><td><strong>0519082144 </strong></td></tr>
+            <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>Exporter IEC Number:</strong></td><td><strong>0519082144 (Ctas Info Services LLP)</strong></td></tr>
             <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>Shipping Bill No & Date:</strong></td><td>${r.shippingBillNo}</td></tr>
             <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>Port of Export (Customs):</strong></td><td>INVTZ1 (ICD Babatpur Varanasi)</td></tr>
             <tr style="border-bottom: 1px solid #cbd5e1;"><td style="padding: 6px 0;"><strong>Commercial Invoice No:</strong></td><td>${r.invoiceNo}</td></tr>
@@ -19124,7 +25809,7 @@ function openDocPaperPreviewModal(docType, id) {
           </div>
           <p>Photographic proof captured at our high-resolution calibrated packing bench station is attached herewith, proving roll dimensions. We demand an immediate Credit Note in the sum of <strong>$${a.varianceUSD.toFixed(2)} USD</strong> prior to release of invoice settlement.</p>
           <div style="margin-top: 40px;">
-            <strong>(RugOS Legal SCM Unit)</strong><br>
+            <strong>Ctas Info Services LLP (RugOS Legal SCM Unit)</strong><br>
             Station Road, Bhadohi Carpet Industrial Hub, India
           </div>
         </div>
@@ -19149,7 +25834,7 @@ function openDocPaperPreviewModal(docType, id) {
       AMOUNT: $${r.amountUSD.toLocaleString()}
 :50K: ORDERING CUSTOMER: ${r.client}
 :57A: BENEFICIARY INSTITUTION: HDFC BANK LTD, BHADOHI (HDFCINBB051)
-:59:  BENEFICIARY CUSTOMER: Rugs
+:59:  BENEFICIARY CUSTOMER: CTAS INFO SERVICES LLP
       A/C NO: 50200089124401
 :70:  REMITTANCE INFORMATION: INVOICE ${r.invoiceNo} / SB ${r.shippingBillNo}
 :71A: DETAILS OF CHARGES: OUR
@@ -19596,7 +26281,7 @@ function saveNewInventory() {
     qty: qty,
     source: sourceType,
     dest: `${whObj.name} (${binCode})`,
-    user: "Admin / Management",
+    user: "Ctas Admin / Management",
     ref: `${poRef} [${lotRef}]`
   });
 
@@ -19705,7 +26390,7 @@ function executeStockTransfer() {
       qty: -qty,
       source: srcWh ? srcWh.name : srcId,
       dest: `${destWh ? destWh.name : destId} [In-Transit]`,
-      user: "Admin / Management",
+      user: "Ctas Admin / Management",
       ref: manifest
     });
 
@@ -19803,7 +26488,7 @@ function executeStockAdjustment() {
       qty: delta,
       source: wh.name,
       dest: isAdd ? "Stock Ledger Active" : "Audit Adjustment / Write-off",
-      user: "Admin / Management",
+      user: "Ctas Admin / Management",
       ref: `AUDIT-ADJ: ${reason}`
     });
 
@@ -19987,7 +26672,7 @@ function executeReceiveInTransit() {
     qty: qty,
     source: `Ocean In-Transit (${blRef})`,
     dest: `${whObj.name} [${binLocation}]`,
-    user: "Admin / Edison Receiving Dock",
+    user: "Ctas Admin / Edison Receiving Dock",
     ref: `GRN: ${cbpRef}`
   });
 
@@ -20239,7 +26924,7 @@ function renderSystemLogsView() {
 
     <!-- System Audit Table -->
     <div class="card" style="margin-bottom: 24px;">
-      <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+      <div class="card-header">
         <div class="card-title-group">
           <h3>Real-Time Audit Trail & Event Stream</h3>
           <p>Showing ${filteredLogs.length} of ${allLogs.length} verified system audit records</p>
